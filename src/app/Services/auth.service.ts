@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { RESTANGULAR_AUTH } from '../restangular.config';
+import { RESTANGULAR_AUTH } from '@app/restangular.config';
 
 
 @Injectable({
