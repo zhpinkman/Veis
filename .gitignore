@@ -37,9 +37,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-<<<<<<< HEAD
 package-lock.json
-=======
 .angulardoc.json
 
->>>>>>> dddb5b4831dfccf45c98fbdcf8edb7150cb5a653
