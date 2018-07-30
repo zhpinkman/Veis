@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
+import { User } from '@app/User';
 
 
 @Injectable({
@@ -14,4 +15,9 @@ export class AuthService {
    getBearerToken(){
      //TODO return user token
    }
+
+  //  signupRequest(newUser: User){
+  //   let request = this.RestangularAuth.one('signup');
+  //   return request.post(newUser);
+  //  }
 }

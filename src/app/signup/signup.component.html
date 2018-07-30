@@ -1,0 +1,30 @@
+<head>
+  <title>SIGNUP</title>
+</head>
+<h5 class="mx-auto my-5" style="text-align: center">SIGNUP</h5>
+<form  style="position: relative;" [formGroup]="registerForm" class="container w-50 my-5">
+    <div class="my-3">
+      <label for="email">email</label>
+      <input formControlName="email" id="email" type="text" class="form-control">
+    </div>
+    <div class="my-3">
+      <label for="password">password</label>
+      <input formControlName="password" id="password" type="password" class="form-control">
+    </div>
+    <div class="my-3">
+        <label for="bucket">bucket</label>
+        <input formControlName="bucket" id="bucket" type="text" class="form-control" value="{{bucketDefaultGenerator()}}">
+    </div>
+    <div class="mx-auto my-3">
+        <pre style="position: absolute; top: 620px">
+            A bucket is a logical unit of storage in object storage service.
+         Buckets are used to store objects, which consist of data.
+         it's unic and by default first part of your email!! you can change it
+         </pre>
+    </div>
+    
+    <button class="btn m-4" style="text-align: center" (click)= "signup()" [ngClass]="{
+      'btn-danger disabled' : registerForm.invalid,
+      'btn-success' : registerForm.valid
+    }">signup</button>
+</form>
