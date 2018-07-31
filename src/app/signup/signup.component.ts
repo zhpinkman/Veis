@@ -44,11 +44,11 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  // signup(){
-  //   let newUser: User = { email: this.email.value, password: this.password.value, bucket: this.bucket.value};
-  //   this.authService.signupRequest(newUser).subscribe(
-  //     res => console.log(res),
-  //     error => console.error(error)
-  //   );
-  // }
+  signup(){
+    let newUser: User = { email: this.email.value, password: this.password.value, bucket: this.bucket.value};
+    this.authService.signupRequest(newUser).subscribe(
+      res => console.log(res),
+      error => console.error(error)
+    );
+  }
 }

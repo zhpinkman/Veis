@@ -16,8 +16,7 @@ export class AuthService {
      //TODO return user token
    }
 
-  //  signupRequest(newUser: User){
-  //   let request = this.RestangularAuth.one('signup');
-  //   return request.post(newUser);
-  //  }
+   signupRequest(newUser: User){
+    return this.RestangularAuth.oneUrl('signup','http://localhost:8080/users/signup').post('',newUser);
+   }
 }
