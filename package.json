@@ -20,7 +20,11 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+<<<<<<< HEAD
+    "angular2-notifications": "^1.0.2",
+=======
     "bootstrap": "^4.1.3",
+>>>>>>> 78c0b3a0adf6273e950d23c03b7071a2a62aef52
     "core-js": "^2.5.4",
     "ngx-restangular": "^3.0.0",
     "rxjs": "^6.0.0",
