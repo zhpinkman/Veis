@@ -11,21 +11,16 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent
-  ],
+  declarations: [AppComponent, SignupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RestangularModule.forRoot([AuthService],RestangularConfigFactory), 
+    RestangularModule.forRoot([AuthService], RestangularConfigFactory),
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot()
   ],
-  providers: [
-    { provide: RESTANGULAR_AUTH, useFactory:  RestangularAuthFactory, deps: [Restangular] }
-  ],
+  providers: [{ provide: RESTANGULAR_AUTH, useFactory: RestangularAuthFactory, deps: [Restangular] }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
