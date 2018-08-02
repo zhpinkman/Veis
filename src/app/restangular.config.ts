@@ -21,8 +21,8 @@ export const RESTANGULAR_AUTH = new InjectionToken<any>('RestangularAuth');
 export function RestangularAuthFactory(restangular: Restangular) {
   return restangular.withConfig(RestangularConfigurer => {
     RestangularConfigurer.setBaseUrl(''); //TODO set base url
-    RestangularConfigurer.addFullRequestInterceptor((element, operation, path, url, headers, params) => {
-      console.log('test');
-    });
+    // RestangularConfigurer.addFullRequestInterceptor((element, operation, path, url, headers, params) => {
+    //   console.log('test');
+    // });
   });
 }
