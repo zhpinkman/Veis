@@ -1,9 +1,17 @@
-<form class="row justify-content-center" [formGroup]="loginForm">
-  <input id="email" formControlName="email" type="text" placeholder="email"
-  class="form-control col-3" [formControl] = "email">
+<div class="row justify-content-center">
+  <form class="" [formGroup]="loginForm">
+    <div class="row">
+      <input id="email" formControlName="email" type="text" placeholder="email" class="form-control col-3" [formControl]="email">
   
-  <input id="password" formControlName="password" type="password" placeholder="password" 
-  class="form-control col-3" [formControl] = "password">
-
-  <button (click)="Login()" class="btn btn-success">login</button>
-</form>    
+      <input id="password" formControlName="password" type="password" placeholder="password" class="form-control col-3" [formControl]="password">
+  
+      <button (click)="login()" [ngClass]="{
+        'btn-danger disabled' : loginForm.invalid,
+        'btn-success' : loginForm.valid
+      }">login</button>
+    </div>
+    <div class="row remember-me-container">
+      <input type="checkbox" checked><span>Remember Me!</span>
+    </div>
+  </form>
+</div>
