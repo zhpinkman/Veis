@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NotificationsService } from 'angular2-notifications';
+import { UtilitiesService } from '@app/Services/utilities.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor( public util: UtilitiesService ) {}
+  
+  options = {
+    position: ["bottom", "right"],
+    timeOut: 5000,
+    lastOnBottom: true
+  }
+
 }
