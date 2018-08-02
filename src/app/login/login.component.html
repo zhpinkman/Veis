@@ -1,0 +1,9 @@
+<form class="row justify-content-center" [formGroup]="loginForm">
+  <input id="email" formControlName="email" type="text" placeholder="email"
+  class="form-control col-3" [formControl] = "email">
+  
+  <input id="password" formControlName="password" type="password" placeholder="password" 
+  class="form-control col-3" [formControl] = "password">
+
+  <button (click)="Login()" class="btn btn-success">login</button>
+</form>    

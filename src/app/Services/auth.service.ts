@@ -8,9 +8,10 @@ import { User } from '@app/User';
 })
 export class AuthService {
 
-  constructor( @Inject(RESTANGULAR_AUTH) public RestangularAuth) {
+  constructor( @Inject(RESTANGULAR_AUTH) public RestangularAuth) {}
 
-   }
+  email: String;
+  password: String;
 
    getBearerToken(){
      //TODO return user token
@@ -18,5 +19,9 @@ export class AuthService {
 
    signupRequest(newUser: User){
     return this.RestangularAuth.oneUrl('signup','http://localhost:8080/users/signup').post('',newUser);
+   }
+
+   LoginRequest (user: User){
+     return this.RestangularAuth.oneUrl('login', 'http://localhoset:8080/login').post('', user);
    }
 }
