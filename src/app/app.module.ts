@@ -7,11 +7,13 @@ import { RestangularModule, Restangular } from 'ngx-restangular';
 import { RESTANGULAR_AUTH, RestangularAuthFactory, RestangularConfigFactory } from './restangular.config';
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
