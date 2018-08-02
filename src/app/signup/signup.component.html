@@ -5,7 +5,7 @@
 <form  style="position: relative;" [formGroup]="registerForm" class="container w-50 my-5">
     <div class="my-3">
       <label for="email">email</label>
-      <input formControlName="email" id="email" type="text" class="form-control">
+      <input formControlName="email" id="email" type="text" class="form-control" (change)="bucketGenerator()">
     </div>
     <div class="my-3">
       <label for="password">password</label>
@@ -13,7 +13,7 @@
     </div>
     <div class="my-3">
         <label for="bucket">bucket</label>
-        <input formControlName="bucket" id="bucket" type="text" class="form-control" value="{{bucketDefaultGenerator()}}">
+        <input formControlName="bucket" id="bucket" type="text" class="form-control" value="{{bucketDefaultGenerator()}}"> 
     </div>
     <div class="mx-auto my-3">
         <pre style="position: absolute; top: 620px">
