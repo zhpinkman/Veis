@@ -44,6 +44,14 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  bucketGenerator(){
+    this.bucket.setValue(this.bucketDefaultGenerator());
+    this.bucket.patchValue(this.bucketDefaultGenerator());
+  }
+  
+
+
+
   signup(){
     let newUser: User = { email: this.email.value, password: this.password.value, bucket: this.bucket.value};
     this.authService.signupRequest(newUser).subscribe(

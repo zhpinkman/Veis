@@ -8,22 +8,36 @@ import { RESTANGULAR_AUTH, RestangularAuthFactory, RestangularConfigFactory } fr
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import {
+  RESTANGULAR_AUTH,
+  RestangularAuthFactory,
+  RestangularConfigFactory
+} from "./restangular.config";
+import { UploadFileComponent } from "./upload-file/upload-file.component";
+import { SimpleNotificationsModule } from "angular2-notifications";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
-  ],
+    LoginComponent, UploadFileComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RestangularModule.forRoot([AuthService],RestangularConfigFactory)
+    RestangularModule.forRoot([AuthService], RestangularConfigFactory),
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
-    { provide: RESTANGULAR_AUTH, useFactory:  RestangularAuthFactory, deps: [Restangular] }
+    {
+      provide: RESTANGULAR_AUTH,
+      useFactory: RestangularAuthFactory,
+      deps: [Restangular]
+    }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
