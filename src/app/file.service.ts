@@ -7,7 +7,7 @@ import { AuthService } from '@app/Services/auth.service';
 })
 export class FileService {
 
-  constructor( private restangular: Restangular, private authservice: AuthService) { }
+  constructor( private restangular: Restangular) { }
 
   makeRequest(formData) {
     this.restangular.one('file/upload').customPOST(formData, undefined, undefined, {'Content-Type': undefined});}
