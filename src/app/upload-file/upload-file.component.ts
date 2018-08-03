@@ -21,10 +21,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   sendFile() {
+    this.form.append('path', '');
     this.fileService.makeRequest(this.form);
-  }
-
-  disable(){
-    
   }
 }

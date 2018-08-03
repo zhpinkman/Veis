@@ -8,13 +8,23 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private accessToken: string;
   private refreshToken: string;
+
+  private _accessToken: string;
+  get accessToken(): string {
+    return this._accessToken || localStorage.getItem('access_token');
+  }
+  set accessToken(current: string) {
+    this._accessToken = current;
+    localStorage.setItem('access_token', this._accessToken);
+  }
+
   constructor(@Inject(RESTANGULAR_AUTH) public RestangularAuth,private http: HttpClient) {
   }
 
   getBearerToken() {
-    return this.accessToken;
+
+    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MzMyOTI5MTcsInVzZXJfbmFtZSI6InNoYWhyeWFyMjAwNkBnbWFpbC5jb20iLCJqdGkiOiJmNTM2M2M0Yy1mMTllLTQ3MDAtOWI0ZC0zNTk2ZmYwMWMyMjMiLCJjbGllbnRfaWQiOiJjbGllbnQiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.iyPKCiWym-HxdRQT9ZKxDVe6e-olEyxuEPIPFX4_loE';
   }
 
   signupRequest(newUser: User) {
