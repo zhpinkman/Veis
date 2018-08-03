@@ -8,8 +8,17 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private accessToken: string;
   private refreshToken: string;
+
+  private _accessToken: string;
+  get accessToken(): string {
+    return this._accessToken || localStorage.getItem('access_token');
+  }
+  set accessToken(current: string) {
+    this._accessToken = current;
+    localStorage.setItem('access_token', this._accessToken);
+  }
+
   constructor(@Inject(RESTANGULAR_AUTH) public RestangularAuth,private http: HttpClient) {
   }
 
