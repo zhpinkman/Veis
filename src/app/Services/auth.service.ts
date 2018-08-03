@@ -1,26 +1,36 @@
-import { Injectable, Inject } from '@angular/core';
-import { RESTANGULAR_AUTH } from '@app/restangular.config';
-import { User } from '@app/User';
+import {Injectable, Inject} from '@angular/core';
+import {RESTANGULAR_AUTH} from '@app/restangular.config';
+import {User} from '@app/User';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(@Inject(RESTANGULAR_AUTH) public RestangularAuth) {}
+  constructor(@Inject(RESTANGULAR_AUTH) public RestangularAuth,private http: HttpClient) {
+  }
 
   email: String;
   password: String;
 
-   getBearerToken(){
-     //TODO return user token
-   }
+  getBearerToken() {
+    //TODO return user token
+  }
 
-   signupRequest(newUser: User){
-    return this.RestangularAuth.oneUrl('signup','http://localhost:8080/users/signup').post('',newUser);
-   }
+  signupRequest(newUser: User) {
+    return this.RestangularAuth.one('/users/signup').post('', newUser);
+  }
 
-   LoginRequest (user: User){
-     return this.RestangularAuth.oneUrl('login', 'http://localhoset:8080/login').post('', user);
-   }
+  LoginRequest(user: User) {
 
+    const params = new HttpParams().set('username', user.email).set('password', user.password).set('grant_type', 'password');
+    const authHeader = btoa('client:secret');
+    return this.RestangularAuth.one('oauth/token')
+      .customPOST(
+        params.toString(),
+        undefined,
+        undefined,
+        {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Authorization': `Basic ${authHeader}`}
+      );
+  }
 }
