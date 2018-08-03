@@ -2,23 +2,24 @@ import {Injectable, Inject} from '@angular/core';
 import {RESTANGULAR_AUTH} from '@app/restangular.config';
 import {User} from '@app/User';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private accessToken: string;
+  private refreshToken: string;
   constructor(@Inject(RESTANGULAR_AUTH) public RestangularAuth,private http: HttpClient) {
   }
 
-  email: String;
-  password: String;
-
   getBearerToken() {
-    //TODO return user token
+    return this.accessToken;
   }
 
   signupRequest(newUser: User) {
-    return this.RestangularAuth.one('/users/signup').post('', newUser);
+    console.log(newUser.bucketName)
+    return this.RestangularAuth.one('/user/register').post('', newUser);
   }
 
   LoginRequest(user: User) {
@@ -31,6 +32,10 @@ export class AuthService {
         undefined,
         undefined,
         {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Authorization': `Basic ${authHeader}`}
-      );
+      ).pipe(map<any, any>(data => {
+        this.accessToken = data.access_token;
+        this.refreshToken = data.refresh_token;
+        return data;
+      }));
   }
 }
