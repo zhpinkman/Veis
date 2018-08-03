@@ -8,13 +8,19 @@ import { User } from '@app/User';
 export class AuthService {
   constructor(@Inject(RESTANGULAR_AUTH) public RestangularAuth) {}
 
-  getBearerToken() {
-    //TODO return user token
-    console.log('get');
-    return null;
-  }
+  email: String;
+  password: String;
 
-  signupRequest(newUser: User) {
-    return this.RestangularAuth.oneUrl('signup', 'http://localhost:8080/users/signup').post('', newUser);
-  }
+   getBearerToken(){
+     //TODO return user token
+   }
+
+   signupRequest(newUser: User){
+    return this.RestangularAuth.oneUrl('signup','http://localhost:8080/users/signup').post('',newUser);
+   }
+
+   LoginRequest (user: User){
+     return this.RestangularAuth.oneUrl('login', 'http://localhoset:8080/login').post('', user);
+   }
+
 }
