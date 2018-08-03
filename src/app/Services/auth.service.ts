@@ -18,7 +18,8 @@ export class AuthService {
   }
 
   signupRequest(newUser: User) {
-    return this.RestangularAuth.one('/users/signup').post('', newUser);
+    console.log(newUser.bucketName)
+    return this.RestangularAuth.one('/user/register').post('', newUser);
   }
 
   LoginRequest(user: User) {
