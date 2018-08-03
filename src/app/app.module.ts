@@ -1,3 +1,4 @@
+import { LoginComponent } from '@app/login/login.component';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "@app/app-routing.module";
@@ -17,7 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, UploadFileComponent],
+  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent],
 
   imports: [
     BrowserModule,
