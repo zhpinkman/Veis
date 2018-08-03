@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Restangular } from '../../node_modules/ngx-restangular';
+import { Restangular } from 'ngx-restangular';
 import { AuthService } from '@app/Services/auth.service';
 
 @Injectable({
@@ -7,8 +7,8 @@ import { AuthService } from '@app/Services/auth.service';
 })
 export class FileService {
 
-  constructor( private restangular : Restangular, private authservice : AuthService) { }
+  constructor( private restangular: Restangular, private authservice: AuthService) { }
 
-  makeRequest(formData){
-    this.restangular.all('upload').customPOST(formData,"http://localhost:8080",undefined,{'Content-Type':undefined})  }
+  makeRequest(formData) {
+    this.restangular.one('file/upload').customPOST(formData, undefined, undefined, {'Content-Type': undefined});}
 }

@@ -14,7 +14,8 @@ export class AuthService {
   }
 
   getBearerToken() {
-    return this.accessToken;
+
+    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MzMyOTI5MTcsInVzZXJfbmFtZSI6InNoYWhyeWFyMjAwNkBnbWFpbC5jb20iLCJqdGkiOiJmNTM2M2M0Yy1mMTllLTQ3MDAtOWI0ZC0zNTk2ZmYwMWMyMjMiLCJjbGllbnRfaWQiOiJjbGllbnQiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.iyPKCiWym-HxdRQT9ZKxDVe6e-olEyxuEPIPFX4_loE';
   }
 
   signupRequest(newUser: User) {
