@@ -5,7 +5,7 @@ import { InjectionToken } from '@angular/core';
 export function RestangularConfigFactory(RestangularProvider, AuthService) {
   RestangularProvider.setBaseUrl('http://localhost:9500'); //TODO set base url
   RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params) => {
-    console.log(AuthService, element, operation, path, url, headers, params, RestangularProvider);
+    // console.log(AuthService, element, operation, path, url, headers, params, RestangularProvider);
     if (AuthService) {
       const bearerToken = AuthService.getBearerToken();
 

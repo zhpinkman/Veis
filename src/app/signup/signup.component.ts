@@ -1,7 +1,10 @@
+import { LoginComponent } from '@app/login/login.component';
+import { UtilitiesService } from '@app/Services/utilities.service';
 import { AuthService } from './../Services/auth.service';
 import { User } from './../User';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormControlDirective, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +13,7 @@ import { FormGroup, FormControl, FormControlDirective, Validators } from '@angul
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private utils: UtilitiesService,private router: Router) { }
   registerForm: FormGroup;
   username: FormControl;
   name: FormControl;
@@ -55,8 +58,14 @@ export class SignupComponent implements OnInit {
   signup(){
     let newUser: User = { email: this.email.value, password: this.password.value, bucketName: this.bucket.value};
     this.authService.signupRequest(newUser).subscribe(
-      res => console.log(res),
-      error => console.error(error)
+      res => {
+        this.utils.success("success", "Signed up successfully");
+        this.router.navigate(["/login"])
+      },
+      error => {
+        if(error.status == 409)
+          this.utils.error("Failed", "Email or Bucket exists")
+      }
     );
   }
 }
