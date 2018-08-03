@@ -8,11 +8,6 @@ import { RESTANGULAR_AUTH, RestangularAuthFactory, RestangularConfigFactory } fr
 import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import {
-  RESTANGULAR_AUTH,
-  RestangularAuthFactory,
-  RestangularConfigFactory
-} from "./restangular.config";
 import { UploadFileComponent } from "./upload-file/upload-file.component";
 import { SimpleNotificationsModule } from "angular2-notifications";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
