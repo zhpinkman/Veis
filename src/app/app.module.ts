@@ -1,3 +1,4 @@
+import { AuthGuard } from '@app/Services/authguard';
 import { LoginComponent } from '@app/login/login.component';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     SimpleNotificationsModule.forRoot()
   ],
   providers: [
+    AuthGuard,
     {
       provide: RESTANGULAR_AUTH,
       useFactory: RestangularAuthFactory,

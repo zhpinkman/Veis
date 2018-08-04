@@ -1,12 +1,14 @@
-import {SignupComponent} from './signup/signup.component';
+import { AuthGuard } from '@app/Services/authguard';
+import {SignupComponent} from '@app/signup/signup.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from '@app/login/login.component';
 import {UploadFileComponent} from '@app/upload-file/upload-file.component';
 
-const routes: Routes = [{path: 'signup', component: SignupComponent},
+const routes: Routes = [
+  {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'upload', component: UploadFileComponent}
+  {path: 'upload', component: UploadFileComponent,  canActivate: [AuthGuard]}
 ];
 
 @NgModule({
