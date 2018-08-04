@@ -17,10 +17,12 @@ import { UploadFileComponent } from "@app/upload-file/upload-file.component";
 import { SimpleNotificationsModule } from "angular2-notifications";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent],
+  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent],
 
   imports: [
     BrowserModule,
