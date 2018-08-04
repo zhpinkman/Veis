@@ -25,6 +25,7 @@
     "core-js": "^2.5.4",
     "mdn-polyfills": "^5.9.0",
     "ngx-restangular": "^3.0.0",
+    "ngx-uploader": "^6.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

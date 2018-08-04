@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { UploadFileComponent } from "@app/upload-file/upload-file.component";
 import { SimpleNotificationsModule } from "angular2-notifications";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { NgxUploaderModule } from "ngx-uploader"
 
 @NgModule({
   declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent],
@@ -26,7 +26,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ReactiveFormsModule,
     RestangularModule.forRoot([AuthService], RestangularConfigFactory),
     BrowserAnimationsModule,
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    NgxUploaderModule
   ],
   providers: [
     {
