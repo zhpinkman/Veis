@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { UploadFileComponent } from "@app/upload-file/upload-file.component";
 import { SimpleNotificationsModule } from "angular2-notifications";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ReactiveFormsModule,
     RestangularModule.forRoot([AuthService], RestangularConfigFactory),
     BrowserAnimationsModule,
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [
     AuthGuard,
