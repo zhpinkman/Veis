@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileService } from '@app/file.service';
+import { FileService } from '@app/Services/file.service';
 
 @Component({
   selector: 'app-upload-file',

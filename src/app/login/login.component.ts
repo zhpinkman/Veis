@@ -1,8 +1,8 @@
 import { HomeComponent } from '@app/home/home.component';
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { AuthService } from "./../Services/auth.service";
-import { User } from "./../User";
+import { AuthService } from "@app/Services/auth.service";
+import { User } from "@app/User";
 import { Router } from "@angular/router";
 
 @Component({

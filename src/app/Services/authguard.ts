@@ -1,19 +1,19 @@
-import { LoginComponent } from "@app/login/login.component";
-import { AuthService } from "@app/Services/auth.service";
-import { CanActivate, Router } from "@angular/router";
-import { Injectable } from "@angular/core";
+import { CanActivate, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { TokenService } from '@app/Services/token.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private token: TokenService, private router: Router) {}
   canActivate() {
-    if (this.auth.accessToken) {
-      console.log("you are logged in");
+    if (this.token.accessToken) {
+      console.log('you are logged in');
       return true;
-    }
-    else {
-      console.log("you should log in first");
-      this.router.navigate(["login"]);
+    } else {
+      console.log('you should log in first');
+      this.router.navigate(['login']);
       return false;
     }
   }
