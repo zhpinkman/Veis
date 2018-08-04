@@ -32,7 +32,7 @@ export class AuthService {
 
   LoginRequest(user: User) {
 
-    const params = new HttpParams().set('username', user.email).set('password', user.password).set('grant_type', 'password');
+    const params = new HttpParams().set('username', user.email.toLowerCase()).set('password', user.password).set('grant_type', 'password');
     const authHeader = btoa('client:secret');
     return this.RestangularAuth.one('oauth/token')
       .customPOST(
