@@ -11,6 +11,7 @@ import { TokenService } from '@app/Services/token.service';
 export class AuthService {
   constructor(@Inject(RESTANGULAR_NOT_AUTH) private restangular, private token: TokenService) {}
 
+  user: User
   getBearerToken() {
     return this.token.accessToken;
   }

@@ -19,12 +19,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UploadFileComponent } from '@app/upload-file/upload-file.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HomeComponent } from '@app/home/home.component';
 import { HeaderComponent } from '@app/header/header.component';
+import { CompactFileComponent } from './compact-file/compact-file.component';
+import { FullFileComponent } from './full-file/full-file.component';
+import { MatDialogModule} from '@angular/material/dialog';
+import { FilesListComponent } from './files-list/files-list.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent],
+  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent, CompactFileComponent, FullFileComponent, FilesListComponent],
 
   imports: [
     BrowserModule,
@@ -34,7 +37,11 @@ import { HeaderComponent } from '@app/header/header.component';
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     NgxUploaderModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule
+  ],
+  entryComponents:[
+    FullFileComponent
   ],
   providers: [
     {

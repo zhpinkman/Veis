@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UtilitiesService } from '@app/Services/utilities.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { UtilitiesService } from '@app/Services/utilities.service';
 })
 export class AppComponent {
   title = 'app';
+  faCoffee = faCoffee;
   constructor( public util: UtilitiesService ) {}
   
   options = {

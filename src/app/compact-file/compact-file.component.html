@@ -1,0 +1,18 @@
+<!-- <button class="btn" (click)="openDialog()"> open </button> -->
+<div class="row mx-auto">
+  <i *ngIf="file.fileExtension == 'txt' " (click)="openDialog()" class="text-info fa fa-file fa-5x col-auto mx-auto">
+    <p>{{file.fileName}}.{{file.fileExtension}}</p>
+  </i>
+  <i *ngIf="file.fileExtension == 'jpg' " (click)="openDialog()" class="text-warning fa fa-image fa-5x col-auto mx-auto">
+    <p>{{file.fileName}}.{{file.fileExtension}}</p>
+  </i>
+  <i *ngIf="file.fileExtension == 'dir' " (click)="openDialog()" class="fa fa-folder fa-5x col-auto text-primary mx-auto">
+    <p>{{file.fileName}}.{{file.fileExtension}}</p>
+  </i>
+  <i *ngIf="file.fileExtension == 'cpp' " (click)="openDialog()" class="fa fa-code fa-5x col-auto mx-auto text-danger">
+    <p>{{file.fileName}}.{{file.fileExtension}}</p>
+  </i>
+  <!-- <i *ngIf="file.fileExtension == 'pdf' " class="fa fa-file-pdf fa-5x col-auto text-danger" (click)="openDialog()">
+    <p>{{file.fileName}}.{{file.fileExtension}}</p>
+  </i> -->
+</div>
