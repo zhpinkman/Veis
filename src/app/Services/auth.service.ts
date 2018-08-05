@@ -21,20 +21,12 @@ export class AuthService {
 
   LoginRequest(user: User) {
     const params = new HttpParams()
-<<<<<<< HEAD
-      .set("username", user.email.toLowerCase())
-      .set("password", user.password)
-      .set("grant_type", "password");
-    const authHeader = btoa("client:secret");
-    return this.RestangularAuth.one("oauth/token")
-=======
-      .set('username', user.email)
+      .set('username', user.email.toLowerCase())
       .set('password', user.password)
       .set('grant_type', 'password');
     const authHeader = btoa('client:secret');
     return this.restangular
       .one('oauth/token')
->>>>>>> cbe1109f599e0fa111a1c81c95396325bb8cdf73
       .customPOST(params.toString(), undefined, undefined, {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         Authorization: `Basic ${authHeader}`
