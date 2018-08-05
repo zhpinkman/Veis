@@ -1,5 +1,5 @@
-import { AuthGuard } from '@app/Services/authguard';
 import { LoginComponent } from '@app/login/login.component';
+<<<<<<< HEAD
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "@app/app-routing.module";
@@ -16,6 +16,29 @@ import { NgxUploaderModule } from "ngx-uploader";
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+=======
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { AuthService } from '@app/Services/auth.service';
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import {
+  RESTANGULAR_AUTH,
+  RestangularAuthFactory,
+  RestangularConfigFactory,
+  RESTANGULAR_NOT_AUTH,
+  RestangularNotAuthFactory
+} from '@app/restangular.config';
+import { SignupComponent } from '@app/signup/signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UploadFileComponent } from '@app/upload-file/upload-file.component';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { HomeComponent } from '@app/home/home.component';
+import { HeaderComponent } from '@app/header/header.component';
+>>>>>>> cbe1109f599e0fa111a1c81c95396325bb8cdf73
 
 @NgModule({
   declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent],
@@ -31,11 +54,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   providers: [
-    AuthGuard,
     {
       provide: RESTANGULAR_AUTH,
       useFactory: RestangularAuthFactory,
       deps: [Restangular, AuthService]
+    },
+    {
+      provide: RESTANGULAR_NOT_AUTH,
+      useFactory: RestangularNotAuthFactory,
+      deps: [Restangular]
     }
   ],
   bootstrap: [AppComponent]

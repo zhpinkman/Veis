@@ -1,6 +1,7 @@
+import { FileService } from '@app/Services/file.service';
 import { AuthService } from '@app/Services/auth.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { FileService } from '@app/file.service';
+
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
 
 @Component({
