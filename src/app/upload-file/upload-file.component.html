@@ -1,12 +1,32 @@
-<div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
-  <h1>Drag &amp; Drop</h1>
+<div class="card container text-center border-dark">
+  <div class="card-header">
+    Upload
+  </div>
+  <div class="container card-body">
+    <!-- <div class="drop-container row justify-content-center m-5 card m-2 p-5 bg-dark text-white border-light" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)"
+      [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+      <h1>Drag &amp; Drop Here</h1>
+    </div> -->
+    <div class="front" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" multiple="true">
+      <div class="drop-box">
+        <p class="drag-drop-upload-para">
+          Drag & drop files here or
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center m-3">
+      <label class="upload-button  col-6">
+        <input class="file-input" type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+          multiple> or choose file(s)
+      </label>
+    </div>
+    <div class="progress m-3">
+      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="row justify-content-center m-3">
+      <button type="button" class="start-upload-btn btn-outline-success col-2" (click)="startUpload()">
+        Start Upload
+      </button>
+    </div>
+  </div>
 </div>
-
-<label class="upload-button">
-  <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
-  or choose file(s)
-</label>
-
-<button type="button" class="start-upload-btn" (click)="startUpload()">
-  Start Upload
-</button>
