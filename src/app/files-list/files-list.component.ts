@@ -1,3 +1,4 @@
+import { FileService } from '@app/Services/file.service';
 import { Component, OnInit } from '@angular/core';
 import { FileEntity } from '@app/file';
 
@@ -8,7 +9,7 @@ import { FileEntity } from '@app/file';
 })
 export class FilesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fileService: FileService) { }
 
   files:  FileEntity[] = [
     {
@@ -109,6 +110,14 @@ export class FilesListComponent implements OnInit {
   ];
 
   ngOnInit() {
+  }
+
+  getFilesList(){
+    this.fileService.getFiles().subscribe(
+      data => {
+        this.files = data;
+      }
+    );
   }
 
 }

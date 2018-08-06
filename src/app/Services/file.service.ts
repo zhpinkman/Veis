@@ -10,4 +10,8 @@ export class FileService {
   makeRequest(formData) {
     this.restangular.one('file/upload').customPOST(formData, undefined, undefined, { 'Content-Type': undefined });
   }
+
+  getFiles(){
+    return this.restangular.one('file/all').get();
+  }
 }
