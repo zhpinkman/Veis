@@ -7,7 +7,7 @@
     <p>{{file.fileName}}.{{file.fileExtension}}</p>
   </i>
   <i *ngIf="file.fileExtension == 'dir' " id="test2" (click)="openDialog()" class="fa fa-folder fa-5x col-auto text-primary mx-auto">
-    <p>{{file.fileName}}.{{file.fileExtension}}</p>
+    <p>{{file.fileName}}</p>
   </i>
   <i *ngIf="file.fileExtension == 'cpp' " (click)="openDialog()" class=" fa fa-code fa-5x col-auto mx-auto text-danger" style="background-color: #f2ff3e">
     <p style="color: #4b3eff">{{file.fileName}}.{{file.fileExtension}}</p>

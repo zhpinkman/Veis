@@ -17,6 +17,9 @@ export class CompactFileComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.file.isOpen == true){
+      this.openDialog();
+    }
   }
 
   openDialog(){
