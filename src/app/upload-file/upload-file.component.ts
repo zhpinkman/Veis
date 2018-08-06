@@ -1,19 +1,21 @@
-import { FileService } from '@app/Services/file.service';
-import { AuthService } from '@app/Services/auth.service';
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { AuthService } from "@app/Services/auth.service";
+import { Component, OnInit, EventEmitter } from "@angular/core";
 
-import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
+import {
+  UploadOutput,
+  UploadInput,
+  UploadFile,
+  humanizeBytes,
+  UploaderOptions
+} from "ngx-uploader";
 
 @Component({
-  selector: 'app-upload-file',
-  templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.scss']
+  selector: "app-upload-file",
+  templateUrl: "./upload-file.component.html",
+  styleUrls: ["./upload-file.component.scss"]
 })
 export class UploadFileComponent implements OnInit {
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   options: UploaderOptions;
   formData: FormData;
@@ -22,7 +24,7 @@ export class UploadFileComponent implements OnInit {
   humanizeBytes: Function;
   dragOver: boolean;
 
-  constructor( private authService : AuthService) {
+  constructor(private authService: AuthService) {
     this.options = { concurrency: 1 };
     this.files = []; // local uploading files array
     this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
@@ -30,7 +32,8 @@ export class UploadFileComponent implements OnInit {
   }
 
   onUploadOutput(output: UploadOutput): void {
-    if (output.type === 'allAddedToQueue') { // when all files added in queue
+    if (output.type === "allAddedToQueue") {
+      // when all files added in queue
       // uncomment this if you want to auto upload files when added
       // const event: UploadInput = {
       //   type: 'uploadAll',
@@ -39,20 +42,31 @@ export class UploadFileComponent implements OnInit {
       //   data: { foo: 'bar' }
       // };
       // this.uploadInput.emit(event);
-    } else if (output.type === 'addedToQueue'  && typeof output.file !== 'undefined') { // add file to array when added
+    } else if (
+      output.type === "addedToQueue" &&
+      typeof output.file !== "undefined"
+    ) {
+      // add file to array when added
       this.files.push(output.file);
-    } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
+    } else if (
+      output.type === "uploading" &&
+      typeof output.file !== "undefined"
+    ) {
       // update current data in files array for uploading file
-      const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
+      const index = this.files.findIndex(
+        file => typeof output.file !== "undefined" && file.id === output.file.id
+      );
       this.files[index] = output.file;
-    } else if (output.type === 'removed') {
+    } else if (output.type === "removed") {
       // remove file from array when removed
-      this.files = this.files.filter((file: UploadFile) => file !== output.file);
-    } else if (output.type === 'dragOver') {
+      this.files = this.files.filter(
+        (file: UploadFile) => file !== output.file
+      );
+    } else if (output.type === "dragOver") {
       this.dragOver = true;
-    } else if (output.type === 'dragOut') {
+    } else if (output.type === "dragOut") {
       this.dragOver = false;
-    } else if (output.type === 'drop') {
+    } else if (output.type === "drop") {
       this.dragOver = false;
     }
   }
@@ -60,25 +74,25 @@ export class UploadFileComponent implements OnInit {
   startUpload(): void {
     let token = this.authService.getBearerToken();
     const event: UploadInput = {
-      type: 'uploadAll',
-      url: 'http://localhost:9500/file/upload',
-      method: 'POST',
-      headers: { 'Authorization': 'bearer ' + token },  // <----  set headers
-      data: { path: '' }
+      type: "uploadAll",
+      url: "http://localhost:9500/file/upload",
+      method: "POST",
+      headers: { Authorization: "bearer " + token }, // <----  set headers
+      data: { path: "" }
     };
 
     this.uploadInput.emit(event);
   }
 
   cancelUpload(id: string): void {
-    this.uploadInput.emit({ type: 'cancel', id: id });
+    this.uploadInput.emit({ type: "cancel", id: id });
   }
 
   removeFile(id: string): void {
-    this.uploadInput.emit({ type: 'remove', id: id });
+    this.uploadInput.emit({ type: "remove", id: id });
   }
 
   removeAllFiles(): void {
-    this.uploadInput.emit({ type: 'removeAll' });
+    this.uploadInput.emit({ type: "removeAll" });
   }
 }
