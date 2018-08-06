@@ -1,3 +1,12 @@
+<div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+  <h1>Drag &amp; Drop</h1>
+</div>
 
-<input type="file" (change)="addFile($event)">
-<button (click)="sendFile()">submit</button>
+<label class="upload-button">
+  <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+  or choose file(s)
+</label>
+
+<button type="button" class="start-upload-btn" (click)="startUpload()">
+  Start Upload
+</button>
