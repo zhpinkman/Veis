@@ -25,9 +25,10 @@ import { CompactFileComponent } from './compact-file/compact-file.component';
 import { FullFileComponent } from './full-file/full-file.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { FilesListComponent } from './files-list/files-list.component';
+import { UploadItemComponent } from './upload-item/upload-item.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent, CompactFileComponent, FullFileComponent, FilesListComponent],
+  declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent, CompactFileComponent, FullFileComponent, FilesListComponent, UploadItemComponent],
 
   imports: [
     BrowserModule,
