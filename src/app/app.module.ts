@@ -26,6 +26,10 @@ import { FullFileComponent } from './full-file/full-file.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { FilesListComponent } from './files-list/files-list.component';
 import { UploadItemComponent } from './upload-item/upload-item.component';
+import { MatProgressBarModule } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [AppComponent, SignupComponent, UploadFileComponent, LoginComponent, HomeComponent, HeaderComponent, CompactFileComponent, FullFileComponent, FilesListComponent, UploadItemComponent],
@@ -39,7 +43,10 @@ import { UploadItemComponent } from './upload-item/upload-item.component';
     SimpleNotificationsModule.forRoot(),
     NgxUploaderModule,
     FontAwesomeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatCardModule,
+    MatGridListModule
   ],
   entryComponents:[
     FullFileComponent

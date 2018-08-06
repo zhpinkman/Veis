@@ -1,3 +1,10 @@
-<p>
-  upload-item works!
-</p>
+<mat-card role="group">
+  <mat-card-content>
+    <mat-grid-list [cols]="12">
+      <mat-grid-tile [colspan]="1">{{ file.fileIndex + 1}}</mat-grid-tile>
+      <mat-grid-tile [colspan]="10"> {{ file.name }}</mat-grid-tile>
+      <mat-grid-tile [colspan]="1"> {{ humanSize }}</mat-grid-tile>
+    </mat-grid-list>
+    <mat-progress-bar [value]="file.progress.data.percentage"> </mat-progress-bar>
+  </mat-card-content>
+</mat-card>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UploadFile, humanizeBytes } from 'ngx-uploader';
 
 @Component({
   selector: 'app-upload-item',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadItemComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  humanizeBytes: Function;
+  constructor() { 
+    this.humanizeBytes = humanizeBytes;
   }
+
+  @Input() file: UploadFile;
+  
+  humanSize: string;
+  ngOnInit() {
+    this.humanSize = humanizeBytes(this.file.size)
+  }
+
 
 }

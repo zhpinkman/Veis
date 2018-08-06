@@ -22,7 +22,7 @@ export class UploadFileComponent implements OnInit {
   humanizeBytes: Function;
   dragOver: boolean;
 
-  constructor(private fileService : FileService , private authService : AuthService) {
+  constructor( private authService : AuthService) {
     this.options = { concurrency: 1 };
     this.files = []; // local uploading files array
     this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader

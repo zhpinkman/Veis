@@ -1,33 +1,31 @@
-<div class="card container text-center border-dark">
-  <div class="card-header">
-    Upload
-  </div>
-  <div class="container card-body">
-    <!-- <div class="drop-container row justify-content-center m-5 card m-2 p-5 bg-dark text-white border-light" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)"
+<div class="container justify-content-center ">
+  <mat-card role="region" class="m-5">
+    <mat-card-title class="text-center">Upload your files to your bucket folder</mat-card-title>
+    <mat-card class="drop-container row justify-content-center m-5 card p-5" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)"
       [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
-      <h1>Drag &amp; Drop Here</h1>
-    </div> -->
-    <div class="front p-5" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" multiple="true" [uploadInput]="uploadInput">
-      <div class="drop-box">
-        <p class="drag-drop-upload-para">
-          Drag & drop files here or
-        </p>
-      </div>
-    </div>
-    <div class="row justify-content-center m-5">
-      <label class="upload-button  col-6">
-        <input class="file-input" type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
-          multiple> or choose file(s)
-      </label>
-    </div>
-    <div class="row justify-content-center m-3" *ngFor="let item of files">{{item.name}}</div>
-    <div class="progress m-3">
-      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+      <mat-card-content>
+        <h1 class="text-center">Drag &amp; Drop them here </h1>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="m-5">
+      <mat-card-subtitle class="text-center">or Choose then from here</mat-card-subtitle>
+      <mat-card-content>
+        <div class="row justify-content-center m-3">
+          <div class="input-group col-6">
+            <div class="custom-file">
+              <input class="file-input " type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+                multiple class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose your file(s)</label>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <app-upload-item *ngFor="let item of files" [file]="item"></app-upload-item>
     <div class="row justify-content-center m-3">
-      <button type="button" class="start-upload-btn btn-outline-success col-2" (click)="startUpload()">
+      <button type="button" class="start-upload-btn btn btn-success col-2" (click)="startUpload()">
         Start Upload
       </button>
     </div>
-  </div>
+  </mat-card>
 </div>
