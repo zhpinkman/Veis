@@ -23,19 +23,18 @@ export class CompactFileComponent implements OnInit {
 
     const opts = new MatDialogConfig();
   
-    opts.autoFocus = true;
-    // opts.position = {
-    //   top: '0%',
-    //   left: '0%'
-    // };
+    opts.width = "200px";
+    opts.height = "200px";
 
     opts.data = this.file;
+
 
     const dialogRef = this.dialog.open(FullFileComponent, opts);
 
     dialogRef.afterOpen().subscribe(
       data => console.log("opened successfully")
     );
+    dialogRef.updatePosition(opts.position);
 
     dialogRef.afterClosed().subscribe(
       resutl => {

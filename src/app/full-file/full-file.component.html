@@ -1,8 +1,27 @@
-<div mat-dialog>
+<div style="position: relative; " mat-dialog>
   <div mat-dialog-title>
-    type: {{data.fileExtension}}
+    <i *ngIf="data.fileExtension == 'txt' " class="text-info fa fa-file col-auto mx-auto">
+    </i>
+    <i *ngIf="data.fileExtension == 'jpg' " class="text-warning fa fa-image col-auto mx-auto">
+    </i>
+    <i *ngIf="data.fileExtension == 'dir' " class="fa fa-folder col-auto text-primary mx-auto">
+    </i>
+    <i *ngIf="data.fileExtension == 'cpp' " class="fa fa-code col-auto mx-auto text-danger">
+    </i>
+    <!-- <i *ngIf="data.fileExtension == 'pdf' " class="fa fa-data-pdf col-auto text-danger">
+    </i> -->
   </div>
-  <p mat-dialog-content>
-    file name: {{data.fileName}}
-  </p>
+  <table>
+    <tr>
+      file name: {{data.fileName}}
+    </tr>
+    <tr>
+      type : {{data.fileExtension}}
+    </tr>
+    <tr>
+      file size: {{data.fileSize}}
+    </tr>
+
+  </table>
+
 </div>

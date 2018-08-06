@@ -14,42 +14,97 @@ export class FilesListComponent implements OnInit {
     {
       fileName : "test",
       fileExtension : "txt",
+      fileSize: 200
     },
     {
       fileName : "test2",
       fileExtension : "txt",
+      fileSize: 100
     },
     {
       fileName : "test3",
       fileExtension : "cpp",
+      fileSize: 100
     },
     {
       fileName : "test4",
       fileExtension : "jpg",
-    },
-    {
-      fileName : "test5",
-      fileExtension : "dir",
+      fileSize: 100
     },
     {
       fileName : "test4",
       fileExtension : "jpg",
+      fileSize: 100
     },
     {
       fileName : "test5",
       fileExtension : "dir",
+      fileSize: 100
     },
     {
       fileName : "test",
       fileExtension : "txt",
+      fileSize: 100
     },
     {
       fileName : "test2",
       fileExtension : "txt",
+      fileSize: 100
     },
     {
       fileName : "test3",
       fileExtension : "cpp",
+      fileSize: 100
+    },
+    {
+      fileName : "test4",
+      fileExtension : "jpg",
+      fileSize: 100
+    },
+    {
+      fileName : "test5",
+      fileExtension : "dir",
+      fileSize: 100
+    },
+    {
+      fileName : "test",
+      fileExtension : "txt",
+      fileSize: 100
+    },
+    {
+      fileName : "test2",
+      fileExtension : "txt",
+      fileSize: 100
+    },
+    {
+      fileName : "test3",
+      fileExtension : "cpp",
+      fileSize: 100
+    },
+    {
+      fileName : "test4",
+      fileExtension : "jpg",
+      fileSize: 100
+    },
+    {
+      fileName : "test5",
+      fileExtension : "dir",
+      fileSize: 100
+    },
+    {
+      fileName : "test",
+      fileExtension : "txt",
+      fileSize: 100
+    },
+    {
+      fileName : "test2",
+      fileExtension : "txt",
+      fileSize: 100
+    },
+    {
+      fileName : "test3",
+      fileExtension : "cpp",
+      fileSize: 100
     }
   ];
 
