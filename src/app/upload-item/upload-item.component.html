@@ -1,0 +1,11 @@
+<mat-card role="group" class="mb-1">
+  <mat-card-content>
+    <div class="row m-3">
+      <div class="col-sm-2">{{ index + 1}}</div>
+      <div class="col-sm-7 text-center"> {{ file.name }}</div>
+      <div class="col-sm-2"> {{ humanSize }}</div>
+      <div class="col-sm-1"><i class="fa fa-times text-danger" (click)="deleteMe()" aria-hidden="true"></i></div>
+    </div>
+    <mat-progress-bar [value]="file.progress.data.percentage"> </mat-progress-bar>
+  </mat-card-content>
+</mat-card>
