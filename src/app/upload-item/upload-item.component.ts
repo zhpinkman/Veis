@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { UploadFile, humanizeBytes } from "ngx-uploader";
 
 @Component({
@@ -13,9 +13,15 @@ export class UploadItemComponent implements OnInit {
   }
 
   @Input() file: UploadFile;
+  @Input() index: number;
+  @Output() removeMe: EventEmitter<any> = new EventEmitter<any>();
 
   humanSize: string;
   ngOnInit() {
     this.humanSize = humanizeBytes(this.file.size);
+  }
+
+  deleteMe(): void{
+    this.removeMe.emit();
   }
 }
