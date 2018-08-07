@@ -26,8 +26,8 @@ export class CompactFileComponent implements OnInit {
 
     const opts = new MatDialogConfig();
   
-    opts.width = "200px";
-    opts.height = "200px";
+    opts.width = "600px";
+    opts.height = "600px";
 
     opts.data = this.file;
 

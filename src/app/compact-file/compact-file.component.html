@@ -1,18 +1,43 @@
 <!-- <button class="btn" (click)="openDialog()"> open </button> -->
-<div class="row mx-auto">
-  <i *ngIf="file.fileExtension == 'txt' " (click)="openDialog()" class=" p-2 text-info fa fa-file fa-5x col-auto mx-auto" style="background-color:darkblue; width: 111px;">
-    <p style="color: floralwhite">{{file.fileName}}.{{file.fileExtension}}</p>
-  </i>
-  <i *ngIf="file.fileExtension == 'jpg' " (click)="openDialog()" class=" bg-dark text-warning fa fa-image fa-5x col-auto mx-auto">
-    <p>{{file.fileName}}.{{file.fileExtension}}</p>
-  </i>
-  <i *ngIf="file.fileExtension == 'dir' " id="test2" (click)="openDialog()" class="fa fa-folder fa-5x col-auto text-primary mx-auto">
-    <p>{{file.fileName}}</p>
-  </i>
-  <i *ngIf="file.fileExtension == 'cpp' " (click)="openDialog()" class=" fa fa-code fa-5x col-auto mx-auto text-danger" style="background-color: #f2ff3e">
-    <p style="color: #4b3eff">{{file.fileName}}.{{file.fileExtension}}</p>
-  </i>
-  <!-- <i *ngIf="file.fileExtension == 'pdf' " class="fa fa-file-pdf fa-5x col-auto text-danger" (click)="openDialog()">
-    <p>{{file.fileName}}.{{file.fileExtension}}</p>
-  </i> -->
+<div class="row no-gutters">
+  <div *ngIf="file.fileExtension == 'txt' " (click)="openDialog()" class="file-container">
+    <div class="file-icon">
+      <i class="p-2 text-info fa fa-file fa-5x col-auto mx-auto"></i>
+    </div>
+    <div class="file-name">
+      <span>{{file.fileName}}.{{file.fileExtension}}</span>
+    </div>
+  </div>
+  <div *ngIf="file.fileExtension == 'jpg' " (click)="openDialog()" class="file-container">
+    <div class="file-icon">
+      <i class="text-warning fa fa-image fa-5x col-auto mx-auto"></i>
+    </div>
+    <div class="file-name">
+      <span>{{file.fileName}}.{{file.fileExtension}}</span>
+    </div>
+  </div>
+  <div *ngIf="file.fileExtension == 'dir' " (click)="openDialog()" class="file-container">
+    <div class="file-icon">
+      <i class="fa fa-folder fa-5x col-auto text-primary mx-auto"></i>
+    </div>
+    <div class="file-name">
+      <span>{{file.fileName}}</span>
+    </div>
+  </div>
+  <div *ngIf="file.fileExtension == 'cpp' " (click)="openDialog()" class="file-container">
+    <div class="file-icon">
+      <i class=" fa fa-code fa-5x col-auto mx-auto text-danger"></i>
+    </div>
+    <div class="file-name">
+      <span>{{file.fileName}}.{{file.fileExtension}}</span>
+    </div>
+  </div>
+  <div *ngIf="file.fileExtension == 'pdf' " (click)="openDialog()" class="file-container">
+    <div class="file-icon">
+      <i class="text-danger fa fa-5x fa-file-pdf-o mx-auto col-auto" aria-hidden="true"></i>
+    </div>
+    <div class="file-name">
+      <span>{{file.fileName}}.{{file.fileExtension}}</span>
+    </div>
+  </div>
 </div>
