@@ -22,7 +22,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HomeComponent } from "@app/home/home.component";
 import { HeaderComponent } from "@app/header/header.component";
 import { CompactFileComponent } from "./compact-file/compact-file.component";
-import { FullFileComponent } from "./full-file/full-file.component";
+import {
+  FullFileComponent,
+  SizeHandler
+} from "./full-file/full-file.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { FilesListComponent } from "./files-list/files-list.component";
 import { UploadItemComponent } from "./upload-item/upload-item.component";
@@ -41,7 +44,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
     CompactFileComponent,
     FullFileComponent,
     FilesListComponent,
-    UploadItemComponent
+    UploadItemComponent,
+    SizeHandler
   ],
 
   imports: [

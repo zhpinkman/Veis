@@ -1,4 +1,4 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable, Inject, Pipe } from "@angular/core";
 import { RESTANGULAR_AUTH } from "@app/restangular.config";
 
 @Injectable({
