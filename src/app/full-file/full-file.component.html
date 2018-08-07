@@ -1,19 +1,19 @@
 <div mat-dialog>
   <div mat-dialog-title>
-    <div>
+    <div class="m-5">
       <i [class]=" 'fa col-auto mx-auto fa-5x' + icons[data.fileExtension]">
       </i>
+      <div>
+        {{data.fileExtension}}
+      </div>
     </div>
   </div>
-  <div>
-    <div>
-      file name: {{data.fileName}}
+  <div mat-dialog-content>
+    <div class="fileName">
+      {{data.fileName}}
     </div>
     <div>
-      type : {{data.fileExtension}}
-    </div>
-    <div>
-      file size: {{data.fileSize}}
+      size: {{data.fileSize}}
     </div>
   </div>
 
