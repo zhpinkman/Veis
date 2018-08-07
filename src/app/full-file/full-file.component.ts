@@ -2,6 +2,7 @@ import { humanizeBytes } from "ngx-uploader";
 import { Component, OnInit, Inject, Pipe, PipeTransform } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { FileEntity } from "@app/file";
+import { ConstService } from "@app/Services/const.service";
 
 @Component({
   selector: "app-full-file",
@@ -9,17 +10,12 @@ import { FileEntity } from "@app/file";
   styleUrls: ["./full-file.component.scss"]
 })
 export class FullFileComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: FileEntity) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: FileEntity,
+    public consts: ConstService
+  ) {}
 
   ngOnInit() {}
-
-  icons = {
-    txt: " fa-file text-info ",
-    jpg: " text-warning fa-image ",
-    dir: " fa-folder text-primary ",
-    cpp: " fa-code text-danger ",
-    pdf: " fa-file-pdf-o text-danger "
-  };
 }
 
 @Pipe({ name: "size" })
