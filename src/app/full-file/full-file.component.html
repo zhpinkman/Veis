@@ -10,7 +10,15 @@
   </div>
   <div mat-dialog-content>
     <div class="fileName">
-      {{data.fileName}}
+
+      <div>
+        <span [hidden]="showEditName">{{data.fileName}}</span>
+        <input [hidden]="!showEditName" [(ngModel)]="data.fileName">
+        <button mat-button (click)="submit()" aria-label="Close">
+          <i class="fa fa-pencil"></i>
+        </button>
+      </div>
+
     </div>
     <div>
       size: {{ data.fileSize | size }}

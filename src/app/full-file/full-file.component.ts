@@ -9,9 +9,10 @@ import { FileEntity } from "@app/file";
   styleUrls: ["./full-file.component.scss"]
 })
 export class FullFileComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: FileEntity) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: FileEntity) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+  showEditName: boolean = false;
 
   icons = {
     txt: " fa-file text-info ",
@@ -20,6 +21,9 @@ export class FullFileComponent implements OnInit {
     cpp: " fa-code text-danger ",
     pdf: " fa-file-pdf-o text-danger "
   };
+  submit() {
+    this.showEditName = !this.showEditName;
+  }
 }
 
 @Pipe({ name: "size" })
@@ -31,4 +35,6 @@ export class SizeHandler implements PipeTransform {
   transform(value: number): string {
     return this.humanizeBytes(value);
   }
+
+
 }
