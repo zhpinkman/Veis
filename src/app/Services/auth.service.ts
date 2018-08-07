@@ -45,6 +45,6 @@ export class AuthService {
   requestLogout() {
     this.token.accessToken = undefined;
     console.log('loged out');
-    localStorage.removeItem('access_token');
+    localStorage.clear();
   }
 }

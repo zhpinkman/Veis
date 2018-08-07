@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'file', component: CompactFileComponent, canActivate: [AuthGuard]},
   {path: 'list', component: FilesListComponent, canActivate: [AuthGuard]},
-  {path: 'list/:id', component: FilesListComponent}
+  {path: 'list/:id', component: FilesListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
