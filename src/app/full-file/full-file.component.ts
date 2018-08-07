@@ -10,8 +10,7 @@ import { ConstService } from "@app/Services/const.service";
   styleUrls: ["./full-file.component.scss"]
 })
 export class FullFileComponent implements OnInit {
-<<<<<<< HEAD
-  constructor(@Inject(MAT_DIALOG_DATA) public data: FileEntity) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: FileEntity, public consts: ConstService) { }
 
   ngOnInit() { }
   showEditName: boolean = false;
@@ -26,14 +25,6 @@ export class FullFileComponent implements OnInit {
   submit() {
     this.showEditName = !this.showEditName;
   }
-=======
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: FileEntity,
-    public consts: ConstService
-  ) {}
-
-  ngOnInit() {}
->>>>>>> 40569c7adfa53c302bf14d0ca85996fa37fde303
 }
 
 @Pipe({ name: "size" })
