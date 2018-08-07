@@ -33,12 +33,16 @@
         <i class="fa fa-cloud-download" aria-hidden="true"></i>
       </div>
     </div>
-    <div class="col-auto mx-auto p-3 row remove shadow-lg">
-      <div class="col-auto mx-auto">
+    <div (click)="delete()" class="col-auto mx-auto p-3 row remove shadow-lg" [ngClass]="{
+      'afterDelete' : hideDeleteIcon
+    }">
+      <div class="col-auto mx-auto" [hidden]="hideDeleteIcon">
         delete
       </div>
       <div class="mx-auto col-auto">
-        <i class="fa fa-times" aria-hidden="true"></i>
+        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+          ' fa-spin ' : hideDeleteIcon
+        }"></i>
 
       </div>
 
