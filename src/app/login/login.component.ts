@@ -1,3 +1,4 @@
+import { UtilitiesService } from "@app/Services/utilities.service";
 import { HomeComponent } from "@app/home/home.component";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
@@ -24,7 +25,11 @@ export class LoginComponent implements OnInit {
   password = new FormControl("");
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private utils: UtilitiesService
+  ) {
     this.email = new FormControl("", [Validators.required, Validators.email]);
     this.password = new FormControl("", [Validators.required]);
     this.loginForm = new FormGroup({
@@ -46,8 +51,10 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res);
         this.router.navigate([""]);
+        this.utils.success("success", "you have successfully loged in ");
       },
       error => {
+        this.utils.error("Error", "user name or password is invalid!!");
         console.error(error);
       }
     );
