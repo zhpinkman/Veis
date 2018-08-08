@@ -12,10 +12,8 @@
         <input matInput id="password" formControlName="password" type="password" placeholder="password" class="form-control
       col-4 mx-4" [formControl]="password">
       </mat-form-field>
-      <button class="btn" (click)="login()" [ngClass]="{
-        'btn-danger disabled' : loginForm.invalid, 'btn-success' : loginForm.valid
-      }">login</button>
-      <i class="fa fa-spinner fa-pulse fa-3x fa-fw" [hidden]="true"></i>
+      <button mat-flat-button type="submit" color="primary" [disabled]='loginForm.invalid' (click)="login()">login</button>
+      <i class="fa fa-spinner fa-pulse fa-3x fa-fw" [hidden]="spinHide"></i>
       <span class="sr-only">Loading...</span>
     </div>
     <div class="row remember-me-container">

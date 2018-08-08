@@ -6,6 +6,7 @@ import { AuthService } from '@app/Services/auth.service';
 import { User } from '@app/User';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',

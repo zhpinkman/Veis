@@ -42,10 +42,7 @@
          it's unique and by default first part of your email!! you can change it
          </pre>
   </div>
-  <button class="btn m-4 btn btn-prim" style="text-align: center" (click)="signup()" [ngClass]="{
-      'btn-danger disabled' : registerForm.invalid,
-      'btn-success' : registerForm.valid
-    }">signup</button>
+  <button mat-flat-button type="submit" color="primary" style="text-align: center" (click)="signup()" [disabled]='registerForm.invalid'>signup</button>
   <i class="fa fa-spinner fa-pulse fa-3x fa-fw" [hidden]="bool"></i>
   <span class="sr-only">Loading...</span>
 </form>
