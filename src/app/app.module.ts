@@ -29,7 +29,7 @@ import {
 import { MatDialogModule } from "@angular/material/dialog";
 import { FilesListComponent } from "./files-list/files-list.component";
 import { UploadItemComponent } from "./upload-item/upload-item.component";
-import { MatProgressBarModule } from "@angular/material";
+import { MatProgressBarModule, MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
