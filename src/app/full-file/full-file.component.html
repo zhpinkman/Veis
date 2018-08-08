@@ -12,10 +12,10 @@
 <div mat-dialog-content class="text-monospace">
   <div class="fileName first m-lg-3 p-4 shadow">
 
-    <div style="position: relative;">
+    <div style="position: relative; transition: all 1s;">
       <div [hidden]=" showEditName ">{{data.fileName}}</div>
       <input [hidden]="!showEditName " [(ngModel)]="data.fileName ">
-      <i style="position: absolute; top:10px; right: 20px;" class="fa fa-pencil-square-o " (click)="submit() "></i>
+      <i class="fa fa-pencil-square-o editIcon" (click)="submit()"></i>
     </div>
 
   </div>

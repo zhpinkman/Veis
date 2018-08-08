@@ -24,9 +24,13 @@ i {
 }
 
 input {
-  border-radius: 20px;
+  transition: all 0.5s;
   width: 330px;
   text-align: center;
+  border-top: none;
+  background-color: #76818c;
+  border-left: none;
+  border-right: none;
 }
 
 .remove {
@@ -59,5 +63,15 @@ input {
   color: red;
   &:hover {
     width: auto;
+  }
+}
+
+.editIcon {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  transition: all 1s;
+  &:hover {
+    font-size: 36px;
   }
 }
