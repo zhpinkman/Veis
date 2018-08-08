@@ -1,20 +1,21 @@
-import { LoginComponent } from "@app/login/login.component";
-import { UtilitiesService } from "@app/Services/utilities.service";
-import { AuthService } from "@app/Services/auth.service";
-import { User } from "@app/User";
-import { Component, OnInit } from "@angular/core";
+import { LoginComponent } from '@app/login/login.component';
+import { UtilitiesService } from '@app/Services/utilities.service';
+import { AuthService } from '@app/Services/auth.service';
+import { User } from '@app/User';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {
   FormGroup,
   FormControl,
   FormControlDirective,
   Validators
-} from "@angular/forms";
-import { Router } from "@angular/router";
+} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-signup",
-  templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.scss"]
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
   constructor(
@@ -40,16 +41,16 @@ export class SignupComponent implements OnInit {
     });
   }
   createFormControls() {
-    this.email = new FormControl("", [
+    this.email = new FormControl('', [
       Validators.required,
-      Validators.pattern("[^ @+-]*@(ut.ac.ir)$")
+      Validators.pattern('[^ @+-]*@(ut.ac.ir)$')
     ]);
-    this.password = new FormControl("", Validators.required);
-    this.bucket = new FormControl("", Validators.required);
+    this.password = new FormControl('', Validators.required);
+    this.bucket = new FormControl('', Validators.required);
   }
 
   bucketDefaultGenerator() {
-    let position = this.email.value.indexOf("@");
+    let position = this.email.value.indexOf('@');
     if (position == -1) {
       return this.email.value;
     } else {
@@ -63,10 +64,14 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
+    this.click();
     if (this.registerForm.invalid) {
-      this.utils.error("Failed", "please fill the from in the correct format!!");
-    }
-    else {
+      this.bool = true;
+      this.utils.error(
+        'Failed',
+        'please fill the from in the correct format!!'
+      );
+    } else {
       let newUser: User = {
         email: this.email.value,
         password: this.password.value,
@@ -74,14 +79,19 @@ export class SignupComponent implements OnInit {
       };
       this.authService.signupRequest(newUser).subscribe(
         res => {
-          this.utils.success("success", "Signed up successfully");
-          this.router.navigate(["/login"]);
+          this.utils.success('success', 'Signed up successfully');
+          this.router.navigate(['/login']);
         },
         error => {
+          this.bool = true;
           if (error.status == 409)
-            this.utils.error("Failed", "Email or Bucket exists");
+            this.utils.error('Failed', 'Email or Bucket exists');
         }
       );
     }
+  }
+  bool: boolean = true;
+  click() {
+    this.bool = false;
   }
 }

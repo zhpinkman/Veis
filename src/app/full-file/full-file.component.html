@@ -1,28 +1,56 @@
-<div style="position: relative; " mat-dialog>
+<div mat-dialog>
   <div mat-dialog-title>
-    <i *ngIf="data.fileExtension == 'txt' " class="border rounded-circle text-info fa fa-file col-auto mx-auto">
-    </i>
-    <i *ngIf="data.fileExtension == 'jpg' " class="border rounded-circle text-warning fa fa-image col-auto mx-auto">
-    </i>
-    <i *ngIf="data.fileExtension == 'dir' " class="border rounded-circle fa fa-folder col-auto text-primary mx-auto">
-    </i>
-    <i *ngIf="data.fileExtension == 'cpp' " class="border rounded-circle fa fa-code col-auto mx-auto text-danger">
-    </i>
-    <!-- <i *ngIf="data.fileExtension == 'pdf' " class="fa fa-data-pdf col-auto text-danger">
-    </i> -->
+    <div class="m-5">
+      <i [class]=" 'fa fa-5x' + consts.icons[data.fileExtension]">
+      </i>
+      <div>
+        {{data.fileExtension}}
+      </div>
+    </div>
   </div>
-  <table>
-    <tr>
-      file name: {{data.fileName}}
-    </tr>
-    <tr>
-      type : {{data.fileExtension}}
-    </tr>
-    <tr>
-      file size: {{data.fileSize}}
-    </tr>
+</div>
+<div mat-dialog-content class="text-monospace">
+  <div class="fileName first m-lg-3 p-4 shadow">
 
+    <div style="position: relative;">
+      <div [hidden]=" showEditName ">{{data.fileName}}</div>
+      <input [hidden]="!showEditName " [(ngModel)]="data.fileName ">
+      <i style="position: absolute; top:10px; right: 20px;" class="fa fa-pencil-square-o " (click)="submit() "></i>
+    </div>
+
+  </div>
+
+<<<<<<< HEAD
   </table>
   <button (click)="deleteTheFile()">delete</button>
+=======
+  <div class="second p-3 m-lg-3 shadow">
+    size: {{ data.fileSize | size }}
+  </div>
 
+  <div class="row">
+    <div class="col-auto mx-auto p-3 row download shadow-lg">
+      <div class="mx-auto col-auto">
+        download
+      </div>
+      <div class="mx-auto col-auto">
+        <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div (click)="delete()" class="col-auto mx-auto p-3 row remove shadow-lg" [ngClass]="{
+      'afterDelete' : hideDeleteIcon
+    }">
+      <div class="col-auto mx-auto" [hidden]="hideDeleteIcon">
+        delete
+      </div>
+      <div class="mx-auto col-auto">
+        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+          ' fa-spin ' : hideDeleteIcon
+        }"></i>
+>>>>>>> f084a208ac891c26b4b30892ace62e110d185100
+
+      </div>
+
+    </div>
+  </div>
 </div>
