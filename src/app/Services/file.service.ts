@@ -14,4 +14,8 @@ export class FileService {
   getFiles(){
     return this.restangular.one('file/all').get();
   }
+
+  deleteFile(id:string){
+    this.restangular.one('file/delete'+id).post();
+  }
 }
