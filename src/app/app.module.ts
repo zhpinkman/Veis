@@ -31,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { SizePipe } from './size.pipe';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { SizePipe } from './size.pipe';
     MatProgressBarModule,
     MatCardModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   entryComponents: [FullFileComponent],
   providers: [
