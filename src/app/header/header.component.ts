@@ -1,3 +1,4 @@
+import { NotificationsService } from 'angular2-notifications';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/Services/auth.service';
 import { Router } from '@angular/router';
@@ -14,6 +15,10 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.auth.requestLogout();
     this.router.navigate(['login']);
+  }
+
+  navigateToHome() {
+    this.router.navigate(['list']);
   }
 
   navigateToUpload() {
