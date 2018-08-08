@@ -8,14 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  constructor(private auth: AuthService, private router: Router) {}
 
-  constructor(private auth: AuthService, private router: Router) { }
+  optionsStatus: Boolean = false;
 
-  ngOnInit() {
-  }
-  logout(){
+  ngOnInit() {}
+  logout() {
     this.auth.requestLogout();
-    this.router.navigate(["login"])
+    this.router.navigate(['login']);
   }
 
+  navigateToUpload() {
+    this.router.navigate(['upload']);
+  }
+
+  showOptions() {
+    this.optionsStatus = true;
+  }
+
+  hideOptions() {
+    this.optionsStatus = false;
+  }
 }

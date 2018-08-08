@@ -1,7 +1,6 @@
 button {
   position: absolute;
-  top: 40px;
-  right: 80px;
+  right: -27px;
 }
 
 h2 {
@@ -10,4 +9,8 @@ h2 {
 
 .cloudHeader {
   font-size: 30px;
+}
+
+.uploadIcon {
+  cursor: pointer;
 }

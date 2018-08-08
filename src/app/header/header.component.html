@@ -1,20 +1,23 @@
 <div class="m-5">
 
-  <div class="row cloudHeader">
+  <div class="row cloudHeader" style="position: relative;">
     <div class="col-auto">
       UT Cloud
     </div>
-    <div class="col-auto text-primary">
-      <i class="fa fa-cloud" aria-hidden="true"></i>
+    <div class="col-auto text-primary row" (mouseover)="showOptions()" (mouseout)=hideOptions()>
+      <div class="col-auto">
+        <i class="fa fa-cloud" aria-hidden="true"></i>
+      </div>
+      <div class="col-auto" [hidden]="!optionsStatus" [ngClass]="{
+        'after' : optionsStatus
+      }">
+        <i class="fa fa-cloud-upload uploadIcon" aria-hidden="true" (click)="navigateToUpload()"></i>
+      </div>
+    </div>
+    <div>
       <button class="btn btn-alert" (click)="logout()">
         logout</button>
     </div>
-
-  </div>
-  <div></div>
-  <div>
-    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-
   </div>
 </div>
 
