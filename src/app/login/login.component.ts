@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '@app/Services/auth.service';
 import { User } from '@app/User';
 import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',

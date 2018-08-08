@@ -6,19 +6,19 @@
   <form style="position: relative;" [formGroup]="loginForm">
     <div class="row container w-50 my-5">
       <mat-form-field class="col">
-        <input matInput id="email " formControlName="email " type="text " placeholder="email " class="form-control col-4
-      " [formControl]="email ">
+        <input matInput id="email" formControlName="email" type="text" placeholder="email" class="form-control col-4" [formControl]="email">
       </mat-form-field>
       <mat-form-field class="col">
-        <input matInput id="password " formControlName="password " type="password " placeholder="password " class="form-control
-      col-4 mx-4 " [formControl]="password ">
+        <input matInput id="password" formControlName="password" type="password" placeholder="password" class="form-control
+      col-4 mx-4" [formControl]="password">
       </mat-form-field>
-      <button class="btn " (click)="login() " [ngClass]="{ 'btn-danger disabled' : loginForm.invalid, 'btn-success' : loginForm.valid
-      } ">login</button>
-      <i class="fa fa-spinner fa-pulse fa-3x fa-fw " [hidden]="spinHide "></i>
-      <span class="sr-only ">Loading...</span>
+      <button class="btn" (click)="login()" [ngClass]="{
+        'btn-danger disabled' : loginForm.invalid, 'btn-success' : loginForm.valid
+      }">login</button>
+      <i class="fa fa-spinner fa-pulse fa-3x fa-fw" [hidden]="true"></i>
+      <span class="sr-only">Loading...</span>
     </div>
-    <div class="row remember-me-container ">
+    <div class="row remember-me-container">
       <input type="checkbox" checked>
       <span>Remember Me!</span>
     </div>
