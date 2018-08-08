@@ -1,4 +1,3 @@
-import { humanizeBytes } from 'ngx-uploader';
 import { Component, OnInit, Inject, Pipe, PipeTransform } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
@@ -32,16 +31,5 @@ export class FullFileComponent implements OnInit {
 
   delete() {
     this.hideDeleteIcon = true;
-  }
-}
-
-@Pipe({ name: 'size' })
-export class SizeHandler implements PipeTransform {
-  humanizeBytes: Function;
-  constructor() {
-    this.humanizeBytes = humanizeBytes;
-  }
-  transform(value: number): string {
-    return this.humanizeBytes(value);
   }
 }
