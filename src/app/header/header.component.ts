@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) {}
 
-  optionsStatus: Boolean = false;
-
   ngOnInit() {}
   logout() {
     this.auth.requestLogout();
@@ -20,13 +18,5 @@ export class HeaderComponent implements OnInit {
 
   navigateToUpload() {
     this.router.navigate(['upload']);
-  }
-
-  showOptions() {
-    this.optionsStatus = true;
-  }
-
-  hideOptions() {
-    this.optionsStatus = false;
   }
 }
