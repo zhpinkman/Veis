@@ -21,25 +21,17 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'list',
-      //   canActivate: [AuthGuard]
-      // },
       {
         path: 'upload',
-        component: UploadFileComponent,
-        canActivate: [AuthGuard]
+        component: UploadFileComponent
       },
       {
-        path: 'list',
-        component: FilesListComponent,
-        canActivate: [AuthGuard]
+        path: '',
+        component: FilesListComponent
       },
       {
         path: 'list/:id',
-        component: FilesListComponent,
-        canActivate: [AuthGuard]
+        component: FilesListComponent
       }
     ]
   }
