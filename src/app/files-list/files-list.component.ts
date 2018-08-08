@@ -65,47 +65,47 @@ export class FilesListComponent implements OnInit {
       filePath: "",
       Id: "",
       isOpen: false
+    },
+    {
+      fileName: "test",
+      fileExtension: "txt",
+      fileSize: 100,
+      filePath: "",
+      Id: "",
+      isOpen: false
+    },
+    {
+      fileName: "test2",
+      fileExtension: "txt",
+      fileSize: 100,
+      filePath: "",
+      Id: "",
+      isOpen: false
+    },
+    {
+      fileName: "test3",
+      fileExtension: "cpp",
+      fileSize: 100,
+      filePath: "",
+      Id: "",
+      isOpen: false
+    },
+    {
+      fileName: "test4",
+      fileExtension: "jpg",
+      fileSize: 100,
+      filePath: "",
+      Id: "",
+      isOpen: false
+    },
+    {
+      fileName: "test",
+      fileExtension: "txt",
+      fileSize: 100,
+      filePath: "",
+      Id: "",
+      isOpen: false
     }
-    // {
-    //   fileName : "test",
-    //   fileExtension : "txt",
-    //   fileSize: 100,
-    //   filePath: "",
-    //   Id : "",
-    //   isOpen: false
-    // },
-    // {
-    //   fileName : "test2",
-    //   fileExtension : "txt",
-    //   fileSize: 100,
-    //   filePath: "",
-    //   Id : "",
-    //   isOpen: false
-    // },
-    // {
-    //   fileName : "test3",
-    //   fileExtension : "cpp",
-    //   fileSize: 100,
-    //   filePath: "",
-    //   Id : "",
-    //   isOpen: false
-    // },
-    // {
-    //   fileName : "test4",
-    //   fileExtension : "jpg",
-    //   fileSize: 100,
-    //   filePath: "",
-    //   Id : "",
-    //   isOpen: false
-    // },
-    // {
-    //   fileName : "test",
-    //   fileExtension : "txt",
-    //   fileSize: 100,
-    //   filePath: "",
-    //   Id : "",
-    //   isOpen: false
-    // },
     // {
     //   fileName : "test2",
     //   fileExtension : "txt",

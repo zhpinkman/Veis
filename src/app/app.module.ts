@@ -15,7 +15,7 @@ import {
   RestangularNotAuthFactory
 } from "@app/restangular.config";
 import { SignupComponent } from "@app/signup/signup.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { UploadFileComponent } from "@app/upload-file/upload-file.component";
 import { SimpleNotificationsModule } from "angular2-notifications";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -32,6 +32,7 @@ import { UploadItemComponent } from "./upload-item/upload-item.component";
 import { MatProgressBarModule, MatInputModule } from "@angular/material";
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     RestangularModule.forRoot([AuthService], RestangularConfigFactory),
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
@@ -61,7 +63,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
     MatProgressBarModule,
     MatCardModule,
     MatGridListModule,
-    MatInputModule
+    MatButtonModule,
   ],
   entryComponents: [FullFileComponent],
   providers: [
@@ -78,4 +80,4 @@ import { MatGridListModule } from "@angular/material/grid-list";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

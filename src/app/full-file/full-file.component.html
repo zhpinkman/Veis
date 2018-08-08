@@ -1,21 +1,51 @@
 <div mat-dialog>
   <div mat-dialog-title>
     <div class="m-5">
-      <i [class]=" 'fa col-auto mx-auto fa-5x' + icons[data.fileExtension]">
+      <i [class]=" 'fa fa-5x' + consts.icons[data.fileExtension]">
       </i>
       <div>
         {{data.fileExtension}}
       </div>
     </div>
   </div>
-  <div mat-dialog-content>
-    <div class="fileName">
-      {{data.fileName}}
+</div>
+<div mat-dialog-content class="text-monospace">
+  <div class="fileName first m-lg-3 p-4 shadow">
+
+    <div style="position: relative;">
+      <div [hidden]=" showEditName ">{{data.fileName}}</div>
+      <input [hidden]="!showEditName " [(ngModel)]="data.fileName ">
+      <i style="position: absolute; top:10px; right: 20px;" class="fa fa-pencil-square-o " (click)="submit() "></i>
     </div>
-    <div>
-      size: {{ data.fileSize | size }}
-    </div>
+
   </div>
 
+  <div class="second p-3 m-lg-3 shadow">
+    size: {{ data.fileSize | size }}
+  </div>
 
+  <div class="row">
+    <div class="col-auto mx-auto p-3 row download shadow-lg">
+      <div class="mx-auto col-auto">
+        download
+      </div>
+      <div class="mx-auto col-auto">
+        <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div (click)="delete()" class="col-auto mx-auto p-3 row remove shadow-lg" [ngClass]="{
+      'afterDelete' : hideDeleteIcon
+    }">
+      <div class="col-auto mx-auto" [hidden]="hideDeleteIcon">
+        delete
+      </div>
+      <div class="mx-auto col-auto">
+        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+          ' fa-spin ' : hideDeleteIcon
+        }"></i>
+
+      </div>
+
+    </div>
+  </div>
 </div>
