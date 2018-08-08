@@ -175,4 +175,10 @@ export class FilesListComponent implements OnInit {
       this.files = data;
     });
   }
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> f084a208ac891c26b4b30892ace62e110d185100
 }
