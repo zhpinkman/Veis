@@ -6,18 +6,17 @@
     <form [formGroup]="registerForm">
 
       <mat-form-field class="w-100">
-        <input matInput #message maxlength="256" formControlName="email" id="email" type="text" class="form-control" (change)="bucketGenerator()"
-          placeholder="email">
+        <input matInput #message maxlength="256" formControlName="email" id="email" type="text" (change)="bucketGenerator()" placeholder="email">
         <mat-hint align="start">
           <strong>Enter your ut.ac.ir email</strong>
         </mat-hint>
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput #message maxlength="256" formControlName="password" id="password" type="password" class="form-control" placeholder="password">
+        <input matInput #message maxlength="256" formControlName="password" id="password" type="password" placeholder="password">
 
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput #message maxlength="256" formControlName="bucket" id="bucket" type="text" class="form-control" value="{{bucketDefaultGenerator()}}"
+        <input matInput #message maxlength="256" formControlName="bucket" id="bucket" type="text" value="{{bucketDefaultGenerator()}}"
           placeholder="bucket">
         <mat-hint align="start">
           <strong>Your files will be stored in: cloud.ut.ac.ir/{{this.bucket.value || "Your bucket name"}}/...</strong>
@@ -32,3 +31,8 @@
         <i class="fa fa-spinner fa-pulse text-white" [hidden]="bool"></i>
       </button>
     </form>
+  </div>
+  <div class="my-4 text-center">
+    <a routerLink="/login">Login</a>
+  </div>
+</div>
