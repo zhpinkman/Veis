@@ -8,10 +8,12 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+
+import { FileService } from '@app/Services/file.service';
+import { RenameRequest } from './../renameRequest';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
-import { FileService } from '@app/Services/file.service';
 
 @Component({
   selector: 'app-full-file',
@@ -28,6 +30,7 @@ export class FullFileComponent implements OnInit {
   @Output() deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
 
   ngOnInit() {}
+  fileName: string = this.data.name;
   showEditName: boolean = false;
   hideDeleteIcon: Boolean = false;
 
@@ -40,6 +43,23 @@ export class FullFileComponent implements OnInit {
   };
   submit() {
     this.showEditName = !this.showEditName;
+    let Request = new RenameRequest();
+    Request.parentPath = '/';
+    Request.oldName = this.fileName;
+    Request.newName = this.data.name;
+    this.fileService.renameFile(Request).subscribe(
+      data => {
+        this.fileName = this.data.name;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  cancel() {
+    this.showEditName = !this.showEditName;
+    this.data.name = this.fileName;
   }
 
   delete() {
