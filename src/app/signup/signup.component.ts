@@ -22,7 +22,9 @@ export class SignupComponent implements OnInit {
     private authService: AuthService,
     private utils: UtilitiesService,
     private router: Router
-  ) {}
+  ) {
+    this.utils.setTitle('Sign Up');
+  }
   registerForm: FormGroup;
   username: FormControl;
   name: FormControl;

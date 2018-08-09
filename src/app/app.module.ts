@@ -1,7 +1,7 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { LoginComponent } from '@app/login/login.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
@@ -77,8 +77,9 @@ import { MatInputModule } from '@angular/material/input';
     {
       provide: RESTANGULAR_NOT_AUTH,
       useFactory: RestangularNotAuthFactory,
-      deps: [Restangular]
-    }
+      deps: [Restangular],
+    },
+    Title
   ],
   bootstrap: [AppComponent]
 })

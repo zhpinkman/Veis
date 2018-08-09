@@ -1,3 +1,4 @@
+import { UtilitiesService } from '@app/Services/utilities.service';
 import { FileService } from '@app/Services/file.service';
 import { Component, OnInit } from '@angular/core';
 import { FileEntity } from '@app/file';
@@ -14,140 +15,13 @@ export class FilesListComponent implements OnInit {
 
   constructor(
     private fileService: FileService,
-    private Aroute: ActivatedRoute
-  ) {}
+    private Aroute: ActivatedRoute,
+    private utils: UtilitiesService
+  ) {
+    utils.setTitle('Your Files');
+  }
 
   files = new Array<FileEntity>();
-  //   {
-  //     fileName: 'test',
-  //     fileExtension: 'txt',
-  //     fileSize: 2000000,
-  //     filePath: '',
-  //     Id: '',
-  //     isOpen: false
-  //   },
-  //   {
-  //     fileName: 'test2',
-  //     fileExtension: 'txt',
-  //     fileSize: 100,
-  //     filePath: '',
-  //     Id: '',
-  //     isOpen: false
-  //   },
-  //   {
-  //     fileName: 'test3',
-  //     fileExtension: 'cpp',
-  //     fileSize: 100,
-  //     filePath: '',
-  //     Id: '',
-  //     isOpen: false
-  //   },
-  //   {
-  //     fileName: 'test4',
-  //     fileExtension: 'jpg',
-  //     fileSize: 100,
-  //     filePath: '',
-  //     Id: '',
-  //     isOpen: false
-  //   },
-  //   {
-  //     fileName: 'test5',
-  //     fileExtension: 'pdf',
-  //     fileSize: 100,
-  //     filePath: '',
-  //     Id: '',
-  //     isOpen: false
-  //   }
-  // ];
-  // // {
-  // //   fileName: 'test',
-  // //   fileExtension: 'txt',
-  // //   fileSize: 100,
-  // //   filePath: '',
-  // //   Id: '',
-  // //   isOpen: false
-  // // },
-  // // {
-  // //   fileName: 'test2',
-  // //   fileExtension: 'txt',
-  // //   fileSize: 100,
-  // //   filePath: '',
-  // //   Id: '',
-  // //   isOpen: false
-  // // },
-  // // {
-  // //   fileName: 'test3',
-  // //   fileExtension: 'cpp',
-  // //   fileSize: 100,
-  // //   filePath: '',
-  // //   Id: '',
-  // //   isOpen: false
-  // // },
-  // // {
-  // //   fileName: 'test4',
-  // //   fileExtension: 'jpg',
-  // //   fileSize: 100,
-  // //   filePath: '',
-  // //   Id: '',
-  // //   isOpen: false
-  // // },
-  // // {
-  // //   fileName: 'test',
-  // //   fileExtension: 'txt',
-  // //   fileSize: 100,
-  // //   filePath: '',
-  //   Id: '',
-  //   isOpen: false
-  // }
-  // {
-  //   fileName : "test2",
-  //   fileExtension : "txt",
-  //   fileSize: 100,
-  //   filePath: "",
-  //   Id : "",
-  //   isOpen: false
-  // },
-  // {
-  //   fileName : "test3",
-  //   fileExtension : "cpp",
-  //   fileSize: 100,
-  //   filePath: "",
-  //   Id : "",
-  //   isOpen: false
-  // },
-  // {
-  //   fileName : "test4",
-  //   fileExtension : "jpg",
-  //   fileSize: 100,
-  //   filePath: "",
-  //   Id : "",
-  //   isOpen: false
-  // },
-  // {
-  //   fileName : "test",
-  //   fileExtension : "txt",
-  //   fileSize: 100,
-  //   filePath: "",
-  //   Id : "",
-  //   isOpen: false
-  // },
-  // {
-  //   fileName : "test2",
-  //   fileExtension : "txt",
-  //   fileSize: 100,
-  //   filePath: "",
-  //   Id : "",
-  //   isOpen: false
-  // },
-  // {
-  //   fileName : "test3",
-  //   fileExtension : "cpp",
-  //   fileSize: 100,
-  //   filePath: "",
-  //   Id : "",
-  //   isOpen: false
-  // }
-  // ];
 
   ngOnInit() {
     this.getFilesList();

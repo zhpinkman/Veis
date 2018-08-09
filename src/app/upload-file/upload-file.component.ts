@@ -29,6 +29,7 @@ export class UploadFileComponent implements OnInit {
     private authService: AuthService,
     private utilitiesService: UtilitiesService
   ) {
+    this.utilitiesService.setTitle('Upload Files');
     this.options = { concurrency: 1 };
     this.files = []; // local uploading files array
     this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader

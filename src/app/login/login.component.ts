@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private utils: UtilitiesService
   ) {
+    this.utils.setTitle('Login');
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.password = new FormControl('', [Validators.required]);
     this.rememberMe = new FormControl('');
