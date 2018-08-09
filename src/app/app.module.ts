@@ -26,7 +26,7 @@ import { FullFileComponent } from './full-file/full-file.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilesListComponent } from './files-list/files-list.component';
 import { UploadItemComponent } from './upload-item/upload-item.component';
-import { MatProgressBarModule, MatFormFieldModule } from '@angular/material';
+import { MatProgressBarModule, MatFormFieldModule, MatCheckboxModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
@@ -64,7 +64,8 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatGridListModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule
   ],
   entryComponents: [FullFileComponent],
   providers: [
