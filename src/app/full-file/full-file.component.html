@@ -10,17 +10,32 @@
   </div>
 </div>
 <div mat-dialog-content class="text-monospace">
-  <div class="fileName first m-lg-3 p-4 shadow">
+  <div class="fileName m-lg-3 p-4">
 
-    <div style="position: relative; transition: all 1s;">
-      <div [hidden]=" showEditName ">{{data.name}}</div>
-      <input [hidden]="!showEditName " [(ngModel)]="data.name ">
-      <i class="fa fa-pencil-square-o editIcon" (click)="submit()"></i>
+    <div style="position: relative; transition: all 1s;" class="row no-gutters justify-content-center">
+      <div class="col-auto">
+        <span [hidden]="showEditName">{{data.name}}</span>
+        <input [hidden]="!showEditName " [(ngModel)]="data.name ">
+      </div>
+
+
+      <div class="row col-auto no-gutters ml-2">
+        <div class="col-auto mx-2" [hidden]="showEditName">
+          <i class="fa fa-pencil-square-o" (click)="handleRenameInput()"></i>
+        </div>
+        <div class="col-auto mx-2" [hidden]="!showEditName">
+          <i class="fa fa-check text-success" aria-hidden="true" (click)="submit()"></i>
+        </div>
+        <div class="col-auto mx-2" [hidden]="!showEditName">
+          <i class="fa fa-times text-danger" aria-hidden="true" (click)="cancel()"></i>
+        </div>
+      </div>
+
     </div>
 
   </div>
 
-  <div class="second p-3 m-lg-3 shadow">
+  <div class="p-3 m-lg-3">
     size: {{ data.size | size }}
   </div>
 
