@@ -22,13 +22,10 @@ export class FullFileComponent implements OnInit {
   fileName: string = this.data.name;
   hideDeleteIcon: Boolean = false;
 
-  icons = {
-    txt: ' fa-file text-info ',
-    'image/jpeg': ' text-warning fa-image ',
-    dir: ' fa-folder text-primary ',
-    cpp: ' fa-code text-danger ',
-    pdf: ' fa-file-pdf-o text-danger '
-  };
+  handleRenameInput() {
+    this.showEditName = !this.showEditName;
+  }
+
   submit() {
     this.showEditName = !this.showEditName;
     let Request = new RenameRequest();
@@ -47,5 +44,10 @@ export class FullFileComponent implements OnInit {
 
   delete() {
     this.hideDeleteIcon = true;
+  }
+
+  cancel() {
+    this.showEditName = !this.showEditName;
+    this.data.name = this.fileName;
   }
 }
