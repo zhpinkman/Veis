@@ -87,12 +87,6 @@ export class UploadFileComponent implements OnInit {
       this.dragOver = false;
     } else if (output.type === 'drop') {
       this.dragOver = false;
-    } else if (output.type === 'done' && this.files != []) {
-      this.utilitiesService.success(
-        'Done!',
-        'Your files saved in your bucket folder'
-      );
-      this.files = [];
     }
   }
 
