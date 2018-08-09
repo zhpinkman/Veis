@@ -20,7 +20,7 @@
         <input matInput #message maxlength="256" formControlName="bucket" id="bucket" type="text" class="form-control" value="{{bucketDefaultGenerator()}}"
           placeholder="bucket">
         <mat-hint align="start">
-          <strong>Your files will be stored in: cloud.ut.ac.ir/{{this.bucket.value || "Your bucket name"}}/...</strong>
+          <strong>Your files will be stored in: cloud.ut.ac.ir/{{bucketDefaultGenerator() || "Your bucket name"}}/...</strong>
         </mat-hint>
       </mat-form-field>
       <button class="mt-4" mat-flat-button type="submit" color="primary" style="text-align: center" (click)="signup()" [disabled]='registerForm.invalid'>
