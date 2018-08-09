@@ -1,6 +1,16 @@
+import { humanizeBytes } from 'ngx-uploader';
+import {
+  Component,
+  OnInit,
+  Inject,
+  Pipe,
+  PipeTransform,
+  Output,
+  EventEmitter
+} from '@angular/core';
+
 import { FileService } from '@app/Services/file.service';
 import { RenameRequest } from './../renameRequest';
-import { Component, OnInit, Inject, Pipe, PipeTransform } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
@@ -17,15 +27,20 @@ export class FullFileComponent implements OnInit {
     private fileService: FileService
   ) {}
 
+  @Output() deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
+
   ngOnInit() {}
-  showEditName: boolean = false;
   fileName: string = this.data.name;
+  showEditName: boolean = false;
   hideDeleteIcon: Boolean = false;
 
-  handleRenameInput() {
-    this.showEditName = !this.showEditName;
-  }
-
+  icons = {
+    txt: ' fa-file text-info ',
+    jpg: ' text-warning fa-image ',
+    dir: ' fa-folder text-primary ',
+    cpp: ' fa-code text-danger ',
+    pdf: ' fa-file-pdf-o text-danger '
+  };
   submit() {
     this.showEditName = !this.showEditName;
     let Request = new RenameRequest();
@@ -42,12 +57,25 @@ export class FullFileComponent implements OnInit {
     );
   }
 
-  delete() {
-    this.hideDeleteIcon = true;
-  }
-
   cancel() {
     this.showEditName = !this.showEditName;
     this.data.name = this.fileName;
+  }
+
+  delete() {
+    this.hideDeleteIcon = true;
+    this.fileService.deleteFile(this.data.id);
+    this.deleted.emit(this.data);
+  }
+}
+
+@Pipe({ name: 'size' })
+export class SizeHandler implements PipeTransform {
+  humanizeBytes: Function;
+  constructor() {
+    this.humanizeBytes = humanizeBytes;
+  }
+  transform(value: number): string {
+    return this.humanizeBytes(value);
   }
 }

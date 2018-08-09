@@ -49,4 +49,9 @@ export class FilesListComponent implements OnInit {
       console.log(data);
     });
   }
+
+  deleteFromList(event) {
+    let index = this.files.findIndex(f => f.id == event.id);
+    this.files.splice(index, 1);
+  }
 }
