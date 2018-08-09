@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  rememberMe: FormControl;
   getFromLocalStorsge(): any {
     this.email.setValue(localStorage.getItem('email'));
     this.email.patchValue(localStorage.getItem('email'));
@@ -23,8 +24,9 @@ export class LoginComponent implements OnInit {
     this.password.setValue(localStorage.getItem('password'));
     this.password.patchValue(localStorage.getItem('password'));
   }
-  email = new FormControl('');
-  password = new FormControl('');
+  // checked: boolean = true;
+  email: FormControl;
+  password: FormControl;
   loginForm: FormGroup;
   spinHide: boolean = true;
   constructor(
@@ -34,9 +36,11 @@ export class LoginComponent implements OnInit {
   ) {
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.password = new FormControl('', [Validators.required]);
+    this.rememberMe = new FormControl('');
     this.loginForm = new FormGroup({
       email: this.email,
-      password: this.password
+      password: this.password,
+      rememberMe: this.rememberMe
     });
   }
 
@@ -52,20 +56,21 @@ export class LoginComponent implements OnInit {
     console.log(user);
     this.authService.LoginRequest(user).subscribe(
       res => {
-        this.spinHide = true;
         console.log(res);
         this.router.navigate(['']);
         this.utils.success('success', 'you have successfully loged in ');
+        this.spinHide = true;
       },
       error => {
-        this.spinHide = true;
         this.utils.error('Error', 'user name or password is invalid!!');
         console.error(error);
+        this.spinHide = true;
       }
     );
-    this.rememberMe(user);
+    // console.log(this.rememberMe.value);
+    if (this.rememberMe.value) this.rememberMeFunc(user);
   }
-  rememberMe(user: User) {
+  rememberMeFunc(user: User) {
     localStorage.setItem('email', user.email);
     localStorage.setItem('password', user.password);
   }
