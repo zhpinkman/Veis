@@ -17,85 +17,85 @@ export class FilesListComponent implements OnInit {
     private Aroute: ActivatedRoute
   ) {}
 
-  files: FileEntity[] = [
-    {
-      fileName: 'test',
-      fileExtension: 'txt',
-      fileSize: 2000000,
-      filePath: '',
-      Id: '',
-      isOpen: false
-    },
-    {
-      fileName: 'test2',
-      fileExtension: 'txt',
-      fileSize: 100,
-      filePath: '',
-      Id: '',
-      isOpen: false
-    },
-    {
-      fileName: 'test3',
-      fileExtension: 'cpp',
-      fileSize: 100,
-      filePath: '',
-      Id: '',
-      isOpen: false
-    },
-    {
-      fileName: 'test4',
-      fileExtension: 'jpg',
-      fileSize: 100,
-      filePath: '',
-      Id: '',
-      isOpen: false
-    },
-    {
-      fileName: 'test5',
-      fileExtension: 'pdf',
-      fileSize: 100,
-      filePath: '',
-      Id: '',
-      isOpen: false
-    }
-  ];
-  // {
-  //   fileName: 'test',
-  //   fileExtension: 'txt',
-  //   fileSize: 100,
-  //   filePath: '',
-  //   Id: '',
-  //   isOpen: false
-  // },
-  // {
-  //   fileName: 'test2',
-  //   fileExtension: 'txt',
-  //   fileSize: 100,
-  //   filePath: '',
-  //   Id: '',
-  //   isOpen: false
-  // },
-  // {
-  //   fileName: 'test3',
-  //   fileExtension: 'cpp',
-  //   fileSize: 100,
-  //   filePath: '',
-  //   Id: '',
-  //   isOpen: false
-  // },
-  // {
-  //   fileName: 'test4',
-  //   fileExtension: 'jpg',
-  //   fileSize: 100,
-  //   filePath: '',
-  //   Id: '',
-  //   isOpen: false
-  // },
-  // {
-  //   fileName: 'test',
-  //   fileExtension: 'txt',
-  //   fileSize: 100,
-  //   filePath: '',
+  files = new Array<FileEntity>();
+  //   {
+  //     fileName: 'test',
+  //     fileExtension: 'txt',
+  //     fileSize: 2000000,
+  //     filePath: '',
+  //     Id: '',
+  //     isOpen: false
+  //   },
+  //   {
+  //     fileName: 'test2',
+  //     fileExtension: 'txt',
+  //     fileSize: 100,
+  //     filePath: '',
+  //     Id: '',
+  //     isOpen: false
+  //   },
+  //   {
+  //     fileName: 'test3',
+  //     fileExtension: 'cpp',
+  //     fileSize: 100,
+  //     filePath: '',
+  //     Id: '',
+  //     isOpen: false
+  //   },
+  //   {
+  //     fileName: 'test4',
+  //     fileExtension: 'jpg',
+  //     fileSize: 100,
+  //     filePath: '',
+  //     Id: '',
+  //     isOpen: false
+  //   },
+  //   {
+  //     fileName: 'test5',
+  //     fileExtension: 'pdf',
+  //     fileSize: 100,
+  //     filePath: '',
+  //     Id: '',
+  //     isOpen: false
+  //   }
+  // ];
+  // // {
+  // //   fileName: 'test',
+  // //   fileExtension: 'txt',
+  // //   fileSize: 100,
+  // //   filePath: '',
+  // //   Id: '',
+  // //   isOpen: false
+  // // },
+  // // {
+  // //   fileName: 'test2',
+  // //   fileExtension: 'txt',
+  // //   fileSize: 100,
+  // //   filePath: '',
+  // //   Id: '',
+  // //   isOpen: false
+  // // },
+  // // {
+  // //   fileName: 'test3',
+  // //   fileExtension: 'cpp',
+  // //   fileSize: 100,
+  // //   filePath: '',
+  // //   Id: '',
+  // //   isOpen: false
+  // // },
+  // // {
+  // //   fileName: 'test4',
+  // //   fileExtension: 'jpg',
+  // //   fileSize: 100,
+  // //   filePath: '',
+  // //   Id: '',
+  // //   isOpen: false
+  // // },
+  // // {
+  // //   fileName: 'test',
+  // //   fileExtension: 'txt',
+  // //   fileSize: 100,
+  // //   filePath: '',
   //   Id: '',
   //   isOpen: false
   // }
@@ -150,21 +150,17 @@ export class FilesListComponent implements OnInit {
   // ];
 
   ngOnInit() {
-    // this.getFilesList();
+    this.getFilesList();
 
     for (var i = 0; i < this.files.length; i++) {
-      this.files[i].Id =
-        this.files[i].filePath +
-        this.files[i].fileName +
-        '.' +
-        this.files[i].fileExtension;
+      this.files[i].id = this.files[i].path;
     }
 
     this.id = this.Aroute.snapshot.paramMap.get('id');
     // this.path = this.Aroute.snapshot.paramMap.get('path');
     // console.log(this.id);
     for (var i = 0; i < this.files.length; i++) {
-      if (this.files[i].Id == this.id) {
+      if (this.files[i].id == this.id) {
         this.files[i].isOpen = true;
         // console.log('zzz');
       }
@@ -175,7 +171,7 @@ export class FilesListComponent implements OnInit {
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
-      this.files = data;
+      this.files = data.list;
       console.log(data);
     });
   }
