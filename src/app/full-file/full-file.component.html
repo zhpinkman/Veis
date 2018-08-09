@@ -1,10 +1,10 @@
 <div mat-dialog>
   <div mat-dialog-title>
     <div class="m-5">
-      <i [class]=" 'fa fa-5x' + consts.icons[data.fileExtension]">
+      <i [class]=" 'fa fa-5x' + consts.icons[data.type]">
       </i>
       <div>
-        {{data.fileExtension}}
+        {{data.type}}
       </div>
     </div>
   </div>
@@ -13,15 +13,15 @@
   <div class="fileName first m-lg-3 p-4 shadow">
 
     <div style="position: relative; transition: all 1s;">
-      <div [hidden]=" showEditName ">{{data.fileName}}</div>
-      <input [hidden]="!showEditName " [(ngModel)]="data.fileName ">
+      <div [hidden]=" showEditName ">{{data.name}}</div>
+      <input [hidden]="!showEditName " [(ngModel)]="data.name ">
       <i class="fa fa-pencil-square-o editIcon" (click)="submit()"></i>
     </div>
 
   </div>
 
   <div class="second p-3 m-lg-3 shadow">
-    size: {{ data.fileSize | size }}
+    size: {{ data.size | size }}
   </div>
 
   <div class="row">

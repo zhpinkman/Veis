@@ -1,3 +1,4 @@
+import { RenameRequest } from './../renameRequest';
 import { Injectable, Inject, Pipe } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
 
@@ -16,10 +17,13 @@ export class FileService {
   }
 
   getFiles() {
-    return this.restangular.one('file/list').get({ path: '' });
+    return this.restangular.one('file/list').get({ path: '/' });
   }
 
+  renameFile(renameRequest: RenameRequest) {
+    return this.restangular.one('file/rename').customPOST(renameRequest);
+  }
   deleteFile(id: string) {
-    this.restangular.one('file/delete' + id).post();
+    return this.restangular.one('file/delete' + id).post();
   }
 }
