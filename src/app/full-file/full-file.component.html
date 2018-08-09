@@ -1,7 +1,7 @@
 <div mat-dialog>
   <div mat-dialog-title>
     <div class="m-5">
-      <i [class]=" 'fa fa-5x' + consts.icons[data.type]">
+      <i [class]=" 'fa fa-5x' + icons[data.type]">
       </i>
       <div>
         {{data.type}}
@@ -15,7 +15,7 @@
     <div style="position: relative; transition: all 1s;" class="row no-gutters justify-content-center">
       <div class="col-auto">
         <span [hidden]="showEditName">{{data.name}}</span>
-        <input [hidden]="!showEditName " [(ngModel)]="data.name ">
+        <input [hidden]="!showEditName" [(ngModel)]="newFileName">
       </div>
 
 
