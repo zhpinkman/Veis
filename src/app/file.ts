@@ -1,8 +1,11 @@
-export interface FileEntity{
-    fileName: string;
-    fileExtension: string;
-    fileSize: number;
-    filePath: string;
-    Id: string;
-    isOpen: Boolean;
+export class FileEntity {
+  id: string;
+  name: string;
+  type: string;
+  size: number;
+  parentId: string;
+  creationDate: any;
+  path: string;
+  isDir: Boolean;
+  isOpen: Boolean;
 }

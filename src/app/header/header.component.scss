@@ -1,5 +1,25 @@
-button{
-    position: absolute;
-    top: 40px;
-    right: 80px;
+h2 {
+  text-align: left;
+}
+
+.cloudHeader {
+  font-size: 30px;
+}
+
+.icon {
+  cursor: pointer;
+  &:hover {
+    font-size: 30px;
+    transition: all 0.5s;
+  }
+}
+
+button {
+  &:hover {
+    font-size: 15px;
+    transition: all 0.5s;
+  }
+}
+
+.header-container {
 }

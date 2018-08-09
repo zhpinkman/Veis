@@ -1,28 +1,66 @@
-<div style="position: relative; " mat-dialog>
+<div mat-dialog>
   <div mat-dialog-title>
-    <i *ngIf="data.fileExtension == 'txt' " class="border rounded-circle text-info fa fa-file col-auto mx-auto">
-    </i>
-    <i *ngIf="data.fileExtension == 'jpg' " class="border rounded-circle text-warning fa fa-image col-auto mx-auto">
-    </i>
-    <i *ngIf="data.fileExtension == 'dir' " class="border rounded-circle fa fa-folder col-auto text-primary mx-auto">
-    </i>
-    <i *ngIf="data.fileExtension == 'cpp' " class="border rounded-circle fa fa-code col-auto mx-auto text-danger">
-    </i>
-    <!-- <i *ngIf="data.fileExtension == 'pdf' " class="fa fa-data-pdf col-auto text-danger">
-    </i> -->
+    <div class="m-5">
+      <i [class]=" 'fa fa-5x' + consts.icons[data.type]">
+      </i>
+      <div>
+        {{data.type}}
+      </div>
+    </div>
   </div>
-  <table>
-    <tr>
-      file name: {{data.fileName}}
-    </tr>
-    <tr>
-      type : {{data.fileExtension}}
-    </tr>
-    <tr>
-      file size: {{data.fileSize}}
-    </tr>
+</div>
+<div mat-dialog-content class="text-monospace">
+  <div class="fileName m-lg-3 p-4">
 
-  </table>
-  <button (click)="deleteTheFile()">delete</button>
+    <div style="position: relative; transition: all 1s;" class="row no-gutters justify-content-center">
+      <div class="col-auto">
+        <span [hidden]="showEditName">{{data.name}}</span>
+        <input [hidden]="!showEditName " [(ngModel)]="data.name ">
+      </div>
 
+
+      <div class="row col-auto no-gutters ml-2">
+        <div class="col-auto mx-2" [hidden]="showEditName">
+          <i class="fa fa-pencil-square-o" (click)="handleRenameInput()"></i>
+        </div>
+        <div class="col-auto mx-2" [hidden]="!showEditName">
+          <i class="fa fa-check text-success" aria-hidden="true" (click)="submit()"></i>
+        </div>
+        <div class="col-auto mx-2" [hidden]="!showEditName">
+          <i class="fa fa-times text-danger" aria-hidden="true" (click)="cancel()"></i>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="p-3 m-lg-3">
+    size: {{ data.size | size }}
+  </div>
+
+  <div class="row">
+    <div class="col-auto mx-auto p-3 row download shadow-lg">
+      <div class="mx-auto col-auto">
+        download
+      </div>
+      <div class="mx-auto col-auto">
+        <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div (click)="delete()" class="col-auto mx-auto p-3 row remove shadow-lg" [ngClass]="{
+      'afterDelete' : hideDeleteIcon
+    }">
+      <div class="col-auto mx-auto" [hidden]="hideDeleteIcon">
+        delete
+      </div>
+      <div class="mx-auto col-auto">
+        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+          ' fa-spin ' : hideDeleteIcon
+        }"></i>
+
+      </div>
+
+    </div>
+  </div>
 </div>

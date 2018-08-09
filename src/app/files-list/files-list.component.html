@@ -1,3 +1,3 @@
-<table class="bg-secondary row">
-    <app-compact-file class="col-1 p-5 my-auto mx-auto" *ngFor="let file of files" [data]="file"></app-compact-file>
-</table>
+<div class="row no-gutters justify-content-center">
+    <app-compact-file class="col-auto" (deleted)="deleteFromList($event)" *ngFor="let file of files" [data]="file"></app-compact-file>
+</div>

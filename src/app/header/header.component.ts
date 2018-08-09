@@ -1,3 +1,4 @@
+import { NotificationsService } from 'angular2-notifications';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/Services/auth.service';
 import { Router } from '@angular/router';
@@ -8,14 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  constructor(private auth: AuthService, private router: Router) {}
 
-  constructor(private auth: AuthService, private router: Router) { }
-
-  ngOnInit() {
-  }
-  logout(){
+  ngOnInit() {}
+  logout() {
     this.auth.requestLogout();
-    this.router.navigate(["login"])
+    this.router.navigate(['login']);
   }
 
+  navigateToHome() {
+    this.router.navigate(['']);
+  }
+
+  navigateToUpload() {
+    this.router.navigate(['upload']);
+  }
 }

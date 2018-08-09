@@ -1,49 +1,44 @@
-import { MatDialog, MatDialogClose, MatDialogConfig } from '@angular/material/dialog';
-import { Component, OnInit, Input } from '@angular/core';
-import { FullFileComponent } from '@app/full-file/full-file.component';
-import { FileEntity } from '@app/file';
+import {
+  MatDialog,
+  MatDialogClose,
+  MatDialogConfig
+} from "@angular/material/dialog";
+import { Component, OnInit, Input } from "@angular/core";
+import { FullFileComponent } from "@app/full-file/full-file.component";
+import { FileEntity } from "@app/file";
+import { ConstService } from "@app/Services/const.service";
 
 @Component({
-  selector: 'app-compact-file',
-  templateUrl: './compact-file.component.html',
-  styleUrls: ['./compact-file.component.scss']
+  selector: "app-compact-file",
+  templateUrl: "./compact-file.component.html",
+  styleUrls: ["./compact-file.component.scss"]
 })
 export class CompactFileComponent implements OnInit {
+  @Input("data") file: FileEntity;
 
-  @Input('data')
-  file: FileEntity;
-  
-  constructor(private dialog : MatDialog) { 
-  }
+  constructor(private dialog: MatDialog, public consts: ConstService) {}
 
   ngOnInit() {
-    if(this.file.isOpen == true){
+    if (this.file.isOpen == true) {
       this.openDialog();
     }
   }
 
-  openDialog(){
-
+  openDialog() {
     const opts = new MatDialogConfig();
-  
-    opts.width = "200px";
-    opts.height = "200px";
+
+    opts.width = "600px";
+    opts.height = "600px";
 
     opts.data = this.file;
 
-
     const dialogRef = this.dialog.open(FullFileComponent, opts);
 
-    dialogRef.afterOpen().subscribe(
-      data => console.log("opened successfully")
-    );
+    dialogRef.afterOpen().subscribe(data => console.log("opened successfully"));
     dialogRef.updatePosition(opts.position);
 
-    dialogRef.afterClosed().subscribe(
-      resutl => {
-        console.log("The dialog was closed!!");
-      }
-    );
+    dialogRef.afterClosed().subscribe(resutl => {
+      console.log("The dialog was closed!!");
+    });
   }
-
 }

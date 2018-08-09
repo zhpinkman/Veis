@@ -1,17 +1,30 @@
-<div class="row justify-content-center">
-  <form [formGroup]="loginForm">
-    <div class="row">
-      <input id="email" formControlName="email" type="text" placeholder="email" class="form-control col-4" [formControl]="email">
-  
-      <input id="password" formControlName="password" type="password" placeholder="password" class="form-control col-4 mx-4" [formControl]="password">
-  
-      <button class="btn" (click)="login()" [ngClass]="{
-        'btn-danger disabled' : loginForm.invalid,
-        'btn-success' : loginForm.valid
-      }">login</button>
+<div>
+  <div>
+    <h5 class="mx-auto my-5" style="text-align: center">LOGIN</h5>
+  </div>
+  <div class="">
+    <div class="bg-white p-5 col-12 col-sm-6 col-md-4 col-lg-3 mx-auto mat-elevation-z4">
+      <form [formGroup]="loginForm">
+        <div>
+          <mat-form-field class="w-100">
+            <input matInput id="email" formControlName="email" type="text" placeholder="email">
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <input matInput id="password" formControlName="password" type="password" placeholder="password">
+          </mat-form-field>
+          <div class="remember-me-container">
+            <mat-checkbox color="primary" class="example-margin" formControlName="rememberMe">Remember me!</mat-checkbox>
+          </div>
+          <div>
+            <button mat-flat-button type="submit" color="primary" [disabled]='loginForm.invalid' (click)="login()">
+              <span>login</span>
+              <i class="fa fa-spinner fa-pulse ml-2 text-white" [hidden]="spinHide"></i>
+            </button>
+            <div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="row remember-me-container">
-      <input type="checkbox" checked><span>Remember Me!</span>
-    </div>
-  </form>
+  </div>
 </div>

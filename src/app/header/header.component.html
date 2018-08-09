@@ -1,2 +1,20 @@
-<button class="btn btn-alert" (click)="logout()">
-  logout</button>
+<div class="header-container box-item mb-5 px-5 py-4">
+
+  <div class="row cloudHeader justify-content-between">
+    <div class="col-auto text-primary row ">
+      <div class=" col-auto ">
+        UT Cloud
+      </div>
+      <div class="col-auto">
+        <i class="fa fa-cloud home-button icon" aria-hidden="true " (click)="navigateToHome()"></i>
+      </div>
+      <div class="col-auto">
+        <i class="fa fa-cloud-upload icon" aria-hidden="true " (click)="navigateToUpload() "></i>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-alert list-group-item-primary " (click)="logout() ">
+        logout</button>
+    </div>
+  </div>
+</div>
