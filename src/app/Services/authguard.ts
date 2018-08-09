@@ -8,6 +8,7 @@ import { TokenService } from '@app/Services/token.service';
 export class AuthGuard implements CanActivate {
   constructor(private token: TokenService, private router: Router) {}
   canActivate() {
+    // console.log(this.token, this.token.accessToken);
     if (this.token.accessToken) {
       console.log('you are logged in');
       return true;
