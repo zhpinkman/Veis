@@ -5,15 +5,15 @@
   <div class="">
     <div class="bg-white p-5 col-12 col-sm-6 col-md-4 col-lg-3 mx-auto mat-elevation-z4">
       <form [formGroup]="loginForm">
-        <div>
+        <div dir="rtl">
           <mat-form-field class="w-100">
-            <input matInput id="email" formControlName="email" type="text" placeholder="email">
+            <input matInput id="email" formControlName="email" type="text" placeholder="ایمیل" dir="ltr" class="text-left">
           </mat-form-field>
           <mat-form-field class="w-100">
-            <input matInput id="password" formControlName="password" type="password" placeholder="password">
+            <input matInput id="password" formControlName="password" type="password" placeholder="رمز عبور" dir="ltr" class="text-left">
           </mat-form-field>
-          <div class="remember-me-container">
-            <mat-checkbox color="primary" class="example-margin" formControlName="rememberMe">Remember me!</mat-checkbox>
+          <div class="remember-me-container" dir="rtl">
+            <mat-checkbox color="primary" class="example-margin" formControlName="rememberMe">ورود من را ذخیره کن</mat-checkbox>
           </div>
           <div>
             <button mat-flat-button type="submit" color="primary" [disabled]='loginForm.invalid' (click)="login()">
