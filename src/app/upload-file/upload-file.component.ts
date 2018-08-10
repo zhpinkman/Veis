@@ -9,6 +9,7 @@ import {
   humanizeBytes,
   UploaderOptions
 } from 'ngx-uploader';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-file',
@@ -88,6 +89,14 @@ export class UploadFileComponent implements OnInit {
       this.dragOver = false;
     } else if (output.type === 'drop') {
       this.dragOver = false;
+    } else if (
+      output.type === 'done' &&
+      output.file &&
+      output.file.responseStatus === 401
+    ) {
+      this.authService.refreshToken().subscribe(() => {
+        location.reload();
+      });
     }
   }
 
