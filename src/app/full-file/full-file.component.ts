@@ -11,6 +11,7 @@ import {
 
 import { FileService } from '@app/Services/file.service';
 import { RenameRequest } from './../renameRequest';
+import { DeleteRequest } from './../DeleteRequest';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
@@ -63,7 +64,15 @@ export class FullFileComponent implements OnInit {
 
   delete() {
     this.hideDeleteIcon = true;
-    this.fileService.deleteFile(this.data.id);
+    let Request = new DeleteRequest();
+    Request.path = '/' + this.data.name;
+    Request.id = this.data.id;
+    this.fileService.deleteFile(this.data.id, Request).subscribe(
+      data => {},
+      error => {
+        console.log(error);
+      }
+    );
     this.deleted.emit(this.data);
   }
 }
