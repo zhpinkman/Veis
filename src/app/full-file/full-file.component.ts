@@ -11,6 +11,7 @@ import {
 
 import { FileService } from '@app/Services/file.service';
 import { RenameRequest } from './../renameRequest';
+import { DeleteRequest } from './../DeleteRequest';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
@@ -27,29 +28,23 @@ export class FullFileComponent implements OnInit {
     private fileService: FileService
   ) {}
 
-  @Output() deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
+  @Output()
+  deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
 
   ngOnInit() {}
-  fileName: string = this.data.name;
   showEditName: boolean = false;
   hideDeleteIcon: Boolean = false;
 
-  icons = {
-    txt: ' fa-file text-info ',
-    jpg: ' text-warning fa-image ',
-    dir: ' fa-folder text-primary ',
-    cpp: ' fa-code text-danger ',
-    pdf: ' fa-file-pdf-o text-danger '
-  };
+  icons = this.consts.icons;
   submit() {
     this.showEditName = !this.showEditName;
     let Request = new RenameRequest();
     Request.parentPath = '/';
-    Request.oldName = this.fileName;
-    Request.newName = this.data.name;
+    Request.oldName = this.data.name;
+    Request.newName = this.newFileName;
     this.fileService.renameFile(Request).subscribe(
       data => {
-        this.fileName = this.data.name;
+        this.data.name = this.newFileName;
       },
       error => {
         console.log(error);
@@ -59,23 +54,25 @@ export class FullFileComponent implements OnInit {
 
   cancel() {
     this.showEditName = !this.showEditName;
-    this.data.name = this.fileName;
+    // this.data.name = this.fileName;
+  }
+  newFileName: string;
+  handleRenameInput() {
+    this.showEditName = !this.showEditName;
+    this.newFileName = this.data.name;
   }
 
   delete() {
     this.hideDeleteIcon = true;
-    this.fileService.deleteFile(this.data.id);
+    let Request = new DeleteRequest();
+    Request.path = '/' + this.data.name;
+    Request.id = this.data.id;
+    this.fileService.deleteFile(this.data.id, Request).subscribe(
+      data => {},
+      error => {
+        console.log(error);
+      }
+    );
     this.deleted.emit(this.data);
-  }
-}
-
-@Pipe({ name: 'size' })
-export class SizeHandler implements PipeTransform {
-  humanizeBytes: Function;
-  constructor() {
-    this.humanizeBytes = humanizeBytes;
-  }
-  transform(value: number): string {
-    return this.humanizeBytes(value);
   }
 }
