@@ -32,6 +32,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { SizePipe } from './size.pipe';
 import { MatInputModule } from '@angular/material/input';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatInputModule } from '@angular/material/input';
     FullFileComponent,
     FilesListComponent,
     UploadItemComponent,
-    SizePipe
+    SizePipe,
+    ToolbarComponent
   ],
 
   imports: [
