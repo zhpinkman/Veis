@@ -8,4 +8,5 @@ export class FileEntity {
   path: string;
   isDir: Boolean;
   isOpen: Boolean;
+  selected: Boolean = false;
 }

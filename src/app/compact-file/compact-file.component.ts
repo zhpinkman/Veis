@@ -1,3 +1,7 @@
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import * as Rx from 'rxjs/Rx';
+import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
 import {
   MatDialog,
   MatDialogClose,
@@ -7,6 +11,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { FullFileComponent } from "@app/full-file/full-file.component";
 import { FileEntity } from "@app/file";
 import { ConstService } from "@app/Services/const.service";
+import { FileService } from '@app/Services/file.service';
 
 @Component({
   selector: "app-compact-file",
@@ -16,7 +21,7 @@ import { ConstService } from "@app/Services/const.service";
 export class CompactFileComponent implements OnInit {
   @Input("data") file: FileEntity;
 
-  constructor(private dialog: MatDialog, public consts: ConstService) {}
+  constructor(private dialog: MatDialog, public consts: ConstService,private fileService : FileService) {}
 
   ngOnInit() {
     if (this.file.isOpen == true) {
@@ -40,5 +45,8 @@ export class CompactFileComponent implements OnInit {
     dialogRef.afterClosed().subscribe(resutl => {
       console.log("The dialog was closed!!");
     });
+  }
+  select(){
+    this.fileService.mysubject.next(this.file.name);
   }
 }

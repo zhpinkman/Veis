@@ -1,6 +1,8 @@
 <div class="row no-gutters">
 
-  <div (click)="openDialog()" class="file-container mx-4">
+  <div (dblclick)="openDialog()" (click)="select()" class="file-container mx-4" [ngClass]="{
+    'shake ' : file.selected
+  }">
     <div class="file-icon">
       <i [class]=" 'p-2 fa fa-5x' + consts.icons[file.type]"></i>
     </div>

@@ -33,3 +33,23 @@ p {
     margin-top: 2px;
   }
 }
+
+@keyframes shaking {
+  0% {
+    transform: rotate(5deg)
+  }
+  50% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(-5deg)
+  }
+}
+
+.shake {
+  animation-name: shaking;
+  animation-duration: 100ms;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  box-shadow: 0 0px 30px 0px lightslategrey !important;
+}
