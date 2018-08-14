@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FilesListComponent implements OnInit {
   public id: string;
-  public path: string;
+  public pathParent: string;
 
   constructor(
     private fileService: FileService,
@@ -54,22 +54,33 @@ export class FilesListComponent implements OnInit {
 
   ngOnInit() {
     this.getFilesList();
-
-    for (var i = 0; i < this.files.length; i++) {
-      this.files[i].id = this.files[i].path;
-    }
-
-    this.id = this.Aroute.snapshot.paramMap.get('id');
-    for (var i = 0; i < this.files.length; i++) {
-      if (this.files[i].id == this.id) {
-        this.files[i].isOpen = true;
-      }
-    }
   }
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
       this.files = data.list;
+
+      ////////////////////////////////////////////////
+
+      for (var i = 0; i < this.files.length; i++) {
+        this.files[i].id = this.files[i].path;
+      }
+
+      this.pathParent = this.Aroute.snapshot.paramMap.get('path');
+      this.id = this.Aroute.snapshot.paramMap.get('id');
+      console.log(this.pathParent);
+      console.log(this.id);
+      console.log(this.files.length);
+      let fullName = '/' + this.pathParent + '/' + this.id;
+      for (var i = 0; i < this.files.length; i++) {
+        console.log(this.files[i].id);
+        if (this.files[i].id == fullName) {
+          this.files[i].isOpen = true;
+        }
+      }
+
+      ////////////////////////////////
+
       console.log(data);
     });
   }
