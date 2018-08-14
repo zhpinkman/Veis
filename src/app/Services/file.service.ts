@@ -24,6 +24,7 @@ export class FileService {
   }
   mysubject = new Subject();
   showMode = new Subject();
+  selectMode = new Subject();
 
   getFiles() {
     return this.restangular.one('file/list').get({ path: '/' });
