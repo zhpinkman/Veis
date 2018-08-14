@@ -32,7 +32,7 @@ const routes: Routes = [
       },
       {
         path: ':path/:id',
-        component: FilesListComponent
+        component: RouteTestComponent
       }
     ]
   }

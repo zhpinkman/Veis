@@ -37,6 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SizePipe } from './size.pipe';
 import { MatInputModule } from '@angular/material/input';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { RouteTestComponent } from './route-test/route-test.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     FilesListComponent,
     UploadItemComponent,
     SizePipe,
-    ToolbarComponent
+    ToolbarComponent,
+    RouteTestComponent
   ],
 
   imports: [
