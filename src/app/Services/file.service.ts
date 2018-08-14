@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { RenameRequest } from './../renameRequest';
 import { DeleteRequest } from './../DeleteRequest';
@@ -9,7 +10,10 @@ import { Subject } from 'rxjs/internal/Subject';
   providedIn: 'root'
 })
 export class FileService {
-  constructor(@Inject(RESTANGULAR_AUTH) private restangular) {}
+  constructor(
+    @Inject(RESTANGULAR_AUTH) private restangular,
+    private router: Router
+  ) {}
 
   makeRequest(formData) {
     this.restangular
@@ -19,6 +23,7 @@ export class FileService {
       });
   }
   mysubject = new Subject();
+  showMode = new Subject();
 
   getFiles() {
     return this.restangular.one('file/list').get({ path: '/' });

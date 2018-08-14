@@ -1,3 +1,5 @@
+import { FileEntity } from './../file';
+import { FileService } from './../Services/file.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  constructor(private fileService: FileService) {}
 
-  constructor() { }
+  public showMode: string = 'compact';
 
-  ngOnInit() {
+  changeShowMode() {
+    if (this.showMode == 'compact') this.showMode = 'list';
+    else this.showMode = 'compact';
+    this.fileService.showMode.next(this.showMode);
   }
 
+  ngOnInit() {}
 }

@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class FilesListComponent implements OnInit {
   public id: string;
   public pathParent: string;
+  public showMode: string = 'compact';
 
   constructor(
     private fileService: FileService,
@@ -25,6 +26,10 @@ export class FilesListComponent implements OnInit {
     fileService.mysubject.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
+    });
+
+    fileService.showMode.subscribe(value => {
+      this.showMode = value.toString();
     });
   }
 

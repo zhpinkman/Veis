@@ -1,4 +1,5 @@
-<div [@list]="files.length" class="row no-gutters justify-content-center">
+<div dir="ltr" [@list]="files.length" class="no-gutters" [ngClass]="{
+  'row justify-content-center': showMode == 'compact'
+}">
   <app-compact-file class="col-auto" (deleted)="deleteFromList($event)" *ngFor="let file of files" [data]="file"></app-compact-file>
-
 </div>
