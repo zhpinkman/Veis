@@ -13,9 +13,11 @@
       </mat-form-field>
       <mat-form-field class="w-100">
         <input matInput #message maxlength="256" formControlName="password" id="password" type="password" placeholder="password">
-
+        <mat-hint align="start">
+          <strong>your password must contain Upper case and lower case letters and also numbers too </strong>
+        </mat-hint>
       </mat-form-field>
-      <mat-form-field class="w-100">
+      <mat-form-field class="w-100 my-4">
         <input matInput #message maxlength="256" formControlName="bucket" id="bucket" type="text" value="{{bucketDefaultGenerator()}}"
           placeholder="bucket">
         <mat-hint align="start">
