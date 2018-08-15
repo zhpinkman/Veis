@@ -47,16 +47,21 @@ export class SignupComponent implements OnInit {
       Validators.required,
       Validators.pattern('[^ @+-]*@(ut.ac.ir)$')
     ]);
-    this.password = new FormControl('', Validators.required);
+    this.password = new FormControl('', [
+      Validators.required,
+      Validators.pattern("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{6,}$")
+    ]);
     this.bucket = new FormControl('', Validators.required);
   }
 
   bucketDefaultGenerator() {
-    let position = this.email.value.indexOf('@');
-    if (position == -1) {
-      return this.email.value;
-    } else {
-      return this.email.value.substring(0, position);
+    if(!this.bucket.dirty){
+      let position = this.email.value.indexOf('@');
+      if (position == -1) {
+        return this.email.value;
+      } else {
+        return this.email.value.substring(0, position);
+      }
     }
   }
 

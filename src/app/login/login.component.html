@@ -1,4 +1,11 @@
-<div>
+<div class="m-5 p-3 text-center mat-elevation-z4" [hidden]="!isHidden">
+  در حال فعال سازی ...
+  <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw"></i>
+  <span class="sr-only">Activating ... </span>
+
+</div>
+
+<div [hidden]="isHidden">
   <div>
     <h5 class="mx-auto my-5" style="text-align: center">LOGIN</h5>
   </div>

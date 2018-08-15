@@ -12,13 +12,13 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.1",
-    "@angular/cdk": "^6.4.2",
+    "@angular/cdk": "^6.4.5",
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
     "@angular/core": "^6.1.1",
     "@angular/forms": "^6.0.0",
     "@angular/http": "^6.0.0",
-    "@angular/material": "^6.4.2",
+    "@angular/material": "^6.4.5",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
@@ -38,6 +38,7 @@
     "ngx-restangular": "^3.0.0",
     "ngx-uploader": "^6.0.2",
     "rxjs": "^6.0.0",
+    "save": "^2.3.2",
     "tether": "^1.4.4",
     "zone.js": "^0.8.26"
   },

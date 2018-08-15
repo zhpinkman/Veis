@@ -1,4 +1,4 @@
-import { SizePipe } from './size.pipe';
+import { SizePipe } from '@app/size.pipe';
 
 describe('SizePipe', () => {
   it('create an instance', () => {

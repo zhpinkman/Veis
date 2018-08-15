@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FullFileComponent } from './full-file.component';
+import { FullFileComponent } from '@app/full-file/full-file.component';
 
 describe('FullFileComponent', () => {
   let component: FullFileComponent;
@@ -8,9 +8,8 @@ describe('FullFileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FullFileComponent ]
-    })
-    .compileComponents();
+      declarations: [FullFileComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

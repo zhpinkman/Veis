@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilesListComponent } from '@app/files-list/files-list.component';
+import { RouteTestComponent } from '@app/route-test/route-test.component';
 
-describe('FilesListComponent', () => {
-  let component: FilesListComponent;
-  let fixture: ComponentFixture<FilesListComponent>;
+describe('RouteTestComponent', () => {
+  let component: RouteTestComponent;
+  let fixture: ComponentFixture<RouteTestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FilesListComponent]
+      declarations: [RouteTestComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilesListComponent);
+    fixture = TestBed.createComponent(RouteTestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

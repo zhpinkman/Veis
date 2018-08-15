@@ -1,4 +1,3 @@
-import { UtilitiesService } from './../Services/utilities.service';
 import { AuthService } from '@app/Services/auth.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 
@@ -10,6 +9,7 @@ import {
   UploaderOptions
 } from 'ngx-uploader';
 import { HttpHeaders } from '@angular/common/http';
+import { UtilitiesService } from '@app/Services/utilities.service';
 
 @Component({
   selector: 'app-upload-file',

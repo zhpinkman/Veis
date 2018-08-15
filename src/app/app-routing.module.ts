@@ -1,3 +1,4 @@
+import { RouteTestComponent } from '@app/route-test/route-test.component';
 import { FilesListComponent } from '@app/files-list/files-list.component';
 import { HomeComponent } from '@app/home/home.component';
 import { AuthGuard } from '@app/Services/authguard';
@@ -17,6 +18,13 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'activation',
+    component: LoginComponent,
+    data: {
+      hide: true
+    }
+  },
+  {
     path: '',
     component: HomeComponent,
     canActivate: [AuthGuard],
@@ -30,8 +38,8 @@ const routes: Routes = [
         component: FilesListComponent
       },
       {
-        path: 'list/:id',
-        component: FilesListComponent
+        path: ':path/:id',
+        component: RouteTestComponent
       }
     ]
   }
