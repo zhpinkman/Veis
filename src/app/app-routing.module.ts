@@ -40,6 +40,10 @@ const routes: Routes = [
       {
         path: ':path/:id',
         component: RouteTestComponent
+      },
+      {
+        path: ':path',
+        component: RouteTestComponent
       }
     ]
   }

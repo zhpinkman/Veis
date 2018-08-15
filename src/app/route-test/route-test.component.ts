@@ -27,7 +27,7 @@ export class RouteTestComponent implements OnInit {
 
       if (event instanceof NavigationEnd) {
         console.log('shitshitshitshit');
-        this.ngOnInit();
+        this.func();
         // Hide loading indicator
       }
 
@@ -43,26 +43,9 @@ export class RouteTestComponent implements OnInit {
   public path: string;
   public url: string;
 
-  ngOnInit() {
-    console.log('kkkkkkkkkkkkkkkkkk');
-    this.router.events.subscribe((url: any) => {
-      this.url = url;
-    });
-    console.log(this.router.url); // to print only path eg:"/login"
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.path = this.route.snapshot.paramMap.get('path');
+  ngOnInit() {}
 
-    console.log(this.id);
-    console.log(this.path);
-
-    let paths = this.path.split(' ');
-
-    for (let i = 0; i < paths.length; i++) {
-      console.log(paths[i]);
-    }
-    if (this.id != 'zhivar') {
-      console.log('ttttttttt');
-      this.router.navigate(['/zzzz yyy/zhivar']);
-    }
+  func() {
+    this.fileService.getRoute(this.route);
   }
 }
