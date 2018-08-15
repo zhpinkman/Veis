@@ -38,6 +38,7 @@ import { SizePipe } from './size.pipe';
 import { MatInputModule } from '@angular/material/input';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { RouteTestComponent } from './route-test/route-test.component';
+import { NewFolderComponent } from './new-folder/new-folder.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RouteTestComponent } from './route-test/route-test.component';
     UploadItemComponent,
     SizePipe,
     ToolbarComponent,
-    RouteTestComponent
+    RouteTestComponent,
+    NewFolderComponent
   ],
 
   imports: [
@@ -75,7 +77,7 @@ import { RouteTestComponent } from './route-test/route-test.component';
     MatInputModule,
     MatCheckboxModule
   ],
-  entryComponents: [FullFileComponent],
+  entryComponents: [FullFileComponent, NewFolderComponent],
   providers: [
     {
       provide: RESTANGULAR_AUTH,

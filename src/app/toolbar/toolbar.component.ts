@@ -1,7 +1,7 @@
-import { Subject } from 'rxjs/internal/Subject';
-import { FileEntity } from './../file';
-import { FileService } from './../Services/file.service';
+import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { NewFolderComponent } from '@app/new-folder/new-folder.component';
+import { FileService } from '@app/Services/file.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,10 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  constructor(private fileService: FileService) {
+  constructor(private fileService: FileService, private dialog: MatDialog) {
     this.fileService.selectMode.subscribe(data => {
       if (data > 0) this.selectModeToolbar = true;
       else this.selectModeToolbar = false;
+    });
+  }
+
+  openDialog(event): void {
+    const opts = new MatDialogConfig();
+    console.log(event.x + ' , ' + event.y);
+    const dialogPosition: DialogPosition = {
+      top: '8%',
+      right: '8%'
+    };
+    opts.width = '300px';
+    opts.height = '200px';
+
+    opts.position = dialogPosition;
+
+    const dialogRef = this.dialog.open(NewFolderComponent, opts);
+
+    dialogRef.afterOpen().subscribe(data => console.log('opened successfully'));
+    dialogRef.updatePosition(opts.position);
+
+    dialogRef.afterClosed().subscribe(resutl => {
+      console.log('The dialog was closed!!');
     });
   }
 

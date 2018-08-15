@@ -1,10 +1,9 @@
 import { FileEntity } from '@app/file';
-import { MatInputModule } from '@angular/material/input';
-import { list, shake } from './../animation';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { FileService } from '@app/Services/file.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { list, shake } from '@app/animation';
 
 @Component({
   selector: 'app-files-list',

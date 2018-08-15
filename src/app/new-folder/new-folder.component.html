@@ -1,0 +1,12 @@
+<div>
+  <form [formGroup]="createFolderForm">
+    <mat-form-field class="w-100">
+      <input matInput #message maxlength="256" formControlName="folderName" id="folderName" type="text">
+    </mat-form-field>
+    <div>
+      <button class="mt-4 button" mat-flat-button type="submit" color="primary" style="text-align: center" (click)="createDir()">
+        <span>create</span>
+      </button>
+    </div>
+  </form>
+</div>
