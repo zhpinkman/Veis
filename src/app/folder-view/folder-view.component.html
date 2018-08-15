@@ -1,0 +1,19 @@
+<div *ngIf="showMode == 'compact'" class="row no-gutters">
+  <div class="file-container mx-4">
+    <div class="file-icon">
+      <i class=" p-2 fa fa-5x fa-folder text-primary"></i>
+    </div>
+    <div class="file-name">
+      <span>{{folder.name}}</span>
+    </div>
+  </div>
+</div>
+
+<div dir="ltr" *ngIf="showMode == 'list'" class="row no-gutters col-12 list">
+  <div class="my-auto">
+    <i class=" p-2 fa fa-3x fa-folder text-primary"></i>
+  </div>
+  <div class="col-2 my-auto">
+    {{folder.name}}
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { FullFileComponent } from '@app/full-file/full-file.component';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
 import { FileService } from '@app/Services/file.service';
+import { PathClass } from '@app/PathClass';
 
 @Component({
   selector: 'app-compact-file',
@@ -15,7 +16,7 @@ import { FileService } from '@app/Services/file.service';
   styleUrls: ['./compact-file.component.scss']
 })
 export class CompactFileComponent implements OnInit {
-  @Input('data')
+  @Input('value')
   file: FileEntity;
 
   public showMode: string = 'compact';

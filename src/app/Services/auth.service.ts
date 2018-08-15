@@ -1,4 +1,4 @@
-import { ActivationRequest } from './../activationRequest';
+import { ActivationRequest } from '@app/activationRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_NOT_AUTH } from '@app/restangular.config';
 import { User } from '@app/User';

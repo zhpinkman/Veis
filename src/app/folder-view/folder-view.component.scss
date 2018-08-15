@@ -1,0 +1,19 @@
+.file-container {
+  margin-left: 5px;
+  margin-right: 5px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px -3px rgba(0, 0, 0, 0.4);
+  margin: 6px 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  .file-name {
+    margin-top: 8px;
+  }
+  &:hover {
+    box-shadow: 0 3px 15px -3px rgba(0, 0, 0, 0.4);
+    margin-top: 2px;
+  }
+}

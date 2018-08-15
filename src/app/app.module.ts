@@ -39,6 +39,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ToolbarComponent } from '@app/toolbar/toolbar.component';
 import { RouteTestComponent } from '@app/route-test/route-test.component';
 import { NewFolderComponent } from '@app/new-folder/new-folder.component';
+import { FolderViewComponent } from './folder-view/folder-view.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NewFolderComponent } from '@app/new-folder/new-folder.component';
     SizePipe,
     ToolbarComponent,
     RouteTestComponent,
-    NewFolderComponent
+    NewFolderComponent,
+    FolderViewComponent
   ],
 
   imports: [

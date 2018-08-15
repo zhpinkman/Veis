@@ -7,6 +7,6 @@ export class FileEntity {
   creationDate: any;
   path: string;
   isDir: Boolean;
-  isOpen: Boolean;
+  isOpen: Boolean = false;
   selected: Boolean = false;
 }

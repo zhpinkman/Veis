@@ -1,3 +1,4 @@
+import { PathClass } from '@app/PathClass';
 import { FileEntity } from '@app/file';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { FileService } from '@app/Services/file.service';
@@ -31,6 +32,10 @@ export class FilesListComponent implements OnInit {
     fileService.showMode.subscribe(value => {
       this.showMode = value.toString();
     });
+
+    fileService.newFilesComming.subscribe(value => {
+      this.getFilesList();
+    });
   }
 
   addToList(value: string) {
@@ -56,6 +61,7 @@ export class FilesListComponent implements OnInit {
 
   selectedFilesIndex = new Array<number>();
   files = new Array<FileEntity>();
+  folders = new Array<PathClass>();
 
   ngOnInit() {
     this.getFilesList();
@@ -64,25 +70,39 @@ export class FilesListComponent implements OnInit {
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
       this.files = data.list;
+      // console.log(this.files.length);
+      for (let i = 0; i < this.files.length; i++) {
+        if (this.files[i].type == 'dir') {
+          // console.log(this.files[i].path + ' , ' + this.files[i].name);
+          let path = this.files[i].path.split('/');
+          // console.log(path.length);
+          let folder = new PathClass(path[2]);
+          for (let i = 3; i < path.length; i++) {
+            folder = new PathClass(path[i], folder);
+          }
+          // console.log(folder);
+          this.folders.push(folder);
+        }
+      }
 
       ////////////////////////////////////////////////
 
-      for (var i = 0; i < this.files.length; i++) {
-        this.files[i].id = this.files[i].path;
-      }
+      // for (var i = 0; i < this.files.length; i++) {
+      //   this.files[i].id = this.files[i].path;
+      // }
 
-      this.pathParent = this.Aroute.snapshot.paramMap.get('path');
-      this.id = this.Aroute.snapshot.paramMap.get('id');
-      console.log(this.pathParent);
-      console.log(this.id);
-      console.log(this.files.length);
-      let fullName = '/' + this.pathParent + '/' + this.id;
-      for (var i = 0; i < this.files.length; i++) {
-        console.log(this.files[i].id);
-        if (this.files[i].id == fullName) {
-          this.files[i].isOpen = true;
-        }
-      }
+      // this.pathParent = this.Aroute.snapshot.paramMap.get('path');
+      // this.id = this.Aroute.snapshot.paramMap.get('id');
+      // console.log(this.pathParent);
+      // console.log(this.id);
+      // console.log(this.files.length);
+      // let fullName = '/' + this.pathParent + '/' + this.id;
+      // for (var i = 0; i < this.files.length; i++) {
+      //   console.log(this.files[i].id);
+      //   if (this.files[i].id == fullName) {
+      //     this.files[i].isOpen = true;
+      //   }
+      // }
 
       ////////////////////////////////
 

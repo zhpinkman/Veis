@@ -3,7 +3,7 @@
   <div class="col-1 mx-3">
     <a href="#" (click)="changeShowMode()" class="text-black-50">{{showMode}}</a>
   </div>
-  <div class="col-1" *ngIf="selectModeToolbar">
+  <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
   </div>
   <div class="newFolder" (click)="openDialog($event)">

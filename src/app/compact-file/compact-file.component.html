@@ -1,4 +1,4 @@
-<div *ngIf="showMode == 'compact'" class="row no-gutters">
+<div *ngIf="showMode == 'compact' && file.type != 'dir'" class="row no-gutters">
   <div (dblclick)="openDialog()" (click)="select()" class="file-container mx-4" [ngClass]="{
     'shake ' : file.selected
   }">
@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div dir="ltr" *ngIf="showMode == 'list'" class="row no-gutters col-12 list">
+<div dir="ltr" *ngIf="showMode == 'list' && file.type != 'dir'" class="row no-gutters col-12 list">
   <div class="my-auto">
     <i [class]=" 'p-2 fa fa-3x' + consts.icons[file.type]"></i>
   </div>

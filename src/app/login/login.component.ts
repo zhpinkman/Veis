@@ -1,4 +1,4 @@
-import { ActivationRequest } from './../activationRequest';
+import { ActivationRequest } from '@app/activationRequest';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { HomeComponent } from '@app/home/home.component';
 import { Component, OnInit } from '@angular/core';

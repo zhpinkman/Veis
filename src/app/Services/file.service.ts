@@ -1,7 +1,9 @@
+import { mkDirRequest } from './../mkDirRequest';
+import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { RenameRequest } from './../renameRequest';
-import { DeleteRequest } from './../DeleteRequest';
+import { RenameRequest } from '@app/renameRequest';
+import { DeleteRequest } from '@app/DeleteRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
 import { PathClass } from '@app/PathClass';
@@ -47,9 +49,21 @@ export class FileService {
   mysubject = new Subject();
   showMode = new Subject();
   selectMode = new Subject();
+  newFilesComming = new Subject();
 
   getFiles() {
     return this.restangular.one('file/list').get({ path: '/' });
+  }
+  mkDir(folderName: string) {
+    let mkDirRequest: mkDirRequest = {
+      name: folderName,
+      path: this.currentPath.pathToString()
+    };
+    if (mkDirRequest.path == '/') {
+      mkDirRequest.path = '';
+      console.log('path was / ');
+    }
+    return this.restangular.one('file/mkDir').customPOST(mkDirRequest);
   }
 
   renameFile(renameRequest: RenameRequest) {

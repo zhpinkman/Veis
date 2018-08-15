@@ -16,10 +16,13 @@ export class ToolbarComponent implements OnInit {
       if (data > 0) this.selectModeToolbar = true;
       else this.selectModeToolbar = false;
     });
+    fileService.newFilesComming.subscribe(value => {
+      this.dialog.closeAll();
+    });
   }
-  showCurrentPath(){
-    let path:String = this.fileService.currentPath.toString();
-    console.log (path)
+  showCurrentPath() {
+    let path: String = this.fileService.currentPath.toString();
+    console.log(path);
   }
   openDialog(event): void {
     const opts = new MatDialogConfig();
@@ -52,6 +55,4 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {}
-
 }
-

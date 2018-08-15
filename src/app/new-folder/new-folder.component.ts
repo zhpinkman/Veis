@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs/internal/Subject';
+import { FileService } from '@app/Services/file.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -12,7 +14,7 @@ import {
   styleUrls: ['./new-folder.component.scss']
 })
 export class NewFolderComponent implements OnInit {
-  constructor() {}
+  constructor(private fileService: FileService) {}
 
   createFolderForm: FormGroup;
   folderName: FormControl;
@@ -26,6 +28,9 @@ export class NewFolderComponent implements OnInit {
 
   createDir() {
     console.log(this.folderName.value);
-    console.log('created!!');
+    this.fileService.mkDir(this.folderName.value).subscribe(val => {
+      console.log('created!!');
+      this.fileService.newFilesComming.next();
+    });
   }
 }
