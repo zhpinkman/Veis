@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewFolderComponent } from './new-folder.component';
+import { NewFolderComponent } from '@app/new-folder/new-folder.component';
 
 describe('NewFolderComponent', () => {
   let component: NewFolderComponent;
@@ -8,9 +8,8 @@ describe('NewFolderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewFolderComponent ]
-    })
-    .compileComponents();
+      declarations: [NewFolderComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

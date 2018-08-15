@@ -1,4 +1,4 @@
-import { RouteTestComponent } from './route-test/route-test.component';
+import { RouteTestComponent } from '@app/route-test/route-test.component';
 import { FilesListComponent } from '@app/files-list/files-list.component';
 import { HomeComponent } from '@app/home/home.component';
 import { AuthGuard } from '@app/Services/authguard';
@@ -16,6 +16,13 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'activation',
+    component: LoginComponent,
+    data: {
+      hide: true
+    }
   },
   {
     path: '',

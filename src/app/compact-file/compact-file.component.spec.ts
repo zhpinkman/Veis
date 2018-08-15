@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompactFileComponent } from './compact-file.component';
+import { CompactFileComponent } from '@app/compact-file/compact-file.component';
 
 describe('CompactFileComponent', () => {
   let component: CompactFileComponent;
@@ -8,9 +8,8 @@ describe('CompactFileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CompactFileComponent ]
-    })
-    .compileComponents();
+      declarations: [CompactFileComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

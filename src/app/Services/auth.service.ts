@@ -1,3 +1,4 @@
+import { ActivationRequest } from './../activationRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_NOT_AUTH } from '@app/restangular.config';
 import { User } from '@app/User';
@@ -68,5 +69,9 @@ export class AuthService {
           return data.access_token;
         })
       );
+  }
+
+  activationRequest(request: ActivationRequest) {
+    return this.restangular.one('user/activate').customPOST(request);
   }
 }

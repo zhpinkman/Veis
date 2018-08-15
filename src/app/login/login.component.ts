@@ -1,10 +1,11 @@
+import { ActivationRequest } from './../activationRequest';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { HomeComponent } from '@app/home/home.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '@app/Services/auth.service';
 import { User } from '@app/User';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -29,11 +30,37 @@ export class LoginComponent implements OnInit {
   password: FormControl;
   loginForm: FormGroup;
   spinHide: boolean = true;
+  isHidden: boolean = false;
   constructor(
     private authService: AuthService,
     private router: Router,
-    private utils: UtilitiesService
+    private utils: UtilitiesService,
+    private route: ActivatedRoute
   ) {
+    this.route.data.subscribe(data => {
+      console.log(data['hide']);
+      if (data['hide']) this.isHidden = true;
+    });
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      if (params['userId'] && params['token']) {
+        // console.log('asdasdasdas');
+        let request = new ActivationRequest();
+        request.userId = params['userId'];
+        request.token = params['token'];
+        this.authService.activationRequest(request).subscribe(
+          data => {
+            this.utils.success('Activated', 'Your account is activated now');
+            this.isHidden = false;
+          },
+          error => {
+            this.utils.error('Not Activated', error.data.message);
+            this.isHidden = false;
+            console.log(error);
+          }
+        );
+      }
+    });
     this.utils.setTitle('Login');
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.password = new FormControl('', [Validators.required]);

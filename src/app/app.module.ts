@@ -21,11 +21,11 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from '@app/home/home.component';
 import { HeaderComponent } from '@app/header/header.component';
-import { CompactFileComponent } from './compact-file/compact-file.component';
-import { FullFileComponent } from './full-file/full-file.component';
+import { CompactFileComponent } from '@app/compact-file/compact-file.component';
+import { FullFileComponent } from '@app/full-file/full-file.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FilesListComponent } from './files-list/files-list.component';
-import { UploadItemComponent } from './upload-item/upload-item.component';
+import { FilesListComponent } from '@app/files-list/files-list.component';
+import { UploadItemComponent } from '@app/upload-item/upload-item.component';
 import {
   MatProgressBarModule,
   MatFormFieldModule,
@@ -34,11 +34,11 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
-import { SizePipe } from './size.pipe';
+import { SizePipe } from '@app/size.pipe';
 import { MatInputModule } from '@angular/material/input';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { RouteTestComponent } from './route-test/route-test.component';
-import { NewFolderComponent } from './new-folder/new-folder.component';
+import { ToolbarComponent } from '@app/toolbar/toolbar.component';
+import { RouteTestComponent } from '@app/route-test/route-test.component';
+import { NewFolderComponent } from '@app/new-folder/new-folder.component';
 
 @NgModule({
   declarations: [

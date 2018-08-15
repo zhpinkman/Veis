@@ -1,4 +1,4 @@
 export class DeleteRequest {
-  public path: String;
-  public id: String;
+  public path: string;
+  public id: string;
 }
