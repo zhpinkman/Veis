@@ -17,7 +17,10 @@ export class ToolbarComponent implements OnInit {
       else this.selectModeToolbar = false;
     });
   }
-
+  showCurrentPath(){
+    let path:String = this.fileService.currentPath.toString();
+    console.log (path)
+  }
   openDialog(event): void {
     const opts = new MatDialogConfig();
     console.log(event.x + ' , ' + event.y);
@@ -49,8 +52,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {}
-  showCurrentPath() {
-    // let path: String = file.toString();
-  }
+
 }
 

@@ -1,12 +1,11 @@
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { RenameRequest } from './../renameRequest';
 import { DeleteRequest } from './../DeleteRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
-// import { PathClass } from '@app/PathClass';
+import { PathClass } from '@app/PathClass';
 import { Subject } from 'rxjs/internal/Subject';
-import { Route } from '@angular/compiler/src/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +15,28 @@ export class FileService {
     @Inject(RESTANGULAR_AUTH) private restangular,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    console.log('zzz');
+    router.events.subscribe((url: any) => {
+      //  console.log(url);
+      if (url instanceof NavigationEnd) {
+        console.log(url);
+        console.log(url.url);
+        let path = url.url.toString().split('/');
+        let parent = path[1].split('%5E');
 
+        this.currentPath = new PathClass(parent[0]);
+        for (let i = 1; i < parent.length; i++) {
+          this.currentPath = new PathClass(parent[i], this.currentPath);
+        }
+        console.log(this.currentPath);
+        console.log(this.currentPath.name);
+        console.log(this.currentPath.pathToString());
+      }
+    });
+  }
+
+  public currentPath: PathClass;
   makeRequest(formData) {
     this.restangular
       .one('file/upload')
@@ -42,20 +61,4 @@ export class FileService {
   navigateTo() {
     // TO DO
   }
-
-  getRoute(route: ActivatedRoute) {
-    let id = route.snapshot.paramMap.get('id');
-    let path = route.snapshot.paramMap.get('path');
-
-    console.log(id);
-    console.log(path);
-
-    let paths = path.split(' ');
-
-    for (let i = 0; i < paths.length; i++) {
-      console.log(paths[i]);
-    }
-  }
-
-  // getParent() {}
 }
