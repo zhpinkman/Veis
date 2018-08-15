@@ -13,7 +13,7 @@ import { Subject } from 'rxjs/internal/Subject';
 export class FileService {
   constructor(
     @Inject(RESTANGULAR_AUTH) private restangular,
-    private currentPath: PathClass,
+    public currentPath: PathClass,
     private router: Router
   ) {}
 
