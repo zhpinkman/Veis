@@ -39,11 +39,11 @@ const routes: Routes = [
       },
       {
         path: ':path/:id',
-        component: RouteTestComponent
+        component: FilesListComponent
       },
       {
         path: ':path',
-        component: RouteTestComponent
+        component: FilesListComponent
       }
     ]
   }

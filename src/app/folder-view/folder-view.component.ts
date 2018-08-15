@@ -20,4 +20,8 @@ export class FolderViewComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  openFolder() {
+    this.fileService.navigateTo(this.folder);
+  }
 }

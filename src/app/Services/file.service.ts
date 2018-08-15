@@ -23,17 +23,21 @@ export class FileService {
       //  console.log(url);
       if (url instanceof NavigationEnd) {
         console.log(url);
-        console.log(url.url);
+        // console.log(url.url);
         let path = url.url.toString().split('/');
         let parent = path[1].split('%5E');
 
+        if (parent.toString() == 'upload') return;
+        // console.log('test');
         this.currentPath = new PathClass(parent[0]);
         for (let i = 1; i < parent.length; i++) {
           this.currentPath = new PathClass(parent[i], this.currentPath);
         }
-        console.log(this.currentPath);
-        console.log(this.currentPath.name);
-        console.log(this.currentPath.pathToString());
+        // console.log(this.currentPath);
+        // console.log(this.currentPath.name);
+        // console.log(this.currentPath.pathToString());
+
+        this.loadFiles.next();
       }
     });
   }
@@ -50,9 +54,12 @@ export class FileService {
   showMode = new Subject();
   selectMode = new Subject();
   newFilesComming = new Subject();
+  loadFiles = new Subject();
 
   getFiles() {
-    return this.restangular.one('file/list').get({ path: '/' });
+    return this.restangular
+      .one('file/list')
+      .get({ path: this.currentPath.pathToString() });
   }
   mkDir(folderName: string) {
     let mkDirRequest: mkDirRequest = {
@@ -72,7 +79,9 @@ export class FileService {
   deleteFile(id: string, deleteRequest: DeleteRequest) {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
   }
-  navigateTo() {
-    // TO DO
+  navigateTo(folder: PathClass) {
+    this.currentPath = folder;
+    console.log(folder.pathToString());
+    this.router.navigate(['/' + folder.pathToString()]);
   }
 }

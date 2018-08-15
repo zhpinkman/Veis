@@ -36,6 +36,10 @@ export class FilesListComponent implements OnInit {
     fileService.newFilesComming.subscribe(value => {
       this.getFilesList();
     });
+
+    fileService.loadFiles.subscribe(value => {
+      this.getFilesList();
+    });
   }
 
   addToList(value: string) {
@@ -64,7 +68,7 @@ export class FilesListComponent implements OnInit {
   folders = new Array<PathClass>();
 
   ngOnInit() {
-    this.getFilesList();
+    // this.getFilesList();
   }
 
   getFilesList() {

@@ -1,4 +1,4 @@
-<div *ngIf="showMode == 'compact'" class="row no-gutters">
+<div (click)="openFolder()" *ngIf="showMode == 'compact'" class="row no-gutters">
   <div class="file-container mx-4">
     <div class="file-icon">
       <i class=" p-2 fa fa-5x fa-folder text-primary"></i>

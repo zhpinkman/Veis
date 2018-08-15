@@ -1,3 +1,4 @@
+import { FileService } from './../Services/file.service';
 import { AuthService } from '@app/Services/auth.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 
@@ -27,6 +28,7 @@ export class UploadFileComponent implements OnInit {
   dragOver: boolean;
 
   constructor(
+    private fileService: FileService,
     private authService: AuthService,
     private utilitiesService: UtilitiesService
   ) {
@@ -107,8 +109,9 @@ export class UploadFileComponent implements OnInit {
       url: 'http://localhost:9500/file/upload',
       method: 'POST',
       headers: { Authorization: 'bearer ' + token }, // <----  set headers
-      data: { path: '/' }
+      data: { path: this.fileService.currentPath.pathToString() }
     };
+    console.log(this.fileService.currentPath.pathToString());
 
     this.uploadInput.emit(event);
   }
