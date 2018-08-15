@@ -2,12 +2,16 @@ import { RenameRequest } from './../renameRequest';
 import { DeleteRequest } from './../DeleteRequest';
 import { Injectable, Inject, Pipe } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
+import { PathClass } from '@app/PathClass';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
-  constructor(@Inject(RESTANGULAR_AUTH) private restangular) {}
+  constructor(
+    @Inject(RESTANGULAR_AUTH) private restangular,
+    private currentPath: PathClass
+  ) {}
 
   makeRequest(formData) {
     this.restangular
@@ -26,6 +30,8 @@ export class FileService {
   }
   deleteFile(id: string, deleteRequest: DeleteRequest) {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
-    // .delete({ path: '/api' }, { params: { id: id, path: '/' } });
+  }
+  navigateTo() {
+    // TO DO
   }
 }
