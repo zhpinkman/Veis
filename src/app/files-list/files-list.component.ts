@@ -76,19 +76,21 @@ export class FilesListComponent implements OnInit {
       this.files = data.list;
       this.folders.splice(0, this.folders.length);
       // console.log(this.files.length);
-      for (let i = 0; i < this.files.length; i++) {
-        if (this.files[i].type == 'dir') {
-          // console.log(this.files[i].path + ' , ' + this.files[i].name);
-          let path = this.files[i].path.split('/');
+      this.files.forEach(val => {
+        if (val.type == 'dir') {
+          // console.log(val.path + ' , ' + val.name);
+          let path = val.path.split('/');
           // console.log(path.length);
           let folder = new PathClass(path[2]);
-          for (let i = 3; i < path.length; i++) {
-            folder = new PathClass(path[i], folder);
-          }
+          path.forEach(p => {
+            folder = new PathClass(p, folder);
+          });
           // console.log(folder);
           this.folders.push(folder);
         }
-      }
+      });
+
+      this.files = this.files.filter(val => val.type !== 'dir');
 
       ////////////////////////////////////////////////
 
