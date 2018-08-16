@@ -48,11 +48,13 @@ export class ToolbarComponent implements OnInit {
 
   public showMode: string = 'compact';
   public selectModeToolbar: Boolean = false;
+  public showListIcon: Boolean = false;
   changeShowMode() {
     if (this.showMode == 'compact') this.showMode = 'list';
     else this.showMode = 'compact';
     this.fileService.showMode.next(this.showMode);
+    this.showListIcon = !this.showListIcon;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

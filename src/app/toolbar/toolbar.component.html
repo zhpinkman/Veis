@@ -1,7 +1,14 @@
 <div class="row container-fluid box-item px-3 py-3">
   <div class="row align-items-start"></div>
   <div class="col-auto mx-3">
-    <a href="#" (click)="changeShowMode()" class="text-black-50">{{showMode}}</a>
+    <a href="#" class="text-black-50">
+      <div [hidden]="showListIcon">
+        <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
+      </div>
+      <div [hidden]="!showListIcon">
+        <i class="fa fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
+      </div>
+    </a>
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
