@@ -2,7 +2,7 @@
   <div class="col">
     <ul class="BC">
       <li *ngFor="let b of breadcrumbs; let i = index">
-        <span>{{b.name}}</span>
+        <span class="btn" (click)="navigateTo(b)">{{b.name}}</span>
         <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-left" aria-hidden="true"></i>
       </li>
     </ul>
