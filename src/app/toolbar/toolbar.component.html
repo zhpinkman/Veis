@@ -11,27 +11,19 @@
   </div>
   <div class="row align-items-start"></div>
   <div class="col-auto mx-3">
-    <a href="#" class="text-black-50">
+    <div class="text-black-50">
       <div [hidden]="showListIcon">
         <i class="fa fa-2x fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
       <div [hidden]="!showListIcon">
         <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
-    </a>
+    </div>
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
   </div>
   <div class="button col-auto" (click)="openDialog($event)">
     new folder
-    <div class="box-item justify-content-between no-gutters px-3 py-3 row">
-      <div class="A row">
-        <div class="row align-items-start"></div>
-        <div class="col-auto mx-3">
-          <a href="#" (click)="changeShowMode()" class="text-black-50">{{showMode}}</a>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

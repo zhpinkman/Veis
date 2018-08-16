@@ -35,6 +35,7 @@ export class FileService {
           path.splice(1, 1);
           console.log(path);
 
+          // path.reduce();
           this.currentPath = new PathClass(path[0]);
           for (let i = 1; i < path.length; i++) {
             this.currentPath = new PathClass(path[i], this.currentPath);
