@@ -50,7 +50,7 @@ export class FileService {
         'Content-Type': undefined
       });
   }
-  mysubject = new Subject();
+  select = new Subject();
   showMode = new Subject();
   selectMode = new Subject();
   newFilesComming = new Subject();
@@ -81,7 +81,17 @@ export class FileService {
   }
   navigateTo(folder: PathClass) {
     this.currentPath = folder;
-    console.log(folder.pathToString());
-    this.router.navigate(['/' + folder.pathToString()]);
+    console.log(',,' + folder.pathToString() + ',,');
+    let paths = folder.pathToString().split('/');
+    for (let i = 0; i < paths.length; i++) {
+      console.log(paths[i]);
+    }
+    let route: string = '/';
+    for (let i = 1; i < paths.length; i++) {
+      route += paths[i];
+      if (i != paths.length - 1) route += '^';
+    }
+    console.log(route);
+    this.router.navigate([route]);
   }
 }

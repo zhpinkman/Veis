@@ -37,6 +37,10 @@ const routes: Routes = [
         path: '',
         component: FilesListComponent
       },
+      // {
+      //   path: '**',
+      //   component: FilesListComponent
+      // }
       {
         path: ':path/:id',
         component: FilesListComponent

@@ -55,6 +55,6 @@ export class CompactFileComponent implements OnInit {
     });
   }
   select() {
-    this.fileService.mysubject.next(this.file.name);
+    this.fileService.select.next(this.file.name);
   }
 }

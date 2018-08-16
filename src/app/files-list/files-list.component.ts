@@ -23,7 +23,7 @@ export class FilesListComponent implements OnInit {
     private utils: UtilitiesService
   ) {
     utils.setTitle('Your Files');
-    fileService.mysubject.subscribe(value => {
+    fileService.select.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
       this.fileService.selectMode.next(this.selectedFilesIndex.length);
