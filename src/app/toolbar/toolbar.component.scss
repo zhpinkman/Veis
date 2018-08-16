@@ -5,17 +5,15 @@
 .BC {
   list-style-type: none;
   li {
-    padding: 3px;
-    span {
-      padding: 5px;
-    }
+    color: gray;
+    margin: 3px;
     display: inline-block;
     &:last-child {
-      color: #9c27b0
+      color: #9c27b0;
     }
   }
 }
 
 .A {
-  display: inline-block
+  display: inline-block;
 }
