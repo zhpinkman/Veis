@@ -74,6 +74,7 @@ export class FilesListComponent implements OnInit {
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
       this.files = data.list;
+      this.folders.splice(0, this.folders.length);
       // console.log(this.files.length);
       for (let i = 0; i < this.files.length; i++) {
         if (this.files[i].type == 'dir') {

@@ -1,12 +1,14 @@
 <div class="row container-fluid box-item px-3 py-3">
   <div class="row align-items-start"></div>
   <div class="col-auto mx-3">
-    <a href="#" (click)="changeShowMode()" class="text-black-50">{{showMode}}</a>
+    <div (click)="changeShowMode()" class="text-black-50 button">
+      {{showMode}}
+    </div>
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
   </div>
-  <div class="newFolder col-auto" (click)="openDialog($event)">
+  <div class="button col-auto" (click)="openDialog($event)">
     new folder
   </div>
 </div>
