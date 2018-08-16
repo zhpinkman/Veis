@@ -11,15 +11,12 @@
   <div class="col-auto mx-3">
     <a href="#" class="text-black-50">
       <div [hidden]="showListIcon">
-        <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
+        <i class="fa fa-2x fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
       <div [hidden]="!showListIcon">
-        <i class="fa fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
+        <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
     </a>
-    <div (click)="changeShowMode()" class="text-black-50 button">
-      {{showMode}}
-    </div>
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
