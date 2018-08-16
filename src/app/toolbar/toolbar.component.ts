@@ -66,17 +66,17 @@ export class ToolbarComponent implements OnInit {
   breadcrumbs = [];
   makeBreadCrumbs() {
     let currentPath: PathClass = this.fileService.currentPath;
+    console.log(currentPath.name);
     this.breadcrumbs = [];
     while (currentPath.getParent() != null) {
       this.breadcrumbs.push(currentPath);
       currentPath = currentPath.getParent();
     }
     this.breadcrumbs.reverse();
-    // this.breadcrumbs = [{ name: 'mary' }, { name: 'mar' }, { name: 'm' }];
   }
   navigateTo(path: PathClass) {
     this.fileService.currentPath = path;
-    console.log(this.fileService.currentPath.name);
+    // console.log(this.fileService.currentPath.name);
     this.makeBreadCrumbs();
   }
 }
