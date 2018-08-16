@@ -34,21 +34,26 @@ const routes: Routes = [
         component: UploadFileComponent
       },
       {
-        path: '',
+        path: 'myfiles',
         component: FilesListComponent
       },
+      {
+        path: 'myfiles',
+        children: [
+          {
+            path: '**',
+            component: FilesListComponent
+          }
+        ]
+      }
       // {
-      //   path: '**',
+      //   path: ':path/:id',
+      //   component: FilesListComponent
+      // },
+      // {
+      //   path: ':path',
       //   component: FilesListComponent
       // }
-      {
-        path: ':path/:id',
-        component: FilesListComponent
-      },
-      {
-        path: ':path',
-        component: FilesListComponent
-      }
     ]
   }
 ];

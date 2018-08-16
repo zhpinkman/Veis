@@ -73,24 +73,39 @@ export class FilesListComponent implements OnInit {
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
+      console.log('wewe');
       this.files = data.list;
       this.folders.splice(0, this.folders.length);
       // console.log(this.files.length);
-      this.files.forEach(val => {
-        if (val.type == 'dir') {
-          // console.log(val.path + ' , ' + val.name);
-          let path = val.path.split('/');
-          // console.log(path.length);
-          let folder = new PathClass(path[2]);
-          path.forEach(p => {
-            folder = new PathClass(p, folder);
-          });
-          // console.log(folder);
-          this.folders.push(folder);
-        }
-      });
+      // this.files.forEach(val => {
+      //   if (val.type == 'dir') {
+      //     // console.log(val.path + ' , ' + val.name);
+      //     let path = val.path.split('/');
+      //     // console.log(path.length);
+      //     let folder = new PathClass(path[2]);
+      //     path.forEach(p => {
+      //       folder = new PathClass(p, folder);
+      //     });
+      //     // console.log(folder);
+      //     this.folders.push(folder);
+      //   }
+      // });
 
+      const folders = this.files.filter(val => val.type === 'dir').map(dir => ({
+        ...dir,
+        path: dir.path.substring(
+          dir.path.indexOf('/', 1) + 1,
+          dir.path.length - 1
+        )
+      }));
       this.files = this.files.filter(val => val.type !== 'dir');
+      console.log(folders);
+      console.log(this.fileService.currentPath);
+      folders.forEach(dir => {
+        // const splitedPath = dir.path.split('/');
+        let folder = new PathClass(dir.name, this.fileService.currentPath);
+        this.folders.push(folder);
+      });
 
       ////////////////////////////////////////////////
 
