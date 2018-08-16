@@ -16,18 +16,20 @@
   </div>
   <div class="col-auto mx-3">
     <div class="text-black-50">
-      <div [hidden]="showListIcon">
+      <div class="btn" [hidden]="showListIcon">
         <i class="fa fa-2x fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
-      <div [hidden]="!showListIcon">
+      <div class="btn" [hidden]="!showListIcon">
         <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
     </div>
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
-    copy, cut
+    <i class="btn fa fa-2x fa-files-o mx-1 p-2" aria-hidden="true"></i>
+    <i class="btn fa fa-2x fa-scissors mx-1 p-2" aria-hidden="true"></i>
   </div>
   <div class="button col-auto" (click)="openDialog($event)">
-    new folder
+    <i class="fa fa-2x fa-folder-o p-2" aria-hidden="true"></i>
+    <i class="fa fa-1x fa-plus plus-icon" aria-hidden="true"></i>
   </div>
 </div>
