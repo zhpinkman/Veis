@@ -20,6 +20,7 @@ export class CompactFileComponent implements OnInit {
   file: FileEntity;
 
   public showMode: string = 'compact';
+  public mouseOn: Boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -56,5 +57,12 @@ export class CompactFileComponent implements OnInit {
   }
   select() {
     this.fileService.select.next(this.file.name);
+  }
+
+  hoverOn() {
+    this.mouseOn = true;
+  }
+  hoverOff() {
+    this.mouseOn = false;
   }
 }
