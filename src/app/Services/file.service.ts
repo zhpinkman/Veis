@@ -19,25 +19,34 @@ export class FileService {
     private router: Router
   ) {
     console.log('zzz');
-    router.events.subscribe((url: any) => {
-      //  console.log(url);
+    this.handleRouteChange();
+  }
+
+  handleRouteChange() {
+    this.router.events.subscribe((url: any) => {
+      // console.log(url);
       if (url instanceof NavigationEnd) {
-        console.log(url);
-        // console.log(url.url);
+        // console.log(url);
+        console.log(url.url);
         let path = url.url.toString().split('/');
-        let parent = path[1].split('%5E');
 
-        if (parent.toString() == 'upload') return;
         // console.log('test');
-        this.currentPath = new PathClass(parent[0]);
-        for (let i = 1; i < parent.length; i++) {
-          this.currentPath = new PathClass(parent[i], this.currentPath);
-        }
-        // console.log(this.currentPath);
-        // console.log(this.currentPath.name);
-        // console.log(this.currentPath.pathToString());
+        if (path.length >= 2 && path[1] === 'myfiles') {
+          path.splice(1, 1);
+          console.log(path);
 
-        this.loadFiles.next();
+          this.currentPath = new PathClass(path[0]);
+          for (let i = 1; i < path.length; i++) {
+            this.currentPath = new PathClass(path[i], this.currentPath);
+          }
+          console.log(this.currentPath);
+          // console.log(this.currentPath.name);
+          // console.log(this.currentPath.pathToString());
+
+          this.loadFiles.next();
+        } else {
+          return;
+        }
       }
     });
   }
@@ -57,9 +66,10 @@ export class FileService {
   loadFiles = new Subject();
 
   getFiles() {
+    console.log(this.currentPath);
     return this.restangular
       .one('file/list')
-      .get({ path: this.currentPath.pathToString() });
+      .get({ path: `${this.currentPath.pathToString()}` });
   }
   mkDir(folderName: string) {
     let mkDirRequest: mkDirRequest = {
@@ -80,18 +90,17 @@ export class FileService {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
   }
   navigateTo(folder: PathClass) {
-    this.currentPath = folder;
-    console.log(',,' + folder.pathToString() + ',,');
-    let paths = folder.pathToString().split('/');
-    for (let i = 0; i < paths.length; i++) {
-      console.log(paths[i]);
-    }
-    let route: string = '/';
-    for (let i = 1; i < paths.length; i++) {
-      route += paths[i];
-      if (i != paths.length - 1) route += '^';
-    }
-    console.log(route);
-    this.router.navigate([route]);
+    // this.currentPath = folder;
+    console.log(folder, ',,', folder.toRoute(), ',,');
+    // let paths = folder.toRoute().split('/');
+    // console.log(folder.toRoute());
+
+    // for (let i = 0; i < paths.length; i++) {
+    // console.log(paths[i]);
+    // }
+    // let route: string = ;
+
+    // console.log(route);
+    this.router.navigate([folder.toRoute()]);
   }
 }

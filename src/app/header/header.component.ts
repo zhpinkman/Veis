@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['/myfiles']);
   }
 
   navigateToUpload() {
