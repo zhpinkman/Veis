@@ -1,3 +1,21 @@
 .button {
   cursor: pointer;
 }
+
+.BC {
+  list-style-type: none;
+  li {
+    padding: 3px;
+    span {
+      padding: 5px;
+    }
+    display: inline-block;
+    &:last-child {
+      color: #9c27b0
+    }
+  }
+}
+
+.A {
+  display: inline-block
+}
