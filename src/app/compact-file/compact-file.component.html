@@ -1,7 +1,10 @@
 <div *ngIf="showMode == 'compact' && file.type != 'dir'" class="row no-gutters">
-  <div (dblclick)="openDialog()" (click)="select()" class="file-container mx-4" [ngClass]="{
+  <div (dblclick)="openDialog()" (click)="select()" class="file-container mx-4 parent" [ngClass]="{
     'shake ' : file.selected
   }">
+    <div class="selectIcon" *ngIf="file.selected == true">
+      <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
     <div class="file-icon">
       <i [class]=" 'p-2 fa fa-5x' + consts.icons[file.type]"></i>
     </div>

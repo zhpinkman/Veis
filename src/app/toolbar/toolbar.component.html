@@ -1,6 +1,7 @@
 <div class="row container-fluid box-item px-3 py-3">
   <div class="row align-items-start"></div>
   <div class="col-auto mx-3">
+<<<<<<< HEAD
     <a href="#" class="text-black-50">
       <div [hidden]="showListIcon">
         <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
@@ -9,11 +10,16 @@
         <i class="fa fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
     </a>
+=======
+    <div (click)="changeShowMode()" class="text-black-50 button">
+      {{showMode}}
+    </div>
+>>>>>>> 55011024359eee8fb1893a4065b24fb2cc418888
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
   </div>
-  <div class="newFolder col-auto" (click)="openDialog($event)">
+  <div class="button col-auto" (click)="openDialog($event)">
     new folder
   </div>
 </div>
