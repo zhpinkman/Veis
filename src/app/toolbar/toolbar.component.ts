@@ -1,9 +1,15 @@
 import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/Services/auth.service';
-import { Router } from '@angular/router';
+import { Router, Params } from '@angular/router';
 import { NewFolderComponent } from '@app/new-folder/new-folder.component';
 import { FileService } from '@app/Services/file.service';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  UrlSegment
+} from '@angular/router';
+import { PathClass } from '@app/PathClass';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,7 +17,11 @@ import { FileService } from '@app/Services/file.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  constructor(private fileService: FileService, private dialog: MatDialog) {
+  constructor(
+    private fileService: FileService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {
     this.fileService.selectMode.subscribe(data => {
       if (data > 0) this.selectModeToolbar = true;
       else this.selectModeToolbar = false;
@@ -20,9 +30,8 @@ export class ToolbarComponent implements OnInit {
       this.dialog.closeAll();
     });
   }
-  showCurrentPath() {
-    let path: String = this.fileService.currentPath.toString();
-    console.log(path);
+  ngOnInit() {
+    this.makeBreadCrumbs();
   }
   openDialog(event): void {
     const opts = new MatDialogConfig();
@@ -45,14 +54,29 @@ export class ToolbarComponent implements OnInit {
       console.log('The dialog was closed!!');
     });
   }
-
   public showMode: string = 'compact';
   public selectModeToolbar: Boolean = false;
+  public showListIcon: Boolean = false;
   changeShowMode() {
     if (this.showMode == 'compact') this.showMode = 'list';
     else this.showMode = 'compact';
     this.fileService.showMode.next(this.showMode);
+    this.showListIcon = !this.showListIcon;
   }
-
-  ngOnInit() {}
+  breadcrumbs = [];
+  makeBreadCrumbs() {
+    let currentPath: PathClass = this.fileService.currentPath;
+    this.breadcrumbs = [];
+    while (currentPath.getParent() != null) {
+      this.breadcrumbs.push(currentPath);
+      currentPath = currentPath.getParent();
+    }
+    this.breadcrumbs.reverse();
+    // this.breadcrumbs = [{ name: 'mary' }, { name: 'mar' }, { name: 'm' }];
+  }
+  navigateTo(path: PathClass) {
+    this.fileService.currentPath = path;
+    console.log(this.fileService.currentPath.name);
+    this.makeBreadCrumbs();
+  }
 }

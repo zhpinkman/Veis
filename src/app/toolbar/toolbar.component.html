@@ -1,14 +1,38 @@
 <div class="row container-fluid box-item px-3 py-3">
+  <div class="col">
+    <ul class="BC">
+      <li *ngFor="let b of breadcrumbs; let i = index">
+        <span class="btn" (click)="navigateTo(b)">{{b.name}}</span>
+        <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-left" aria-hidden="true"></i>
+      </li>
+    </ul>
+  </div>
   <div class="row align-items-start"></div>
   <div class="col-auto mx-3">
-    <div (click)="changeShowMode()" class="text-black-50 button">
-      {{showMode}}
-    </div>
+    <a href="#" class="text-black-50">
+      <div [hidden]="showListIcon">
+        <i class="fa fa-2x fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
+      </div>
+      <div [hidden]="!showListIcon">
+        <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
+      </div>
+    </a>
   </div>
   <div class="col-auto" *ngIf="selectModeToolbar">
     copy, cut
   </div>
   <div class="button col-auto" (click)="openDialog($event)">
     new folder
+<<<<<<< HEAD
+=======
+    <div class="box-item justify-content-between no-gutters px-3 py-3 row">
+      <div class="A row">
+        <div class="row align-items-start"></div>
+        <div class="col-auto mx-3">
+          <a href="#" (click)="changeShowMode()" class="text-black-50">{{showMode}}</a>
+        </div>
+      </div>
+    </div>
+>>>>>>> 0c23292d1a8ef37e64a82a0dd61fb04696ca31ef
   </div>
 </div>
