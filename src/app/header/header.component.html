@@ -1,19 +1,16 @@
-<div class="header-container box-item  px-5 py-4 no-gutters">
+<div class="header-container box-item  px-5 pt-4 no-gutters">
   <div class="row cloudHeader justify-content-between" dir="ltr">
-    <div class="col-auto text-primary row ">
-      <div class="col-auto">
-        <i class="fa fa-cloud home-button icon" aria-hidden="true " (click)="navigateToHome()"></i>
-      </div>
+    <div class="col-auto row ">
       <div class="col-auto">
         <i class="fa fa-cloud-upload icon" aria-hidden="true " (click)="navigateToUpload() "></i>
       </div>
       <div class=" col-auto row">
         <div class="col-auto row">
-          <div class="col-auto button p-0" (click)="navigateToHome()">
+          <div class="col-auto pointer p-0 text-primary" (click)="navigateToHome()">
             UT Cloud
           </div>
-          <div class="col-auto">
-            <i *ngIf="breadcrumbs.length > 0" class="fa fa-angle-right" aria-hidden="true"></i>
+          <div class="col-auto arrow">
+            <i *ngIf="breadcrumbs.length > 0" class="fa fa-angle-right " aria-hidden="true"></i>
           </div>
         </div>
 
@@ -32,8 +29,8 @@
       </div>
     </div>
     <div class="col-auto">
-      <button class="btn btn-alert list-group-item-primary " (click)="logout() ">
-        logout</button>
+      <div class="pointer logOut" (click)="logout() "> logout
+      </div>
     </div>
   </div>
 </div>

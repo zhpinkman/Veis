@@ -6,7 +6,7 @@ export class ConstService {
   constructor() {}
 
   icons = {
-    'text/plain': ' fa-file text-info ',
+    'text/plain': 'text-info fa-file-text-o',
     'image/jpeg': ' text-warning fa-image ',
     dir: ' fa-folder text-primary ',
     'application/javascript': ' fa-code text-danger ',

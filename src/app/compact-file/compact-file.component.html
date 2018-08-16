@@ -8,7 +8,7 @@
       <i class="fa fa-check" aria-hidden="true"></i>
     </div>
     <div class="file-icon">
-      <i [class]=" 'p-2 fa fa-5x' + consts.icons[file.type]"></i>
+      <i [class]=" ' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
     </div>
     <div class="file-name">
       <span>{{file.name}}</span>
