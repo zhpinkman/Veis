@@ -6,8 +6,12 @@ export class PathClass {
   public parentPath: PathClass;
   public name: string;
   pathToString(): string {
-    if (this.parentPath == null) return '/' + this.name;
-    return this.parentPath.pathToString() + '/' + this.name;
+    if (this.parentPath == null) return ``;
+    return `${this.parentPath.pathToString()}/${this.name}`;
+  }
+  toRoute(): string {
+    if (this.parentPath == null) return `/myfiles`;
+    return `${this.parentPath.toRoute()}/${this.name}`;
   }
   getParent(): any {
     return this.parentPath;
