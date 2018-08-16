@@ -29,10 +29,11 @@ export class ToolbarComponent implements OnInit {
     fileService.newFilesComming.subscribe(value => {
       this.dialog.closeAll();
     });
+    this.fileService.loadFiles.subscribe(data => {
+      this.makeBreadCrumbs();
+    });
   }
-  ngOnInit() {
-    this.makeBreadCrumbs();
-  }
+  ngOnInit() {}
   openDialog(event): void {
     const opts = new MatDialogConfig();
     console.log(event.x + ' , ' + event.y);

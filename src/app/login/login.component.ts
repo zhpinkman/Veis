@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
     this.authService.LoginRequest(user).subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['']);
+        this.router.navigate(['/myfiles']);
         this.utils.success('success', 'you have successfully loged in ');
         this.spinHide = true;
       },

@@ -2,6 +2,7 @@ import { Restangular } from 'ngx-restangular';
 import { InjectionToken } from '@angular/core';
 import { AuthService } from '@app/Services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
+import { switchMap } from 'rxjs/operators';
 
 export function RestangularConfigFactory(RestangularProvider, AuthService) {
   RestangularProvider.setBaseUrl('http://localhost:9500');
@@ -38,18 +39,20 @@ export function RestangularAuthFactory(
         console.log(response);
         if (response.status === 401) {
           refreshAccesstoken()
-            .switchMap(refreshAccesstokenResponse => {
-              //If you want to change request or make with it some actions and give the request to the repeatRequest func.
-              //Or you can live it empty and request will be the same.
+            .pipe(
+              switchMap(refreshAccesstokenResponse => {
+                //If you want to change request or make with it some actions and give the request to the repeatRequest func.
+                //Or you can live it empty and request will be the same.
 
-              // update Authorization header
-              const newHeaders = new HttpHeaders({
-                Authorization: 'Bearer ' + refreshAccesstokenResponse
-              });
-              const newReq = response.request.clone({ headers: newHeaders });
-              // console.log('160', this.accessToken, newReq);
-              return response.repeatRequest(newReq);
-            })
+                // update Authorization header
+                const newHeaders = new HttpHeaders({
+                  Authorization: 'Bearer ' + refreshAccesstokenResponse
+                });
+                const newReq = response.request.clone({ headers: newHeaders });
+                // console.log('160', this.accessToken, newReq);
+                return response.repeatRequest(newReq);
+              })
+            )
             .subscribe(res => responseHandler(res), err => subject.error(err));
 
           return false; // error handled

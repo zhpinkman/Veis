@@ -7,7 +7,7 @@ import { DeleteRequest } from '@app/DeleteRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
 import { PathClass } from '@app/PathClass';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

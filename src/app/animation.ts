@@ -15,11 +15,11 @@ export let list = trigger('list', [
 
     query(
       ':enter',
-      stagger('300ms', [
+      stagger('30ms', [
         animate(
-          '500ms ease-in',
+          '400ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
           keyframes([
-            style({ opacity: 0, transform: 'translateY(-10px)' }),
+            style({ opacity: 0, transform: 'translateY(40px)' }),
             style({ opacity: 1, transform: 'translateY(0)' })
           ])
         )

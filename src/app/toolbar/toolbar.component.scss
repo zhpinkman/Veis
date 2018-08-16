@@ -6,8 +6,7 @@
   list-style-type: none;
   font-size: -webkit-xxx-large;
   li {
-    color: gray;
-    margin: 3px;
+    color: gray; // margin: 3px;
     display: inline-block;
     &:last-child {
       color: #9c27b0;
