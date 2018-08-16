@@ -1,11 +1,6 @@
 <div class="row container-fluid box-item px-3 py-3 no-gutters">
-  <div class="col-auto row ">
+  <!-- <div class="col-auto row " dir="ltr">
     <ul class="BC">
-      <!-- <a class="btn" (click)="navigateToHome()">Home</a> -->
-      <div class="col-auto">
-        <i class="btn fa fa-home" aria-hidden="true" (click)="navigateToHome()"></i>
-      </div>
-
       <div class="col-auto">
         <li *ngFor="let b of breadcrumbs; let i = index">
           <span class="btn" (click)="navigateTo(b)">{{b.name}}</span>
@@ -13,7 +8,7 @@
         </li>
       </div>
     </ul>
-  </div>
+  </div> -->
   <div class="col-auto mx-3">
     <div class="text-black-50">
       <div [hidden]="showListIcon">

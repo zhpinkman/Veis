@@ -1,14 +1,34 @@
 <div class="header-container box-item  px-5 py-4 no-gutters">
-  <div class="row cloudHeader justify-content-between">
+  <div class="row cloudHeader justify-content-between" dir="ltr">
     <div class="col-auto text-primary row ">
-      <div class=" col-auto ">
-        UT Cloud
-      </div>
       <div class="col-auto">
         <i class="fa fa-cloud home-button icon" aria-hidden="true " (click)="navigateToHome()"></i>
       </div>
       <div class="col-auto">
         <i class="fa fa-cloud-upload icon" aria-hidden="true " (click)="navigateToUpload() "></i>
+      </div>
+      <div class=" col-auto row">
+        <div class="col-auto row">
+          <div class="col-auto button p-0" (click)="navigateToHome()">
+            UT Cloud
+          </div>
+          <div class="col-auto">
+            <i *ngIf="breadcrumbs.length > 0" class="fa fa-angle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="col-auto row p-0" dir="ltr">
+          <ul class="BC no-gutters">
+            <div class="col-auto">
+              <li *ngFor="let b of breadcrumbs; let i = index">
+                <span class="btn" (click)="navigateTo(b)">{{b.name}}</span>
+                <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
+              </li>
+            </div>
+          </ul>
+        </div>
+
+
       </div>
     </div>
     <div class="col-auto">
