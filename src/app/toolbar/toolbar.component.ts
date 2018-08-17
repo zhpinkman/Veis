@@ -29,21 +29,19 @@ import {
       state('in', style({ transform: 'translateX(0)' })),
       transition('void => *', [
         animate(
-          200,
+          '200ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
           keyframes([
-            style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
-            style({ opacity: 1, transform: 'translateX(15px)', offset: 0.3 }),
+            style({ opacity: 0, transform: 'translateX(15px)', offset: 0 }),
             style({ opacity: 1, transform: 'translateX(0)', offset: 1.0 })
           ])
         )
       ]),
       transition('* => void', [
         animate(
-          200,
+          '200ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
           keyframes([
             style({ opacity: 1, transform: 'translateX(0)', offset: 0 }),
-            style({ opacity: 1, transform: 'translateX(-15px)', offset: 0.7 }),
-            style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
+            style({ opacity: 0, transform: 'translateX(-15px)', offset: 1.0 })
           ])
         )
       ])
