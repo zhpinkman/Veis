@@ -1,4 +1,4 @@
-<div class="row container-fluid box-item px-3 py-3 no-gutters">
+<div class="justify-content-between row container-fluid box-item px-3 py-3 no-gutters">
   <!-- <div class="col-auto row " dir="ltr">
     <ul class="BC">
       <div class="col-auto">
@@ -9,18 +9,20 @@
       </div>
     </ul>
   </div> -->
-  <div class="col-auto my-auto">
-    <div class="btn mr-4" [hidden]="showListIcon">
-      <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
+  <div class="row">
+    <div class="col-auto my-auto">
+      <div class="btn mr-4" [hidden]="showListIcon">
+        <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
+      </div>
+      <div class="btn" [hidden]="!showListIcon">
+        <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
+      </div>
     </div>
-    <div class="btn" [hidden]="!showListIcon">
-      <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
+    <div class="col-auto my-auto" (click)="openDialog($event)">
+      <img src="assets/images/newFolder.png" alt="newFolder">
+      <!-- <i class="fa fa-2x fa-folder-o p-2" aria-hidden="true"></i>
+      <i class="fa fa-1x fa-plus plus-icon" aria-hidden="true"></i> -->
     </div>
-  </div>
-  <div class="col-auto my-auto m-4" (click)="openDialog($event)">
-    <img src="assets/images/newFolder.png" alt="newFolder">
-    <!-- <i class="fa fa-2x fa-folder-o p-2" aria-hidden="true"></i>
-    <i class="fa fa-1x fa-plus plus-icon" aria-hidden="true"></i> -->
   </div>
   <div class="col-auto Xlarge row" *ngIf="selectModeToolbar">
     <i class="btn fa fa-files-o mx-1 p-2 col-auto" aria-hidden="true"></i>
