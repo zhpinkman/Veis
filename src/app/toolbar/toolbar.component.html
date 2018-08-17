@@ -1,4 +1,4 @@
-<div class="justify-content-between row container-fluid box-item px-3 py-3 no-gutters">
+<div class="justify-content-between row container-fluid box-item px-5 py-3 no-gutters">
   <!-- <div class="col-auto row " dir="ltr">
     <ul class="BC">
       <div class="col-auto">
@@ -11,10 +11,10 @@
   </div> -->
   <div class="row">
     <div class="col-auto my-auto">
-      <div class="btn mr-4" [hidden]="showListIcon">
+      <div class="clickable" [hidden]="showListIcon">
         <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
-      <div class="btn" [hidden]="!showListIcon">
+      <div class="clickable" [hidden]="!showListIcon">
         <i class="fa fa-2x fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
     </div>
