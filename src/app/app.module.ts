@@ -7,6 +7,8 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
 import { AuthService } from '@app/Services/auth.service';
 import { RestangularModule, Restangular } from 'ngx-restangular';
+import { HttpModule } from '@angular/http';
+import { ProgressHttpModule } from 'angular-progress-http';
 import {
   RESTANGULAR_AUTH,
   RestangularAuthFactory,
@@ -40,6 +42,8 @@ import { ToolbarComponent } from '@app/toolbar/toolbar.component';
 import { RouteTestComponent } from '@app/route-test/route-test.component';
 import { NewFolderComponent } from '@app/new-folder/new-folder.component';
 import { FolderViewComponent } from './folder-view/folder-view.component';
+import { UploadDropZoneComponent } from './upload-drop-zone/upload-drop-zone.component';
+import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-popup.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,9 @@ import { FolderViewComponent } from './folder-view/folder-view.component';
     ToolbarComponent,
     RouteTestComponent,
     NewFolderComponent,
-    FolderViewComponent
+    FolderViewComponent,
+    UploadDropZoneComponent,
+    UploadToastPopupComponent
   ],
 
   imports: [
@@ -77,7 +83,9 @@ import { FolderViewComponent } from './folder-view/folder-view.component';
     MatGridListModule,
     MatButtonModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpModule,
+    ProgressHttpModule
   ],
   entryComponents: [FullFileComponent, NewFolderComponent],
   providers: [

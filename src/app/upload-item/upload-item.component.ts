@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { UploadFile, humanizeBytes } from "ngx-uploader";
+import { FileObj } from './../FileObj';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UploadFile, humanizeBytes } from 'ngx-uploader';
 
 @Component({
-  selector: "app-upload-item",
-  templateUrl: "./upload-item.component.html",
-  styleUrls: ["./upload-item.component.scss"]
+  selector: 'app-upload-item',
+  templateUrl: './upload-item.component.html',
+  styleUrls: ['./upload-item.component.scss']
 })
 export class UploadItemComponent implements OnInit {
   humanizeBytes: Function;
@@ -12,16 +13,19 @@ export class UploadItemComponent implements OnInit {
     this.humanizeBytes = humanizeBytes;
   }
 
-  @Input() file: UploadFile;
-  @Input() index: number;
-  @Output() removeMe: EventEmitter<any> = new EventEmitter<any>();
+  @Input('file')
+  fileObj: FileObj;
+  @Input()
+  index: number;
+  @Output()
+  removeMe: EventEmitter<any> = new EventEmitter<any>();
 
   humanSize: string;
   ngOnInit() {
-    this.humanSize = humanizeBytes(this.file.size);
+    this.humanSize = humanizeBytes(this.fileObj.file.size);
   }
 
-  deleteMe(): void{
+  deleteMe(): void {
     this.removeMe.emit();
   }
 }
