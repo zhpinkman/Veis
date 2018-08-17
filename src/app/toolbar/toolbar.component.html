@@ -1,4 +1,4 @@
-<div class="justify-content-between row container-fluid box-item px-5 py-3 no-gutters">
+<div class="justify-content-between row container-fluid box-item px-5 py-3 no-gutters fixed-top">
   <div class="row col-auto">
     <div class="col-auto my-auto">
       <div class="clickable" [hidden]="showListIcon">
@@ -14,7 +14,7 @@
     <div class="col-auto uploadIcon my-auto">
       <i class="fa fa-cloud-upload icon" aria-hidden="true" (click)="navigateToUpload()"></i>
     </div>
-    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar">
+    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar" [@flyInOut]="'in'">
       <i class="fa fa-files-o mx-1 col-auto" aria-hidden="true"></i>
       <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true"></i>
     </div>
