@@ -9,7 +9,7 @@ import {
   keyframes
 } from '@angular/animations';
 
-export let compact = trigger('compact', [
+export const compact = trigger('compact', [
   transition('* => *', [
     query(':enter', style({ opacity: 0 }), { optional: true }),
 
@@ -29,13 +29,13 @@ export let compact = trigger('compact', [
   ])
 ]);
 
-export let shake = trigger('shake', [
+export const shake = trigger('shake', [
   state('shaking', style({ transform: 'scale(1.05)' })),
   state('normal', style({ transform: 'scale(1)' })),
   transition('normal <=> shaking', animate('300ms'))
 ]);
 
-export let list = trigger('list', [
+export const list = trigger('list', [
   transition('* => *', [
     query(':enter', style({ opacity: 0 }), { optional: true }),
 
