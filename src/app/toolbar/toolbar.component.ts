@@ -85,7 +85,9 @@ export class ToolbarComponent implements OnInit {
     this.makeBreadCrumbs();
   }
   navigateToHome() {
-    // console.log('HHHHHH');
     this.router.navigate(['/myfiles']);
+  }
+  navigateToUpload() {
+    this.router.navigate(['upload']);
   }
 }

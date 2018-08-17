@@ -1,29 +1,15 @@
+<<<<<<< HEAD
 <div class="header-container box-item  px-5 pt-4 no-gutters sticky-top">
   <div class="row cloudHeader justify-content-between" dir="ltr">
+=======
+<div class="header-container box-item  px-5 pt-4 no-gutters">
+  <div class="row cloudHeader justify-content-between">
+>>>>>>> 9db6d04209d4e6044c90c1826c1abe1d447a599d
     <div class="col-auto row align-items-center no-gutters">
-      <div class="col-auto">
-        <i class="fa fa-cloud-upload icon" aria-hidden="true" (click)="navigateToUpload()"></i>
-      </div>
-      <div class="col-auto row no-gutters align-items-center ml-3">
-        <div class="col-auto row no-gutters align-items-center">
-          <div class="utcloud col-auto pointer text-primary" (click)="navigateToHome()">
-            UT Cloud
-          </div>
-          <div class="col-auto arrow ml-3">
-            <i *ngIf="breadcrumbs.length > 0" class="fa fa-angle-right root-breadcrumb-icon" aria-hidden="true"></i>
-          </div>
+      <div class="no-gutters mb-3">
+        <div class="utcloud col-auto pointer text-primary" (click)="navigateToHome()">
+          UT Cloud
         </div>
-
-        <div class="col-auto row no-gutters align-items-center mb-2" dir="ltr">
-          <ul class="bread-crumb">
-            <li *ngFor="let b of breadcrumbs; let i = index">
-              <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
-              <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
-            </li>
-          </ul>
-        </div>
-
-
       </div>
     </div>
     <div class="col-auto">

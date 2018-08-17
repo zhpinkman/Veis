@@ -1,14 +1,14 @@
-<div *ngIf="showMode == 'compact' && file.type != 'dir'" class="row no-gutters" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
+<div *ngIf="showMode == 'compact'" class="row no-gutters">
   <div (dblclick)="openDialog()" (click)="select()" class="file-container mx-4 parent" [ngClass]="{
     'shake ' : file.selected
-  }">
+  }" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
     <div class="selectIcon" *ngIf="file.selected == true || mouseOn == true" [ngClass]="{
       'fadeIcon' : mouseOn == true && file.selected != true
     }">
       <i class="fa fa-check" aria-hidden="true"></i>
     </div>
     <div class="file-icon">
-      <i [class]=" ' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
+      <i [class]="' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
     </div>
     <div class="file-name">
       <span>{{file.name}}</span>
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div dir="ltr" *ngIf="showMode == 'list' && file.type != 'dir'" class="row no-gutters col-12 list">
+<div dir="ltr" *ngIf="showMode == 'list'" class="row no-gutters col-12 list">
   <div class="my-auto">
     <i [class]=" 'p-2 fa fa-3x' + consts.icons[file.type]"></i>
   </div>

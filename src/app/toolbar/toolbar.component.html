@@ -1,15 +1,5 @@
 <div class="justify-content-between row container-fluid box-item px-5 py-3 no-gutters">
-  <!-- <div class="col-auto row " dir="ltr">
-    <ul class="BC">
-      <div class="col-auto">
-        <li *ngFor="let b of breadcrumbs; let i = index">
-          <span class="btn" (click)="navigateTo(b)">{{b.name}}</span>
-          <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-left" aria-hidden="true"></i>
-        </li>
-      </div>
-    </ul>
-  </div> -->
-  <div class="row">
+  <div class="row col-auto">
     <div class="col-auto my-auto">
       <div class="clickable" [hidden]="showListIcon">
         <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
@@ -20,12 +10,21 @@
     </div>
     <div class="col-auto my-auto" (click)="openDialog($event)">
       <img src="assets/images/newFolder.png" alt="newFolder">
-      <!-- <i class="fa fa-2x fa-folder-o p-2" aria-hidden="true"></i>
-      <i class="fa fa-1x fa-plus plus-icon" aria-hidden="true"></i> -->
+    </div>
+    <div class="col-auto uploadIcon my-auto">
+      <i class="fa fa-cloud-upload icon" aria-hidden="true" (click)="navigateToUpload()"></i>
+    </div>
+    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar">
+      <i class="fa fa-files-o mx-1 col-auto" aria-hidden="true"></i>
+      <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true"></i>
     </div>
   </div>
-  <div class="col-auto Xlarge row" *ngIf="selectModeToolbar">
-    <i class="btn fa fa-files-o mx-1 p-2 col-auto" aria-hidden="true"></i>
-    <i class="btn fa fa-scissors mx-1 p-2 col-auto" aria-hidden="true"></i>
+  <div class="col-auto row no-gutters align-items-center" dir="ltr">
+    <ul class="bread-crumb">
+      <li *ngFor="let b of breadcrumbs; let i = index">
+        <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
+        <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
+      </li>
+    </ul>
   </div>
 </div>
