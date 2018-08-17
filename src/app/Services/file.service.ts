@@ -1,13 +1,11 @@
 import { mkDirRequest } from './../mkDirRequest';
-import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { RenameRequest } from '@app/renameRequest';
 import { DeleteRequest } from '@app/DeleteRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
 import { PathClass } from '@app/PathClass';
-import { Subject } from 'rxjs';
+import { Subject, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +59,7 @@ export class FileService {
       });
   }
   select = new Subject();
-  showMode = new Subject();
+  showMode = new ReplaySubject(1);
   selectMode = new Subject();
   newFilesComming = new Subject();
   loadFiles = new Subject();

@@ -4,13 +4,13 @@ import { UtilitiesService } from '@app/Services/utilities.service';
 import { FileService } from '@app/Services/file.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { list, shake } from '@app/animation';
+import { list, shake, compact } from '@app/animation';
 
 @Component({
   selector: 'app-files-list',
   templateUrl: './files-list.component.html',
   styleUrls: ['./files-list.component.scss'],
-  animations: [list, shake]
+  animations: [list, shake, compact]
 })
 export class FilesListComponent implements OnInit {
   public id: string;

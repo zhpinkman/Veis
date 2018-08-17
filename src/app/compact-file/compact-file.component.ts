@@ -1,3 +1,4 @@
+import { list } from '@app/animation';
 import {
   MatDialog,
   MatDialogClose,

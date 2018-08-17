@@ -1,10 +1,10 @@
 <div *ngIf="showMode == 'compact'" class="row no-gutters">
   <div (dblclick)="openDialog()" (click)="select()" class="file-container mx-4 parent" [ngClass]="{
-    'shake ' : file.selected
-  }" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
+      'shake ' : file.selected
+    }" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
     <div class="selectIcon" *ngIf="file.selected == true || mouseOn == true" [ngClass]="{
-      'fadeIcon' : mouseOn == true && file.selected != true
-    }">
+        'fadeIcon' : mouseOn == true && file.selected != true
+      }">
       <i class="fa fa-check" aria-hidden="true"></i>
     </div>
     <div class="file-icon">
