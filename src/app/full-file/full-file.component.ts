@@ -12,7 +12,7 @@ import {
 import { FileService } from '@app/Services/file.service';
 import { RenameRequest } from '@app/renameRequest';
 import { DeleteRequest } from '@app/DeleteRequest';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
 
@@ -25,7 +25,8 @@ export class FullFileComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: FileEntity,
     public consts: ConstService,
-    private fileService: FileService
+    private fileService: FileService,
+    public dialogRef: MatDialogRef<FullFileComponent>
   ) {}
 
   @Output()
@@ -65,10 +66,12 @@ export class FullFileComponent implements OnInit {
   delete() {
     this.hideDeleteIcon = true;
     let Request = new DeleteRequest();
-    Request.path = '/' + this.data.name;
-    Request.id = this.data.id;
-    this.fileService.deleteFile(this.data.id, Request).subscribe(
-      data => {},
+    Request.path = this.data.path;
+    this.fileService.deleteFile(Request).subscribe(
+      data => {
+        this.hideDeleteIcon = false;
+        this.dialogRef.close();
+      },
       error => {
         console.log(error);
       }
