@@ -3,6 +3,8 @@ import { mkDirRequest } from './../mkDirRequest';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { RenameRequest } from '@app/renameRequest';
 import { DeleteRequest } from '@app/DeleteRequest';
+import { CopyRequest } from '@app/copyRequest';
+import { MoveRequest } from '@app/moveRequest';
 import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
 import { PathClass } from '@app/PathClass';
@@ -93,6 +95,12 @@ export class FileService {
   }
   deleteFile(deleteRequest: DeleteRequest) {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
+  }
+  copyFile(copyRequest: CopyRequest) {
+    return this.restangular.one('file/copyfile').customePOST(copyRequest);
+  }
+  moveRequest(moveRequest: MoveRequest) {
+    return this.restangular.one('file/movefile').customePOST(moveRequest);
   }
   navigateTo(folder: PathClass) {
     // this.currentPath = folder;
