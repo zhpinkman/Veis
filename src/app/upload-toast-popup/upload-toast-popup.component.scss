@@ -1,0 +1,38 @@
+:host {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 20%;
+  min-width: 300px;
+  max-width: 450px;
+  max-height: 400px;
+  background: #ffffff;
+  direction: ltr;
+  border: solid 1px #3682a5;
+  > div.uploadHeader {
+    width: 100%;
+    height: 50px;
+    background-color: #1d1d1d;
+    right: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  > div.uploadList {
+    overflow: auto;
+    max-height: 400px;
+  }
+}
+.close-toast {
+  color: white;
+  margin-right: 15px;
+  font-size: 20px;
+  justify-content: flex-end;
+}
+
+.uploading {
+  color: white;
+  margin-left: 15px;
+  font-size: 15px;
+}

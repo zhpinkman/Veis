@@ -67,10 +67,6 @@ export class FilesListComponent implements OnInit {
   files = new Array<FileEntity>();
   folders = new Array<PathClass>();
 
-  ngOnInit() {
-    // this.getFilesList();
-  }
-
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
       console.log('wewe');
@@ -142,4 +138,5 @@ export class FilesListComponent implements OnInit {
     if (file.selected == true) return 'shaking';
     else return 'normal';
   }
+  ngOnInit() {}
 }
