@@ -1,9 +1,10 @@
+import { list } from '@app/animation';
 import {
   MatDialog,
   MatDialogClose,
   MatDialogConfig
 } from '@angular/material/dialog';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FullFileComponent } from '@app/full-file/full-file.component';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
@@ -21,6 +22,9 @@ export class CompactFileComponent implements OnInit {
 
   public showMode: string = 'compact';
   public mouseOn: Boolean = false;
+
+  @Output()
+  deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
 
   constructor(
     private dialog: MatDialog,
@@ -51,8 +55,11 @@ export class CompactFileComponent implements OnInit {
     dialogRef.afterOpen().subscribe(data => console.log('opened successfully'));
     dialogRef.updatePosition(opts.position);
 
-    dialogRef.afterClosed().subscribe(resutl => {
-      console.log('The dialog was closed!!');
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed!!', result);
+      if (result.type === 'delete') {
+        this.deleted.emit(this.file);
+      }
     });
   }
   select() {
