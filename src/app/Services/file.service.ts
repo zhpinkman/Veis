@@ -87,7 +87,7 @@ export class FileService {
   renameFile(renameRequest: RenameRequest) {
     return this.restangular.one('file/rename').customPOST(renameRequest);
   }
-  deleteFile(id: string, deleteRequest: DeleteRequest) {
+  deleteFile(deleteRequest: DeleteRequest) {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
   }
   navigateTo(folder: PathClass) {
