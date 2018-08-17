@@ -29,9 +29,6 @@ export class FullFileComponent implements OnInit {
     public dialogRef: MatDialogRef<FullFileComponent>
   ) {}
 
-  @Output()
-  deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
-
   ngOnInit() {}
   showEditName: boolean = false;
   hideDeleteIcon: Boolean = false;
@@ -66,16 +63,15 @@ export class FullFileComponent implements OnInit {
   delete() {
     this.hideDeleteIcon = true;
     let Request = new DeleteRequest();
-    Request.path = this.data.path;
+    Request.path = this.fileService.currentPath.pathToString();
     this.fileService.deleteFile(Request).subscribe(
       data => {
         this.hideDeleteIcon = false;
-        this.dialogRef.close();
+        this.dialogRef.close({ type: 'delete' });
       },
       error => {
         console.log(error);
       }
     );
-    this.deleted.emit(this.data);
   }
 }
