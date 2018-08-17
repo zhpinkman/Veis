@@ -53,7 +53,13 @@ export function RestangularAuthFactory(
                 return response.repeatRequest(newReq);
               })
             )
-            .subscribe(res => responseHandler(res), err => subject.error(err));
+            .subscribe(
+              res => responseHandler(res),
+              err => {
+                subject.error(err);
+                authService.requestLogout();
+              }
+            );
 
           return false; // error handled
         }

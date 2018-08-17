@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { RouteTestComponent } from '@app/route-test/route-test.component';
 import { FilesListComponent } from '@app/files-list/files-list.component';
 import { HomeComponent } from '@app/home/home.component';
@@ -45,15 +46,11 @@ const routes: Routes = [
             component: FilesListComponent
           }
         ]
+      },
+      {
+        path: '**',
+        redirectTo: '/myfiles'
       }
-      // {
-      //   path: ':path/:id',
-      //   component: FilesListComponent
-      // },
-      // {
-      //   path: ':path',
-      //   component: FilesListComponent
-      // }
     ]
   }
 ];

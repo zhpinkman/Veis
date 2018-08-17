@@ -5,6 +5,7 @@ import { User } from '@app/User';
 import { HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { TokenService } from '@app/Services/token.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import { TokenService } from '@app/Services/token.service';
 export class AuthService {
   constructor(
     @Inject(RESTANGULAR_NOT_AUTH) private restangular,
-    private token: TokenService
+    private token: TokenService,
+    private router: Router
   ) {}
 
   user: User;
@@ -49,6 +51,7 @@ export class AuthService {
     this.token.accessToken = undefined;
     console.log('loged out');
     localStorage.removeItem('access_token');
+    this.router.navigate(['login']);
   }
 
   refreshToken() {
