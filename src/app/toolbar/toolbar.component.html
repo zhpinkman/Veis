@@ -19,12 +19,17 @@
       <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true"></i>
     </div>
   </div>
-  <div class="col-auto row no-gutters align-items-center" dir="ltr">
-    <ul class="bread-crumb">
-      <li *ngFor="let b of breadcrumbs; let i = index">
-        <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
-        <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
-      </li>
-    </ul>
+  <div class="row">
+    <div class="col-auto row no-gutters align-items-center" dir="ltr">
+      <ul class="bread-crumb">
+        <li *ngFor="let b of breadcrumbs; let i = index">
+          <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
+          <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <button class="btn pointer col" (click)="navigateToHome()">Home</button>
+    </div>
   </div>
 </div>
