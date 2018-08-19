@@ -15,7 +15,7 @@ import { list, shake, compact } from '@app/animation';
 export class FilesListComponent implements OnInit {
   public id: string;
   public pathParent: string;
-  public showMode: string = 'compact';
+  public showMode: string = 'list';
 
   constructor(
     private fileService: FileService,

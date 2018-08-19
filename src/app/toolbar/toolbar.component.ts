@@ -66,7 +66,7 @@ export class ToolbarComponent implements OnInit {
       console.log('The dialog was closed!!');
     });
   }
-  public showMode: string = 'compact';
+  public showMode: string = 'list';
   public selectModeToolbar: Boolean = false;
   public showListIcon: Boolean = false;
   changeShowMode() {

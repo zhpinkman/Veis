@@ -1,12 +1,12 @@
 <app-toolbar></app-toolbar>
 <div dir="ltr" class="header">
-  <div [@compact]="files.length" class="row justify-content-center no-gutters" *ngIf="showMode == 'compact'">
-    <app-folder-view class=" col-auto " *ngFor="let folder of folders " [data]="folder "></app-folder-view>
-    <app-compact-file class="col-auto " class="pb-3 " (deleted)="deleteFromList($event) " *ngFor="let file of files" [value]="file "></app-compact-file>
+  <div [@compact]="files.length" class="row no-gutters" *ngIf="showMode == 'compact'">
+    <!-- <app-folder-view class=" col-auto" *ngFor="let folder of folders " [data]="folder "></app-folder-view> -->
+    <app-compact-file class="col-auto" class="pb-3 " (deleted)="deleteFromList($event) " *ngFor="let file of files" [value]="file "></app-compact-file>
   </div>
-  <div [@list]="files.length" *ngIf="showMode == 'list'">
-    <app-folder-view class="col-auto " *ngFor="let folder of folders " [data]="folder "></app-folder-view>
-    <app-compact-file class="col-auto " class="pb-3 " (deleted)="deleteFromList($event) " *ngFor="let file of files" [value]="file "></app-compact-file>
+  <div [@list]="files.length" *ngIf="showMode == 'list'" class="mt-5">
+    <app-folder-view class="col-auto my-2" *ngFor="let folder of folders " [data]="folder "></app-folder-view>
+    <app-compact-file class="col-auto my-2" (deleted)="deleteFromList($event) " *ngFor="let file of files" [value]="file "></app-compact-file>
   </div>
 </div>
 <app-upload-drop-zone></app-upload-drop-zone>
