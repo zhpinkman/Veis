@@ -1,0 +1,33 @@
+mat-progress-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  opacity: 1;
+
+  .mat-progress-bar-fill::after {
+    background-color: #3aa239;
+  }
+}
+:host {
+  > mat-card {
+    padding: 10px 15px 15px;
+  }
+  height: 10px;
+}
+.upload-item-data {
+  height: 20px;
+  position: relative;
+  z-index: 2000;
+  padding: 0;
+  > div {
+    > span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      display: inline-block;
+    }
+  }
+}
