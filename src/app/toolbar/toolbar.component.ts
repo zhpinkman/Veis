@@ -75,19 +75,25 @@ export class ToolbarComponent implements OnInit {
   submitCopyOrCut() {
     this.copyOrCutMode = !this.copyOrCutMode;
     this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode = this.pasteMode;
+    this.fileService.pasteMode.next(this.pasteMode);
+    this.fileService.pasteMode.subscribe(value => {
+      this.pasteMode = Boolean(value);
+    });
   }
   submitPaste() {
     this.copyOrCutMode = !this.copyOrCutMode;
     this.selectModeToolbar = false;
-    this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode = this.pasteMode;
+    // this.pasteMode = !this.pasteMode;
+    this.fileService.pasteMode.subscribe(value => {
+      this.pasteMode = Boolean(value);
+    });
+    this.fileService.pasteMode.next(this.pasteMode);
   }
   submitCancel() {
     this.copyOrCutMode = !this.copyOrCutMode;
     this.selectModeToolbar = false;
     this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode = this.pasteMode;
+    this.fileService.pasteMode.next(this.pasteMode);
   }
   changeShowMode() {
     if (this.showMode == 'compact') this.showMode = 'list';
