@@ -71,6 +71,7 @@ export class FileService {
   selectMode = new Subject();
   newFilesComming = new Subject();
   loadFiles = new Subject();
+  pasteMode: Boolean = false;
 
   getFiles() {
     console.log(this.currentPath);
