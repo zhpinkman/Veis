@@ -1,0 +1,42 @@
+.dragOver {
+  top: 139px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: rgba(0, 188, 212, 0.05);
+}
+.cloud-icon {
+  animation-name: bounce;
+  transform-origin: center bottom;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  color: #176f7d;
+}
+.dragOverInside {
+  > span {
+    font-size: 24px;
+    color: #006f7d;
+    margin-top: 8px;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  border: 2px dashed #00838f;
+  background-color: hsla(187, 20%, 95%, 0.9);
+  height: calc(100% - 2 * 30px);
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-15px);
+  }
+}

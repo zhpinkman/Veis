@@ -2,9 +2,13 @@
 
 @import 'scss/shared.scss';
 @import 'scss/fonts.scss';
+html {
+  height: 100%;
+}
 body {
   background: #f9f9f9;
   text-align: right;
+  min-height: 100%;
 }
 
 .box-item {

@@ -78,4 +78,9 @@ img {
 
 .container-fluid {
   margin-top: 77px;
+  z-index: 10;
+}
+
+#mkdir {
+  z-index: 10000000;
 }
