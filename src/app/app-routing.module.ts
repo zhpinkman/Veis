@@ -1,3 +1,4 @@
+import { compact } from '@app/animation';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouteTestComponent } from '@app/route-test/route-test.component';
 import { FilesListComponent } from '@app/files-list/files-list.component';
@@ -49,7 +50,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/myfiles'
+        redirectTo: '/login'
       }
     ]
   }

@@ -1,3 +1,4 @@
+import { TokenService } from '@app/Services/token.service';
 import { ActivationRequest } from '@app/activationRequest';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { HomeComponent } from '@app/home/home.component';
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private utils: UtilitiesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tokenService: TokenService
   ) {
     this.route.data.subscribe(data => {
       console.log(data['hide']);
@@ -74,6 +76,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.getFromLocalStorsge();
+    if (this.tokenService.accessToken) {
+      this.router.navigate(['/myfiles']);
+    }
   }
   login() {
     this.spinHide = false;
