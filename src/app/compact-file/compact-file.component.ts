@@ -24,7 +24,7 @@ export class CompactFileComponent implements OnInit {
   file: FileEntity;
 
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(event);
+    // console.log(event);
     if (event.key === 'Enter' && this.file.selected === true) this.openDialog();
   }
   public showMode: string = 'list';
@@ -50,7 +50,7 @@ export class CompactFileComponent implements OnInit {
   }
 
   openDialog() {
-    console.log('hello new list');
+    // console.log('hello new list');
 
     const opts = new MatDialogConfig();
 

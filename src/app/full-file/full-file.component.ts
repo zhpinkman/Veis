@@ -45,7 +45,7 @@ export class FullFileComponent implements OnInit {
         this.data.name = this.newFileName;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -70,7 +70,7 @@ export class FullFileComponent implements OnInit {
         this.dialogRef.close({ type: 'delete' });
       },
       error => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }

@@ -24,7 +24,7 @@ export class FileService {
     private http: ProgressHttp,
     private token: TokenService
   ) {
-    console.log('zzz');
+    // console.log('zzz');
     this.handleRouteChange();
   }
 
@@ -33,20 +33,20 @@ export class FileService {
       // console.log(url);
       if (url instanceof NavigationEnd) {
         // console.log(url);
-        console.log(url.url);
+        // console.log(url.url);
         let path = url.url.toString().split('/');
 
         // console.log('test');
         if (path.length >= 2 && path[1] === 'myfiles') {
           path.splice(1, 1);
-          console.log(path);
+          // console.log(path);
 
           // path.reduce();
           this.currentPath = new PathClass(path[0]);
           for (let i = 1; i < path.length; i++) {
             this.currentPath = new PathClass(path[i], this.currentPath);
           }
-          console.log(this.currentPath);
+          // console.log(this.currentPath);
           // console.log(this.currentPath.name);
           // console.log(this.currentPath.pathToString());
 
@@ -73,7 +73,7 @@ export class FileService {
   loadFiles = new Subject();
 
   getFiles() {
-    console.log(this.currentPath);
+    // console.log(this.currentPath);
     return this.restangular
       .one('file/list')
       .get({ path: `${this.currentPath.pathToString()}` });
@@ -85,7 +85,7 @@ export class FileService {
     };
     if (mkDirRequest.path == '/') {
       mkDirRequest.path = '';
-      console.log('path was / ');
+      // console.log('path was / ');
     }
     return this.restangular.one('file/mkDir').customPOST(mkDirRequest);
   }
@@ -104,7 +104,7 @@ export class FileService {
   }
   navigateTo(folder: PathClass) {
     // this.currentPath = folder;
-    console.log(folder, ',,', folder.toRoute(), ',,');
+    // console.log(folder, ',,', folder.toRoute(), ',,');
     // let paths = folder.toRoute().split('/');
     // console.log(folder.toRoute());
 
@@ -128,12 +128,12 @@ export class FileService {
       form.append('path', this.currentPath.pathToString());
       this.http
         .withUploadProgressListener(progress => {
-          console.log(progress);
+          // console.log(progress);
           fun(progress, i);
         })
         .post('http://localhost:9500/file/upload', form, options)
         .subscribe(response => {
-          console.log(response);
+          // console.log(response);
         });
     }
   }

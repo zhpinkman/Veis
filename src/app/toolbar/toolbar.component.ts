@@ -47,7 +47,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {}
   openDialog(event): void {
     const opts = new MatDialogConfig();
-    console.log(event.x + ' , ' + event.y);
+    // console.log(event.x + ' , ' + event.y);
     const dialogPosition: DialogPosition = {
       top: '8%',
       right: '8%'
@@ -59,11 +59,13 @@ export class ToolbarComponent implements OnInit {
 
     const dialogRef = this.dialog.open(NewFolderComponent, opts);
 
-    dialogRef.afterOpen().subscribe(data => console.log('opened successfully'));
+    // dialogRef.afterOpen().subscribe(data =>
+    //   //  console.log('opened successfully')
+    //   );
     dialogRef.updatePosition(opts.position);
 
     dialogRef.afterClosed().subscribe(resutl => {
-      console.log('The dialog was closed!!');
+      // console.log('The dialog was closed!!');
     });
   }
   public showMode: string = 'list';
@@ -90,8 +92,8 @@ export class ToolbarComponent implements OnInit {
 
   navigateTo(path: PathClass) {
     // this.fileService.currentPath = path;
-    console.log(this.fileService.currentPath.name);
-    console.log(this.fileService.currentPath.getParent().name);
+    // console.log(this.fileService.currentPath.name);
+    // console.log(this.fileService.currentPath.getParent().name);
     this.fileService.navigateTo(path);
     this.makeBreadCrumbs();
   }

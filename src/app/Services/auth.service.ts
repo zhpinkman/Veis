@@ -22,7 +22,7 @@ export class AuthService {
     return this.token.accessToken;
   }
   signupRequest(newUser: User) {
-    console.log(newUser.bucketName);
+    // console.log(newUser.bucketName);
     return this.restangular.one('/user/register').post('', newUser);
   }
 
@@ -49,7 +49,7 @@ export class AuthService {
 
   requestLogout() {
     this.token.accessToken = undefined;
-    console.log('loged out');
+    // console.log('loged out');
     localStorage.removeItem('access_token');
     this.router.navigate(['login']);
   }

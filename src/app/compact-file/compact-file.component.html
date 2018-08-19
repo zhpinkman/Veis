@@ -16,16 +16,16 @@
 <div class="row listItem no-gutters" dir="ltr" *ngIf="showMode == 'list'" (dblclick)="openDialog()" (click)="select()" [ngClass]="{
   'selected': file.selected
 }">
-  <div class="">
+  <div>
     <i [class]=" ' p-2 fa fa-3x ' + (consts.icons[file.type] || 'fa-file')"></i>
   </div>
   <div class="w-20 my-auto m-auto pl-0 file-name">
     {{file.name}}
   </div>
   <div class="englishFormat w-20 my-auto m-auto">
-    {{file.size | size}}
+    {{file.creationDate | date }}
   </div>
   <div class="englishFormat w-20 my-auto m-auto">
-    {{file.creationDate | date }}
+    {{file.size | size}}
   </div>
 </div>

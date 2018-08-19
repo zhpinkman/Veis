@@ -10,10 +10,10 @@ export class AuthGuard implements CanActivate {
   canActivate() {
     // console.log(this.token, this.token.accessToken);
     if (this.token.accessToken) {
-      console.log('you are logged in');
+      // console.log('you are logged in');
       return true;
     } else {
-      console.log('you should log in first');
+      // console.log('you should log in first');
       this.router.navigate(['login']);
       return false;
     }
