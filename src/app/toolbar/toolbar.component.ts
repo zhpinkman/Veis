@@ -97,7 +97,7 @@ export class ToolbarComponent implements OnInit {
     });
     console.log('A ', this.oldPath, 'N: ', name);
     let Request = new CopyRequest();
-    Request.oldPath = '/A7.pdf';
+    Request.oldPath = this.oldPath;
     console.log('B:', Request.oldPath);
     Request.newPath = this.fileService.currentPath.pathToString();
     this.fileService.copyFile(Request).subscribe(data => {});
