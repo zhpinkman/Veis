@@ -49,8 +49,8 @@ export class HeaderComponent implements OnInit {
 
   navigateTo(path: PathClass) {
     // this.fileService.currentPath = path;
-    console.log(this.fileService.currentPath.name);
-    console.log(this.fileService.currentPath.getParent().name);
+    // console.log(this.fileService.currentPath.name);
+    // console.log(this.fileService.currentPath.getParent().name);
     this.fileService.navigateTo(path);
     this.makeBreadCrumbs();
   }

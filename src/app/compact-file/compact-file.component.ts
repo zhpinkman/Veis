@@ -14,13 +14,20 @@ import { PathClass } from '@app/PathClass';
 @Component({
   selector: 'app-compact-file',
   templateUrl: './compact-file.component.html',
-  styleUrls: ['./compact-file.component.scss']
+  styleUrls: ['./compact-file.component.scss'],
+  host: {
+    '(document:keypress)': 'handleKeyboardEvent($event)'
+  }
 })
 export class CompactFileComponent implements OnInit {
   @Input('value')
   file: FileEntity;
 
-  public showMode: string = 'compact';
+  handleKeyboardEvent(event: KeyboardEvent) {
+    // console.log(event);
+    if (event.key === 'Enter' && this.file.selected === true) this.openDialog();
+  }
+  public showMode: string = 'list';
   public mouseOn: Boolean = false;
 
   @Output()
@@ -43,6 +50,8 @@ export class CompactFileComponent implements OnInit {
   }
 
   openDialog() {
+    // console.log('hello new list');
+
     const opts = new MatDialogConfig();
 
     opts.width = '600px';

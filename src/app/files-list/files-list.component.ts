@@ -1,3 +1,4 @@
+import { ConstService } from '@app/Services/const.service';
 import { PathClass } from '@app/PathClass';
 import { FileEntity } from '@app/file';
 import { UtilitiesService } from '@app/Services/utilities.service';
@@ -15,14 +16,21 @@ import { list, shake, compact } from '@app/animation';
 export class FilesListComponent implements OnInit {
   public id: string;
   public pathParent: string;
-  public showMode: string = 'compact';
+  public showMode: string = 'list';
+  public sortedBy: string;
+  public nameOrder: Boolean = true;
+  public sizeOrder: Boolean = true;
+  public order: Boolean = true;
+  objectKeys = Object.keys;
 
   constructor(
     private fileService: FileService,
     private Aroute: ActivatedRoute,
-    private utils: UtilitiesService
+    private utils: UtilitiesService,
+    public consts: ConstService
   ) {
     utils.setTitle('Your Files');
+
     fileService.select.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
@@ -51,16 +59,16 @@ export class FilesListComponent implements OnInit {
         index = i;
       }
     }
-    console.log(index);
+    // console.log(index);
     for (let i = 0; i < this.selectedFilesIndex.length; i++) {
       if (this.selectedFilesIndex[i] === index) {
-        console.log('removed');
+        // console.log('removed');
         this.selectedFilesIndex.splice(i, 1);
         this.files[index].selected = false;
         return;
       }
     }
-    console.log('added');
+    // console.log('added');
     this.selectedFilesIndex.push(index);
     this.files[index].selected = true;
   }
@@ -71,23 +79,9 @@ export class FilesListComponent implements OnInit {
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
-      console.log('wewe');
+      // console.log('wewe');
       this.files = data.list;
       this.folders.splice(0, this.folders.length);
-      // console.log(this.files.length);
-      // this.files.forEach(val => {
-      //   if (val.type == 'dir') {
-      //     // console.log(val.path + ' , ' + val.name);
-      //     let path = val.path.split('/');
-      //     // console.log(path.length);
-      //     let folder = new PathClass(path[2]);
-      //     path.forEach(p => {
-      //       folder = new PathClass(p, folder);
-      //     });
-      //     // console.log(folder);
-      //     this.folders.push(folder);
-      //   }
-      // });
 
       const folders = this.files.filter(val => val.type === 'dir').map(dir => ({
         ...dir,
@@ -97,41 +91,20 @@ export class FilesListComponent implements OnInit {
         )
       }));
       this.files = this.files.filter(val => val.type !== 'dir');
-      console.log(folders);
-      console.log(this.fileService.currentPath);
+      // console.log(folders);
+      // console.log(this.fileService.currentPath);
       folders.forEach(dir => {
         // const splitedPath = dir.path.split('/');
         let folder = new PathClass(dir.name, this.fileService.currentPath);
         this.folders.push(folder);
       });
 
-      ////////////////////////////////////////////////
-
-      // for (var i = 0; i < this.files.length; i++) {
-      //   this.files[i].id = this.files[i].path;
-      // }
-
-      // this.pathParent = this.Aroute.snapshot.paramMap.get('path');
-      // this.id = this.Aroute.snapshot.paramMap.get('id');
-      // console.log(this.pathParent);
-      // console.log(this.id);
-      // console.log(this.files.length);
-      // let fullName = '/' + this.pathParent + '/' + this.id;
-      // for (var i = 0; i < this.files.length; i++) {
-      //   console.log(this.files[i].id);
-      //   if (this.files[i].id == fullName) {
-      //     this.files[i].isOpen = true;
-      //   }
-      // }
-
-      ////////////////////////////////
-
-      console.log(data);
+      // console.log(data);
     });
   }
 
   deleteFromList(event) {
-    console.log(event);
+    // console.log(event);
     let index = this.files.findIndex(f => f.id == event.id);
     this.files.splice(index, 1);
   }
@@ -141,4 +114,15 @@ export class FilesListComponent implements OnInit {
     else return 'normal';
   }
   ngOnInit() {}
+
+  sortByName() {
+    this.sortedBy = 'name';
+    this.nameOrder = !this.nameOrder;
+    this.order = this.nameOrder;
+  }
+  sortBySize() {
+    this.sortedBy = 'size';
+    this.sizeOrder = !this.sizeOrder;
+    this.order = this.sizeOrder;
+  }
 }

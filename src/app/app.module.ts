@@ -44,6 +44,7 @@ import { NewFolderComponent } from '@app/new-folder/new-folder.component';
 import { FolderViewComponent } from './folder-view/folder-view.component';
 import { UploadDropZoneComponent } from './upload-drop-zone/upload-drop-zone.component';
 import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-popup.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-pop
     MatInputModule,
     MatCheckboxModule,
     HttpModule,
-    ProgressHttpModule
+    ProgressHttpModule,
+    OrderModule
   ],
   entryComponents: [FullFileComponent, NewFolderComponent],
   providers: [

@@ -24,8 +24,8 @@
       <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true" (click)="submitCopyOrCut()"></i>
     </div>
   </div>
-  <div class="row">
-    <div class="col-auto row no-gutters align-items-center" dir="ltr">
+  <div class="row no-gutters">
+    <div class="pl-0 col-auto row no-gutters align-items-center" dir="ltr">
       <ul class="bread-crumb">
         <li *ngFor="let b of breadcrumbs; let i = index">
           <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
@@ -33,8 +33,13 @@
         </li>
       </ul>
     </div>
-    <div class="col">
-      <button class="btn pointer col" (click)="navigateToHome()">Home</button>
+    <div class="col row no-gutters my-auto homeIcon">
+      <div class="col pl-2">
+        <i *ngIf="breadcrumbs.length > 0" class="fa fa-angle-right" aria-hidden="true"></i>
+      </div>
+      <div class="col clickable" (click)="navigateToHome()">
+        home
+      </div>
     </div>
   </div>
 </div>

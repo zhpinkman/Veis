@@ -11,7 +11,7 @@ export class FolderViewComponent implements OnInit {
   @Input('data')
   folder: PathClass;
 
-  public showMode: string = 'compact';
+  public showMode: string = 'list';
 
   constructor(private fileService: FileService) {
     this.fileService.showMode.subscribe(value => {

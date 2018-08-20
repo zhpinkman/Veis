@@ -42,7 +42,7 @@ export function RestangularAuthFactory(
 
     RestangularConfigurer.addErrorInterceptor(
       (response, subject, responseHandler) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 401) {
           refreshAccesstoken()
             .pipe(

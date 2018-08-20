@@ -13,7 +13,7 @@ export class TokenService {
       localStorage.getItem('refresh_token') &&
       localStorage.getItem('refresh_token') != 'undefined'
     ) {
-      console.log(localStorage.getItem('refresh_token'));
+      // console.log(localStorage.getItem('refresh_token'));
       this._refreshToken = localStorage.getItem('refresh_token');
       return localStorage.getItem('refresh_token');
     } else {

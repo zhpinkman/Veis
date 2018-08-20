@@ -40,7 +40,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   onUploadOutput(output: UploadOutput): void {
-    console.log(output);
+    // console.log(output);
     if (output.type === 'allAddedToQueue') {
       // when all files added in queue
       // uncomment this if you want to auto upload files when added
@@ -111,7 +111,7 @@ export class UploadFileComponent implements OnInit {
       headers: { Authorization: 'bearer ' + token }, // <----  set headers
       data: { path: this.fileService.currentPath.pathToString() }
     };
-    console.log(this.fileService.currentPath.pathToString());
+    // console.log(this.fileService.currentPath.pathToString());
 
     this.uploadInput.emit(event);
   }

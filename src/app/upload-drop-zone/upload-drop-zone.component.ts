@@ -34,7 +34,7 @@ export class UploadDropZoneComponent implements OnInit, OnChanges {
     // console.log(this.files);
   }
   ngOnChanges(changes) {
-    console.log(changes);
+    // console.log(changes);
   }
   enableDropZone() {
     let timeout,
@@ -84,12 +84,12 @@ export class UploadDropZoneComponent implements OnInit, OnChanges {
 
     // Setup the dnd listeners.
     var dropZone = document.getElementsByTagName('body');
-    console.log(dropZone);
+    // console.log(dropZone);
 
     dropZone[0].addEventListener('dragover', handleDragOver, false);
     dropZone[0].addEventListener('drop', handleFileSelect, false);
     dropZone[0].addEventListener('dragleave', handleDragOut, false);
     dropZone[0].addEventListener('dragenter', handleDragIn, false);
-    console.log(this.files);
+    // console.log(this.files);
   }
 }
