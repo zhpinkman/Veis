@@ -1,5 +1,13 @@
 <app-toolbar></app-toolbar>
 <div dir="ltr" class="header">
+  <div *ngIf="folders.length == 0 && files.length == 0" class="row justify-content-center start-icons">
+    <div class="col-4 my-auto mx-auto empty-state" *ngFor="let key of objectKeys(consts.icons)">
+      <i [class]="'fa fa-5x ' + consts.icons[key] " aria-hidden="true"></i>
+    </div>
+    <div class="suggestion">
+      upload your first file (drag files into window)
+    </div>
+  </div>
   <div class="row listItem no-gutters" dir="ltr" *ngIf="(folders.length > 0 || files.length > 0) && showMode == 'list'">
     <div style="margin-right:5%">
     </div>

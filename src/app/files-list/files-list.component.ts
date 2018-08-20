@@ -1,3 +1,4 @@
+import { ConstService } from '@app/Services/const.service';
 import { PathClass } from '@app/PathClass';
 import { FileEntity } from '@app/file';
 import { UtilitiesService } from '@app/Services/utilities.service';
@@ -18,13 +19,16 @@ export class FilesListComponent implements OnInit {
   public showMode: string = 'list';
   public sortedBy: string;
   public order: Boolean = true;
+  objectKeys = Object.keys;
 
   constructor(
     private fileService: FileService,
     private Aroute: ActivatedRoute,
-    private utils: UtilitiesService
+    private utils: UtilitiesService,
+    public consts: ConstService
   ) {
     utils.setTitle('Your Files');
+
     fileService.select.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
@@ -41,12 +45,6 @@ export class FilesListComponent implements OnInit {
 
     fileService.loadFiles.subscribe(value => {
       this.getFilesList();
-      // console.log(this.folders);
-      //   let array;
-      //   this.folders.forEach(p => {
-      //     array.push(p.name);
-      //   });
-      //   console.log(array);
     });
   }
 
