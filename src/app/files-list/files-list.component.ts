@@ -18,6 +18,8 @@ export class FilesListComponent implements OnInit {
   public pathParent: string;
   public showMode: string = 'list';
   public sortedBy: string;
+  public nameOrder: Boolean = true;
+  public sizeOrder: Boolean = true;
   public order: Boolean = true;
   objectKeys = Object.keys;
 
@@ -113,10 +115,12 @@ export class FilesListComponent implements OnInit {
 
   sortByName() {
     this.sortedBy = 'name';
-    this.order = !this.order;
+    this.nameOrder = !this.nameOrder;
+    this.order = this.nameOrder;
   }
   sortBySize() {
     this.sortedBy = 'size';
-    this.order = !this.order;
+    this.sizeOrder = !this.sizeOrder;
+    this.order = this.sizeOrder;
   }
 }

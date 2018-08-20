@@ -13,14 +13,14 @@
     </div>
     <div class="w-20 my-auto m-auto pl-0 file-name clickable" (click)="sortByName()">
       name
-      <i *ngIf="order == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
-      <i *ngIf="order == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
+      <i *ngIf="nameOrder == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
+      <i *ngIf="nameOrder == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
     </div>
     <div class="englishFormat w-20 my-auto m-auto"></div>
     <div class="englishFormat w-20 my-auto m-auto clickable" (click)="sortBySize()">
       size
-      <i *ngIf="order == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
-      <i *ngIf="order == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
+      <i *ngIf="sizeOrder == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
+      <i *ngIf="sizeOrder == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
     </div>
   </div>
   <div [@compact]="files.length" class="row no-gutters" *ngIf="showMode == 'compact'">
