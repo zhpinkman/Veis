@@ -71,7 +71,9 @@ export class FileService {
   selectMode = new Subject();
   newFilesComming = new Subject();
   loadFiles = new Subject();
-  pasteMode = new ReplaySubject();
+  pasteMode: Boolean = false;
+  selectedFiles = new ReplaySubject();
+  allFiles = new ReplaySubject();
 
   getFiles() {
     console.log(this.currentPath);
@@ -98,10 +100,10 @@ export class FileService {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
   }
   copyFile(copyRequest: CopyRequest) {
-    return this.restangular.one('file/copyfile').customePOST(copyRequest);
+    return this.restangular.one('file/copyfile').customPOST(copyRequest);
   }
   moveRequest(moveRequest: MoveRequest) {
-    return this.restangular.one('file/movefile').customePOST(moveRequest);
+    return this.restangular.one('file/movefile').customPOST(moveRequest);
   }
   navigateTo(folder: PathClass) {
     // this.currentPath = folder;

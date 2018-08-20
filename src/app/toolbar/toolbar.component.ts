@@ -4,6 +4,7 @@ import { AuthService } from '@app/Services/auth.service';
 import { Router, Params } from '@angular/router';
 import { NewFolderComponent } from '@app/new-folder/new-folder.component';
 import { FileService } from '@app/Services/file.service';
+import { CopyRequest } from '@app/copyRequest';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -71,29 +72,39 @@ export class ToolbarComponent implements OnInit {
   public showListIcon: Boolean = false;
   public copyOrCutMode: Boolean = false;
   public pasteMode: Boolean = false;
+  public oldPath: String = '';
 
   submitCopyOrCut() {
     this.copyOrCutMode = !this.copyOrCutMode;
     this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode.next(this.pasteMode);
-    this.fileService.pasteMode.subscribe(value => {
-      this.pasteMode = Boolean(value);
-    });
+    this.fileService.pasteMode = this.pasteMode;
   }
+  public selectedFilesIndex = new Array<number>();
   submitPaste() {
     this.copyOrCutMode = !this.copyOrCutMode;
     this.selectModeToolbar = false;
-    // this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode.subscribe(value => {
-      this.pasteMode = Boolean(value);
+    this.pasteMode = !this.pasteMode;
+    this.fileService.pasteMode = this.pasteMode;
+    let name: string;
+    this.fileService.allFiles.subscribe(data => {
+      this.fileService.selectedFiles.subscribe(value => {
+        name = data[value[0]].name;
+        this.oldPath = data[value[0]] /*+ '/' + name*/;
+        console.log('N/', data[value[0]]);
+      });
     });
-    this.fileService.pasteMode.next(this.pasteMode);
+    console.log('A ', this.oldPath, 'N: ', name);
+    let Request = new CopyRequest();
+    Request.oldPath = '/A7.pdf';
+    console.log('B:', Request.oldPath);
+    Request.newPath = this.fileService.currentPath.pathToString();
+    this.fileService.copyFile(Request).subscribe(data => {});
   }
   submitCancel() {
     this.copyOrCutMode = !this.copyOrCutMode;
     this.selectModeToolbar = false;
     this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode.next(this.pasteMode);
+    this.fileService.pasteMode = this.pasteMode;
   }
   changeShowMode() {
     if (this.showMode == 'compact') this.showMode = 'list';
