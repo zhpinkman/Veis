@@ -1,9 +1,16 @@
+import { CompactFileComponent } from './../compact-file/compact-file.component';
 import { ConstService } from '@app/Services/const.service';
 import { PathClass } from '@app/PathClass';
 import { FileEntity } from '@app/file';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { FileService } from '@app/Services/file.service';
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { list, shake, compact } from '@app/animation';
 
@@ -23,12 +30,17 @@ export class FilesListComponent implements OnInit {
   public order: Boolean = true;
   objectKeys = Object.keys;
 
+  @ViewChildren(CompactFileComponent)
+  compactfiles: QueryList<CompactFileComponent>;
+
   constructor(
     private fileService: FileService,
     private Aroute: ActivatedRoute,
     private utils: UtilitiesService,
     public consts: ConstService
   ) {
+    // console.log('zzz');
+
     utils.setTitle('Your Files');
 
     fileService.select.subscribe(value => {
@@ -48,6 +60,13 @@ export class FilesListComponent implements OnInit {
     fileService.loadFiles.subscribe(value => {
       this.getFilesList();
     });
+  }
+
+  ngAfterViewInit() {
+    // console.log('zzz');
+    // this.compactfiles.forEach(element => {
+    // console.log(element);
+    // });
   }
 
   addToList(value: string) {
@@ -122,5 +141,10 @@ export class FilesListComponent implements OnInit {
     this.sortedBy = 'size';
     this.sizeOrder = !this.sizeOrder;
     this.order = this.sizeOrder;
+  }
+
+  isInRoot() {
+    if (this.fileService.currentPath.pathToString() === '') return true;
+    else return false;
   }
 }
