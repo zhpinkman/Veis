@@ -28,10 +28,11 @@ export class FilesListComponent implements OnInit {
   public nameOrder: Boolean = true;
   public sizeOrder: Boolean = true;
   public order: Boolean = true;
+  public filesAroundClick: Array<string> = [];
   objectKeys = Object.keys;
 
   @ViewChildren(CompactFileComponent)
-  compactfiles: QueryList<CompactFileComponent>;
+  entities: QueryList<CompactFileComponent>;
 
   constructor(
     private fileService: FileService,
@@ -39,7 +40,21 @@ export class FilesListComponent implements OnInit {
     private utils: UtilitiesService,
     public consts: ConstService
   ) {
-    // console.log('zzz');
+    this.fileService.outSideElement.subscribe(element => {
+      console.log('one Click recieved!!');
+      this.filesAroundClick.push(element.toString());
+      if (this.filesAroundClick.length === this.files.length) {
+        console.log('click compeleted');
+        let outSideClicks: number = 0;
+        this.filesAroundClick.forEach(file => {
+          if (file === 'outSide') outSideClicks++;
+        });
+        console.log(outSideClicks);
+        if (outSideClicks === this.files.length) this.clearSelectedFiles();
+
+        this.filesAroundClick = [];
+      }
+    });
 
     utils.setTitle('Your Files');
 
@@ -62,11 +77,9 @@ export class FilesListComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    // console.log('zzz');
-    // this.compactfiles.forEach(element => {
-    // console.log(element);
-    // });
+  clearSelectedFiles() {
+    this.selectedFilesIndex = [];
+    this.files.forEach(file => (file.selected = false));
   }
 
   addToList(value: string) {

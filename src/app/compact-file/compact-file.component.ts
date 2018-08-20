@@ -4,7 +4,16 @@ import {
   MatDialogClose,
   MatDialogConfig
 } from '@angular/material/dialog';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener,
+  Renderer2,
+  ElementRef
+} from '@angular/core';
 import { FullFileComponent } from '@app/full-file/full-file.component';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
@@ -24,7 +33,6 @@ export class CompactFileComponent implements OnInit {
   file: FileEntity;
 
   handleKeyboardEvent(event: KeyboardEvent) {
-    // console.log(event);
     if (event.key === 'Enter' && this.file.selected === true) this.openDialog();
   }
   public showMode: string = 'list';
@@ -36,7 +44,9 @@ export class CompactFileComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     public consts: ConstService,
-    private fileService: FileService
+    private fileService: FileService,
+    private elRef: ElementRef,
+    private renderer: Renderer2
   ) {
     this.fileService.showMode.subscribe(value => {
       this.showMode = value.toString();
@@ -80,5 +90,20 @@ export class CompactFileComponent implements OnInit {
   }
   hoverOff() {
     this.mouseOn = false;
+  }
+
+  @HostListener('document:click', ['$event', '$event.target'])
+  onClick(event: MouseEvent, targetElement: HTMLElement): void {
+    if (!targetElement) {
+      return;
+    }
+    const clickedInside = this.elRef.nativeElement.contains(targetElement);
+    if (!clickedInside) {
+      this.fileService.outSideElement.next('outSide');
+      console.log('outSide');
+    } else {
+      this.fileService.outSideElement.next('inSide');
+      console.log('inSide');
+    }
   }
 }

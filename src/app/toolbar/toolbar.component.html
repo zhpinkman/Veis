@@ -1,10 +1,10 @@
 <div class="justify-content-between row container-fluid box-item px-5 py-3 no-gutters fixed-top">
   <div class="row col-auto">
     <div class="col-auto my-auto">
-      <div class="clickable" [hidden]="showListIcon">
+      <div class="clickable" [hidden]="!showListIcon">
         <i class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
-      <div class="clickable" [hidden]="!showListIcon">
+      <div class="clickable" [hidden]="showListIcon">
         <i class="fa fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
       </div>
     </div>

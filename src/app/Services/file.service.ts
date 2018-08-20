@@ -71,6 +71,7 @@ export class FileService {
   selectMode = new Subject();
   newFilesComming = new Subject();
   loadFiles = new Subject();
+  outSideElement = new Subject();
 
   getFiles() {
     // console.log(this.currentPath);
