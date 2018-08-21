@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { list, shake, compact } from '@app/animation';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-files-list',
@@ -38,8 +39,10 @@ export class FilesListComponent implements OnInit {
     private fileService: FileService,
     private Aroute: ActivatedRoute,
     private utils: UtilitiesService,
-    public consts: ConstService
+    public consts: ConstService,
+    private dragulaService: DragulaService
   ) {
+    this.dragulaService.createGroup('allFiles', {});
     this.fileService.outSideElement.subscribe(element => {
       console.log('one Click recieved!!');
       this.filesAroundClick.push(element.toString());
