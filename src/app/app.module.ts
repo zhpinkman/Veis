@@ -45,6 +45,7 @@ import { FolderViewComponent } from './folder-view/folder-view.component';
 import { UploadDropZoneComponent } from './upload-drop-zone/upload-drop-zone.component';
 import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-popup.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -74,8 +75,9 @@ import { OrderModule } from 'ngx-order-pipe';
     ReactiveFormsModule,
     FormsModule,
     RestangularModule.forRoot([AuthService], RestangularConfigFactory),
-    BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
+    DragulaModule.forRoot(),
+    BrowserAnimationsModule,
     NgxUploaderModule,
     FontAwesomeModule,
     MatDialogModule,
