@@ -4,7 +4,7 @@ import { AuthService } from '@app/Services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
 import { ConstService } from '@app/Services/const.service';
-import { environment } from 'environments/environment.prod';
+import { environment } from 'environments/environment';
 
 let host: string;
 if (environment.production) host = 'http://142.93.66.250/api';

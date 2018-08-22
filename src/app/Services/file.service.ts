@@ -12,7 +12,11 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { ProgressHttp } from 'angular-progress-http';
 import { RequestOptions, Headers } from '@angular/http';
+import { environment } from 'environments/environment';
 
+let host: string;
+if (environment.production) host = 'http://142.93.66.250/api';
+else host = 'http://localhost:9500';
 @Injectable({
   providedIn: 'root'
 })
@@ -132,7 +136,7 @@ export class FileService {
           // console.log(progress);
           fun(progress, i);
         })
-        .post('http://localhost:9500/file/upload', form, options)
+        .post(host + '/file/upload', form, options)
         .subscribe(response => {
           // console.log(response);
         });
