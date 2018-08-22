@@ -102,7 +102,7 @@ export class FileService {
   copyFile(copyRequest: CopyRequest) {
     return this.restangular.one('file/copyfile').customPOST(copyRequest);
   }
-  moveRequest(moveRequest: MoveRequest) {
+  moveFile(moveRequest: MoveRequest) {
     return this.restangular.one('file/movefile').customPOST(moveRequest);
   }
   navigateTo(folder: PathClass) {
