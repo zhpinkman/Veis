@@ -8,14 +8,12 @@ import { TokenService } from '@app/Services/token.service';
 export class NotAuthGuard implements CanActivate {
   constructor(private token: TokenService, private router: Router) {}
   canActivate() {
-    // console.log(this.token, this.token.accessToken);
+    console.log(this.token, this.token.accessToken);
     if (this.token.accessToken) {
-      // if (this.router. == 'login')
-      // if(this.router == login || this.router == signup ){
-      // this.router.navigate(['home']);
-      // }
+      this.router.navigate(['/myfiles']);
       console.log('you are already logged in');
-      return true;
+      return false;
     }
+    return true;
   }
 }

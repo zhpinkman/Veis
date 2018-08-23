@@ -9,15 +9,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from '@app/login/login.component';
 import { UploadFileComponent } from '@app/upload-file/upload-file.component';
+import { NotAuthGuard } from '@app/Services/NOTauthguard';
 
 const routes: Routes = [
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'activation',
