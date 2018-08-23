@@ -31,7 +31,7 @@ import { UtilitiesService } from '@app/Services/utilities.service';
 })
 export class ToolbarComponent implements OnInit {
   constructor(
-    private fileService: FileService,
+    public fileService: FileService,
     private dialog: MatDialog,
     private router: Router,
     private utils: UtilitiesService
