@@ -21,6 +21,8 @@ else host = 'http://localhost:9500';
   providedIn: 'root'
 })
 export class FileService {
+  oldPathes: any[];
+  copyOrCut: string = null;
   constructor(
     @Inject(RESTANGULAR_AUTH) private restangular,
     private route: ActivatedRoute,
@@ -76,9 +78,9 @@ export class FileService {
   newFilesComming = new Subject();
   loadFiles = new Subject();
   pasteMode: Boolean = false;
-  selectedFiles = new ReplaySubject();
-  allFiles = new ReplaySubject();
   outSideElement = new Subject();
+  selectedFiles = [];
+  allFiles = [];
 
   getFiles() {
     // console.log(this.currentPath);

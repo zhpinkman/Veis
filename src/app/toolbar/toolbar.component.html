@@ -15,13 +15,13 @@
     <div class="col-auto uploadIcon my-auto">
       <i class="fa fa-cloud-upload icon" aria-hidden="true" (click)="navigateToUpload()"></i>
     </div>
-    <div class="col-auto Xlarge row my-auto mx-1" [hidden]="!fileService.pasteMode">
+    <div class="col-auto Xlarge row my-auto mx-1" *ngIf="fileService.pasteMode">
       <i class="fa fa-clipboard mx-1 col-auto" aria-hidden="true" (click)="submitPaste()"></i>
       <i class="fa fa-ban mx-1 col-auto" aria-hidden="true" (click)="submitCancel()"></i>
     </div>
-    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar && !copyOrCutMode" [@flyInOut]="'in'">
-      <i class="fa fa-files-o mx-1 col-auto" aria-hidden="true" (click)="submitCopyOrCut()"></i>
-      <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true" (click)="submitCopyOrCut()"></i>
+    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
+      <i class="fa fa-files-o mx-1 col-auto" aria-hidden="true" (click)="submitCopy()"></i>
+      <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
     </div>
   </div>
   <div class="row no-gutters">

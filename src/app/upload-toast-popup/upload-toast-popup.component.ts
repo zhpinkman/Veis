@@ -37,10 +37,12 @@ export class UploadToastPopupComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.fileObjs = [];
-    for (let i = 0; i < this.files.length; i++) {
-      this.fileObjs.push({ file: this.files[i], progress: undefined });
+    if (this.files) {
+      for (let i = 0; i < this.files.length; i++) {
+        this.fileObjs.push({ file: this.files[i], progress: undefined });
+      }
+      this.fileService.upload(this.files, this.handleProgressChange);
     }
-    this.fileService.upload(this.files, this.handleProgressChange);
   }
 
   closeToast() {

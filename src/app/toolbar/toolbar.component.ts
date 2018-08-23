@@ -21,6 +21,7 @@ import {
   keyframes
 } from '@angular/animations';
 import { flyInOut } from '@app/animation';
+import { UtilitiesService } from '@app/Services/utilities.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -32,7 +33,8 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private fileService: FileService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private utils: UtilitiesService
   ) {
     this.fileService.selectMode.subscribe(data => {
       if (data > 0) this.selectModeToolbar = true;
@@ -69,71 +71,79 @@ export class ToolbarComponent implements OnInit {
       // console.log('The dialog was closed!!');
     });
   }
-  public showMode: string = 'list';
-  public selectModeToolbar: Boolean = false;
-  public showListIcon: Boolean = false;
-  public copyMode: Boolean = false;
-  public cutMode: Boolean = false;
-  public pasteMode: Boolean = false;
-  public oldPath: String = '';
+  showMode: string = 'list';
+  selectModeToolbar: Boolean = false;
+  showListIcon: Boolean = false;
+  oldPath: String = '';
 
   submitCopy() {
-    this.copyMode = true;
-    this.pasteMode = true;
-    this.fileService.pasteMode = this.pasteMode;
+    this.fileService.copyOrCut = 'copy';
+    this.fileService.pasteMode = true;
+    this.createOldPathesFromSelectedFiles();
   }
 
   submitCut() {
-    this.cutMode = true;
-    this.pasteMode = true;
-    this.fileService.pasteMode = this.pasteMode;
+    this.fileService.copyOrCut = 'cut';
+    this.fileService.pasteMode = true;
+    this.createOldPathesFromSelectedFiles();
   }
 
-  // public oldPathes = new Array<String>();
-  public op = new Array<String>();
+  createOldPathesFromSelectedFiles() {
+    let oldPathes = [];
+    let data = this.fileService.allFiles;
+    let value = this.fileService.selectedFiles;
+    console.log('size of op: ', value.length);
+    value.forEach(val => {
+      this.oldPath = data[val].path;
+      let index = this.oldPath.indexOf('/', 1);
+      this.oldPath = this.oldPath.substring(index);
+      oldPathes.push(this.oldPath);
+    });
+    console.log('oldPathes info= ', oldPathes);
+    console.log('size of oldpathes: ', oldPathes.length);
+    this.fileService.oldPathes = oldPathes;
+    // console.log(this.olds);
+  }
+
   submitPaste() {
     // this.selectModeToolbar = false;
-    this.pasteMode = false;
-    this.fileService.pasteMode = this.pasteMode;
-    let oldPathes = new Array<String>();
-    this.fileService.allFiles.subscribe(data => {
-      this.fileService.selectedFiles.subscribe(value => {
-        this.op = value as Array<String>;
-        console.log('size of op: ', this.op.length);
-        for (let i = 0; i < this.op.length; i++) {
-          this.oldPath = data[value[i]].path;
-          this.oldPath = this.oldPath.substring(1, this.oldPath.length);
-          let index;
-          index = this.oldPath.indexOf('/');
-          this.oldPath = this.oldPath.substring(index, this.oldPath.length);
-          oldPathes.push(this.oldPath);
-        }
-        console.log('oldPathes info= ', oldPathes);
-      });
-    });
-    console.log('size of oldpathes: ', oldPathes.length);
-    for (let i = 0; i < oldPathes.length; i++) {
+    this.fileService.pasteMode = false;
+    console.log(this.fileService.oldPathes);
+    this.fileService.oldPathes.forEach(op => {
       console.log('After: ', this.oldPath, 'N: ', name);
-      let Request = new CopyRequest();
-      Request.oldPath = oldPathes[i];
-      Request.newPath = this.fileService.currentPath.pathToString();
-      if (!this.copyMode) {
-        this.fileService.copyFile(Request).subscribe(data => {});
-      } else if (this.cutMode) {
-        this.fileService.moveFile(Request).subscribe(data => {});
+      let request = new CopyRequest();
+      request.oldPath = op;
+      request.newPath = this.fileService.currentPath.pathToString();
+      if (this.fileService.copyOrCut === 'copy') {
+        this.fileService.copyFile(request).subscribe(
+          data => {
+            this.utils.success('موفقیت', 'کپی با موفقیت انجام شد');
+          },
+          error => {
+            this.utils.error('خطا...', 'کپی با خطا مواجه شد!');
+          }
+        );
+      } else {
+        this.fileService.moveFile(request).subscribe(
+          data => {
+            this.utils.success('موفقیت', 'کات با موفقیت انجام شد');
+          },
+          error => {
+            this.utils.error('خطا...', 'کات با خطا مواجه شد');
+          }
+        );
       }
-    }
-    this.fileService.selectedFiles.next(null);
-    this.copyMode = false;
-    this.cutMode = false;
-    // this.router.navigate([this.fileService.currentPath.pathToString()]);
+    });
+
+    this.fileService.selectedFiles = [];
+    this.fileService.copyOrCut = null;
+    this.selectModeToolbar = false;
   }
   submitCancel() {
-    this.copyMode = !this.copyMode;
-    this.cutMode = !this.cutMode;
     this.selectModeToolbar = false;
-    this.pasteMode = !this.pasteMode;
-    this.fileService.pasteMode = this.pasteMode;
+    this.fileService.pasteMode = false;
+    this.fileService.selectedFiles = [];
+    this.fileService.copyOrCut = null;
   }
   changeShowMode() {
     if (this.showMode == 'compact') this.showMode = 'list';
