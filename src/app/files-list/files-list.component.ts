@@ -1,4 +1,3 @@
-import { CompactFileComponent } from './../compact-file/compact-file.component';
 import { ConstService } from '@app/Services/const.service';
 import { PathClass } from '@app/PathClass';
 import { FileEntity } from '@app/file';
@@ -14,6 +13,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { list, shake, compact } from '@app/animation';
 import { DragulaService } from 'ng2-dragula';
+import { CompactFileComponent } from '@app/compact-file/compact-file.component';
 
 @Component({
   selector: 'app-files-list',
@@ -64,6 +64,8 @@ export class FilesListComponent implements OnInit {
     fileService.select.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
+      this.fileService.selectedFiles = this.selectedFilesIndex;
+      this.fileService.allFiles = this.files;
       this.fileService.selectMode.next(this.selectedFilesIndex.length);
     });
 

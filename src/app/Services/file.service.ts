@@ -12,11 +12,17 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { ProgressHttp } from 'angular-progress-http';
 import { RequestOptions, Headers } from '@angular/http';
+import { environment } from 'environments/environment';
 
+let host: string;
+if (environment.production) host = 'http://142.93.66.250/api';
+else host = 'http://localhost:9500';
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
+  oldPathes: any[];
+  copyOrCut: string = null;
   constructor(
     @Inject(RESTANGULAR_AUTH) private restangular,
     private route: ActivatedRoute,
@@ -71,7 +77,10 @@ export class FileService {
   selectMode = new Subject();
   newFilesComming = new Subject();
   loadFiles = new Subject();
+  pasteMode: Boolean = false;
   outSideElement = new Subject();
+  selectedFiles = [];
+  allFiles = [];
 
   getFiles() {
     // console.log(this.currentPath);
@@ -98,10 +107,10 @@ export class FileService {
     return this.restangular.one('file/delete').customPOST(deleteRequest);
   }
   copyFile(copyRequest: CopyRequest) {
-    return this.restangular.one('file/copyfile').customePOST(copyRequest);
+    return this.restangular.one('file/copyfile').customPOST(copyRequest);
   }
-  moveRequest(moveRequest: MoveRequest) {
-    return this.restangular.one('file/movefile').customePOST(moveRequest);
+  moveFile(moveRequest: MoveRequest) {
+    return this.restangular.one('file/movefile').customPOST(moveRequest);
   }
   navigateTo(folder: PathClass) {
     // this.currentPath = folder;
@@ -132,7 +141,7 @@ export class FileService {
           // console.log(progress);
           fun(progress, i);
         })
-        .post('http://localhost:9500/file/upload', form, options)
+        .post(host + '/file/upload', form, options)
         .subscribe(response => {
           // console.log(response);
         });

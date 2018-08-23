@@ -1,35 +1,50 @@
-<div>
-  <h5 class="mx-auto my-5" style="text-align: center">SIGNUP</h5>
-</div>
-<div>
-  <div class="bg-white p-5 col-12 col-sm-6 col-md-4 col-lg-3 mx-auto mat-elevation-z4">
-    <form [formGroup]="registerForm">
-      <mat-form-field class="w-100">
-        <input matInput #message maxlength="256" formControlName="email" id="email" type="text" (change)="bucketGenerator()" placeholder="email">
-        <mat-hint align="start">
-          <strong>Enter your ut.ac.ir email</strong>
-        </mat-hint>
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input matInput #message maxlength="256" formControlName="password" id="password" type="password" placeholder="password">
-        <mat-hint align="start">
-          <strong>your password must contain Upper case and lower case letters and also numbers too </strong>
-        </mat-hint>
-      </mat-form-field>
-      <mat-form-field class="w-100 my-4">
-        <input matInput #message maxlength="256" formControlName="bucket" id="bucket" type="text" value="{{bucketDefaultGenerator()}}"
-          placeholder="bucket">
-        <mat-hint align="start">
-          <strong>Your files will be stored in: cloud.ut.ac.ir/{{bucketDefaultGenerator() || "Your bucket name"}}/...</strong>
-        </mat-hint>
-      </mat-form-field>
-      <button class="mt-4" mat-flat-button type="submit" color="primary" style="text-align: center" (click)="signup()" [disabled]='registerForm.invalid'>
-        <span>signup</span>
-        <i class="fa fa-spinner fa-pulse text-white" [hidden]="bool"></i>
-      </button>
-    </form>
+<div class="background py-5">
+  <div>
+    <h5 class="title mx-auto my-5" style="text-align: center">ثبت نام</h5>
   </div>
-  <div class="my-4 text-center">
-    <a routerLink="/login">Login</a>
+  <div>
+    <div class="bg-white p-5 col-12 col-sm-6 col-md-4 col-lg-3 mx-auto mat-elevation-z4">
+      <form [formGroup]="registerForm">
+        <mat-form-field class="my-3 w-100">
+          <input matInput #message maxlength="256" formControlName="email" id="email" type="text" (change)="bucketGenerator()" placeholder="ایمیل"
+            dir="ltr" class="text-left">
+          <mat-hint align="start">
+            <strong>
+              <span>
+                ایمیل دانشگاه تهران خود را وارد کنید.
+              </span>
+            </strong>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="my-3 w-100">
+          <input matInput #message maxlength="256" formControlName="password" id="password" type="password" placeholder="رمز عبور"
+            dir="ltr" class="text-left">
+          <mat-hint align="start">
+            <strong dir="rtl">رمز عبور شما باید شامل حروف بزرگ و کوچک و اعداد باشد.</strong>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="w-100 my-3">
+          <input matInput #message maxlength="256" formControlName="bucket" id="bucket" type="text" value="{{bucketDefaultGenerator()}}"
+            placeholder="باکت" dir="ltr">
+          <mat-hint align="start">
+            <strong>
+              <span>
+                فایل های شما در این آدرس ذخیر می‌شود:
+              </span>
+              <span>
+                cloud.ut.ac.ir/{{bucketDefaultGenerator() || "باکت شما"}}/...
+              </span>
+            </strong>
+          </mat-hint>
+        </mat-form-field>
+        <button class="mt-4" mat-flat-button type="submit" color="primary" style="text-align: center" (click)="signup()" [disabled]='registerForm.invalid'>
+          <span>signup</span>
+          <i class="fa fa-spinner fa-pulse text-white" [hidden]="bool"></i>
+        </button>
+      </form>
+    </div>
+    <div class="my-4 text-center">
+      <a routerLink="/login">ورود</a>
+    </div>
   </div>
 </div>

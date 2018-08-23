@@ -63,7 +63,8 @@ export class FullFileComponent implements OnInit {
   delete() {
     this.hideDeleteIcon = true;
     let Request = new DeleteRequest();
-    this.fileService.currentPath.pathToString() + '/' + this.data.name;
+    Request.path =
+      this.fileService.currentPath.pathToString() + '/' + this.data.name;
     this.fileService.deleteFile(Request).subscribe(
       data => {
         this.hideDeleteIcon = false;
