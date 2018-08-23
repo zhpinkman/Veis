@@ -7,6 +7,7 @@ export class FileEntity {
   creationDate: any;
   path: string;
   isDir: Boolean;
+  url: string;
   isOpen: Boolean = false;
   selected: Boolean = false;
 }

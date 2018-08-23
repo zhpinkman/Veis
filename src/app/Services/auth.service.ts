@@ -33,7 +33,7 @@ export class AuthService {
       .set('grant_type', 'password');
     const authHeader = btoa('client:secret');
     return this.restangular
-      .one('oauth/token')
+      .one('login')
       .customPOST(params.toString(), undefined, undefined, {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         Authorization: `Basic ${authHeader}`
@@ -60,7 +60,7 @@ export class AuthService {
       .set('grant_type', 'refresh_token');
     const authHeader = btoa('client:secret');
     return this.restangular
-      .one('oauth/token')
+      .one('login')
       .customPOST(params.toString(), undefined, undefined, {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         Authorization: `Basic ${authHeader}`
