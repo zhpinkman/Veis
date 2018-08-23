@@ -34,8 +34,8 @@ export class FilesListComponent implements OnInit {
     fileService.select.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
-      this.fileService.selectedFiles.next(this.selectedFilesIndex);
-      this.fileService.allFiles.next(this.files);
+      this.fileService.selectedFiles = this.selectedFilesIndex;
+      this.fileService.allFiles = this.files;
       this.fileService.selectMode.next(this.selectedFilesIndex.length);
     });
 

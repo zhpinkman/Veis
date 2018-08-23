@@ -19,7 +19,7 @@
       <i class="fa fa-clipboard mx-1 col-auto" aria-hidden="true" (click)="submitPaste()"></i>
       <i class="fa fa-ban mx-1 col-auto" aria-hidden="true" (click)="submitCancel()"></i>
     </div>
-    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar && !copyMode && !cutMode" [@flyInOut]="'in'">
+    <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
       <i class="fa fa-files-o mx-1 col-auto" aria-hidden="true" (click)="submitCopy()"></i>
       <i class="fa fa-scissors mx-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
     </div>

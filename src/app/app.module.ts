@@ -31,7 +31,8 @@ import { UploadItemComponent } from '@app/upload-item/upload-item.component';
 import {
   MatProgressBarModule,
   MatFormFieldModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatTooltipModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -85,6 +86,7 @@ import { OrderModule } from 'ngx-order-pipe';
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
+    MatTooltipModule,
     HttpModule,
     ProgressHttpModule,
     OrderModule
