@@ -1,40 +1,42 @@
-<div class="m-5 p-3 text-center mat-elevation-z4" [hidden]="!isHidden">
-  در حال فعال سازی ...
-  <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw"></i>
-  <span class="sr-only">Activating ... </span>
+<div class="background py-5">
+  <div class="m-5 pb-3 text-center mat-elevation-z4" [hidden]="!isHidden">
+    در حال فعال سازی ...
+    <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw "></i>
+    <span class="sr-only ">Activating ... </span>
 
-</div>
-
-<div [hidden]="isHidden">
-  <div>
-    <h5 class="mx-auto my-5" style="text-align: center">LOGIN</h5>
   </div>
-  <div class="">
-    <div class="bg-white p-5 col-12 col-sm-6 col-md-4 col-lg-3 mx-auto mat-elevation-z4">
-      <form [formGroup]="loginForm">
-        <div dir="rtl">
-          <mat-form-field class="w-100">
-            <input matInput id="email" formControlName="email" type="text" placeholder="ایمیل" dir="ltr" class="text-left">
-          </mat-form-field>
-          <mat-form-field class="w-100">
-            <input matInput id="password" formControlName="password" type="password" placeholder="رمز عبور" dir="ltr" class="text-left">
-          </mat-form-field>
-          <div class="remember-me-container" dir="rtl">
-            <mat-checkbox color="primary" class="example-margin" formControlName="rememberMe">ورود من را ذخیره کن</mat-checkbox>
-          </div>
-          <div>
-            <button mat-flat-button type="submit" color="primary" [disabled]='loginForm.invalid' (click)="login()">
-              <span>login</span>
-              <i class="fa fa-spinner fa-pulse ml-2 text-white" [hidden]="spinHide"></i>
-            </button>
+
+  <div [hidden]="isHidden">
+    <div>
+      <h5 class="title mx-auto mb-5" style="text-align: center">LOGIN</h5>
+    </div>
+    <div class="">
+      <div class="bg-white p-5 col-12 col-sm-6 col-md-4 col-lg-3 mx-auto mat-elevation-z4">
+        <form [formGroup]="loginForm">
+          <div dir="rtl">
+            <mat-form-field class="w-100">
+              <input matInput id="email" formControlName="email" type="text" placeholder="ایمیل" dir="ltr" class="text-left">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput id="password" formControlName="password" type="password" placeholder="رمز عبور" dir="ltr" class="text-left">
+            </mat-form-field>
+            <div class="remember-me-container" dir="rtl">
+              <mat-checkbox color="primary" class="example-margin" formControlName="rememberMe">ورود من را ذخیره کن</mat-checkbox>
+            </div>
             <div>
+              <button mat-flat-button type="submit" color="primary" [disabled]='loginForm.invalid' (click)="login()">
+                <span>login</span>
+                <i class="fa fa-spinner fa-pulse ml-2 text-white" [hidden]="spinHide"></i>
+              </button>
+              <div>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
-    </div>
-    <div class="my-4 text-center">
-      <a routerLink="/signup">Sign Up</a>
+        </form>
+      </div>
+      <div class="my-4 text-center">
+        <a routerLink="/signup">Sign Up</a>
+      </div>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@
 html {
   height: 100%;
 }
+
 body {
   background: #f9f9f9;
   text-align: right;
@@ -18,4 +19,10 @@ body {
 
 .clickable {
   cursor: pointer;
+}
+
+.background {
+  background-size: cover;
+  background-image: url(test.png);
+  height: 100vh;
 }
