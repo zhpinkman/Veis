@@ -72,38 +72,65 @@ export class ToolbarComponent implements OnInit {
   public showMode: string = 'list';
   public selectModeToolbar: Boolean = false;
   public showListIcon: Boolean = false;
-  public copyOrCutMode: Boolean = false;
+  public copyMode: Boolean = false;
+  public cutMode: Boolean = false;
   public pasteMode: Boolean = false;
   public oldPath: String = '';
 
-  submitCopyOrCut() {
-    this.copyOrCutMode = !this.copyOrCutMode;
-    this.pasteMode = !this.pasteMode;
+  submitCopy() {
+    this.copyMode = true;
+    this.pasteMode = true;
     this.fileService.pasteMode = this.pasteMode;
   }
-  public selectedFilesIndex = new Array<number>();
-  submitPaste() {
-    this.copyOrCutMode = !this.copyOrCutMode;
-    this.selectModeToolbar = false;
-    this.pasteMode = !this.pasteMode;
+
+  submitCut() {
+    this.cutMode = true;
+    this.pasteMode = true;
     this.fileService.pasteMode = this.pasteMode;
-    let name: string;
+  }
+
+  // public oldPathes = new Array<String>();
+  public op = new Array<String>();
+  submitPaste() {
+    // this.selectModeToolbar = false;
+    this.pasteMode = false;
+    this.fileService.pasteMode = this.pasteMode;
+    let oldPathes = new Array<String>();
     this.fileService.allFiles.subscribe(data => {
       this.fileService.selectedFiles.subscribe(value => {
-        name = data[value[0]].name;
-        this.oldPath = data[value[0]] /*+ '/' + name*/;
-        console.log('N/', data[value[0]]);
+        this.op = value as Array<String>;
+        console.log('size of op: ', this.op.length);
+        for (let i = 0; i < this.op.length; i++) {
+          this.oldPath = data[value[i]].path;
+          this.oldPath = this.oldPath.substring(1, this.oldPath.length);
+          let index;
+          index = this.oldPath.indexOf('/');
+          this.oldPath = this.oldPath.substring(index, this.oldPath.length);
+          oldPathes.push(this.oldPath);
+        }
+        console.log('oldPathes info= ', oldPathes);
       });
     });
-    console.log('A ', this.oldPath, 'N: ', name);
-    let Request = new CopyRequest();
-    Request.oldPath = '/A7.pdf';
-    console.log('B:', Request.oldPath);
-    Request.newPath = this.fileService.currentPath.pathToString();
-    this.fileService.copyFile(Request).subscribe(data => {});
+    console.log('size of oldpathes: ', oldPathes.length);
+    for (let i = 0; i < oldPathes.length; i++) {
+      console.log('After: ', this.oldPath, 'N: ', name);
+      let Request = new CopyRequest();
+      Request.oldPath = oldPathes[i];
+      Request.newPath = this.fileService.currentPath.pathToString();
+      if (!this.copyMode) {
+        this.fileService.copyFile(Request).subscribe(data => {});
+      } else if (this.cutMode) {
+        this.fileService.moveFile(Request).subscribe(data => {});
+      }
+    }
+    this.fileService.selectedFiles.next(null);
+    this.copyMode = false;
+    this.cutMode = false;
+    // this.router.navigate([this.fileService.currentPath.pathToString()]);
   }
   submitCancel() {
-    this.copyOrCutMode = !this.copyOrCutMode;
+    this.copyMode = !this.copyMode;
+    this.cutMode = !this.cutMode;
     this.selectModeToolbar = false;
     this.pasteMode = !this.pasteMode;
     this.fileService.pasteMode = this.pasteMode;
