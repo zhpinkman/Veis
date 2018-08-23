@@ -42,7 +42,7 @@ export class FilesListComponent implements OnInit {
     public consts: ConstService,
     private dragulaService: DragulaService
   ) {
-    this.dragulaService.createGroup('allFiles', {});
+    // this.dragulaService.createGroup('allFiles', {});
     this.fileService.outSideElement.subscribe(element => {
       console.log('one Click recieved!!');
       this.filesAroundClick.push(element.toString());

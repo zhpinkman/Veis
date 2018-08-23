@@ -23,7 +23,7 @@
       <i *ngIf="sizeOrder == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
     </div>
   </div>
-  <div [@compact]="files.length" class="row no-gutters" *ngIf="showMode == 'compact'" dragula="allFiles">
+  <div [@compact]="files.length" class="row no-gutters" *ngIf="showMode == 'compact'">
     <app-folder-view class=" col-auto" *ngFor="let folder of folders" [data]="folder "></app-folder-view>
     <app-compact-file class="col-auto" class="pb-3 " (deleted)="deleteFromList($event) " *ngFor="let file of files" [value]="file "></app-compact-file>
   </div>
