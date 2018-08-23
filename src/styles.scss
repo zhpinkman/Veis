@@ -26,3 +26,15 @@ body {
   background-image: url(test.png);
   height: 100vh;
 }
+
+.mat-form-field {
+  font-family: 'IranSansNumbers', IRANSans, sans-serif !important;
+}
+
+.mat-form-field-label {
+  text-align: right !important;
+}
+
+.mat-form-field-subscript-wrapper {
+  text-align: right !important;
+}
