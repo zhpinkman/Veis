@@ -1,11 +1,19 @@
+import { CompactFileComponent } from './../compact-file/compact-file.component';
 import { ConstService } from '@app/Services/const.service';
 import { PathClass } from '@app/PathClass';
 import { FileEntity } from '@app/file';
 import { UtilitiesService } from '@app/Services/utilities.service';
 import { FileService } from '@app/Services/file.service';
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { list, shake, compact } from '@app/animation';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-files-list',
@@ -21,14 +29,36 @@ export class FilesListComponent implements OnInit {
   public nameOrder: Boolean = true;
   public sizeOrder: Boolean = true;
   public order: Boolean = true;
+  public filesAroundClick: Array<string> = [];
   objectKeys = Object.keys;
+
+  @ViewChildren(CompactFileComponent)
+  entities: QueryList<CompactFileComponent>;
 
   constructor(
     private fileService: FileService,
     private Aroute: ActivatedRoute,
     private utils: UtilitiesService,
-    public consts: ConstService
+    public consts: ConstService,
+    private dragulaService: DragulaService
   ) {
+    this.dragulaService.createGroup('allFiles', {});
+    this.fileService.outSideElement.subscribe(element => {
+      console.log('one Click recieved!!');
+      this.filesAroundClick.push(element.toString());
+      if (this.filesAroundClick.length === this.files.length) {
+        console.log('click compeleted');
+        let outSideClicks: number = 0;
+        this.filesAroundClick.forEach(file => {
+          if (file === 'outSide') outSideClicks++;
+        });
+        console.log(outSideClicks);
+        if (outSideClicks === this.files.length) this.clearSelectedFiles();
+
+        this.filesAroundClick = [];
+      }
+    });
+
     utils.setTitle('Your Files');
 
     fileService.select.subscribe(value => {
@@ -50,6 +80,11 @@ export class FilesListComponent implements OnInit {
     fileService.loadFiles.subscribe(value => {
       this.getFilesList();
     });
+  }
+
+  clearSelectedFiles() {
+    this.selectedFilesIndex = [];
+    this.files.forEach(file => (file.selected = false));
   }
 
   addToList(value: string) {
@@ -124,5 +159,10 @@ export class FilesListComponent implements OnInit {
     this.sortedBy = 'size';
     this.sizeOrder = !this.sizeOrder;
     this.order = this.sizeOrder;
+  }
+
+  isInRoot() {
+    if (this.fileService.currentPath.pathToString() === '') return true;
+    else return false;
   }
 }

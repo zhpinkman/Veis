@@ -5,17 +5,15 @@ import { TokenService } from '@app/Services/token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NotAuthGuard implements CanActivate {
   constructor(private token: TokenService, private router: Router) {}
   canActivate() {
-    // console.log(this.token, this.token.accessToken);
+    console.log(this.token, this.token.accessToken);
     if (this.token.accessToken) {
-      console.log('you are logged in');
-      return true;
-    } else {
-      // console.log('you should log in first');
-      this.router.navigate(['login']);
+      this.router.navigate(['/myfiles']);
+      console.log('you are already logged in');
       return false;
     }
+    return true;
   }
 }
