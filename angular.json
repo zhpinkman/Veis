@@ -23,7 +23,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "stylePreprocessorOptions": {
-              "includePaths": ["src/scss/shared"]
+              "includePaths": [
+                "src/scss/shared"
+              ]
             },
             "assets": ["src/favicon-1024.png", "src/assets"],
             "styles": [
