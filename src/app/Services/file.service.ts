@@ -113,17 +113,6 @@ export class FileService {
     return this.restangular.one('file/movefile').customPOST(moveRequest);
   }
   navigateTo(folder: PathClass) {
-    // this.currentPath = folder;
-    // console.log(folder, ',,', folder.toRoute(), ',,');
-    // let paths = folder.toRoute().split('/');
-    // console.log(folder.toRoute());
-
-    // for (let i = 0; i < paths.length; i++) {
-    // console.log(paths[i]);
-    // }
-    // let route: string = ;
-
-    // console.log(route);
     this.router.navigate([folder.toRoute()]);
   }
   upload(files: FileList, fun: (progress: any, i: number) => any) {
@@ -146,5 +135,9 @@ export class FileService {
           // console.log(response);
         });
     }
+  }
+  initViewMode() {
+    if (localStorage.getItem('viewMode'))
+      return localStorage.getItem('viewMode');
   }
 }

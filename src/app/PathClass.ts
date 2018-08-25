@@ -1,10 +1,10 @@
 export class PathClass {
+  parentPath: PathClass;
+  name: string;
   constructor(_name: string, parent: PathClass = null) {
     this.name = _name;
     this.parentPath = parent;
   }
-  public parentPath: PathClass;
-  public name: string;
   pathToString(): string {
     if (this.parentPath == null) return ``;
     return `${this.parentPath.pathToString()}/${this.name}`;

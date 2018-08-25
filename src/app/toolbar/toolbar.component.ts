@@ -36,6 +36,8 @@ export class ToolbarComponent implements OnInit {
     private router: Router,
     private utils: UtilitiesService
   ) {
+    this.showMode = fileService.initViewMode();
+
     this.fileService.selectMode.subscribe(data => {
       if (data > 0) this.selectModeToolbar = true;
       else this.selectModeToolbar = false;
@@ -50,7 +52,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {}
   openDialog(event): void {
     const opts = new MatDialogConfig();
-    // console.log(event.x + ' , ' + event.y);
     const dialogPosition: DialogPosition = {
       top: '8%',
       right: '8%'
@@ -62,16 +63,11 @@ export class ToolbarComponent implements OnInit {
 
     const dialogRef = this.dialog.open(NewFolderComponent, opts);
 
-    // dialogRef.afterOpen().subscribe(data =>
-    //   //  console.log('opened successfully')
-    //   );
     dialogRef.updatePosition(opts.position);
 
-    dialogRef.afterClosed().subscribe(resutl => {
-      // console.log('The dialog was closed!!');
-    });
+    dialogRef.afterClosed().subscribe(resutl => {});
   }
-  showMode: string = 'list';
+  showMode: string = 'compact';
   selectModeToolbar: Boolean = false;
   showListIcon: Boolean = false;
   oldPath: String = '';
@@ -102,11 +98,9 @@ export class ToolbarComponent implements OnInit {
     console.log('oldPathes info= ', oldPathes);
     console.log('size of oldpathes: ', oldPathes.length);
     this.fileService.oldPathes = oldPathes;
-    // console.log(this.olds);
   }
 
   submitPaste() {
-    // this.selectModeToolbar = false;
     this.fileService.pasteMode = false;
     console.log(this.fileService.oldPathes);
     this.fileService.oldPathes.forEach(op => {
@@ -148,6 +142,7 @@ export class ToolbarComponent implements OnInit {
   changeShowMode() {
     if (this.showMode == 'compact') this.showMode = 'list';
     else this.showMode = 'compact';
+    localStorage.setItem('viewMode', this.showMode);
     this.fileService.showMode.next(this.showMode);
     this.showListIcon = !this.showListIcon;
   }

@@ -1,66 +1,60 @@
-<div mat-dialog>
-  <div mat-dialog-title>
-    <div class="m-5">
-      <i [class]=" 'fa fa-5x' + icons[data.type]">
-      </i>
+<div class="row no-gutters">
+  <div dir="rtl" class="file-options row w-100">
+    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+  </div>
+  <div class="file-icon">
+    <i [class]=" 'fa fa-5x' + icons[data.type]">
+    </i>
+  </div>
+
+  <div class="file-det">
+    <div class="file-name">
+      <span [hidden]="showEditName">{{data.name}}</span>
+      <input [hidden]="!showEditName" [(ngModel)]="newFileName">
+    </div>
+    <div class="row no-gutters">
+      <div class="file-size">
+        {{ data.size | size }}
+      </div>
+      <div class="file-date englishFormat">
+        {{data.creationDate | date}}
+      </div>
+    </div>
+  </div>
+  <div dir="rtl" class="row no-gutters w-100 file-actions">
+    <div class="row no-gutters file-delete clickable" (click)="delete()" [ngClass]="{
+      'afterDelete' : hideDeleteIcon
+    }">
+      <div [hidden]="hideDeleteIcon" class="delete-text">
+        حذف
+      </div>
       <div>
-        {{data.type}}
+        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+        ' fa-spin ' : hideDeleteIcon
+      }"></i>
       </div>
     </div>
-  </div>
-</div>
-<div mat-dialog-content class="text-monospace">
-  <div class="fileName m-lg-3 p-4">
-
-    <div style="position: relative; transition: all 1s;" class="row no-gutters justify-content-center">
-      <div class="col-auto">
-        <span [hidden]="showEditName">{{data.name}}</span>
-        <input [hidden]="!showEditName" [(ngModel)]="newFileName">
+    <div class="row no-gutters file-download clickable">
+      <div class="download-text">
+        دانلود
       </div>
-
-
-      <div class="row col-auto no-gutters ml-2">
-        <div class="col-auto mx-2" [hidden]="showEditName">
-          <i class="fa fa-pencil-square-o" (click)="handleRenameInput()"></i>
-        </div>
-        <div class="col-auto mx-2" [hidden]="!showEditName">
-          <i class="fa fa-check text-success" aria-hidden="true" (click)="submit()"></i>
-        </div>
-        <div class="col-auto mx-2" [hidden]="!showEditName">
-          <i class="fa fa-times text-danger" aria-hidden="true" (click)="cancel()"></i>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="p-3 m-lg-3">
-    size: {{ data.size | size }}
-  </div>
-
-  <div class="row">
-    <div class="col-auto mx-auto p-3 row download shadow-lg">
-      <div class="mx-auto col-auto">
-        download
-      </div>
-      <div class="mx-auto col-auto">
+      <div>
         <i class="fa fa-cloud-download" aria-hidden="true"></i>
       </div>
     </div>
-    <div (click)="delete()" class="col-auto mx-auto p-3 row remove shadow-lg" [ngClass]="{
-      'afterDelete' : hideDeleteIcon
-    }">
-      <div class="col-auto mx-auto" [hidden]="hideDeleteIcon">
-        delete
-      </div>
-      <div class="mx-auto col-auto">
-        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
-          ' fa-spin ' : hideDeleteIcon
-        }"></i>
-
-      </div>
-
-    </div>
   </div>
+
+
+
+  <!-- <div dir="rtl" class="row file-options w-100" [hidden]="showEditName">
+    <i class="fa fa-pencil-square-o" (click)="handleRenameInput()"></i>
+  </div> -->
+  <!-- <div [hidden]="!showEditName">
+    <i class="fa fa-check text-success" aria-hidden="true" (click)="submit()"></i>
+  </div>
+  <div [hidden]="!showEditName">
+    <i class="fa fa-times text-danger" aria-hidden="true" (click)="cancel()"></i>
+  </div> -->
+
+
 </div>

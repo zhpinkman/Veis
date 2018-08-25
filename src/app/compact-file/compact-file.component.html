@@ -1,31 +1,31 @@
-<div *ngIf="showMode == 'compact'" class="row no-gutters ">
-  <div (dblclick)="openDialog()" (click)="select()" class=" file-container parent" [ngClass]="{
-      'shake' : file.selected
-    }" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
+<div class="full-container" *ngIf="showMode == 'compact'" [ngClass]="{
+  'shake' : file.selected
+}">
+  <div (dblclick)="openDialog()" (click)="select()" class="file-container parent box-limit" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
     <div class="file-icon">
       <i [class]="' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
     </div>
-    <div class="file-name maxWidth" [ngClass]="{
-      'fileName' : file.selected
-    }">
+    <div class="file-name" [ngClass]="{
+        'fileName' : file.selected
+      }">
       <span>{{file.name}}</span>
     </div>
   </div>
 </div>
 
 <div class="row listItem no-gutters" dir="ltr" *ngIf="showMode == 'list'" (dblclick)="openDialog()" (click)="select()" [ngClass]="{
-  'selected': file.selected
-}">
-  <div>
-    <i [class]=" ' p-2 fa fa-3x ' + (consts.icons[file.type] || 'fa-file')"></i>
+    'selected': file.selected
+  }">
+  <div class="file-icon">
+    <i [class]=" 'fa ' + (consts.icons[file.type] || 'fa-file')"></i>
   </div>
-  <div class="w-20 my-auto m-auto pl-0 file-name">
+  <div class="col my-auto file-name">
     {{file.name}}
   </div>
-  <div class="englishFormat w-20 my-auto m-auto">
+  <div class="col-auto englishFormat my-auto file-date">
     {{file.creationDate | date }}
   </div>
-  <div class="englishFormat w-20 my-auto m-auto text-primary">
+  <div class="col-auto englishFormat my-auto text-primary file-size">
     {{file.size | size}}
   </div>
 </div>

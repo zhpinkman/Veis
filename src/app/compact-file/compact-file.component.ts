@@ -35,7 +35,7 @@ export class CompactFileComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Enter' && this.file.selected === true) this.openDialog();
   }
-  public showMode: string = 'list';
+  public showMode: string = 'compact';
   public mouseOn: Boolean = false;
 
   @Output()
@@ -48,24 +48,25 @@ export class CompactFileComponent implements OnInit {
     private elRef: ElementRef,
     private renderer: Renderer2
   ) {
+    this.showMode = fileService.initViewMode();
+
     this.fileService.showMode.subscribe(value => {
       this.showMode = value.toString();
     });
   }
 
   ngOnInit() {
-    if (this.file.isOpen == true) {
-      this.openDialog();
-    }
+    // if (this.file.isOpen == true) {
+    //   this.openDialog();
+    // }
+    if (this.file.name === 'foo.txt') this.openDialog();
   }
 
   openDialog() {
-    // console.log('hello new list');
-
     const opts = new MatDialogConfig();
 
     opts.width = '600px';
-    opts.height = '600px';
+    opts.height = '300px';
 
     opts.data = this.file;
 

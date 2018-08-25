@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
   getFromLocalStorsge(): any {
     this.email.setValue(localStorage.getItem('email'));
     this.email.patchValue(localStorage.getItem('email'));
-    // console.log ("rijuihihr")
     console.log(this.email.value);
-    // console.log (localStorage.getItem("email"))
     this.password.setValue(localStorage.getItem('password'));
     this.password.patchValue(localStorage.getItem('password'));
   }

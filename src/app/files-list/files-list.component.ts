@@ -24,7 +24,7 @@ import { CompactFileComponent } from '@app/compact-file/compact-file.component';
 export class FilesListComponent implements OnInit {
   public id: string;
   public pathParent: string;
-  public showMode: string = 'list';
+  public showMode: string = 'compact';
   public sortedBy: string;
   public nameOrder: Boolean = true;
   public sizeOrder: Boolean = true;
@@ -42,6 +42,7 @@ export class FilesListComponent implements OnInit {
     public consts: ConstService,
     private dragulaService: DragulaService
   ) {
+    this.showMode = fileService.initViewMode();
     // this.dragulaService.createGroup('allFiles', {});
     this.fileService.outSideElement.subscribe(element => {
       console.log('one Click recieved!!');
