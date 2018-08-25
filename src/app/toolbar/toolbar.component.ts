@@ -111,6 +111,7 @@ export class ToolbarComponent implements OnInit {
       if (this.fileService.copyOrCut === 'copy') {
         this.fileService.copyFile(request).subscribe(
           data => {
+            this.fileService.newFilesComming.next();
             this.utils.success('موفقیت', 'کپی با موفقیت انجام شد');
           },
           error => {
@@ -120,6 +121,7 @@ export class ToolbarComponent implements OnInit {
       } else {
         this.fileService.moveFile(request).subscribe(
           data => {
+            this.fileService.newFilesComming.next();
             this.utils.success('موفقیت', 'کات با موفقیت انجام شد');
           },
           error => {
