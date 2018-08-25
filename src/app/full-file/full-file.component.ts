@@ -75,4 +75,7 @@ export class FullFileComponent implements OnInit {
       }
     );
   }
+  download() {
+    window.open(this.data.url, '_blank');
+  }
 }
