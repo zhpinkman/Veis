@@ -36,16 +36,16 @@ export class ToolbarComponent implements OnInit {
     private router: Router,
     private utils: UtilitiesService
   ) {
-    this.showMode = fileService.initViewMode();
-
-    this.fileService.selectMode.subscribe(data => {
+    this.viewMode = fileService.initViewMode();
+    this.initialViewModeIcon();
+    this.fileService.OnselectMode.subscribe(data => {
       if (data > 0) this.selectModeToolbar = true;
       else this.selectModeToolbar = false;
     });
-    fileService.newFilesComming.subscribe(value => {
+    fileService.refreshPage.subscribe(value => {
       this.dialog.closeAll();
     });
-    this.fileService.loadFiles.subscribe(data => {
+    this.fileService.currentPathRefreshed.subscribe(data => {
       this.makeBreadCrumbs();
     });
   }
@@ -67,9 +67,9 @@ export class ToolbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(resutl => {});
   }
-  showMode: string = 'compact';
+  viewMode: string = 'compact';
   selectModeToolbar: Boolean = false;
-  showListIcon: Boolean = false;
+  isGridView: Boolean = false;
   oldPath: String = '';
 
   submitCopy() {
@@ -111,7 +111,7 @@ export class ToolbarComponent implements OnInit {
       if (this.fileService.copyOrCut === 'copy') {
         this.fileService.copyFile(request).subscribe(
           data => {
-            this.fileService.newFilesComming.next();
+            this.fileService.refreshPage.next();
             this.utils.success('موفقیت', 'کپی با موفقیت انجام شد');
           },
           error => {
@@ -121,7 +121,7 @@ export class ToolbarComponent implements OnInit {
       } else {
         this.fileService.moveFile(request).subscribe(
           data => {
-            this.fileService.newFilesComming.next();
+            this.fileService.refreshPage.next();
             this.utils.success('موفقیت', 'کات با موفقیت انجام شد');
           },
           error => {
@@ -141,12 +141,12 @@ export class ToolbarComponent implements OnInit {
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
   }
-  changeShowMode() {
-    if (this.showMode == 'compact') this.showMode = 'list';
-    else this.showMode = 'compact';
-    localStorage.setItem('viewMode', this.showMode);
-    this.fileService.showMode.next(this.showMode);
-    this.showListIcon = !this.showListIcon;
+  changeviewMode() {
+    if (this.viewMode == 'compact') this.viewMode = 'list';
+    else this.viewMode = 'compact';
+    localStorage.setItem('viewMode', this.viewMode);
+    this.fileService.viewMode.next(this.viewMode);
+    this.isGridView = !this.isGridView;
   }
   breadcrumbs = [];
   makeBreadCrumbs() {
@@ -173,5 +173,9 @@ export class ToolbarComponent implements OnInit {
   }
   navigateToUpload() {
     this.router.navigate(['upload']);
+  }
+  initialViewModeIcon() {
+    if (this.viewMode === 'compact') this.isGridView = true;
+    else this.isGridView = false;
   }
 }

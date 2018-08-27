@@ -24,7 +24,7 @@ import { CompactFileComponent } from '@app/compact-file/compact-file.component';
 export class FilesListComponent implements OnInit {
   public id: string;
   public pathParent: string;
-  public showMode: string = 'compact';
+  public viewMode: string = 'compact';
   public sortedBy: string;
   public nameOrder: Boolean = true;
   public sizeOrder: Boolean = true;
@@ -42,9 +42,9 @@ export class FilesListComponent implements OnInit {
     public consts: ConstService,
     private dragulaService: DragulaService
   ) {
-    this.showMode = fileService.initViewMode();
+    this.viewMode = fileService.initViewMode();
     // this.dragulaService.createGroup('allFiles', {});
-    this.fileService.outSideElement.subscribe(element => {
+    this.fileService.whereClickIs.subscribe(element => {
       console.log('one Click recieved!!');
       this.filesAroundClick.push(element.toString());
       if (this.filesAroundClick.length === this.files.length) {
@@ -62,23 +62,23 @@ export class FilesListComponent implements OnInit {
 
     utils.setTitle('Your Files');
 
-    fileService.select.subscribe(value => {
+    fileService.selectedFile.subscribe(value => {
       console.log(value);
       this.addToList(value.toString());
       this.fileService.selectedFiles = this.selectedFilesIndex;
       this.fileService.allFiles = this.files;
-      this.fileService.selectMode.next(this.selectedFilesIndex.length);
+      this.fileService.OnselectMode.next(this.selectedFilesIndex.length);
     });
 
-    fileService.showMode.subscribe(value => {
-      this.showMode = value.toString();
+    fileService.viewMode.subscribe(value => {
+      this.viewMode = value.toString();
     });
 
-    fileService.newFilesComming.subscribe(value => {
+    fileService.refreshPage.subscribe(value => {
       this.getFilesList();
     });
 
-    fileService.loadFiles.subscribe(value => {
+    fileService.currentPathRefreshed.subscribe(value => {
       this.getFilesList();
     });
   }
@@ -115,7 +115,6 @@ export class FilesListComponent implements OnInit {
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
-      // console.log('wewe');
       this.files = data.list;
       this.folders.splice(0, this.folders.length);
 
@@ -127,20 +126,14 @@ export class FilesListComponent implements OnInit {
         )
       }));
       this.files = this.files.filter(val => val.type !== 'dir');
-      // console.log(folders);
-      // console.log(this.fileService.currentPath);
       folders.forEach(dir => {
-        // const splitedPath = dir.path.split('/');
         let folder = new PathClass(dir.name, this.fileService.currentPath);
         this.folders.push(folder);
       });
-
-      // console.log(data);
     });
   }
 
   deleteFromList(event) {
-    // console.log(event);
     let index = this.files.findIndex(f => f.id == event.id);
     this.files.splice(index, 1);
   }

@@ -9,7 +9,6 @@ import { Injectable, Inject } from '@angular/core';
 import { RESTANGULAR_AUTH } from '@app/restangular.config';
 import { PathClass } from '@app/PathClass';
 import { Subject, ReplaySubject } from 'rxjs';
-import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { ProgressHttp } from 'angular-progress-http';
 import { RequestOptions, Headers } from '@angular/http';
 import { environment } from 'environments/environment';
@@ -30,33 +29,22 @@ export class FileService {
     private http: ProgressHttp,
     private token: TokenService
   ) {
-    // console.log('zzz');
     this.handleRouteChange();
   }
 
   handleRouteChange() {
     this.router.events.subscribe((url: any) => {
-      // console.log(url);
       if (url instanceof NavigationEnd) {
-        // console.log(url);
-        // console.log(url.url);
         let path = url.url.toString().split('/');
 
-        // console.log('test');
         if (path.length >= 2 && path[1] === 'myfiles') {
           path.splice(1, 1);
-          // console.log(path);
-
-          // path.reduce();
           this.currentPath = new PathClass(path[0]);
           for (let i = 1; i < path.length; i++) {
             this.currentPath = new PathClass(path[i], this.currentPath);
           }
-          // console.log(this.currentPath);
-          // console.log(this.currentPath.name);
-          // console.log(this.currentPath.pathToString());
 
-          this.loadFiles.next();
+          this.currentPathRefreshed.next();
         } else {
           return;
         }
@@ -72,18 +60,17 @@ export class FileService {
         'Content-Type': undefined
       });
   }
-  select = new Subject();
-  showMode = new ReplaySubject(1);
-  selectMode = new Subject();
-  newFilesComming = new Subject();
-  loadFiles = new Subject();
+  selectedFile = new Subject();
+  viewMode = new ReplaySubject(1);
+  OnselectMode = new Subject();
+  refreshPage = new Subject();
+  currentPathRefreshed = new Subject();
   pasteMode: Boolean = false;
-  outSideElement = new Subject();
+  whereClickIs = new Subject();
   selectedFiles = [];
   allFiles = [];
 
   getFiles() {
-    // console.log(this.currentPath);
     return this.restangular
       .one('file/list')
       .get({ path: `${this.currentPath.pathToString()}` });
@@ -95,7 +82,6 @@ export class FileService {
     };
     if (mkDirRequest.path == '/') {
       mkDirRequest.path = '';
-      // console.log('path was / ');
     }
     return this.restangular.one('file/mkDir').customPOST(mkDirRequest);
   }
@@ -127,13 +113,11 @@ export class FileService {
       form.append('path', this.currentPath.pathToString());
       this.http
         .withUploadProgressListener(progress => {
-          // console.log(progress);
           fun(progress, i);
         })
         .post(host + '/file/upload', form, options)
         .subscribe(response => {
-          this.newFilesComming.next();
-          // console.log(response);
+          this.refreshPage.next();
         });
     }
   }
