@@ -1,16 +1,16 @@
 <div class="row no-gutters">
-  <div dir="rtl" class="file-options row w-100">
-    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+  <div dir="rtl" class="row file-options w-100 clickable">
+    <i class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
   </div>
   <div class="file-icon">
-    <i [class]=" 'fa fa-5x' + icons[data.type]">
+    <i [class]=" 'fa ' + (consts.icons[data.type] || ' fa-file ')">
     </i>
   </div>
 
   <div class="file-det">
     <div class="file-name">
       <span [hidden]="showEditName">{{data.name}}</span>
-      <input [hidden]="!showEditName" [(ngModel)]="newFileName">
+      <input class="file-name-input" [hidden]="!showEditName" [(ngModel)]="newFileName">
     </div>
     <div class="row no-gutters">
       <div class="file-size">
@@ -21,40 +21,36 @@
       </div>
     </div>
   </div>
-  <div dir="rtl" class="row no-gutters w-100 file-actions">
-    <div class="row no-gutters file-delete clickable" (click)="delete()" [ngClass]="{
-      'afterDelete' : hideDeleteIcon
-    }">
-      <div [hidden]="hideDeleteIcon" class="delete-text">
-        حذف
+  <div dir="rtl" class="row no-gutters w-100 bottom-bar">
+    <div class="file-download-delete">
+      <div class="row no-gutters file-delete clickable file-actions" (click)="delete()" [ngClass]="{
+        'afterDelete' : hideDeleteIcon
+      }">
+        <div [hidden]="hideDeleteIcon" class="delete-text">
+          حذف
+        </div>
+        <div>
+          <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+          ' fa-spin ' : hideDeleteIcon
+        }"></i>
+        </div>
       </div>
-      <div>
-        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
-        ' fa-spin ' : hideDeleteIcon
-      }"></i>
+      <div class="row no-gutters file-download clickable file-actions" (click)="download()">
+        <div class="download-text">
+          دانلود
+        </div>
+        <div>
+          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
-    <div class="row no-gutters file-download clickable" (click)="download()">
-      <div class="download-text">
-        دانلود
+    <div class="file-changes">
+      <div [hidden]="!showEditName" (click)="submit()" class="file-actions file-save clickable">
+        ذخیره
       </div>
-      <div>
-        <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      <div [hidden]="!showEditName" (click)="cancel()" class="file-actions file-cancel clickable">
+        لغو
       </div>
     </div>
   </div>
-
-
-
-  <!-- <div dir="rtl" class="row file-options w-100" [hidden]="showEditName">
-    <i class="fa fa-pencil-square-o" (click)="handleRenameInput()"></i>
-  </div> -->
-  <!-- <div [hidden]="!showEditName">
-    <i class="fa fa-check text-success" aria-hidden="true" (click)="submit()"></i>
-  </div>
-  <div [hidden]="!showEditName">
-    <i class="fa fa-times text-danger" aria-hidden="true" (click)="cancel()"></i>
-  </div> -->
-
-
 </div>

@@ -28,6 +28,7 @@ p {
       padding: 10px 12px 10px;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   &:hover {
@@ -99,6 +100,7 @@ p {
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
   &:hover {
     box-shadow: 0 2px 24px 3px #aaaa !important;

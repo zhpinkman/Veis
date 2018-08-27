@@ -9,11 +9,20 @@
 }
 
 .file-name {
-  padding: 40px 10px 20px 0;
+  padding: 40px 10px 20px 25px;
   font-size: 30px;
   font-weight: bold;
   height: 107px;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 230px;
+}
+
+.file-name-input {
+  border: none;
+  border-bottom: 1px solid lightgray;
 }
 
 .file-size {
@@ -22,34 +31,45 @@
 }
 
 .file-det {
-  padding: 10px 20px 20px 45px;
+  padding: 10px 20px 20px 10px;
 }
 
 .file-date {
   padding: 0 0 0 200px;
 }
 
-.file-actions {
+.bottom-bar {
   text-align: right;
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-changes {
+  margin: 0 0 0 25px;
+  display: flex;
+}
+
+.file-download-delete {
+  display: flex;
+  margin: 0 25px 0 0;
+}
+
+.file-actions {
+  height: 30px;
+  text-align: center;
+  box-shadow: 1px 0 9px 1px lightgrey;
+  border-radius: 4px;
 }
 
 .file-delete {
   width: 75px;
-  height: 30px;
-  text-align: center;
+  margin: 0 0 0 35px;
   padding: 3px 1px 1px 7px;
-  box-shadow: 1px 0 9px 1px lightgrey;
-  border-radius: 4px;
-  margin: 0 20px 0 60px;
 }
 
 .file-download {
   width: 80px;
-  height: 30px;
-  text-align: center;
   padding: 3px 1px 1px 7px;
-  box-shadow: 1px 0 9px 1px lightgrey;
-  border-radius: 4px;
 }
 
 .download-text {
@@ -64,4 +84,13 @@
   height: 18px;
   text-align: right;
   font-size: 20px;
+}
+
+.file-save {
+  padding: 3px 7px 0 7px;
+  margin: 0 0 0 35px;
+}
+
+.file-cancel {
+  padding: 3px 7px 0 7px;
 }
