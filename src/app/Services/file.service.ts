@@ -132,6 +132,7 @@ export class FileService {
         })
         .post(host + '/file/upload', form, options)
         .subscribe(response => {
+          this.newFilesComming.next();
           // console.log(response);
         });
     }
