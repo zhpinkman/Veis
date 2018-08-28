@@ -15,7 +15,7 @@
     <div class="col-auto uploadIcon my-auto">
       <i matTooltip="upload" class="fa fa-cloud-upload icon" aria-hidden="true" (click)="navigateToUpload()"></i>
     </div>
-    <div class="col-auto Xlarge row my-auto mx-1" *ngIf="fileService.pasteMode">
+    <div class="col-auto Xlarge row my-auto mx-1" *ngIf="fileService.filePasted">
       <i matTooltip="paste" class="fa fa-clipboard mx-1 col-auto" aria-hidden="true" (click)="submitPaste()"></i>
       <i matTooltip="cancel" class="fa fa-ban mx-1 col-auto" aria-hidden="true" (click)="submitCancel()"></i>
     </div>

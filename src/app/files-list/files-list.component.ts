@@ -145,11 +145,13 @@ export class FilesListComponent implements OnInit {
   ngOnInit() {}
 
   sortByName() {
+    this.sizeOrder = true;
     this.sortedBy = 'name';
     this.nameOrder = !this.nameOrder;
     this.order = this.nameOrder;
   }
   sortBySize() {
+    this.nameOrder = true;
     this.sortedBy = 'size';
     this.sizeOrder = !this.sizeOrder;
     this.order = this.sizeOrder;
