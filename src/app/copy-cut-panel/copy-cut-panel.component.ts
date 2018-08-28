@@ -55,7 +55,7 @@ export class CopyCutPanelComponent implements OnInit {
 
   submitPaste() {
     this.createOldPathesFromSelectedFiles();
-    this.fileService.pasteMode = false;
+    this.fileService.filePasted = false;
     console.log(this.fileService.oldPathes);
     this.fileService.oldPathes.forEach(op => {
       console.log('After: ', this.oldPath, 'N: ', name);
@@ -90,7 +90,7 @@ export class CopyCutPanelComponent implements OnInit {
     this.fileService.OnselectMode.next(null);
   }
   submitCancel() {
-    this.fileService.pasteMode = false;
+    this.fileService.filePasted = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.fileService.OnselectMode.next(null);

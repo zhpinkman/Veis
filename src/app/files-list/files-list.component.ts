@@ -90,7 +90,7 @@ export class FilesListComponent implements OnInit {
   }
 
   isInPasteMode() {
-    if (this.fileService.pasteMode) {
+    if (this.fileService.filePasted) {
       return true;
     } else return false;
   }
