@@ -8,7 +8,7 @@
       upload your first file (drag files into window)
     </div>
   </div>
-  <div class="row listItem no-gutters" dir="ltr" *ngIf="(folders.length > 0 || files.length > 0) && showMode == 'list'">
+  <div class="row listItem no-gutters" dir="ltr" *ngIf="(folders.length > 0 || files.length > 0) && viewMode == 'list'">
     <div class="my-auto name-sorting-icon clickable" (click)="sortByName()">
       name
       <i *ngIf="nameOrder == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
@@ -20,11 +20,11 @@
       <i *ngIf="sizeOrder == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
     </div>
   </div>
-  <div [@compact]="files.length" class="row no-gutters all-items-box" *ngIf="showMode == 'compact'" dragula="allFiles">
+  <div [@compact]="files.length" class="row no-gutters all-items-box" *ngIf="viewMode == 'compact'" dragula="allFiles">
     <app-folder-view class=" col-auto h-100" *ngFor="let folder of folders" [data]="folder"></app-folder-view>
     <app-compact-file class="col-auto h-100" (deleted)="deleteFromList($event)" *ngFor="let file of files" [value]="file"></app-compact-file>
   </div>
-  <div [@list]="files.length" *ngIf="showMode == 'list'" dragula="allFiles">
+  <div [@list]="files.length" *ngIf="viewMode == 'list'" dragula="allFiles">
     <app-folder-view class="col-auto my-2" *ngFor="let folder of folders | orderBy: 'name': nameOrder: 'case-sensitive'" [data]="folder "></app-folder-view>
     <app-compact-file class="col-auto my-2" (deleted)="deleteFromList($event) " *ngFor="let file of files | orderBy: sortedBy: order"
       [value]="file "></app-compact-file>

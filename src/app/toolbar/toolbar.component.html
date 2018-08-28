@@ -1,11 +1,11 @@
 <div class="toolbar justify-content-between row container-fluid box-item px-5 py-3 no-gutters fixed-top">
   <div class="row col-auto">
     <div class="col-auto my-auto">
-      <div class="clickable" [hidden]="!showListIcon">
-        <i matTooltip="List" class="fa fa-list" aria-hidden="true" (click)="changeShowMode()"></i>
+      <div class="clickable" [hidden]="!isGridView">
+        <i matTooltip="List" class="fa fa-list" aria-hidden="true" (click)="changeviewMode()"></i>
       </div>
-      <div class="clickable" [hidden]="showListIcon">
-        <i matTooltip="Grid" class="fa fa-th" aria-hidden="true" (click)="changeShowMode()"></i>
+      <div class="clickable" [hidden]="isGridView">
+        <i matTooltip="Grid" class="fa fa-th" aria-hidden="true" (click)="changeviewMode()"></i>
       </div>
     </div>
 

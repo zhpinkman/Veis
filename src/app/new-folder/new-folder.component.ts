@@ -30,7 +30,7 @@ export class NewFolderComponent implements OnInit {
     // console.log(this.folderName.value);
     this.fileService.mkDir(this.folderName.value).subscribe(val => {
       // console.log('created!!');
-      this.fileService.newFilesComming.next();
+      this.fileService.refreshPage.next();
     });
   }
 }

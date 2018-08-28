@@ -1,4 +1,4 @@
-<div (click)="openFolder()" *ngIf="showMode == 'compact'" class="full-container">
+<div (click)="openFolder()" *ngIf="viewMode == 'compact'" class="full-container">
   <div class="file-container h-100">
     <div class="file-icon">
       <i class=" p-2 fa fa-5x fa-folder text-primary"></i>
@@ -10,7 +10,7 @@
 </div>
 
 
-<div class="row listItem no-gutters" dir="ltr" *ngIf="showMode == 'list'" (click)="openFolder()">
+<div class="row listItem no-gutters" dir="ltr" *ngIf="viewMode == 'list'" (click)="openFolder()">
   <div class="file-icon">
     <i class="fa fa-folder text-primary"></i>
   </div>

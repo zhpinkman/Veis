@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private fileService: FileService
   ) {
-    this.fileService.loadFiles.subscribe(data => {
+    this.fileService.currentPathRefreshed.subscribe(data => {
       this.makeBreadCrumbs();
     });
   }

@@ -1,7 +1,8 @@
-<div class="full-container" *ngIf="showMode == 'compact'" [ngClass]="{
+<div class="full-container" *ngIf="viewMode == 'compact'" [ngClass]="{
   'shake' : file.selected
 }">
-  <div (dblclick)="openDialog()" (click)="select()" class="file-container parent box-limit" (mouseover)="hoverOn()" (mouseout)="hoverOff()">
+  <div (dblclick)="examineOpenFullFile()" (click)="examineSelect()" class="file-container parent box-limit" (mouseover)="hoverOn()"
+    (mouseout)="hoverOff()">
     <div class="file-icon">
       <i [class]="' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
     </div>
@@ -13,7 +14,8 @@
   </div>
 </div>
 
-<div class="row listItem no-gutters" dir="ltr" *ngIf="showMode == 'list'" (dblclick)="openDialog()" (click)="select()" [ngClass]="{
+<div class="row listItem no-gutters" dir="ltr" *ngIf="viewMode == 'list'" (dblclick)="openFullFile()" (click)="select()"
+  [ngClass]="{
     'selected': file.selected
   }">
   <div class="file-icon">

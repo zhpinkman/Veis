@@ -11,12 +11,12 @@ export class FolderViewComponent implements OnInit {
   @Input('data')
   folder: PathClass;
 
-  public showMode: string = 'compact';
+  public viewMode: string = 'compact';
 
   constructor(private fileService: FileService) {
-    this.showMode = fileService.initViewMode();
-    this.fileService.showMode.subscribe(value => {
-      this.showMode = value.toString();
+    this.viewMode = fileService.initViewMode();
+    this.fileService.viewMode.subscribe(value => {
+      this.viewMode = value.toString();
     });
   }
 

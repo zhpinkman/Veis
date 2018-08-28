@@ -33,10 +33,12 @@ export class CompactFileComponent implements OnInit {
   file: FileEntity;
 
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter' && this.file.selected === true) this.openDialog();
+    if (event.key === 'Enter' && this.file.selected === true)
+      this.openFullFile();
   }
-  public showMode: string = 'compact';
+  public viewMode: string = 'compact';
   public mouseOn: Boolean = false;
+  private isSingle: Boolean = true;
 
   @Output()
   deleted: EventEmitter<FileEntity> = new EventEmitter<FileEntity>();
@@ -48,21 +50,16 @@ export class CompactFileComponent implements OnInit {
     private elRef: ElementRef,
     private renderer: Renderer2
   ) {
-    this.showMode = fileService.initViewMode();
+    this.viewMode = fileService.initViewMode();
 
-    this.fileService.showMode.subscribe(value => {
-      this.showMode = value.toString();
+    this.fileService.viewMode.subscribe(value => {
+      this.viewMode = value.toString();
     });
   }
 
-  ngOnInit() {
-    // if (this.file.isOpen == true) {
-    //   this.openDialog();
-    // }
-    if (this.file.name === 'foo.txt') this.openDialog();
-  }
+  ngOnInit() {}
 
-  openDialog() {
+  openFullFile() {
     const opts = new MatDialogConfig();
 
     opts.width = '600px';
@@ -83,7 +80,7 @@ export class CompactFileComponent implements OnInit {
     });
   }
   select() {
-    this.fileService.select.next(this.file.name);
+    this.fileService.selectedFile.next(this.file.name);
   }
 
   hoverOn() {
@@ -100,11 +97,25 @@ export class CompactFileComponent implements OnInit {
     }
     const clickedInside = this.elRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
-      this.fileService.outSideElement.next('outSide');
+      this.fileService.whereClickIs.next('outSide');
       console.log('outSide');
     } else {
-      this.fileService.outSideElement.next('inSide');
+      this.fileService.whereClickIs.next('inSide');
       console.log('inSide');
     }
+  }
+
+  examineOpenFullFile() {
+    this.isSingle = false;
+    this.openFullFile();
+  }
+
+  examineSelect() {
+    this.isSingle = true;
+    setTimeout(() => {
+      if (this.isSingle) {
+        this.select();
+      }
+    }, 300);
   }
 }
