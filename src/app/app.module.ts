@@ -47,6 +47,7 @@ import { UploadDropZoneComponent } from './upload-drop-zone/upload-drop-zone.com
 import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-popup.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { DragulaModule } from 'ng2-dragula';
+import { CopyCutPanelComponent } from './copy-cut-panel/copy-cut-panel.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { DragulaModule } from 'ng2-dragula';
     NewFolderComponent,
     FolderViewComponent,
     UploadDropZoneComponent,
-    UploadToastPopupComponent
+    UploadToastPopupComponent,
+    CopyCutPanelComponent
   ],
 
   imports: [

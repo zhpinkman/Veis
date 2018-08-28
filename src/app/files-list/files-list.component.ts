@@ -86,6 +86,13 @@ export class FilesListComponent implements OnInit {
   clearSelectedFiles() {
     this.selectedFilesIndex = [];
     this.files.forEach(file => (file.selected = false));
+    this.fileService.selectMode.next(null);
+  }
+
+  isInPasteMode() {
+    if (this.fileService.pasteMode) {
+      return true;
+    } else return false;
   }
 
   addToList(value: string) {
