@@ -134,14 +134,14 @@ export class ToolbarComponent implements OnInit {
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.selectModeToolbar = false;
-    this.fileService.selectMode.next(null);
+    this.fileService.OnselectMode.next(null);
   }
   submitCancel() {
     this.selectModeToolbar = false;
     this.fileService.pasteMode = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
-    this.fileService.selectMode.next(null);
+    this.fileService.OnselectMode.next(null);
   }
   changeviewMode() {
     if (this.viewMode == 'compact') this.viewMode = 'list';

@@ -28,7 +28,12 @@ export class CopyCutPanelComponent implements OnInit {
     value.forEach(val => {
       this.files.push(data[val]);
     });
-    console.log("files info: ", this.files, "files length: ", this.files.length)
+    console.log(
+      'files info: ',
+      this.files,
+      'files length: ',
+      this.files.length
+    );
     return this.files;
   }
 
@@ -60,7 +65,7 @@ export class CopyCutPanelComponent implements OnInit {
       if (this.fileService.copyOrCut === 'copy') {
         this.fileService.copyFile(request).subscribe(
           data => {
-            this.fileService.newFilesComming.next();
+            this.fileService.refreshPage.next();
             this.utils.success('موفقیت', 'کپی با موفقیت انجام شد');
           },
           error => {
@@ -70,7 +75,7 @@ export class CopyCutPanelComponent implements OnInit {
       } else {
         this.fileService.moveFile(request).subscribe(
           data => {
-            this.fileService.newFilesComming.next();
+            this.fileService.refreshPage.next();
             this.utils.success('موفقیت', 'کات با موفقیت انجام شد');
           },
           error => {
@@ -82,12 +87,12 @@ export class CopyCutPanelComponent implements OnInit {
 
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
-    this.fileService.selectMode.next(null);
+    this.fileService.OnselectMode.next(null);
   }
   submitCancel() {
     this.fileService.pasteMode = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
-    this.fileService.selectMode.next(null);
+    this.fileService.OnselectMode.next(null);
   }
 }
