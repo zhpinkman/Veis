@@ -1,6 +1,24 @@
 <div class="row no-gutters">
   <div dir="rtl" class="row file-options w-100 clickable">
-    <i class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
+    <div class="clickable">
+      <i class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
+    </div>
+    <div class="clickable" (click)="toggleAccessibility()">
+      <div *ngIf="filePublic && !filePrivatePreview">
+        <img src="assets/images/public.png" alt="" (mouseover)="showPrivatePreview()" class="accessibilityIcons">
+
+      </div>
+      <div *ngIf="filePrivate && !filePublicPreview">
+        <img src="assets/images/private.png" alt="" (mouseover)="showPublicPreview()" class="accessibilityIcons">
+
+      </div>
+      <div *ngIf="filePublicPreview" (mouseout)="hidePublicPreview()">
+        <img src="assets/images/public.png" alt="" class="accessibilityIcons previewIcons">
+      </div>
+      <div *ngIf="filePrivatePreview" (mouseout)="hidePrivatePreview()">
+        <img src="assets/images/private.png" alt="" class="accessibilityIcons previewIcons">
+      </div>
+    </div>
   </div>
   <div class="file-icon">
     <i [class]=" 'fa ' + (consts.icons[data.type] || ' fa-file ')">
@@ -45,10 +63,10 @@
       </div>
     </div>
     <div class="file-changes">
-      <div [hidden]="!showEditName" (click)="submit()" class="file-actions file-save clickable">
+      <div [hidden]="!showEditName" (click)="submitEdit()" class="file-actions file-save clickable">
         ذخیره
       </div>
-      <div [hidden]="!showEditName" (click)="cancel()" class="file-actions file-cancel clickable">
+      <div [hidden]="!showEditName" (click)="cancelEdit()" class="file-actions file-cancel clickable">
         لغو
       </div>
     </div>
