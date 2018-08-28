@@ -31,3 +31,6 @@
   </div>
 </div>
 <app-upload-drop-zone></app-upload-drop-zone>
+<div *ngIf="isInPasteMode()">
+  <app-copy-cut-panel></app-copy-cut-panel>
+</div>
