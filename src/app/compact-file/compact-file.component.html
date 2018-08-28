@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div class="row listItem no-gutters" dir="ltr" *ngIf="viewMode == 'list'" (dblclick)="openFullFile()" (click)="select()"
+<div class="row listItem no-gutters" dir="ltr" *ngIf="viewMode == 'list'" (dblclick)="examineOpenFullFile()" (click)="examineSelect()"
   [ngClass]="{
     'selected': file.selected
   }">

@@ -65,7 +65,7 @@ export class FileService {
   OnselectMode = new Subject();
   refreshPage = new Subject();
   currentPathRefreshed = new Subject();
-  pasteMode: Boolean = false;
+  filePasted: Boolean = false;
   whereClickIs = new Subject();
   selectedFiles = [];
   allFiles = [];
