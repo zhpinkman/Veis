@@ -6,9 +6,13 @@
     <div class="file-icon">
       <i [class]="' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
     </div>
+
     <div class="file-name" [ngClass]="{
         'fileName' : file.selected
       }">
+      <div class="check-icon" *ngIf="file.selected">
+        <i class="fa fa-check" aria-hidden="true"></i>
+      </div>
       <span>{{file.name}}</span>
     </div>
   </div>
