@@ -57,7 +57,9 @@ export class CompactFileComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.file.name === 'foot.txt') this.openFullFile();
+  }
 
   openFullFile() {
     const opts = new MatDialogConfig();
@@ -73,7 +75,7 @@ export class CompactFileComponent implements OnInit {
     dialogRef.updatePosition(opts.position);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed!!', result);
+      // console.log('The dialog was closed!!', result);
       if (result.type === 'delete') {
         this.deleted.emit(this.file);
       }
@@ -98,10 +100,10 @@ export class CompactFileComponent implements OnInit {
     const clickedInside = this.elRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
       this.fileService.whereClickIs.next('outSide');
-      console.log('outSide');
+      // console.log('outSide');
     } else {
       this.fileService.whereClickIs.next('inSide');
-      console.log('inSide');
+      // console.log('inSide');
     }
   }
 

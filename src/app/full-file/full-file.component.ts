@@ -30,11 +30,15 @@ export class FullFileComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+  public filePrivate: Boolean = false;
+  public filePublic: Boolean = true;
+  public filePublicPreview: Boolean = false;
+  public filePrivatePreview: Boolean = false;
   showEditName: boolean = false;
   hideDeleteIcon: Boolean = false;
 
   icons = this.consts.icons;
-  submit() {
+  submitEdit() {
     this.showEditName = !this.showEditName;
     let Request = new RenameRequest();
     Request.parentPath = '/';
@@ -50,7 +54,7 @@ export class FullFileComponent implements OnInit {
     );
   }
 
-  cancel() {
+  cancelEdit() {
     this.showEditName = !this.showEditName;
     // this.data.name = this.fileName;
   }
@@ -77,5 +81,29 @@ export class FullFileComponent implements OnInit {
   }
   download() {
     window.open(this.data.url, '_blank');
+  }
+
+  toggleAccessibility() {
+    if (this.filePrivate == true) {
+      this.filePrivate = false;
+      this.filePublic = true;
+    } else {
+      this.filePublic = false;
+      this.filePrivate = true;
+    }
+  }
+
+  showPrivatePreview() {
+    this.filePrivatePreview = true;
+  }
+  showPublicPreview() {
+    this.filePublicPreview = true;
+  }
+
+  hidePublicPreview() {
+    this.filePublicPreview = false;
+  }
+  hidePrivatePreview() {
+    this.filePrivatePreview = false;
   }
 }

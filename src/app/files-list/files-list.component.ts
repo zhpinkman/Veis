@@ -45,15 +45,15 @@ export class FilesListComponent implements OnInit {
     this.viewMode = fileService.initViewMode();
     // this.dragulaService.createGroup('allFiles', {});
     this.fileService.whereClickIs.subscribe(element => {
-      console.log('one Click recieved!!');
+      // console.log('one Click recieved!!');
       this.filesAroundClick.push(element.toString());
       if (this.filesAroundClick.length === this.files.length) {
-        console.log('click compeleted');
+        // console.log('click compeleted');
         let outSideClicks: number = 0;
         this.filesAroundClick.forEach(file => {
           if (file === 'outSide') outSideClicks++;
         });
-        console.log(outSideClicks);
+        // console.log(outSideClicks);
         if (outSideClicks === this.files.length) this.clearSelectedFiles();
 
         this.filesAroundClick = [];
