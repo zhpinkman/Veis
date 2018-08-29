@@ -1,12 +1,12 @@
 <app-toolbar></app-toolbar>
-<div class="floating-panel">
-  <div class="text-center Xlarge row mx-1">
+<div class="floating-panel mat-elevation-z3">
+  <div class="col-auto Xlarge row mx-1">
     <i matTooltip="paste" class="fa fa-clipboard mx-2 paste" aria-hidden="true" (click)="submitPaste()"></i>
     <i matTooltip="cancel" class="fa fa-ban mx-2 cancel" aria-hidden="true" (click)="submitCancel()"></i>
   </div>
-  <div>
+  <div class="lists">
     <ul>
-      <li *ngFor="let file of this.files">
+      <li class="li" *ngFor="let file of this.files">
         {{file}}
       </li>
     </ul>
