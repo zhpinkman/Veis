@@ -21,12 +21,12 @@ export class CopyCutPanelComponent implements OnInit {
 
   ngOnInit() {}
 
-  files = new Array<FileEntity>();
+  files = new Array<String>();
   creating_files() {
     let data = this.fileService.allFiles;
     let value = this.fileService.selectedFiles;
     value.forEach(val => {
-      this.files.push(data[val]);
+      this.files.push(data[val].name);
     });
     console.log(
       'files info: ',
