@@ -11,13 +11,16 @@
   padding-bottom: 5px;
   width: 100%;
   text-align: left;
+
   .file-name {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .name-sorting-icon {
-    padding-left: 100px;
+    padding-left: 80px;
   }
+
   .size-sorting-icon {
     padding-right: 75px;
   }
