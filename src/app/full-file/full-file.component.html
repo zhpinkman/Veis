@@ -1,7 +1,7 @@
 <div class="row no-gutters">
   <div dir="rtl" class="row file-options w-100 clickable">
     <div class="clickable">
-      <i class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
+      <i matTooltip="edit name" class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
     </div>
     <div class="clickable" (click)="toggleAccessibility()">
       <div *ngIf="filePublic && !filePrivatePreview">
@@ -13,10 +13,10 @@
 
       </div>
       <div *ngIf="filePublicPreview" (mouseout)="hidePublicPreview()">
-        <img src="assets/images/public.png" alt="" class="accessibilityIcons previewIcons">
+        <img matTooltip="private -> public" src="assets/images/public.png" alt="" class="accessibilityIcons previewIcons">
       </div>
       <div *ngIf="filePrivatePreview" (mouseout)="hidePrivatePreview()">
-        <img src="assets/images/private.png" alt="" class="accessibilityIcons previewIcons">
+        <img matTooltip="public -> private" src="assets/images/private.png" alt="" class="accessibilityIcons previewIcons">
       </div>
     </div>
   </div>

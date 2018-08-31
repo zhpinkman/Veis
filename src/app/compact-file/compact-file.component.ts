@@ -53,7 +53,7 @@ export class CompactFileComponent implements OnInit {
     this.viewMode = fileService.initViewMode();
 
     this.fileService.viewMode.subscribe(value => {
-      this.viewMode = value.toString();
+      this.viewMode = value;
     });
   }
 

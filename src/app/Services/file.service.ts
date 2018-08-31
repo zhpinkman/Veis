@@ -60,13 +60,13 @@ export class FileService {
         'Content-Type': undefined
       });
   }
-  selectedFile = new Subject();
-  viewMode = new ReplaySubject(1);
+  selectedFile = new Subject<string>();
+  viewMode = new ReplaySubject<string>(1);
   OnselectMode = new Subject();
   refreshPage = new Subject();
   currentPathRefreshed = new Subject();
   filePasted: Boolean = false;
-  whereClickIs = new Subject();
+  whereClickIs = new Subject<string>();
   selectedFiles = [];
   allFiles = [];
 

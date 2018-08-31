@@ -46,7 +46,7 @@ export class FilesListComponent implements OnInit {
     // this.dragulaService.createGroup('allFiles', {});
     this.fileService.whereClickIs.subscribe(element => {
       // console.log('one Click recieved!!');
-      this.filesAroundClick.push(element.toString());
+      this.filesAroundClick.push(element);
       if (this.filesAroundClick.length === this.files.length) {
         // console.log('click compeleted');
         let outSideClicks: number = 0;
@@ -64,14 +64,14 @@ export class FilesListComponent implements OnInit {
 
     fileService.selectedFile.subscribe(value => {
       console.log(value);
-      this.addToList(value.toString());
+      this.addToList(value);
       this.fileService.selectedFiles = this.selectedFilesIndex;
       this.fileService.allFiles = this.files;
       this.fileService.OnselectMode.next(this.selectedFilesIndex.length);
     });
 
     fileService.viewMode.subscribe(value => {
-      this.viewMode = value.toString();
+      this.viewMode = value;
     });
 
     fileService.refreshPage.subscribe(value => {
