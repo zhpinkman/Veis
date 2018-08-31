@@ -1,7 +1,10 @@
 <div class="row no-gutters">
-  <div dir="rtl" class="row file-options w-100 clickable">
-    <div class="clickable">
-      <i matTooltip="edit name" class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
+  <div dir="rtl" class="row file-options w-100 no-gutters">
+    <div matTooltip="copy to clipboard" ngxClipboard [cbContent]="file.url">
+      <img src="assets/images/copyToClipboard.svg" alt="" class="copy-to-clipboard-icon">
+    </div>
+    <div class="download-url">
+      {{file.url}}
     </div>
     <div class="clickable" (click)="toggleAccessibility()">
       <div *ngIf="filePublic && !filePrivatePreview">
@@ -21,21 +24,26 @@
     </div>
   </div>
   <div class="file-icon">
-    <i [class]=" 'fa ' + (consts.icons[data.type] || ' fa-file ')">
+    <i [class]=" 'fa ' + (consts.icons[file.type] || ' fa-file ')">
     </i>
   </div>
 
   <div class="file-det">
-    <div class="file-name">
-      <span [hidden]="showEditName">{{data.name}}</span>
-      <input class="file-name-input" [hidden]="!showEditName" [(ngModel)]="newFileName">
+    <div class="file-name row justify-content-between">
+      <div>
+        <span [hidden]="showEditName">{{file.name}}</span>
+        <input class="file-name-input" [hidden]="!showEditName" [(ngModel)]="newFileName">
+      </div>
+      <div class="clickable edit-icon">
+        <i matTooltip="edit name" class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
+      </div>
     </div>
     <div class="row no-gutters">
       <div class="file-size englishFormat">
-        {{ data.size | size }}
+        {{ file.size | size }}
       </div>
       <div class="file-date englishFormat">
-        {{data.creationDate | date}}
+        {{file.creationDate | date}}
       </div>
     </div>
   </div>

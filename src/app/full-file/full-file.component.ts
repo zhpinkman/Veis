@@ -15,6 +15,7 @@ import { DeleteRequest } from '@app/DeleteRequest';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-full-file',
@@ -23,10 +24,11 @@ import { ConstService } from '@app/Services/const.service';
 })
 export class FullFileComponent implements OnInit {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: FileEntity,
+    @Inject(MAT_DIALOG_DATA) public file: FileEntity,
     public consts: ConstService,
     private fileService: FileService,
-    public dialogRef: MatDialogRef<FullFileComponent>
+    public dialogRef: MatDialogRef<FullFileComponent>,
+    private clipboardService: ClipboardService
   ) {}
 
   ngOnInit() {}
@@ -42,11 +44,11 @@ export class FullFileComponent implements OnInit {
     this.showEditName = !this.showEditName;
     let Request = new RenameRequest();
     Request.parentPath = '/';
-    Request.oldName = this.data.name;
+    Request.oldName = this.file.name;
     Request.newName = this.newFileName;
     this.fileService.renameFile(Request).subscribe(
-      data => {
-        this.data.name = this.newFileName;
+      file => {
+        this.file.name = this.newFileName;
       },
       error => {
         // console.log(error);
@@ -56,21 +58,21 @@ export class FullFileComponent implements OnInit {
 
   cancelEdit() {
     this.showEditName = !this.showEditName;
-    // this.data.name = this.fileName;
+    // this.file.name = this.fileName;
   }
   newFileName: string;
   handleRenameInput() {
     this.showEditName = !this.showEditName;
-    this.newFileName = this.data.name;
+    this.newFileName = this.file.name;
   }
 
   delete() {
     this.hideDeleteIcon = true;
     let Request = new DeleteRequest();
     Request.path =
-      this.fileService.currentPath.pathToString() + '/' + this.data.name;
+      this.fileService.currentPath.pathToString() + '/' + this.file.name;
     this.fileService.deleteFile(Request).subscribe(
-      data => {
+      file => {
         this.hideDeleteIcon = false;
         this.dialogRef.close({ type: 'delete' });
       },
@@ -80,7 +82,7 @@ export class FullFileComponent implements OnInit {
     );
   }
   download() {
-    window.open(this.data.url, '_blank');
+    window.open(this.file.url, '_blank');
   }
 
   toggleAccessibility() {
