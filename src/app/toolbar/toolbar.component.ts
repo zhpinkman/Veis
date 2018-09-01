@@ -161,6 +161,7 @@ export class ToolbarComponent implements OnInit {
       // console.log(currentPath.name);
     }
     this.breadcrumbs.reverse();
+    this.fileService.breadcrumbs = this.breadcrumbs;
   }
 
   navigateTo(path: PathClass) {

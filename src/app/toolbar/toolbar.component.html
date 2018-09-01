@@ -27,15 +27,15 @@
   <div class="row no-gutters">
     <div class="pl-0 col-auto row no-gutters align-items-center" dir="ltr">
       <ul class="bread-crumb">
-        <li *ngFor="let b of breadcrumbs; let i = index">
+        <li *ngFor="let b of fileService.breadcrumbs; let i = index">
           <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
-          <i *ngIf="i != breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
+          <i *ngIf="i != fileService.breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
         </li>
       </ul>
     </div>
     <div class="col row no-gutters my-auto homeIcon">
       <div class="col pl-2">
-        <i *ngIf="breadcrumbs.length > 0" class="fa fa-angle-right" aria-hidden="true"></i>
+        <i *ngIf="fileService.breadcrumbs.length > 0" class="fa fa-angle-right" aria-hidden="true"></i>
       </div>
       <div class="col clickable" (click)="navigateToHome()">
         home

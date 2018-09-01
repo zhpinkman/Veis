@@ -69,6 +69,7 @@ export class FileService {
   whereClickIs = new Subject();
   selectedFiles = [];
   allFiles = [];
+  breadcrumbs = [];
 
   getFiles() {
     return this.restangular
