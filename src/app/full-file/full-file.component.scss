@@ -17,7 +17,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 230px;
 }
 
 .file-name-input {
@@ -97,10 +96,30 @@
 }
 
 .accessibilityIcons {
-  width: 30px;
+  width: 25px;
   margin: 0 0 0 10px;
 }
 
 .previewIcons {
   opacity: 0.5;
+}
+
+.edit-icon {
+  font-size: 18px;
+  opacity: 0.5;
+  margin: 10px 0 0 0;
+}
+
+.download-url {
+  color: gray;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+}
+
+.copy-to-clipboard-icon {
+  width: 20px;
+  opacity: 0.75;
 }

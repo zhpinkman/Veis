@@ -16,7 +16,7 @@ export class FolderViewComponent implements OnInit {
   constructor(private fileService: FileService) {
     this.viewMode = fileService.initViewMode();
     this.fileService.viewMode.subscribe(value => {
-      this.viewMode = value.toString();
+      this.viewMode = value;
     });
   }
 

@@ -48,6 +48,7 @@ import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-pop
 import { OrderModule } from 'ngx-order-pipe';
 import { DragulaModule } from 'ng2-dragula';
 import { CopyCutPanelComponent } from './copy-cut-panel/copy-cut-panel.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { CopyCutPanelComponent } from './copy-cut-panel/copy-cut-panel.component
     MatTooltipModule,
     HttpModule,
     ProgressHttpModule,
-    OrderModule
+    OrderModule,
+    ClipboardModule
   ],
   entryComponents: [FullFileComponent, NewFolderComponent],
   providers: [
