@@ -1,13 +1,19 @@
-<div class="header header-container box-item  px-5 pt-4 no-gutters sticky-top">
+<div class="header header-container box-item  px-5 pt-3 no-gutters sticky-top">
   <div class="row cloudHeader justify-content-between">
-    <div class="col-auto row align-items-center no-gutters">
-      <div class="no-gutters mb-3">
-        <div class="utcloud col-auto pointer text-primary" (click)="navigateToHome()">
+    <div class="col-auto row align-items-center ">
+      <div class="mb-5 ml-2">
+        <img src="logo.png" width="40">
+      </div>
+
+
+      <div class="no-gutters mb-5">
+
+        <div class="utcloud col-auto pointer " (click)="navigateToHome()">
           UT Cloud
         </div>
       </div>
     </div>
-    <div class="col-auto">
+    <div class="col-auto mt-3 ">
       <div class="pointer logOut" (click)="logout() "> logout
       </div>
     </div>
