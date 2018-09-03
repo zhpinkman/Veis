@@ -64,7 +64,17 @@ export class FilesListComponent implements OnInit {
 
     fileService.selectedFile.subscribe(value => {
       console.log(value);
-      this.addToList(value);
+      this.addToList(value.name);
+      console.log('value', value);
+      if (this.fileService.filePasted) {
+        console.log('bool', this.fileService.copiedFiles.includes(value));
+        if (!this.fileService.copiedFiles.includes(value)) {
+          console.log('copyfiles', this.fileService.copiedFiles);
+          this.fileService.copiedFiles.push(value);
+        }
+        // this.fileService.refreshPage.next();
+        console.log('fileList: ', this.fileService.copiedFiles);
+      }
       this.fileService.selectedFiles = this.selectedFilesIndex;
       this.fileService.allFiles = this.files;
       this.fileService.OnselectMode.next(this.selectedFilesIndex.length);

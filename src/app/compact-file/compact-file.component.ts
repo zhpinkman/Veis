@@ -82,7 +82,7 @@ export class CompactFileComponent implements OnInit {
     });
   }
   select() {
-    this.fileService.selectedFile.next(this.file.name);
+    this.fileService.selectedFile.next(this.file);
   }
 
   hoverOn() {

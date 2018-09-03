@@ -6,8 +6,8 @@
   </div>
   <div class="lists">
     <ul>
-      <li class="li" *ngFor="let file of this.files">
-        {{file}}
+      <li class="li clickable" *ngFor="let file of this.files; let i = index" [attr.data-index]="i" (click)="remove(i)">
+        {{file.name}}
       </li>
     </ul>
   </div>

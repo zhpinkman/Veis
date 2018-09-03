@@ -12,6 +12,7 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { ProgressHttp } from 'angular-progress-http';
 import { RequestOptions, Headers } from '@angular/http';
 import { environment } from 'environments/environment';
+import { FileEntity } from '@app/file';
 
 let host: string;
 if (environment.production) host = 'http://142.93.66.250/api';
@@ -60,7 +61,7 @@ export class FileService {
         'Content-Type': undefined
       });
   }
-  selectedFile = new Subject<string>();
+  selectedFile = new Subject<FileEntity>();
   viewMode = new ReplaySubject<string>(1);
   OnselectMode = new Subject();
   refreshPage = new Subject();
@@ -70,6 +71,7 @@ export class FileService {
   selectedFiles = [];
   allFiles = [];
   breadcrumbs = [];
+  copiedFiles = [];
 
   getFiles() {
     return this.restangular

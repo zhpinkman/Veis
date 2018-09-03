@@ -17,17 +17,22 @@ export class CopyCutPanelComponent implements OnInit {
     private utils: UtilitiesService
   ) {
     this.creating_files();
+    this.fileService.selectedFile.subscribe(response => {
+      this.AddToCopy();
+    });
   }
 
   ngOnInit() {}
-
-  files = new Array<String>();
+  files = new Array<FileEntity>();
   creating_files() {
-    let data = this.fileService.allFiles;
-    let value = this.fileService.selectedFiles;
-    value.forEach(val => {
-      this.files.push(data[val].name);
+    let data = this.fileService.copiedFiles;
+    // this.files.push(data[data.length - 1]);
+    data.forEach(value => {
+      this.files.push(value);
     });
+    // this.fileService.copiedFiles = [];
+    this.fileService.refreshPage.next();
+    console.log('fileList: ', this.fileService.copiedFiles);
     console.log(
       'files info: ',
       this.files,
@@ -37,30 +42,21 @@ export class CopyCutPanelComponent implements OnInit {
     return this.files;
   }
 
-  createOldPathesFromSelectedFiles() {
-    let oldPathes = [];
-    let data = this.fileService.allFiles;
-    let value = this.fileService.selectedFiles;
-    console.log('size of op: ', value.length);
-    value.forEach(val => {
-      this.oldPath = data[val].path;
-      let index = this.oldPath.indexOf('/', 1);
-      this.oldPath = this.oldPath.substring(index);
-      oldPathes.push(this.oldPath);
-    });
-    console.log('oldPathes info= ', oldPathes);
-    console.log('size of oldpathes: ', oldPathes.length);
-    this.fileService.oldPathes = oldPathes;
+  AddToCopy() {
+    let data = this.fileService.copiedFiles;
+    this.files.push(data[data.length - 1]);
   }
 
   submitPaste() {
-    this.createOldPathesFromSelectedFiles();
     this.fileService.filePasted = false;
     console.log(this.fileService.oldPathes);
-    this.fileService.oldPathes.forEach(op => {
+    this.fileService.copiedFiles.forEach(cf => {
       console.log('After: ', this.oldPath, 'N: ', name);
       let request = new CopyRequest();
-      request.oldPath = op;
+      this.oldPath = cf.path;
+      let index = this.oldPath.indexOf('/', 1);
+      this.oldPath = this.oldPath.substring(index);
+      request.oldPath = this.oldPath;
       request.newPath = this.fileService.currentPath.pathToString();
       if (this.fileService.copyOrCut === 'copy') {
         this.fileService.copyFile(request).subscribe(
@@ -88,11 +84,18 @@ export class CopyCutPanelComponent implements OnInit {
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.fileService.OnselectMode.next(null);
+    this.fileService.copiedFiles = [];
   }
+
   submitCancel() {
     this.fileService.filePasted = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.fileService.OnselectMode.next(null);
+    this.fileService.copiedFiles = [];
+  }
+
+  remove(i) {
+    this.fileService.copiedFiles.splice(i, 1);
   }
 }

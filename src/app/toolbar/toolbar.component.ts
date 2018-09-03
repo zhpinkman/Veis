@@ -75,38 +75,35 @@ export class ToolbarComponent implements OnInit {
   submitCopy() {
     this.fileService.copyOrCut = 'copy';
     this.fileService.filePasted = true;
-    this.createOldPathesFromSelectedFiles();
+    this.createCopiedFiles();
   }
 
   submitCut() {
     this.fileService.copyOrCut = 'cut';
     this.fileService.filePasted = true;
-    this.createOldPathesFromSelectedFiles();
+    this.createCopiedFiles();
   }
 
-  createOldPathesFromSelectedFiles() {
+  createCopiedFiles() {
     let oldPathes = [];
     let data = this.fileService.allFiles;
     let value = this.fileService.selectedFiles;
     console.log('size of op: ', value.length);
     value.forEach(val => {
-      this.oldPath = data[val].path;
-      let index = this.oldPath.indexOf('/', 1);
-      this.oldPath = this.oldPath.substring(index);
-      oldPathes.push(this.oldPath);
+      this.fileService.copiedFiles.push(data[val]);
     });
-    console.log('oldPathes info= ', oldPathes);
-    console.log('size of oldpathes: ', oldPathes.length);
-    this.fileService.oldPathes = oldPathes;
   }
 
   submitPaste() {
     this.fileService.filePasted = false;
     console.log(this.fileService.oldPathes);
-    this.fileService.oldPathes.forEach(op => {
+    this.fileService.copiedFiles.forEach(cf => {
       console.log('After: ', this.oldPath, 'N: ', name);
       let request = new CopyRequest();
-      request.oldPath = op;
+      this.oldPath = cf.path;
+      let index = this.oldPath.indexOf('/', 1);
+      this.oldPath = this.oldPath.substring(index);
+      request.oldPath = this.oldPath;
       request.newPath = this.fileService.currentPath.pathToString();
       if (this.fileService.copyOrCut === 'copy') {
         this.fileService.copyFile(request).subscribe(
@@ -135,13 +132,16 @@ export class ToolbarComponent implements OnInit {
     this.fileService.copyOrCut = null;
     this.selectModeToolbar = false;
     this.fileService.OnselectMode.next(null);
+    this.fileService.copiedFiles = [];
   }
+
   submitCancel() {
     this.selectModeToolbar = false;
     this.fileService.filePasted = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.fileService.OnselectMode.next(null);
+    this.fileService.copiedFiles = [];
   }
   changeviewMode() {
     if (this.viewMode == 'compact') this.viewMode = 'list';
