@@ -83,6 +83,7 @@ export class FullFileComponent implements OnInit {
   }
   download() {
     window.open(this.file.url, '_blank');
+    this.fileService.downloadFile(this.file.url).subscribe(() => {});
   }
 
   toggleAccessibility() {

@@ -128,4 +128,7 @@ export class FileService {
     if (localStorage.getItem('viewMode'))
       return localStorage.getItem('viewMode');
   }
+  downloadFile(url: string) {
+    return this.restangular.oneUrl('download', url).get();
+  }
 }
