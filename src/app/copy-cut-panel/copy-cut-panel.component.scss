@@ -1,26 +1,61 @@
 .floating-panel {
+  direction: ltr;
   position: fixed;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  padding-top: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
   bottom: 0;
-  left: 0;
-  width: 250px;
-  height: 200px;
-  margin-bottom: 3%;
-  margin-left: 6%;
+  /* left: 6%; */
+  top: 130px;
+  width: 300px;
+  /* height: 200px; */
+  /* margin-bottom: 3%; */
+  /* margin-left: 6%; */
   overflow: scroll;
   overflow-x: hidden;
   overflow-y: auto;
-  box-shadow: 1px 0 9px 1px lightgrey;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid #e9e6e6;
-  .li {
-    border-bottom: 1px solid rgb(163, 157, 157);
+  /* box-shadow: 1px 0 9px 1px lightgrey; */
+  background-color: #0000000a;
+  // border: 2px solid #e9e6e6;
+  box-shadow: inset 2px -2px 2px 1px #0000001f;
+
+  text-align: right;
+  ul {
+    padding-left: 0px !important;
+  }
+  li {
+    border-bottom: 1px solid #00000024;
     list-style-type: none;
-    margin-top: 5px;
-    margin-left: 25px;
+    margin: 10px;
+    padding-bottom: 2px;
+    .container {
+      text-align: center;
+      direction: ltr;
+      margin: 0;
+      padding: 0;
+      .col-sm-9 {
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .pathGray {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 10px;
+      color: #9e9e9ea8;
+      padding: 0;
+      margin: 0;
+      margin-top: 3px;
+      text-align: left;
+      .col {
+        padding-left: 0;
+      }
+    }
   }
   .lists {
-    margin-top: 30px;
+    margin-top: 60px;
   }
   .paste {
     position: absolute;

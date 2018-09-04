@@ -4,6 +4,7 @@ import { UtilitiesService } from '@app/Services/utilities.service';
 import { ToolbarComponent } from '@app/toolbar/toolbar.component';
 import { CopyRequest } from '@app/copyRequest';
 import { FileEntity } from '@app/file';
+import { ConstService } from '@app/Services/const.service';
 
 @Component({
   selector: 'app-copy-cut-panel',
@@ -14,7 +15,8 @@ export class CopyCutPanelComponent implements OnInit {
   oldPath: String;
   constructor(
     private fileService: FileService,
-    private utils: UtilitiesService
+    private utils: UtilitiesService,
+    public consts: ConstService
   ) {
     this.creating_files();
     this.fileService.selectedFile.subscribe(response => {
