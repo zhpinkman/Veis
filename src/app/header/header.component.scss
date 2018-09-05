@@ -4,6 +4,7 @@
 
 .icon {
   cursor: pointer;
+
   &:hover {
     font-size: 30px;
     transition: all 0.5s;
@@ -38,4 +39,9 @@
 img {
   margin-bottom: 5;
   margin-right: 5;
+}
+
+.logo-icon {
+  height: 45px;
+  padding: 45px 0 0 0;
 }
