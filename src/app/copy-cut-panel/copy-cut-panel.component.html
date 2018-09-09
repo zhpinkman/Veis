@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-sm-9">{{file.name}}</div>
             <div class="col-sm-3">
-              <i [class]="'fa fa-1x ' + consts.icons[file.type] " aria-hidden="true"></i>
+              <i [class]="'fa fa-1x ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
             </div>
 
           </div>
