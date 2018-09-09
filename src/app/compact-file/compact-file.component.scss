@@ -119,11 +119,12 @@ p {
   }
 
   .file-date {
-    padding: 0 40px;
+    margin: 0 40px;
   }
 
   .file-size {
-    padding-right: 60px;
+    margin: 0 60px;
+    width: 90px;
   }
 }
 
@@ -136,7 +137,7 @@ p {
   bottom: 0;
   right: 0;
   border: 1px solid #217bff;
-  border-radius: 7px 0px 0px 0px;
+  border-radius: 4px 0px 0px 0px;
   height: 18px;
   color: white;
   background-color: #217bff;

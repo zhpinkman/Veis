@@ -37,14 +37,14 @@ export class FileService {
     this.router.events.subscribe((url: any) => {
       if (url instanceof NavigationEnd) {
         let path = url.url.toString().split('/');
-
         if (path.length >= 2 && path[1] === 'myfiles') {
           path.splice(1, 1);
           this.currentPath = new PathClass(path[0]);
           for (let i = 1; i < path.length; i++) {
+            path[i] = decodeURIComponent(path[i]);
+            console.log(path[i]);
             this.currentPath = new PathClass(path[i], this.currentPath);
           }
-
           this.currentPathRefreshed.next();
         } else {
           return;
@@ -74,6 +74,8 @@ export class FileService {
   copiedFiles = [];
 
   getFiles() {
+    // console.log(this.currentPath);
+    // console.log(`${this.currentPath.pathToString()}`);
     return this.restangular
       .one('file/list')
       .get({ path: `${this.currentPath.pathToString()}` });
@@ -83,6 +85,8 @@ export class FileService {
       name: folderName,
       path: this.currentPath.pathToString()
     };
+    // console.log('\n' + folderName + '\n');
+    // console.log('\n' + mkDirRequest.name + '\n');
     if (mkDirRequest.path == '/') {
       mkDirRequest.path = '';
     }
@@ -102,7 +106,8 @@ export class FileService {
     return this.restangular.one('file/movefile').customPOST(moveRequest);
   }
   navigateTo(folder: PathClass) {
-    this.router.navigate([folder.toRoute()]);
+    // console.log(`${folder.toRoute()}`);
+    this.router.navigate([`${folder.toRoute()}`]);
   }
   upload(files: FileList, fun: (progress: any, i: number) => any) {
     for (let i = 0; i < files.length; i++) {

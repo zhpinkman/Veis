@@ -34,13 +34,13 @@ export class CopyCutPanelComponent implements OnInit {
     });
     // this.fileService.copiedFiles = [];
     this.fileService.refreshPage.next();
-    console.log('fileList: ', this.fileService.copiedFiles);
-    console.log(
-      'files info: ',
-      this.files,
-      'files length: ',
-      this.files.length
-    );
+    // console.log('fileList: ', this.fileService.copiedFiles);
+    // console.log(
+    // 'files info: ',
+    // this.files,
+    // 'files length: ',
+    // this.files.length
+    // );
     return this.files;
   }
 
@@ -51,9 +51,9 @@ export class CopyCutPanelComponent implements OnInit {
 
   submitPaste() {
     this.fileService.filePasted = false;
-    console.log(this.fileService.oldPathes);
+    // console.log(this.fileService.oldPathes);
     this.fileService.copiedFiles.forEach(cf => {
-      console.log('After: ', this.oldPath, 'N: ', name);
+      // console.log('After: ', this.oldPath, 'N: ', name);
       let request = new CopyRequest();
       this.oldPath = cf.path;
       let index = this.oldPath.indexOf('/', 1);

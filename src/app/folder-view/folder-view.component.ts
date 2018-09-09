@@ -23,8 +23,7 @@ export class FolderViewComponent implements OnInit {
   ngOnInit() {}
 
   openFolder() {
-    console.log('ppp');
-
+    // console.log(this.folder);
     this.fileService.navigateTo(this.folder);
   }
 }

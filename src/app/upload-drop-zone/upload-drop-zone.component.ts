@@ -23,6 +23,7 @@ export class UploadDropZoneComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.enableDropZone();
+    this.utilitiesService.setTitle('My Files');
   }
 
   constructor(
@@ -30,7 +31,7 @@ export class UploadDropZoneComponent implements OnInit, OnChanges {
     private authService: AuthService,
     private utilitiesService: UtilitiesService
   ) {
-    this.utilitiesService.setTitle('Upload Files');
+    // this.utilitiesService.setTitle('Upload Files');
     // console.log(this.files);
   }
   ngOnChanges(changes) {
