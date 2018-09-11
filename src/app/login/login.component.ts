@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   getFromLocalStorsge(): any {
     this.email.setValue(localStorage.getItem('email'));
     this.email.patchValue(localStorage.getItem('email'));
-    console.log(this.email.value);
+    // console.log(this.email.value);
     this.password.setValue(localStorage.getItem('password'));
     this.password.patchValue(localStorage.getItem('password'));
   }
@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService
   ) {
     this.route.data.subscribe(data => {
-      console.log(data['hide']);
+      // console.log(data['hide']);
       if (data['hide']) this.isHidden = true;
     });
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+      // console.log(params);
       if (params['userId'] && params['token']) {
         // console.log('asdasdasdas');
         let request = new ActivationRequest();
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           error => {
             this.utils.error('Not Activated', error.data.message);
             this.isHidden = false;
-            console.log(error);
+            // console.log(error);
           }
         );
       }
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
     // console.log(user);
     this.authService.LoginRequest(user).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.router.navigate(['/myfiles']);
         this.utils.success('success', 'you have successfully loged in ');
         this.spinHide = true;

@@ -23,9 +23,9 @@ export class CopyCutPanelComponent implements OnInit {
 
   submitPaste() {
     this.fileService.filePasted = false;
-    console.log(this.fileService.oldPathes);
+    // console.log(this.fileService.oldPathes);
     this.fileService.copiedFiles.forEach(cf => {
-      console.log('After: ', this.oldPath, 'N: ', name);
+      // console.log('After: ', this.oldPath, 'N: ', name);
       let request = new CopyRequest();
       this.oldPath = cf.path;
       let index = this.oldPath.indexOf('/', 1);

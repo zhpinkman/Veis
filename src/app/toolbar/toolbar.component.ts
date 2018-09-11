@@ -51,19 +51,19 @@ export class ToolbarComponent implements OnInit {
   }
   ngOnInit() {}
   openDialog(event): void {
-    const opts = new MatDialogConfig();
+    const newFolderDialogopts = new MatDialogConfig();
     const dialogPosition: DialogPosition = {
       top: '8%',
       right: '8%'
     };
-    opts.width = '300px';
-    opts.height = '200px';
+    newFolderDialogopts.width = '300px';
+    newFolderDialogopts.height = '200px';
 
-    opts.position = dialogPosition;
+    newFolderDialogopts.position = dialogPosition;
 
-    const dialogRef = this.dialog.open(NewFolderComponent, opts);
+    const dialogRef = this.dialog.open(NewFolderComponent, newFolderDialogopts);
 
-    dialogRef.updatePosition(opts.position);
+    dialogRef.updatePosition(newFolderDialogopts.position);
 
     dialogRef.afterClosed().subscribe(resutl => {});
   }
@@ -88,7 +88,7 @@ export class ToolbarComponent implements OnInit {
     let oldPathes = [];
     let data = this.fileService.allFiles;
     let value = this.fileService.selectedFiles;
-    console.log('size of op: ', value.length);
+    // console.log('size of op: ', value.length);
     value.forEach(val => {
       this.fileService.copiedFiles.push(data[val]);
     });
@@ -96,9 +96,9 @@ export class ToolbarComponent implements OnInit {
 
   submitPaste() {
     this.fileService.filePasted = false;
-    console.log(this.fileService.oldPathes);
+    // console.log(this.fileService.oldPathes);
     this.fileService.copiedFiles.forEach(cf => {
-      console.log('After: ', this.oldPath, 'N: ', name);
+      // console.log('After: ', this.oldPath, 'N: ', name);
       let request = new CopyRequest();
       this.oldPath = cf.path;
       let index = this.oldPath.indexOf('/', 1);
@@ -153,7 +153,7 @@ export class ToolbarComponent implements OnInit {
   breadcrumbs = [];
   makeBreadCrumbs() {
     let currentPath: PathClass = this.fileService.currentPath;
-    // console.log(currentPath.name);
+    // console.log(currentPath);
     this.breadcrumbs = [];
     while (currentPath.getParent() != null) {
       this.breadcrumbs.push(currentPath);
@@ -165,9 +165,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   navigateTo(path: PathClass) {
-    // this.fileService.currentPath = path;
-    // console.log(this.fileService.currentPath.name);
-    // console.log(this.fileService.currentPath.getParent().name);
     this.fileService.navigateTo(path);
     this.makeBreadCrumbs();
   }
