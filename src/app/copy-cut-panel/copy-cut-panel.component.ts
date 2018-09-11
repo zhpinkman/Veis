@@ -14,40 +14,12 @@ import { ConstService } from '@app/Services/const.service';
 export class CopyCutPanelComponent implements OnInit {
   oldPath: String;
   constructor(
-    private fileService: FileService,
+    public fileService: FileService,
     private utils: UtilitiesService,
     public consts: ConstService
-  ) {
-    this.creating_files();
-    this.fileService.selectedFile.subscribe(response => {
-      this.AddToCopy();
-    });
-  }
+  ) {}
 
   ngOnInit() {}
-  files = new Array<FileEntity>();
-  creating_files() {
-    let data = this.fileService.copiedFiles;
-    // this.files.push(data[data.length - 1]);
-    data.forEach(value => {
-      this.files.push(value);
-    });
-    // this.fileService.copiedFiles = [];
-    this.fileService.refreshPage.next();
-    console.log('fileList: ', this.fileService.copiedFiles);
-    console.log(
-      'files info: ',
-      this.files,
-      'files length: ',
-      this.files.length
-    );
-    return this.files;
-  }
-
-  AddToCopy() {
-    let data = this.fileService.copiedFiles;
-    this.files.push(data[data.length - 1]);
-  }
 
   submitPaste() {
     this.fileService.filePasted = false;
