@@ -4,6 +4,7 @@
   <div (dblclick)="examineOpenFullFile()" (click)="examineSelect()" class="file-container parent box-limit" (mouseover)="hoverOn()"
     (mouseout)="hoverOff()">
     <div class="file-icon">
+      <span class="file-extension" *ngIf="!consts.icons[file.type]">{{file.fileExtension}}</span>
       <i class="one-liine-icon" [class]="'fi p-2 flaticon-size ' + (consts.icons[file.type] || 'flaticon-file-1')"></i>
     </div>
 

@@ -1,7 +1,11 @@
-.file-icon {
+.file-icon-container {
   font-size: 100px;
   padding: 10px 20px 0 20px;
   height: 150px;
+
+  .file-extension {
+    top: 41px;
+  }
 }
 
 .file-type {
@@ -80,7 +84,7 @@
 .file-delete {
   padding: 3px 1px 1px 7px;
   margin-right: 3px;
-  color: gray;
+  color: #444;
   font-family: 'IranSansNumbers', IRANSans, sans-serif !important;
 }
 
@@ -124,7 +128,7 @@
 
 .edit-icon {
   font-size: 18px;
-  opacity: 0.5;
+  color: #444;
 }
 
 .download-url {
@@ -180,6 +184,7 @@
 
 .edit-icon-text {
   padding: 0 20px 0 0;
+  color: #444;
 }
 
 .file-name-text {
@@ -193,6 +198,7 @@
   text-align: center;
   margin: 0 auto;
   font-weight: bold;
+  color: #d85c5c;
 }
 
 .download-icon {

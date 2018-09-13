@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 13/09/2018 16:05
+  	Creation date: 13/09/2018 16:47
   	*/
 
 @font-face {
@@ -73,3 +73,5 @@ margin-left: 20px;
 .flaticon-add:before { content: "\f129"; }
 .flaticon-menu-1:before { content: "\f12a"; }
 .flaticon-logout:before { content: "\f12b"; }
+.flaticon-edit:before { content: "\f12c"; }
+.flaticon-pencil-edit-button:before { content: "\f12d"; }
