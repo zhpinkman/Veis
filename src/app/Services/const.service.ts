@@ -6,11 +6,12 @@ export class ConstService {
   constructor() {}
 
   icons = {
-    'text/plain': 'text-info fa-file-text-o',
-    'image/jpeg': ' text-warning fa-image ',
-    dir: ' fa-folder text-primary ',
-    'application/javascript': ' fa-code text-danger ',
-    'text/html': ' fa-html5 text-danger ',
-    'application/pdf': ' fa-file-pdf-o text-danger '
+    'text/plain': 'text-info fi flaticon-doc',
+    'image/jpeg': ' text-warning fi flaticon-jpg ',
+
+    dir: 'fi flaticon-folder text-primary ',
+    'application/javascript': 'fi flaticon-javascript text-danger ',
+    'text/html': 'fi flaticon-html text-danger ',
+    'application/pdf': 'fi flaticon-pdf text-danger '
   };
 }

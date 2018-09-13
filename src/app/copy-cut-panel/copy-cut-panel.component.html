@@ -1,17 +1,18 @@
 <app-toolbar></app-toolbar>
 <div class="floating-panel">
   <div class="col-auto Xlarge row">
-    <i matTooltip="paste" class="fa fa-clipboard mx-3 fa-2x paste" aria-hidden="true" (click)="submitPaste()"></i>
-    <i matTooltip="cancel" class="fa fa-ban mx-3 fa-2x cancel" aria-hidden="true" (click)="submitCancel()"></i>
+    <i matTooltip="paste" class="fi flaticon-paste-from-clipboard mx-3 paste" aria-hidden="true" (click)="submitPaste()"></i>
+    <i matTooltip="cancel" class="fi flaticon-cancel-button mx-3 cancel" aria-hidden="true" (click)="submitCancel()"></i>
   </div>
   <div class="lists">
     <ul>
-      <li class="li clickable" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i" (click)="remove(i)">
+      <li class="li clickable" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i"
+        (click)="remove(i)">
         <div class="container">
           <div class="row">
             <div class="col-sm-9">{{file.name}}</div>
             <div class="col-sm-3">
-              <i [class]="'fa fa-1x ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
+              <i [class]="'fi' + (consts.icons[file.type] || ' fi-file ') " aria-hidden="true"></i>
             </div>
 
           </div>
