@@ -31,17 +31,28 @@
     list-style-type: none;
     margin: 10px;
     padding-bottom: 2px;
-
-    .container {
-      text-align: center;
+    .file-container {
+      text-align: left;
       direction: ltr;
       margin: 0;
       padding: 0;
-
-      .col-sm-9 {
+      .icon-content {
+        > i {
+          margin-right: 5px;
+        }
+      }
+      .name-content {
         text-align: left;
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
+      }
+      .delete-button {
+        opacity: 0.5;
+        color: #ff0000;
+        &:hover {
+          opacity: 1;
+        }
       }
     }
 
@@ -57,12 +68,19 @@
 
       .col {
         padding-left: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
 
   .lists {
     margin-top: 60px;
+    .panel-description {
+      margin-right: 10px;
+      color: #888;
+    }
   }
 
   .paste {

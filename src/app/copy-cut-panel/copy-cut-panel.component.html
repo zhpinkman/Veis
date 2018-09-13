@@ -5,16 +5,19 @@
     <i matTooltip="cancel" class="fi flaticon-cancel-button mx-3 cancel" aria-hidden="true" (click)="submitCancel()"></i>
   </div>
   <div class="lists">
+    <div class="panel-description">
+      <span *ngIf="fileService.copyOrCut=='copy'"> فایل های کپی شده</span>
+      <span *ngIf="fileService.copyOrCut=='cut'"> فایل های کات شده</span>
+    </div>
     <ul>
-      <li class="li clickable" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i"
-        (click)="remove(i)">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-9">{{file.name}}</div>
-            <div class="col-sm-3">
-              <i [class]="'fi' + (consts.icons[file.type] || ' fi-file ') " aria-hidden="true"></i>
+      <li class="li" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i">
+        <div class="file-container">
+          <div class="row no-gutters">
+            <div class="col-auto icon-content">
+              <i [class]="'fa fonticont-size ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
             </div>
-
+            <div class="col name-content">{{file.name}}</div>
+            <div class="col-auto clickable delete-button" (click)="remove(i)">d</div>
           </div>
           <div class="row pathGray">
             <div class="col">{{file.path}}</div>
