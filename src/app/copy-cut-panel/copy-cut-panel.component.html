@@ -1,16 +1,22 @@
 <app-toolbar></app-toolbar>
 <div class="floating-panel">
-  <div class="col-auto Xlarge row">
-    <i matTooltip="paste" class="fi flaticon-paste-from-clipboard mx-3 paste" aria-hidden="true" (click)="submitPaste()"></i>
-    <i matTooltip="cancel" class="fi flaticon-cancel-button mx-3 cancel" aria-hidden="true" (click)="submitCancel()"></i>
+  <div class="col-auto Xlarge row justify-content-center panel-buttons">
+    <button class="mr-3" mat-raised-button color="primary" (click)="submitPaste()">
+      <span>جایگذاری</span>
+      <i class="fi flaticon-paste-from-clipboard" aria-hidden="true"></i>
+    </button>
+    <button mat-stroked-button (click)="submitCancel()" class="panel-cancel-button">
+      <span>لغو</span>
+      <i class="fi flaticon-cancel-button" aria-hidden="true"></i>
+    </button>
   </div>
   <div class="lists">
     <div class="panel-description">
-      <span *ngIf="fileService.copyOrCut=='copy'"> فایل های کپی شده</span>
-      <span *ngIf="fileService.copyOrCut=='cut'"> فایل های کات شده</span>
+      <span *ngIf="fileService.copyOrCut=='copy'">فایل های کپی شده:</span>
+      <span *ngIf="fileService.copyOrCut=='cut'">فایل های کات شده:</span>
     </div>
     <ul>
-      <li class="li" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i">
+      <li class="panel-list-item" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i">
         <div class="file-container">
           <div class="row no-gutters">
             <div class="col-auto icon-content">
