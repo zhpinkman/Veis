@@ -7,7 +7,7 @@
     </button>
     <button mat-stroked-button (click)="submitCancel()" class="panel-cancel-button">
       <span>لغو</span>
-      <i class="fi flaticon-cancel-button" aria-hidden="true"></i>
+      <i class="fi flaticon-cancel" aria-hidden="true"></i>
     </button>
   </div>
   <div class="lists">
@@ -16,6 +16,9 @@
       <span *ngIf="fileService.copyOrCut=='cut'">فایل های کات شده:</span>
     </div>
     <ul>
+      <span *ngIf="fileService.copiedFiles.length==0" class="panel-empty-state">
+        فایل های خود را انتخاب کنید
+      </span>
       <li class="panel-list-item" *ngFor="let file of this.fileService.copiedFiles; let i = index" [attr.data-index]="i">
         <div class="file-container">
           <div class="row no-gutters">
@@ -23,7 +26,9 @@
               <i [class]="'fa fonticont-size ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
             </div>
             <div class="col name-content">{{file.name}}</div>
-            <div class="col-auto clickable delete-button" (click)="remove(i)">d</div>
+            <div class="col-auto clickable delete-button" (click)="remove(i)">
+              <i class="fi flaticon-cancel" aria-hidden="true"></i>
+            </div>
           </div>
           <div class="row pathGray">
             <div class="col">{{file.path}}</div>
