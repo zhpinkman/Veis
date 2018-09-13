@@ -5,14 +5,15 @@
     (mouseout)="hoverOff()">
     <div class="file-icon">
       <span class="file-extension" *ngIf="!consts.icons[file.type]">{{file.fileExtension}}</span>
-      <i class="one-liine-icon" [class]="'fi p-2 flaticon-size ' + (consts.icons[file.type] || 'flaticon-file-1')"></i>
+      <i class="one-line-icon" [class]="'fi p-2 flaticon-size ' + (consts.icons[file.type] || 'flaticon-file-1')"></i>
     </div>
 
     <div class="file-name" [ngClass]="{
         'fileName' : file.selected
       }">
       <div class="check-icon" *ngIf="file.selected">
-        <i class="fi flaticon-check" aria-hidden="true"></i>
+        <i class="fi flaticon-tick
+        " aria-hidden="true"></i>
       </div>
       <span>{{file.name}}</span>
     </div>
@@ -24,7 +25,8 @@
     'selected': file.selected
   }">
   <div class="file-icon">
-    <i [class]=" 'fi ' + (consts.icons[file.type] || 'fi-file')"></i>
+    <span [class]="'file-extension ' + consts.icons[file.type]">{{file.fileExtension}}</span>
+    <i [class]=" 'fi ' + (consts.icons[file.type] || 'flaticon-file-1')"></i>
   </div>
   <div class="col my-auto file-name">
     {{file.name}}
