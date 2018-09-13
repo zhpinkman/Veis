@@ -1,8 +1,8 @@
 <app-toolbar></app-toolbar>
 <div class="floating-panel">
   <div class="col-auto Xlarge row">
-    <i matTooltip="paste" class="fa fa-clipboard mx-3 fa-2x paste" aria-hidden="true" (click)="submitPaste()"></i>
-    <i matTooltip="cancel" class="fa fa-ban mx-3 fa-2x cancel" aria-hidden="true" (click)="submitCancel()"></i>
+    <i matTooltip="paste" class="fi flaticon-paste-from-clipboard mx-3 paste" aria-hidden="true" (click)="submitPaste()"></i>
+    <i matTooltip="cancel" class="fi flaticon-cancel-button mx-3 cancel" aria-hidden="true" (click)="submitCancel()"></i>
   </div>
   <div class="lists">
     <div class="panel-description">
@@ -14,7 +14,7 @@
         <div class="file-container">
           <div class="row no-gutters">
             <div class="col-auto icon-content">
-              <i [class]="'fa fa-1x ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
+              <i [class]="'fa fonticont-size ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
             </div>
             <div class="col name-content">{{file.name}}</div>
             <div class="col-auto clickable delete-button" (click)="remove(i)">d</div>

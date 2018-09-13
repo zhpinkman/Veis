@@ -8,6 +8,7 @@
   li {
     color: gray; // margin: 3px;
     display: inline-block;
+
     &:last-child {
       color: #2d2d31;
     }
@@ -53,6 +54,7 @@ img {
       margin-bottom: 4px;
       color: #aaaaaa;
     }
+
     &:last-child {
       span {
         color: #127cfa;
