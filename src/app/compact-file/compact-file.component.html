@@ -4,14 +4,14 @@
   <div (dblclick)="examineOpenFullFile()" (click)="examineSelect()" class="file-container parent box-limit" (mouseover)="hoverOn()"
     (mouseout)="hoverOff()">
     <div class="file-icon">
-      <i [class]="' p-2 fa fa-5x ' + (consts.icons[file.type] || 'fa-file')"></i>
+      <i [class]="'fi p-2 flaticon-size ' + (consts.icons[file.type] || 'fi-file')"></i>
     </div>
 
     <div class="file-name" [ngClass]="{
         'fileName' : file.selected
       }">
       <div class="check-icon" *ngIf="file.selected">
-        <i class="fa fa-check" aria-hidden="true"></i>
+        <i class="fi fi-check" aria-hidden="true"></i>
       </div>
       <span>{{file.name}}</span>
     </div>
@@ -23,7 +23,7 @@
     'selected': file.selected
   }">
   <div class="file-icon">
-    <i [class]=" 'fa ' + (consts.icons[file.type] || 'fa-file')"></i>
+    <i [class]=" 'fi ' + (consts.icons[file.type] || 'fi-file')"></i>
   </div>
   <div class="col my-auto file-name">
     {{file.name}}
