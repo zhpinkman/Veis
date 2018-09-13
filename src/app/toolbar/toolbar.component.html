@@ -15,12 +15,6 @@
     <div class="col-auto upload-icon toolbar-icons" (click)="navigateToUpload()">
       <i matTooltip="upload" class="fi flaticon-upload-to-cloud"></i>
     </div>
-
-    <div class="col-auto Xlarge row toolbar-icons" *ngIf="fileService.pasteMode">
-      <i matTooltip="paste" class="fi flaticon-paste-from-clipboard" aria-hidden="true" (click)="submitPaste()"></i>
-      <i matTooltip="cancel" class="fi flaticon-cancel-button" aria-hidden="true" (click)="submitCancel()"></i>
-
-    </div>
     <div class="col-auto Xlarge row toolbar-icons" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
       <i matTooltip="copy" class="fi flaticon-file mx-1 col-auto" aria-hidden="true" (click)="submitCopy()"></i>
       <i matTooltip="cut" class="fi flaticon-scissors-1 mx-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
