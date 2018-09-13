@@ -152,7 +152,8 @@ export class FilesListComponent implements OnInit {
       });
 
       this.files.forEach(file => {
-        file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
+        if (file.name.includes('.'))
+          file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
       });
     });
   }
