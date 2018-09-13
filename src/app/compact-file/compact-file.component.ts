@@ -58,14 +58,14 @@ export class CompactFileComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (this.file.name === 'foot.txt') this.openFullFile();
+    if (this.file.name === 'foot.txt') this.openFullFile();
   }
 
   openFullFile() {
     const opts = new MatDialogConfig();
 
-    opts.width = '600px';
-    opts.height = '300px';
+    // opts.width = '600px';
+    // opts.height = '300px';
 
     opts.data = this.file;
 

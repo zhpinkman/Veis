@@ -1,6 +1,7 @@
 .file-icon {
   font-size: 100px;
-  padding: 30px 20px 20px 20px;
+  padding: 10px 20px 0 20px;
+  height: 150px;
 }
 
 .file-type {
@@ -9,14 +10,20 @@
 }
 
 .file-name {
-  padding: 40px 10px 20px 25px;
+  padding: 15px 10px 20px 25px;
+  line-height: 1;
+  height: 75px;
+}
+
+.file-name-text {
+  height: 35px;
+  line-height: 1;
   font-size: 30px;
   font-weight: bold;
-  height: 107px;
-  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-top: 6px;
 }
 
 .file-name-input {
@@ -25,7 +32,7 @@
 }
 
 .file-size {
-  padding: 5px 0 0 20px;
+  padding: 5px 5px;
   text-align: center;
 }
 
@@ -34,7 +41,7 @@
 }
 
 .file-date {
-  padding: 0 0 0 200px;
+  padding: 0 0 0 15px;
 }
 
 .bottom-bar {
@@ -50,7 +57,6 @@
 
 .file-download-delete {
   display: flex;
-  margin: 0 25px 0 0;
 }
 
 .file-actions {
@@ -79,11 +85,11 @@
   padding: 0 3px 0 15px;
 }
 
-.file-options {
-  height: 18px;
-  text-align: right;
+.file-download-det {
+  height: 30px;
   font-size: 20px;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 20px 0 0 0;
 }
 
 .file-save {
@@ -107,7 +113,8 @@
 .edit-icon {
   font-size: 18px;
   opacity: 0.5;
-  margin: 10px 0 0 0;
+  margin: 10px 0 0 20px;
+  height: 15px;
 }
 
 .download-url {
@@ -116,10 +123,29 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 150px;
 }
 
 .copy-to-clipboard-icon {
   width: 20px;
   opacity: 0.75;
+}
+
+.file-options {
+  justify-content: flex-end;
+  width: 60px;
+  height: 40px;
+  margin: 12px 12px 0px 0px;
+}
+
+.file-name-option {
+  width: 360px;
+}
+
+.download-url-input {
+  width: 310px;
+}
+
+.copy-to-clipboard {
+  border: 1px solid darkgray;
+  height: 28px;
 }

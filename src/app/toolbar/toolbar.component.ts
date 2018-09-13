@@ -74,13 +74,13 @@ export class ToolbarComponent implements OnInit {
 
   submitCopy() {
     this.fileService.copyOrCut = 'copy';
-    this.fileService.filePasted = true;
+    this.fileService.pasteMode = true;
     this.createCopiedFiles();
   }
 
   submitCut() {
     this.fileService.copyOrCut = 'cut';
-    this.fileService.filePasted = true;
+    this.fileService.pasteMode = true;
     this.createCopiedFiles();
   }
 
@@ -95,7 +95,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   submitPaste() {
-    this.fileService.filePasted = false;
+    this.fileService.pasteMode = false;
     // console.log(this.fileService.oldPathes);
     this.fileService.copiedFiles.forEach(cf => {
       // console.log('After: ', this.oldPath, 'N: ', name);
@@ -137,7 +137,7 @@ export class ToolbarComponent implements OnInit {
 
   submitCancel() {
     this.selectModeToolbar = false;
-    this.fileService.filePasted = false;
+    this.fileService.pasteMode = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.fileService.OnselectMode.next(null);

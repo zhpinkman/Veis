@@ -16,6 +16,7 @@ import {
   RESTANGULAR_NOT_AUTH,
   RestangularNotAuthFactory
 } from '@app/restangular.config';
+import { MatMenuModule } from '@angular/material/menu';
 import { SignupComponent } from '@app/signup/signup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UploadFileComponent } from '@app/upload-file/upload-file.component';
@@ -95,7 +96,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     HttpModule,
     ProgressHttpModule,
     OrderModule,
-    ClipboardModule
+    ClipboardModule,
+    MatMenuModule
   ],
   entryComponents: [FullFileComponent, NewFolderComponent],
   providers: [

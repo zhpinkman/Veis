@@ -66,7 +66,7 @@ export class FilesListComponent implements OnInit {
       console.log(value);
       this.addToList(value.name);
       // console.log('value', value);
-      if (this.fileService.filePasted) {
+      if (this.fileService.pasteMode) {
         // console.log('bool', this.fileService.copiedFiles.includes(value));
         if (!this.fileService.copiedFiles.includes(value)) {
           // console.log('copyfiles', this.fileService.copiedFiles);
@@ -100,7 +100,7 @@ export class FilesListComponent implements OnInit {
   }
 
   isInPasteMode() {
-    if (this.fileService.filePasted) {
+    if (this.fileService.pasteMode) {
       return true;
     } else return false;
   }
