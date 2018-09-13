@@ -33,6 +33,16 @@ p {
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
+    .file-icon {
+      height: 92px;
+      margin-top: 20px;
+
+      .one-line-icon {
+        height: 92px;
+        margin-top: 17px;
+      }
+    }
   }
 
   &:hover {

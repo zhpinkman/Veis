@@ -1,0 +1,5 @@
+main {
+  $header-toolbar-height: 133px;
+  min-height: calc(100vh - #{$header-toolbar-height});
+  margin-top: $header-toolbar-height;
+}

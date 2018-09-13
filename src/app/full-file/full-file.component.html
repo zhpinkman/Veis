@@ -79,26 +79,15 @@
       <div class="download-text">
         دانلود
       </div>
-      <div>
-        <i class="fa fa-cloud-download" aria-hidden="true"></i>
+      <div class="download-icon">
+        <i class="fi flaticon-cloud-computing" aria-hidden="true"></i>
       </div>
     </div>
   </div>
-  <!-- <div class="file-changes">
-    <div [hidden]="!showEditName" (click)="submitEdit()" class="file-actions file-save clickable">
-      ذخیره
-    </div>
-    <div [hidden]="!showEditName" (click)="cancelEdit()" class="file-actions file-cancel clickable">
-      لغو
-    </div>
-  </div> -->
 </div>
 <div dir="ltr" class="row file-download-det no-gutters">
   <div class="download-url col">
     <input class="download-url-input" type="text" [value]="file.url" readonly #urlInput>
-    <!-- <div matTooltip="copy to clipboard" ngxClipboard [cbContent]="file.url">
-      <img src="assets/images/copyToClipboard.svg" alt="" class="copy-to-clipboard-icon">
-    </div> -->
   </div>
   <div class="copy-to-clipboard clickable col-auto" matTooltip="copy to clipboard" (click)="copyToClipboard()">
     <i class="fi flaticon-clipboard-icon"></i>

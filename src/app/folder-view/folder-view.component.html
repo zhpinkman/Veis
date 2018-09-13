@@ -1,9 +1,9 @@
 <div (click)="openFolder()" *ngIf="viewMode == 'compact'" class="full-container">
-  <div class="file-container h-100">
-    <div class="file-icon">
-      <i class="fi flaticon-folder p-2 folder-size text-primary"></i>
+  <div class="folder-container h-100">
+    <div class="folder-icon">
+      <i class="one-line-icon fi flaticon-folder p-2 folder-size text-primary"></i>
     </div>
-    <div class="file-name">
+    <div class="folder-name">
       <span>{{folder.name}}</span>
     </div>
   </div>
@@ -11,7 +11,7 @@
 
 
 <div class="row listItem no-gutters" dir="ltr" *ngIf="viewMode == 'list'" (click)="openFolder()">
-  <div class="file-icon">
+  <div class="folder-icon">
     <i class="fi flaticon-folder-1 text-primary"></i>
   </div>
   <div class="my-auto file-name">

@@ -3,6 +3,7 @@
 }
 
 .BC {
+
   // list-style-type: none;
   // font-size: -webkit-xxx-large;
   li {
@@ -40,15 +41,18 @@ img {
   margin-bottom: 0;
   display: flex;
   align-items: center;
-  > li {
+
+  >li {
     display: flex;
     align-items: center;
-    > span {
+
+    >span {
       color: gray;
       margin-left: 8px;
       font-size: 16px;
     }
-    > i {
+
+    >i {
       font-size: 18px;
       margin-left: 8px;
       margin-bottom: 4px;
@@ -74,15 +78,6 @@ img {
   cursor: pointer;
 }
 
-.uploadIcon {
-  font-size: 20px;
-}
-
-.container-fluid {
-  margin-top: 77px;
-  z-index: 10;
-}
-
 #mkdir {
   z-index: 10000000;
 }
@@ -94,4 +89,15 @@ img {
 .toolbar {
   height: 55px;
   background: #fcfcfc;
+  margin-top: 77px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.toolbar-icons {
+  padding: 0px 15px;
+  font-size: 25px;
 }

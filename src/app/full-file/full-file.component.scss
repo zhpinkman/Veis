@@ -47,6 +47,7 @@
 
 .file-date {
   padding: 0 0 0 0px;
+  color: #999;
 }
 
 .file-edit-actions {
@@ -97,7 +98,7 @@
 }
 
 .file-download-det {
-  // height: 30px;
+  // height: 30px;                                                                                                                                                                        
   font-size: 20px;
   justify-content: center;
   margin: 20px 0 0 0;
@@ -192,4 +193,9 @@
   text-align: center;
   margin: 0 auto;
   font-weight: bold;
+}
+
+.download-icon {
+  font-size: 19px;
+  padding: 2px 0 0 0;
 }
