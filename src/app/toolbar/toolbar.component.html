@@ -1,4 +1,4 @@
-<div class="toolbar justify-content-between row box-item px-5 py-3 no-gutters fixed-top">
+<div class="toolbar justify-content-between row box-item no-gutters fixed-top">
   <div class="row col-auto">
     <div>
       <div class="clickable toolbar-icons" [hidden]="!isGridView" (click)="changeviewMode()">
@@ -22,8 +22,8 @@
 
     </div>
     <div class="col-auto Xlarge row toolbar-icons" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
-      <i matTooltip="copy" class="fi flaticon-file mx-1 col-auto" aria-hidden="true" (click)="submitCopy()"></i>
-      <i matTooltip="cut" class="fi flaticon-scissors-1 mx-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
+      <i matTooltip="copy" class="fi flaticon-file col-auto" aria-hidden="true" (click)="submitCopy()"></i>
+      <i matTooltip="cut" class="fi flaticon-scissors-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
     </div>
   </div>
   <div class="row no-gutters">
@@ -31,13 +31,16 @@
       <ul class="bread-crumb">
         <li *ngFor="let b of fileService.breadcrumbs; let i = index">
           <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
-          <i *ngIf="i != fileService.breadcrumbs.length - 1" class="fa fa-angle-right" aria-hidden="true"></i>
+          <div class="arrow-key">
+            <i *ngIf="i != fileService.breadcrumbs.length - 1" class="fi flaticon-arrow-point-to-right" aria-hidden="true"></i>
+          </div>
         </li>
       </ul>
     </div>
     <div class="col row no-gutters my-auto homeIcon">
-      <div class="col pl-2">
-        <i *ngIf="fileService.breadcrumbs.length > 0" class="fa fa-angle-right" aria-hidden="true"></i>
+      <div class="col pl-2 arrow-key">
+        <i *ngIf="fileService.breadcrumbs.length > 0" class="fi flaticon-arrow-point-to-right
+            " aria-hidden="true"></i>
       </div>
       <div class="col clickable" (click)="navigateToHome()">
         home

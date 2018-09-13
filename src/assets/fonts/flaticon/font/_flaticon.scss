@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 13/09/2018 16:47
+    Creation date: 13/09/2018 17:05
     */
 
     @font-face {
@@ -82,6 +82,7 @@
 .flaticon-logout:before { content: "\f12b"; }
 .flaticon-edit:before { content: "\f12c"; }
 .flaticon-pencil-edit-button:before { content: "\f12d"; }
+.flaticon-arrow-point-to-right:before { content: "\f12e"; }
     
     $font-Flaticon-pdf: "\f100";
     $font-Flaticon-doc: "\f101";
@@ -129,3 +130,4 @@
     $font-Flaticon-logout: "\f12b";
     $font-Flaticon-edit: "\f12c";
     $font-Flaticon-pencil-edit-button: "\f12d";
+    $font-Flaticon-arrow-point-to-right: "\f12e";
