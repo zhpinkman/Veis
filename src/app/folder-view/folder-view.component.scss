@@ -13,17 +13,27 @@
   flex-direction: column;
   justify-content: center;
 
-  .file-container {
+  .folder-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
     transition: all 0.3s;
 
-    .file-name {
+    .folder-name {
       padding: 10px 12px 10px;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .folder-icon {
+      height: 92px;
+      margin-top: 20px;
+
+      .one-line-icon {
+        height: 92px;
+        margin-top: 17px;
+      }
     }
   }
 
@@ -51,12 +61,12 @@
   border: 0 solid #dee2e6 !important;
   width: 100%;
 
-  .file-icon {
+  .folder-icon {
     padding: 24px 20px 20px 20px;
     font-size: 25px;
   }
 
-  .file-name {
+  .folder-name {
     padding: 10px 0 0 0;
     overflow: hidden;
     text-overflow: ellipsis;
