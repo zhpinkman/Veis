@@ -16,6 +16,7 @@ import {
   RESTANGULAR_NOT_AUTH,
   RestangularNotAuthFactory
 } from '@app/restangular.config';
+import { MatMenuModule } from '@angular/material/menu';
 import { SignupComponent } from '@app/signup/signup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UploadFileComponent } from '@app/upload-file/upload-file.component';
@@ -48,7 +49,6 @@ import { UploadToastPopupComponent } from './upload-toast-popup/upload-toast-pop
 import { OrderModule } from 'ngx-order-pipe';
 import { DragulaModule } from 'ng2-dragula';
 import { CopyCutPanelComponent } from './copy-cut-panel/copy-cut-panel.component';
-import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -95,7 +95,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     HttpModule,
     ProgressHttpModule,
     OrderModule,
-    ClipboardModule
+    MatMenuModule
   ],
   entryComponents: [FullFileComponent, NewFolderComponent],
   providers: [

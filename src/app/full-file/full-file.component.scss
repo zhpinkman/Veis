@@ -1,6 +1,7 @@
 .file-icon {
   font-size: 100px;
-  padding: 30px 20px 20px 20px;
+  padding: 10px 20px 0 20px;
+  height: 150px;
 }
 
 .file-type {
@@ -9,23 +10,34 @@
 }
 
 .file-name {
-  padding: 40px 10px 20px 25px;
+  padding: 15px 10px 20px 25px;
+  line-height: 1;
+  height: 75px;
+  width: 300px;
+}
+
+.file-name-text {
+  display: block;
+  height: 75px;
+  line-height: 1;
   font-size: 30px;
   font-weight: bold;
-  height: 107px;
-  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-top: 6px;
 }
 
 .file-name-input {
   border: none;
   border-bottom: 1px solid lightgray;
+  font-size: 30px;
+  width: 230px;
+  margin: -8px 0 0 0;
 }
 
 .file-size {
-  padding: 5px 0 0 20px;
+  padding: 5px 5px;
   text-align: center;
 }
 
@@ -34,7 +46,12 @@
 }
 
 .file-date {
-  padding: 0 0 0 200px;
+  padding: 0 0 0 0px;
+}
+
+.file-edit-actions {
+  height: 20px;
+  margin: 25px 0 0 0;
 }
 
 .bottom-bar {
@@ -50,7 +67,6 @@
 
 .file-download-delete {
   display: flex;
-  margin: 0 25px 0 0;
 }
 
 .file-actions {
@@ -61,9 +77,10 @@
 }
 
 .file-delete {
-  width: 75px;
-  margin: 0 0 0 35px;
   padding: 3px 1px 1px 7px;
+  margin-right: 3px;
+  color: gray;
+  font-family: 'IranSansNumbers', IRANSans, sans-serif !important;
 }
 
 .file-download {
@@ -76,14 +93,14 @@
 }
 
 .delete-text {
-  padding: 0 3px 0 15px;
+  padding: 0 20px 0 0px;
 }
 
-.file-options {
-  height: 18px;
-  text-align: right;
+.file-download-det {
+  // height: 30px;
   font-size: 20px;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 20px 0 0 0;
 }
 
 .file-save {
@@ -107,7 +124,6 @@
 .edit-icon {
   font-size: 18px;
   opacity: 0.5;
-  margin: 10px 0 0 0;
 }
 
 .download-url {
@@ -116,10 +132,64 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 150px;
 }
 
 .copy-to-clipboard-icon {
   width: 20px;
   opacity: 0.75;
+}
+
+.file-options {
+  justify-content: flex-end;
+  width: 60px;
+  height: 40px;
+  margin: 12px 0px 0px 0px;
+}
+
+.file-name-option {
+  width: 360px;
+}
+
+.download-url-input {
+  width: 100%;
+  border: 2px solid #B39DDB;
+  background: #f9f9f9;
+  color: #555;
+  font-size: 14px;
+  padding: 5px 10px 3px;
+  font-family: monospace;
+}
+
+.copy-to-clipboard {
+  border: 2px solid #B39DDB;
+  border-left: 0;
+  line-height: 24px;
+  padding: 3px 8px 2px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #673AB7;
+  background: #EDE7F6;
+  display: inline-block;
+  font-family: monospace;
+}
+
+.copy-text {
+  padding: 0 0 0 5px;
+}
+
+.edit-icon-text {
+  padding: 0 20px 0 0;
+}
+
+.file-name-text {
+  cursor: default;
+}
+
+.privacyLevel {
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  width: 60px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
 }

@@ -22,7 +22,7 @@ export class CopyCutPanelComponent implements OnInit {
   ngOnInit() {}
 
   submitPaste() {
-    this.fileService.filePasted = false;
+    this.fileService.pasteMode = false;
     // console.log(this.fileService.oldPathes);
     this.fileService.copiedFiles.forEach(cf => {
       // console.log('After: ', this.oldPath, 'N: ', name);
@@ -62,7 +62,7 @@ export class CopyCutPanelComponent implements OnInit {
   }
 
   submitCancel() {
-    this.fileService.filePasted = false;
+    this.fileService.pasteMode = false;
     this.fileService.selectedFiles = [];
     this.fileService.copyOrCut = null;
     this.fileService.OnselectMode.next(null);
