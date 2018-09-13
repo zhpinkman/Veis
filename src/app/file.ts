@@ -11,4 +11,5 @@ export class FileEntity {
   url: string;
   isOpen: Boolean = false;
   selected: Boolean = false;
+  fileExtension?: string;
 }

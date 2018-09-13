@@ -1,0 +1,23 @@
+.file-icon {
+  position: relative;
+
+  .file-extension {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    padding: 5px 4px 0px;
+    display: inline-block;
+    line-height: 1;
+    background: #f4f4f4;
+    color: #333;
+
+    &:before {
+      content: none !important;
+    }
+  }
+}

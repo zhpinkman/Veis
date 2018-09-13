@@ -1,8 +1,10 @@
 <div class="row no-gutters">
   <div>
-    <div class="file-icon">
-      <i [class]=" 'fa ' + (consts.icons[file.type] || ' fa-file ')">
-      </i>
+    <div class="file-icon-container">
+      <div class="file-icon">
+        <span class="file-extension" *ngIf="!consts.icons[file.type]">{{file.fileExtension}}</span>
+        <i [class]=" 'fi ' + (consts.icons[file.type] || 'flaticon-file-1')"></i>
+      </div>
     </div>
     <div *ngIf="filePrivate" class="privacyLevel">
       private
@@ -34,7 +36,8 @@
           <button mat-menu-item>
             <div dir="rtl" class="clickable edit-icon row no-gutters" (click)="handleRenameInput()">
               <div>
-                <i class="fa fa-pencil-square-o"></i>
+                <i class="fi flaticon-pencil-edit-button
+                "></i>
               </div>
               <div class="edit-icon-text">
                 ویرایش نام
@@ -46,7 +49,7 @@
                 'afterDelete' : hideDeleteIcon
               }">
               <div>
-                <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+                <i class="fi flaticon-cancel" aria-hidden="true" [ngClass]="{
                   ' fa-spin ' : hideDeleteIcon
                 }"></i>
               </div>

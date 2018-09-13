@@ -150,6 +150,10 @@ export class FilesListComponent implements OnInit {
         let folder = new PathClass(dir.name, this.fileService.currentPath);
         this.folders.push(folder);
       });
+
+      this.files.forEach(file => {
+        file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
+      });
     });
   }
 

@@ -12,7 +12,9 @@ import {
   EventEmitter,
   HostListener,
   Renderer2,
-  ElementRef
+  ElementRef,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { FullFileComponent } from '@app/full-file/full-file.component';
 import { FileEntity } from '@app/file';
@@ -28,7 +30,7 @@ import { PathClass } from '@app/PathClass';
     '(document:keypress)': 'handleKeyboardEvent($event)'
   }
 })
-export class CompactFileComponent implements OnInit {
+export class CompactFileComponent implements OnInit, OnChanges {
   @Input('value')
   file: FileEntity;
 
@@ -57,7 +59,8 @@ export class CompactFileComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges) {
     if (this.file.name === 'lil.txt') this.openFullFile();
   }
 
