@@ -94,55 +94,6 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
-  submitPaste() {
-    this.fileService.filePasted = false;
-    // console.log(this.fileService.oldPathes);
-    this.fileService.copiedFiles.forEach(cf => {
-      // console.log('After: ', this.oldPath, 'N: ', name);
-      let request = new CopyRequest();
-      this.oldPath = cf.path;
-      let index = this.oldPath.indexOf('/', 1);
-      this.oldPath = this.oldPath.substring(index);
-      request.oldPath = this.oldPath;
-      request.newPath = this.fileService.currentPath.pathToString();
-      if (this.fileService.copyOrCut === 'copy') {
-        this.fileService.copyFile(request).subscribe(
-          data => {
-            this.fileService.refreshPage.next();
-            this.utils.success('موفقیت', 'کپی با موفقیت انجام شد');
-          },
-          error => {
-            this.utils.error('خطا...', 'کپی با خطا مواجه شد!');
-          }
-        );
-      } else {
-        this.fileService.moveFile(request).subscribe(
-          data => {
-            this.fileService.refreshPage.next();
-            this.utils.success('موفقیت', 'کات با موفقیت انجام شد');
-          },
-          error => {
-            this.utils.error('خطا...', 'کات با خطا مواجه شد');
-          }
-        );
-      }
-    });
-
-    this.fileService.selectedFiles = [];
-    this.fileService.copyOrCut = null;
-    this.selectModeToolbar = false;
-    this.fileService.OnselectMode.next(null);
-    this.fileService.copiedFiles = [];
-  }
-
-  submitCancel() {
-    this.selectModeToolbar = false;
-    this.fileService.filePasted = false;
-    this.fileService.selectedFiles = [];
-    this.fileService.copyOrCut = null;
-    this.fileService.OnselectMode.next(null);
-    this.fileService.copiedFiles = [];
-  }
   changeviewMode() {
     if (this.viewMode == 'compact') this.viewMode = 'list';
     else this.viewMode = 'compact';
