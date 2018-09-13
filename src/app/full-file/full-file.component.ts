@@ -6,7 +6,9 @@ import {
   Pipe,
   PipeTransform,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 
 import { FileService } from '@app/Services/file.service';
@@ -15,7 +17,6 @@ import { DeleteRequest } from '@app/DeleteRequest';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FileEntity } from '@app/file';
 import { ConstService } from '@app/Services/const.service';
-import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-full-file',
@@ -27,8 +28,7 @@ export class FullFileComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public file: FileEntity,
     public consts: ConstService,
     private fileService: FileService,
-    public dialogRef: MatDialogRef<FullFileComponent>,
-    private clipboardService: ClipboardService
+    public dialogRef: MatDialogRef<FullFileComponent>
   ) {}
 
   ngOnInit() {}
@@ -96,17 +96,11 @@ export class FullFileComponent implements OnInit {
     }
   }
 
-  showPrivatePreview() {
-    this.filePrivatePreview = true;
-  }
-  showPublicPreview() {
-    this.filePublicPreview = true;
-  }
-
-  hidePublicPreview() {
-    this.filePublicPreview = false;
-  }
-  hidePrivatePreview() {
-    this.filePrivatePreview = false;
+  @ViewChild('urlInput')
+  urlInput: ElementRef<HTMLInputElement>;
+  copyToClipboard() {
+    // console.log(this.urlInput);
+    this.urlInput.nativeElement.select();
+    document.execCommand('copy');
   }
 }

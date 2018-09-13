@@ -1,27 +1,29 @@
 <div class="toolbar justify-content-between row container-fluid box-item px-5 py-3 no-gutters fixed-top">
   <div class="row col-auto">
     <div class="col-auto my-auto">
-      <div class="clickable" [hidden]="!isGridView">
-        <i matTooltip="List" class="fa fa-list" aria-hidden="true" (click)="changeviewMode()"></i>
+      <div class="clickable" [hidden]="!isGridView" (click)="changeviewMode()">
+        <i matTooltip="List" class="fi flaticon-view-list" aria-hidden="true" (click)="changeviewMode()"></i>
       </div>
-      <div class="clickable" [hidden]="isGridView">
-        <i matTooltip="Grid" class="fa fa-th" aria-hidden="true" (click)="changeviewMode()"></i>
+      <div class="clickable" [hidden]="isGridView" (click)="changeviewMode()">
+        <i matTooltip="Grid" class="fi flaticon-menu" aria-hidden="true" (click)="changeviewMode()"></i>
       </div>
     </div>
 
     <div id="mkdir" class="col-auto my-auto" (click)="openDialog($event)">
-      <img matTooltip="new folder" src="assets/images/newFolder.png" alt="newFolder">
+      <i matTooltip="new folder" class="fi flaticon-folder-1" alt="newFolder"></i>
     </div>
-    <div class="col-auto uploadIcon my-auto">
-      <i matTooltip="upload" class="fa fa-cloud-upload icon" aria-hidden="true" (click)="navigateToUpload()"></i>
+    <div class="col-auto uploadIcon my-auto" (click)="navigateToUpload()">
+      <i matTooltip="upload" class="fi flaticon-file-transfer"></i>
     </div>
+
     <div class="col-auto Xlarge row my-auto mx-1" *ngIf="fileService.pasteMode">
-      <i matTooltip="paste" class="fa fa-clipboard mx-1 col-auto" aria-hidden="true" (click)="submitPaste()"></i>
-      <i matTooltip="cancel" class="fa fa-ban mx-1 col-auto" aria-hidden="true" (click)="submitCancel()"></i>
+      <i matTooltip="paste" class="fi flaticon-paste-from-clipboard" aria-hidden="true" (click)="submitPaste()"></i>
+      <i matTooltip="cancel" class="fi flaticon-cancel-button" aria-hidden="true" (click)="submitCancel()"></i>
+
     </div>
     <div class="col-auto Xlarge row my-auto" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
-      <i matTooltip="copy" class="fa fa-files-o mx-1 col-auto" aria-hidden="true" (click)="submitCopy()"></i>
-      <i matTooltip="cut" class="fa fa-scissors mx-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
+      <i matTooltip="copy" class="fi flaticon-file mx-1 col-auto" aria-hidden="true" (click)="submitCopy()"></i>
+      <i matTooltip="cut" class="fi flaticon-scissors-1 mx-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
     </div>
   </div>
   <div class="row no-gutters">

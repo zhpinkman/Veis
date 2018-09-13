@@ -13,10 +13,12 @@
   padding: 15px 10px 20px 25px;
   line-height: 1;
   height: 75px;
+  width: 300px;
 }
 
 .file-name-text {
-  height: 35px;
+  display: block;
+  height: 75px;
   line-height: 1;
   font-size: 30px;
   font-weight: bold;
@@ -29,6 +31,9 @@
 .file-name-input {
   border: none;
   border-bottom: 1px solid lightgray;
+  font-size: 30px;
+  width: 230px;
+  margin: -8px 0 0 0;
 }
 
 .file-size {
@@ -41,7 +46,12 @@
 }
 
 .file-date {
-  padding: 0 0 0 15px;
+  padding: 0 0 0 0px;
+}
+
+.file-edit-actions {
+  height: 20px;
+  margin: 25px 0 0 0;
 }
 
 .bottom-bar {
@@ -67,9 +77,10 @@
 }
 
 .file-delete {
-  width: 75px;
-  margin: 0 0 0 35px;
   padding: 3px 1px 1px 7px;
+  margin-right: 3px;
+  color: gray;
+  font-family: 'IranSansNumbers', IRANSans, sans-serif !important;
 }
 
 .file-download {
@@ -82,11 +93,11 @@
 }
 
 .delete-text {
-  padding: 0 3px 0 15px;
+  padding: 0 20px 0 0px;
 }
 
 .file-download-det {
-  height: 30px;
+  // height: 30px;
   font-size: 20px;
   justify-content: center;
   margin: 20px 0 0 0;
@@ -113,8 +124,6 @@
 .edit-icon {
   font-size: 18px;
   opacity: 0.5;
-  margin: 10px 0 0 20px;
-  height: 15px;
 }
 
 .download-url {
@@ -134,7 +143,7 @@
   justify-content: flex-end;
   width: 60px;
   height: 40px;
-  margin: 12px 12px 0px 0px;
+  margin: 12px 0px 0px 0px;
 }
 
 .file-name-option {
@@ -142,10 +151,45 @@
 }
 
 .download-url-input {
-  width: 310px;
+  width: 100%;
+  border: 2px solid #B39DDB;
+  background: #f9f9f9;
+  color: #555;
+  font-size: 14px;
+  padding: 5px 10px 3px;
+  font-family: monospace;
 }
 
 .copy-to-clipboard {
-  border: 1px solid darkgray;
-  height: 28px;
+  border: 2px solid #B39DDB;
+  border-left: 0;
+  line-height: 24px;
+  padding: 3px 8px 2px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #673AB7;
+  background: #EDE7F6;
+  display: inline-block;
+  font-family: monospace;
+}
+
+.copy-text {
+  padding: 0 0 0 5px;
+}
+
+.edit-icon-text {
+  padding: 0 20px 0 0;
+}
+
+.file-name-text {
+  cursor: default;
+}
+
+.privacyLevel {
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  width: 60px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
 }

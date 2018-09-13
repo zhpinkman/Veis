@@ -37,7 +37,6 @@
     "mdn-polyfills": "^5.9.0",
     "ng-tether": "^0.1.0",
     "ng2-dragula": "^2.0.4",
-    "ngx-clipboard": "^11.1.6",
     "ngx-order-pipe": "^2.0.1",
     "ngx-restangular": "^3.0.0",
     "ngx-uploader": "^6.0.2",

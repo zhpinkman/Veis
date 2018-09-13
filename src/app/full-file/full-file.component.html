@@ -4,6 +4,9 @@
       <i [class]=" 'fa ' + (consts.icons[file.type] || ' fa-file ')">
       </i>
     </div>
+    <div *ngIf="filePrivate" class="privacyLevel">
+      private
+    </div>
     <div class="file-size englishFormat">
       {{ file.size | size }}
     </div>
@@ -12,30 +15,53 @@
   <div class="file-det">
     <div class="row justify-content-between file-name-option">
       <div class="row file-name">
-        <div class="file-name-text">
-          <span [hidden]="showEditName">{{file.name}}</span>
+        <div style="overflow: hidden;">
+          <span class="file-name-text" [hidden]="showEditName">{{file.name}}</span>
           <input class="file-name-input" [hidden]="!showEditName" [(ngModel)]="newFileName">
         </div>
-        <div class="clickable edit-icon">
-          <i matTooltip="edit name" class="fa fa-pencil-square-o" (click)="handleRenameInput()" [hidden]="showEditName"></i>
-        </div>
+      </div>
+      <div [hidden]="!showEditName" class="file-edit-actions clickable" (click)="submitEdit()">
+        <i class="fi flaticon-tick"></i>
+      </div>
+      <div [hidden]="!showEditName" class="file-edit-actions clickable" (click)="cancelEdit()">
+        <i class="fi flaticon-cancel"></i>
       </div>
       <div class="file-options">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          options
+        <button mat-icon-button [matMenuTriggerFor]="menu" [hidden]="showEditName">
+          <i class="fi flaticon-show-more-button-with-three-dots"></i>
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #menu="matMenu" xPosition="before">
           <button mat-menu-item>
-            dialpad
-            <span>Redial</span>
-          </button>
-          <button mat-menu-item disabled>
-            voicemail
-            <span>Check voicemail</span>
+            <div dir="rtl" class="clickable edit-icon row no-gutters" (click)="handleRenameInput()">
+              <div>
+                <i class="fa fa-pencil-square-o"></i>
+              </div>
+              <div class="edit-icon-text">
+                ویرایش نام
+              </div>
+            </div>
           </button>
           <button mat-menu-item>
-            notifications_off
-            <span>Disable alerts</span>
+            <div dir="rtl" class="row no-gutters file-delete clickable" (click)="delete()" [ngClass]="{
+                'afterDelete' : hideDeleteIcon
+              }">
+              <div>
+                <i class="fa fa-times" aria-hidden="true" [ngClass]="{
+                  ' fa-spin ' : hideDeleteIcon
+                }"></i>
+              </div>
+              <div [hidden]="hideDeleteIcon" class="delete-text">
+                حذف
+              </div>
+            </div>
+          </button>
+          <button mat-menu-item>
+            <div *ngIf="filePublic" (click)="toggleAccessibility()">
+              تغییر دسترسی به خصوصی
+            </div>
+            <div *ngIf="filePrivate" (click)="toggleAccessibility()">
+              تغییر دسترسی به عمومی
+            </div>
           </button>
         </mat-menu>
       </div>
@@ -49,18 +75,6 @@
 </div>
 <div dir="rtl" class="row no-gutters w-100 bottom-bar">
   <div class="file-download-delete">
-    <div class="row no-gutters file-delete clickable file-actions" (click)="delete()" [ngClass]="{
-            'afterDelete' : hideDeleteIcon
-          }">
-      <div [hidden]="hideDeleteIcon" class="delete-text">
-        حذف
-      </div>
-      <div>
-        <i class="fa fa-times" aria-hidden="true" [ngClass]="{
-              ' fa-spin ' : hideDeleteIcon
-            }"></i>
-      </div>
-    </div>
     <div class="row no-gutters file-download clickable file-actions" (click)="download()">
       <div class="download-text">
         دانلود
@@ -70,39 +84,24 @@
       </div>
     </div>
   </div>
-  <div class="file-changes">
+  <!-- <div class="file-changes">
     <div [hidden]="!showEditName" (click)="submitEdit()" class="file-actions file-save clickable">
       ذخیره
     </div>
     <div [hidden]="!showEditName" (click)="cancelEdit()" class="file-actions file-cancel clickable">
       لغو
     </div>
-  </div>
+  </div> -->
 </div>
 <div dir="ltr" class="row file-download-det no-gutters">
-  <div class="download-url">
-    <input class="download-url-input" type="text" value="{{file.url}}">
+  <div class="download-url col">
+    <input class="download-url-input" type="text" [value]="file.url" readonly #urlInput>
     <!-- <div matTooltip="copy to clipboard" ngxClipboard [cbContent]="file.url">
       <img src="assets/images/copyToClipboard.svg" alt="" class="copy-to-clipboard-icon">
     </div> -->
   </div>
-  <div class="copy-to-clipboard" matTooltip="copy to clipboard" ngxClipboard [cbContent]="file.url">
-    copy
+  <div class="copy-to-clipboard clickable col-auto" matTooltip="copy to clipboard" (click)="copyToClipboard()">
+    <i class="fi flaticon-clipboard-icon"></i>
+    <span class="copy-text">copy</span>
   </div>
-  <!-- <div class="clickable" (click)="toggleAccessibility()">
-            <div *ngIf="filePublic && !filePrivatePreview">
-              <img src="assets/images/public.png" alt="" (mouseover)="showPrivatePreview()" class="accessibilityIcons">
-              
-            </div>
-            <div *ngIf="filePrivate && !filePublicPreview">
-              <img src="assets/images/private.png" alt="" (mouseover)="showPublicPreview()" class="accessibilityIcons">
-              
-            </div>
-            <div *ngIf="filePublicPreview" (mouseout)="hidePublicPreview()">
-              <img matTooltip="private -> public" src="assets/images/public.png" alt="" class="accessibilityIcons previewIcons">
-            </div>
-            <div *ngIf="filePrivatePreview" (mouseout)="hidePrivatePreview()">
-              <img matTooltip="public -> private" src="assets/images/private.png" alt="" class="accessibilityIcons previewIcons">
-            </div>
-          </div> -->
 </div>

@@ -58,7 +58,7 @@ export class CompactFileComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.file.name === 'foot.txt') this.openFullFile();
+    if (this.file.name === 'lil.txt') this.openFullFile();
   }
 
   openFullFile() {

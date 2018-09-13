@@ -3,11 +3,13 @@
 }
 
 .BC {
+
   // list-style-type: none;
   // font-size: -webkit-xxx-large;
   li {
     color: gray; // margin: 3px;
     display: inline-block;
+
     &:last-child {
       color: #2d2d31;
     }
@@ -39,20 +41,24 @@ img {
   margin-bottom: 0;
   display: flex;
   align-items: center;
+
   >li {
     display: flex;
     align-items: center;
+
     >span {
       color: gray;
       margin-left: 8px;
       font-size: 16px;
     }
+
     >i {
       font-size: 18px;
       margin-left: 8px;
       margin-bottom: 4px;
       color: #aaaaaa;
     }
+
     &:last-child {
       span {
         color: #127cfa;

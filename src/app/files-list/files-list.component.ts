@@ -68,7 +68,10 @@ export class FilesListComponent implements OnInit {
       // console.log('value', value);
       if (this.fileService.pasteMode) {
         // console.log('bool', this.fileService.copiedFiles.includes(value));
-        if (!this.fileService.copiedFiles.includes(value)) {
+        if (
+          this.fileService.copiedFiles.findIndex(k => k.name == value.name) ==
+          -1
+        ) {
           // console.log('copyfiles', this.fileService.copiedFiles);
           this.fileService.copiedFiles.push(value);
         }

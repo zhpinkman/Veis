@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import 'scss/shared.scss';
 @import 'scss/fonts.scss';
+
 html {
   height: 100%;
 }
@@ -10,6 +10,10 @@ body {
   background: #f9f9f9;
   text-align: right;
   min-height: 100%;
+}
+
+button:focus {
+  outline: none !important;
 }
 
 .box-item {
