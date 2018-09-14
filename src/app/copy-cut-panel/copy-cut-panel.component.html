@@ -23,7 +23,9 @@
         <div class="file-container">
           <div class="row no-gutters">
             <div class="col-auto icon-content">
-              <i [class]="'fa fonticont-size ' + (consts.icons[file.type] || ' fa-file ') " aria-hidden="true"></i>
+              <div class="file-icon mr-2">
+                <i [class]=" 'fi ' + (consts.icons[file.type] || 'flaticon-file-1')"></i>
+              </div>
             </div>
             <div class="col name-content">{{file.name}}</div>
             <div class="col-auto clickable delete-button" (click)="remove(i)">
