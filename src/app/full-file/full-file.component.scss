@@ -205,3 +205,10 @@
   font-size: 19px;
   padding: 2px 0 0 0;
 }
+
+.file-name-one-line-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  line-height: 1;
+}

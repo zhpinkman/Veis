@@ -1,23 +1,29 @@
 <div class="toolbar justify-content-between row box-item no-gutters fixed-top">
   <div class="row col-auto">
     <div>
-      <div class="clickable toolbar-icons" [hidden]="!isGridView" (click)="changeviewMode()">
-        <i matTooltip="List" class="fi flaticon-view-list" aria-hidden="true"></i>
+      <div class="clickable toolbar-icons rec-icons list-view-icon" [hidden]="!isGridView" (click)="changeviewMode()">
+        <i matTooltip="List" class="fi flaticon-lists
+        " aria-hidden="true"></i>
       </div>
-      <div class="clickable toolbar-icons" [hidden]="isGridView" (click)="changeviewMode()">
-        <i matTooltip="Grid" class="fi flaticon-menu" aria-hidden="true"></i>
+      <div class="clickable toolbar-icons square-icons" [hidden]="isGridView" (click)="changeviewMode()">
+        <i matTooltip="Grid" class="fi flaticon-menu-1 
+        " aria-hidden="true"></i>
       </div>
     </div>
 
-    <div id="mkdir" class="col-auto toolbar-icons" (click)="openDialog($event)">
-      <i matTooltip="new folder" class="fi flaticon-add" alt="newFolder"></i>
+    <div id="mkdir" class="toolbar-icons rec-icons clickable" (click)="openDialog($event)">
+      <i matTooltip="new folder" class="fi flaticon-add " alt="newFolder"></i>
     </div>
-    <div class="col-auto upload-icon toolbar-icons" (click)="navigateToUpload()">
+    <div class="upload-icon toolbar-icons clickable" (click)="navigateToUpload()">
       <i matTooltip="upload" class="fi flaticon-upload-to-cloud"></i>
     </div>
-    <div class="col-auto Xlarge row toolbar-icons" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
-      <i matTooltip="copy" class="fi flaticon-file col-auto" aria-hidden="true" (click)="submitCopy()"></i>
-      <i matTooltip="cut" class="fi flaticon-scissors-1 col-auto" aria-hidden="true" (click)="submitCut()"></i>
+    <div class="Xlarge row copy-cut-icons" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
+      <div class="toolbar-icons">
+        <i matTooltip="copy" class="fi flaticon-file" aria-hidden="true" (click)="submitCopy()"></i>
+      </div>
+      <div class="toolbar-icons">
+        <i matTooltip="cut" class="fi flaticon-scissors-1" aria-hidden="true" (click)="submitCut()"></i>
+      </div>
     </div>
   </div>
   <div class="row no-gutters">

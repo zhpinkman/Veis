@@ -8,16 +8,16 @@
       upload your first file (drag files into window)
     </div>
   </div>
-  <div class="row listItem no-gutters" dir="ltr" *ngIf="(folders.length > 0 || files.length > 0) && viewMode == 'list'">
+  <div class="row listItem no-gutters sort-methods" dir="ltr" *ngIf="(folders.length > 0 || files.length > 0) && viewMode == 'list'">
     <div class="my-auto name-sorting-icon clickable" (click)="sortByName()">
       name
-      <i *ngIf="nameOrder == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
-      <i *ngIf="nameOrder == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
+      <i *ngIf="nameOrder == true" class="fi flaticon-up-arrow m-1" aria-hidden="true"></i>
+      <i *ngIf="nameOrder == false" class="fi flaticon-down-arrow m-1" aria-hidden="true"></i>
     </div>
     <div class="englishFormat my-auto clickable size-sorting-icon" (click)="sortBySize()">
       size
-      <i *ngIf="sizeOrder == true" class="fa fa-sort-asc m-1" aria-hidden="true"></i>
-      <i *ngIf="sizeOrder == false" class="fa fa-sort-desc m-1" aria-hidden="true"></i>
+      <i *ngIf="sizeOrder == true" class="fi flaticon-up-arrow m-1" aria-hidden="true"></i>
+      <i *ngIf="sizeOrder == false" class="fi flaticon-down-arrow m-1" aria-hidden="true"></i>
     </div>
   </div>
   <div [@compact]="files.length" class="row no-gutters all-items-box" *ngIf="viewMode == 'compact'" dragula="allFiles">

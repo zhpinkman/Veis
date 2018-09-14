@@ -99,11 +99,31 @@ img {
 }
 
 .toolbar-icons {
-  padding: 0px 15px;
+  margin: 0px 15px;
   font-size: 25px;
+}
+
+.square-icons {
+  font-size: 20px;
+  line-height: 1;
+  margin-top: 4px;
+
+}
+
+.rec-icons {
+  font-size: 22px;
+  margin-top: 2px;
 }
 
 .arrow-key {
   margin-top: 3px;
   margin-left: 7px;
+}
+
+.copy-cut-icons {
+  margin-right: 15px;
+}
+
+.list-view-icon {
+  opacity: 0.6;
 }

@@ -61,7 +61,7 @@ export class CompactFileComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
   ngOnChanges(changes: SimpleChanges) {
-    if (this.file.name === 'lil.txt') this.openFullFile();
+    // if (this.file.name === 'lil.txt') this.openFullFile();
   }
 
   openFullFile() {
