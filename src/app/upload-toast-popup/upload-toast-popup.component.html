@@ -1,5 +1,6 @@
-<div class="uploadHeader"><span class="uploading">Uploading </span><i class="fa fa-times fa-2x close-toast" (click)="closeToast()"
-        aria-hidden="true"></i>
+<div class="uploadHeader">
+    <span class="uploading">Uploading </span>
+    <i class="fi flaticon-cancel close-toast" (click)="closeToast()" aria-hidden="true"></i>
 </div>
 <div class="uploadList">
     <app-upload-item *ngFor="let file of fileObjs; let i = index" [file]="file" [index]="i"></app-upload-item>
