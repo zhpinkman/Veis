@@ -48,7 +48,6 @@ img {
 
     >span {
       color: gray;
-      margin-left: 8px;
       font-size: 16px;
     }
 
@@ -74,9 +73,6 @@ img {
   margin-bottom: 5px;
 }
 
-.pointer {
-  cursor: pointer;
-}
 
 #mkdir {
   z-index: 10000000;
@@ -117,7 +113,6 @@ img {
 
 .arrow-key {
   margin-top: 3px;
-  margin-left: 7px;
 }
 
 .copy-cut-icons {
@@ -126,4 +121,36 @@ img {
 
 .list-view-icon {
   opacity: 0.6;
+}
+
+.path-name {
+  width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  margin: 0 6px;
+  display: inline-block;
+}
+
+.path-and-arrow {
+  line-height: 1;
+  text-align: center;
+}
+
+.whole-bread-crumb {
+  width: 55%;
+  display: inline-block;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 4px 10px 0 10px;
+  box-shadow: inset 0px 0px 7px 0px rgba(0, 0, 20, 0.3);
+  border-radius: 5px 5px 5px 5px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // -webkit-overflow-scrolling: touch;
+  // -ms-overflow-style: -ms-autohiding-scrollbar;
 }

@@ -26,25 +26,24 @@
       </div>
     </div>
   </div>
-  <div class="row no-gutters">
-    <div class="pl-0 col-auto row no-gutters align-items-center" dir="ltr">
-      <ul class="bread-crumb">
-        <li *ngFor="let b of fileService.breadcrumbs; let i = index">
-          <span class="pointer" (click)="navigateTo(b)">{{b.name}}</span>
-          <div class="arrow-key">
-            <i *ngIf="i != fileService.breadcrumbs.length - 1" class="fi flaticon-arrow-point-to-right" aria-hidden="true"></i>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="col row no-gutters my-auto homeIcon">
-      <div class="col pl-2 arrow-key">
-        <i *ngIf="fileService.breadcrumbs.length > 0" class="fi flaticon-arrow-point-to-right
-            " aria-hidden="true"></i>
-      </div>
-      <div class="col clickable" (click)="navigateToHome()">
-        home
-      </div>
-    </div>
+  <div class="col-auto row no-gutters align-items-center whole-bread-crumb" dir="ltr">
+    <ul class="bread-crumb">
+      <li class="path-and-arrow">
+        <div class="clickable path-name homeIcon" (click)="navigateToHome()">
+          home
+        </div>
+        <div class="arrow-key homeIcon">
+          <i *ngIf="fileService.breadcrumbs.length > 0" class="fi flaticon-arrow-point-to-right" aria-hidden="true"></i>
+        </div>
+      </li>
+      <li class="path-and-arrow" *ngFor="let path of fileService.breadcrumbs; let i = index">
+        <div class="clickable path-name" (click)="navigateTo(path)">
+          <span>{{path.name}}</span>
+        </div>
+        <div class="arrow-key">
+          <i *ngIf="i != fileService.breadcrumbs.length - 1" class="fi flaticon-arrow-point-to-right" aria-hidden="true"></i>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
