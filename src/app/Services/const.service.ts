@@ -9,7 +9,7 @@ export class ConstService {
     'text/plain': 'text-info fi flaticon-doc',
     dir: 'fi flaticon-folder text-primary',
     'text/html': 'fi flaticon-html text-danger',
-    'application/xhtml+xml': 'fi flaticon-html text-danger',
+    'image/jpeg': 'text-warning fi flaticon-jpg',
     'text/css': 'fi flaticon-css text-success',
     'application/x-7z-compressed': 'fi flaticon-zip text-warning'
   };
