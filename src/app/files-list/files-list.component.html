@@ -1,7 +1,7 @@
 <app-toolbar></app-toolbar>
 <div dir="ltr" class="container" [class.padded]="isInPasteMode()">
   <div *ngIf="folders.length == 0 && files.length == 0" class="row justify-content-center start-icons">
-    <div class="col-4 my-auto mx-auto empty-state" *ngFor="let key of objectKeys(consts.icons)">
+    <div class="col-4 my-auto mx-auto empty-state" *ngFor="let key of objectKeys(consts.iconsForEmptyState)">
       <i [class]="'fa fa-5x ' + consts.icons[key] " aria-hidden="true"></i>
     </div>
     <div class="suggestion">
@@ -25,8 +25,7 @@
     <app-compact-file class="col-auto h-100" (deleted)="deleteFromList($event)" *ngFor="let file of files" [value]="file"></app-compact-file>
   </div>
   <div [@list]="files.length" *ngIf="viewMode == 'list'" dragula="allFiles">
-    <app-folder-view class="col-auto my-2" *ngFor="let folder of folders | orderBy: 'name': nameOrder: 'case-sensitive'"
-      [data]="folder "></app-folder-view>
+    <app-folder-view class="col-auto my-2" *ngFor="let folder of folders | orderBy: 'name': nameOrder: 'case-sensitive'" [data]="folder "></app-folder-view>
     <app-compact-file class="col-auto my-2" (deleted)="deleteFromList($event) " *ngFor="let file of files | orderBy: sortedBy: order"
       [value]="file "></app-compact-file>
   </div>

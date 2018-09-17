@@ -5,6 +5,15 @@ import { Injectable } from '@angular/core';
 export class ConstService {
   constructor() {}
 
+  iconsForEmptyState = {
+    'text/plain': 'text-info fi flaticon-doc',
+    dir: 'fi flaticon-folder text-primary',
+    'text/html': 'fi flaticon-html text-danger',
+    'application/xhtml+xml': 'fi flaticon-html text-danger',
+    'text/css': 'fi flaticon-css text-success',
+    'application/x-7z-compressed': 'fi flaticon-zip text-warning'
+  };
+
   icons = {
     'text/plain': 'text-info fi flaticon-doc',
     dir: 'fi flaticon-folder text-primary',
@@ -53,26 +62,42 @@ export class ConstService {
 
     'video/x-msvideo': 'fi flaticon-avi text-primary',
 
-    'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'fi flaticon-ppt text-danger',
-    'application/vnd.openxmlformats-officedocument.presentationml.slide': 'fi flaticon-ppt text-danger',
-    'application/vnd.openxmlformats-officedocument.presentationml.slideshow': 'fi flaticon-ppt text-danger',
-    'application/vnd.openxmlformats-officedocument.presentationml.template': 'fi flaticon-ppt text-danger',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.openxmlformats-officedocument.presentationml.slide':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.openxmlformats-officedocument.presentationml.slideshow':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.openxmlformats-officedocument.presentationml.template':
+      'fi flaticon-ppt text-danger',
     'application/vnd.ms-powerpoint': 'fi flaticon-ppt text-danger',
-    'application/vnd.ms-powerpoint.addin.macroenabled.12': 'fi flaticon-ppt text-danger',
-    'application/vnd.ms-powerpoint.presentation.macroenabled.12': 'fi flaticon-ppt text-danger',
-    'application/vnd.ms-powerpoint.template.macroenabled.12': 'fi flaticon-ppt text-danger',
-    'application/vnd.ms-powerpoint.slideshow.macroenabled.12': 'fi flaticon-ppt text-danger',
-    'application/vnd.oasis.opendocument.presentation': 'fi flaticon-ppt text-danger',
+    'application/vnd.ms-powerpoint.addin.macroenabled.12':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.ms-powerpoint.presentation.macroenabled.12':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.ms-powerpoint.template.macroenabled.12':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.ms-powerpoint.slideshow.macroenabled.12':
+      'fi flaticon-ppt text-danger',
+    'application/vnd.oasis.opendocument.presentation':
+      'fi flaticon-ppt text-danger',
 
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'fi flaticon-xls text-success',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.template': 'fi flaticon-xls text-success',
-    'application/vnd.oasis.opendocument.spreadsheet': 'fi flaticon-xls text-success',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+      'fi flaticon-xls text-success',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.template':
+      'fi flaticon-xls text-success',
+    'application/vnd.oasis.opendocument.spreadsheet':
+      'fi flaticon-xls text-success',
 
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'fi flaticon-doc text-primary',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.template': 'fi flaticon-doc text-primary',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+      'fi flaticon-doc text-primary',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.template':
+      'fi flaticon-doc text-primary',
     'application/msword': 'fi flaticon-doc text-primary',
-    'application/vnd.ms-word.document.macroenabled.12': 'fi flaticon-doc text-primary',
-    'application/vnd.ms-word.template.macroenabled.12': 'fi flaticon-doc text-primary',
+    'application/vnd.ms-word.document.macroenabled.12':
+      'fi flaticon-doc text-primary',
+    'application/vnd.ms-word.template.macroenabled.12':
+      'fi flaticon-doc text-primary',
     'application/vnd.oasis.opendocument.text': 'fi flaticon-doc text-primary'
   };
 }
