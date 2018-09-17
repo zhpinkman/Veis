@@ -111,7 +111,7 @@ export class ToolbarComponent implements OnInit {
       currentPath = currentPath.getParent();
       // console.log(currentPath.name);
     }
-    this.breadcrumbs.reverse();
+    // this.breadcrumbs.reverse();
     this.fileService.breadcrumbs = this.breadcrumbs;
   }
 

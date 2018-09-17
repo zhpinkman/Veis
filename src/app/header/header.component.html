@@ -1,5 +1,5 @@
-<header class="header header-container box-item  px-5 pt-3 no-gutters sticky-top">
-  <div class="row cloudHeader justify-content-between">
+<header class="header header-container box-item pt-3 no-gutters sticky-top">
+  <div class="row justify-content-between">
     <div class="col-auto row align-items-center logo-icon">
       <div class="mb-5 ml-2">
         <img src="logo.png" width="40">
@@ -13,8 +13,13 @@
         </div>
       </div>
     </div>
-    <div class="col-auto logout-icon">
-      <i class="pointer logOut fi flaticon-logout-1" (click)="logout()"></i>
+    <div class="row whole-logout">
+      <div class="logout-text">
+        خروج
+      </div>
+      <div class="logout-icon col-auto">
+        <i class="pointer logOut fi flaticon-logout-1" (click)="logout()"></i>
+      </div>
     </div>
   </div>
 </header>

@@ -3,6 +3,7 @@
 }
 
 .BC {
+
   // list-style-type: none;
   // font-size: -webkit-xxx-large;
   li {
@@ -40,17 +41,22 @@ img {
   margin-bottom: 0;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+  height: 15px;
+  line-height: 1;
+  justify-content: flex-end;
 
-  > li {
+  >li {
     display: flex;
     align-items: center;
 
-    > span {
+    >span {
       color: gray;
       font-size: 16px;
     }
 
-    > i {
+    >i {
       font-size: 18px;
       margin-left: 8px;
       margin-bottom: 4px;
@@ -90,6 +96,7 @@ img {
   left: 0;
   z-index: 900;
   padding: 13px 30px 15px;
+  display: flex;
 }
 
 .toolbar-icons {
@@ -110,6 +117,7 @@ img {
 
 .arrow-key {
   margin-top: 3px;
+  font-size: 10px;
 }
 
 .copy-cut-icons {
@@ -135,14 +143,13 @@ img {
 }
 
 .whole-bread-crumb {
-  width: 55%;
+  width: 50%;
   display: inline-block;
   flex-wrap: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  padding: 6px 10px 0 10px;
-  box-shadow: inset 0px 0px 7px 0px rgba(0, 0, 20, 0.3);
-  border-radius: 5px 5px 5px 5px;
+  overflow: hidden;
+  padding: 4px 10px 0 0;
+  // box-shadow: inset 0px 0px 7px 0px rgba(0, 0, 20, 0.3);
+  // border-radius: 5px 5px 5px 5px;
 
   &::-webkit-scrollbar {
     display: none;

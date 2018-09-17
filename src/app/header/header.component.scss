@@ -1,7 +1,3 @@
-.cloudHeader {
-  font-size: 30px;
-}
-
 .icon {
   cursor: pointer;
 
@@ -22,7 +18,7 @@
 
 .logOut {
   color: darkgray;
-  font-size: 33px;
+  font-size: 20px;
 }
 
 .utcloud {
@@ -39,6 +35,7 @@
   right: 0;
   left: 0;
   z-index: 900;
+  padding: 0 40px 0;
 }
 
 img {
@@ -54,4 +51,13 @@ img {
 .logout-icon {
   transform: rotateY(180deg);
   margin: 0 0px 0 -17px;
+}
+
+.logout-text {
+  font-size: 18px;
+}
+
+.whole-logout {
+  padding-top: 5px;
+  padding-left: 5px;
 }
