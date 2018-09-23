@@ -1,0 +1,12 @@
+<div [class.padded]="isInPasteMode()">
+  <div class="search">
+    <div class="row no-gutters all-items-box" *ngIf="this.viewMode == 'compact'" dragula="allFiles">
+      <!-- <app-folder-view class=" col-auto h-100" *ngFor="let folder of fileService.searchedFiles" [data]="folder"></app-folder-view> -->
+      <app-compact-file class="col-auto h-100" *ngFor="let file of fileService.searchedFiles" [value]="file"></app-compact-file>
+    </div>
+    <div *ngIf="this.viewMode == 'list'" dragula="allFiles">
+      <!-- <app-folder-view class="col-auto my-2" *ngFor="let folder of fileService.searchedFiles" [data]="folder "></app-folder-view> -->
+      <app-compact-file class="col-auto my-2" *ngFor="let file of fileService.searchedFiles" [value]="file "></app-compact-file>
+    </div>
+  </div>
+</div>

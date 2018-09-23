@@ -22,6 +22,8 @@ import {
 } from '@angular/animations';
 import { flyInOut } from '@app/animation';
 import { UtilitiesService } from '@app/Services/utilities.service';
+import { FormControl, Validators, Form, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-toolbar',
@@ -48,8 +50,24 @@ export class ToolbarComponent implements OnInit {
     this.fileService.currentPathRefreshed.subscribe(data => {
       this.makeBreadCrumbs();
     });
+    this.searchControl = new FormControl();
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe(change => {
+        console.log('change: ', change);
+        if (change == '') this.fileService.searchMode = false;
+        else {
+          this.fileService.searchMode = true;
+          this.fileService.searchFile(change).subscribe(files => {
+            this.fileService.searchedFiles = files;
+            if (files.size == 0) this.fileService.searchMode = false;
+            console.log('searched files: ', this.fileService.searchedFiles);
+          });
+        }
+      });
+  }
   openDialog(event): void {
     const newFolderDialogopts = new MatDialogConfig();
     const dialogPosition: DialogPosition = {
@@ -71,6 +89,8 @@ export class ToolbarComponent implements OnInit {
   selectModeToolbar: Boolean = false;
   isGridView: Boolean = false;
   oldPath: String = '';
+  showSearchInput: Boolean = false;
+  searchedText: String;
 
   submitCopy() {
     this.fileService.copyOrCut = 'copy';
@@ -82,6 +102,17 @@ export class ToolbarComponent implements OnInit {
     this.fileService.copyOrCut = 'cut';
     this.fileService.pasteMode = true;
     this.createCopiedFiles();
+  }
+
+  searchControl: FormControl;
+  submitSearch() {
+    this.showSearchInput = true;
+  }
+
+  submitCancelSearch() {
+    if (this.showSearchInput) this.searchedText = '';
+    this.showSearchInput = false;
+    this.fileService.searchMode = false;
   }
 
   createCopiedFiles() {

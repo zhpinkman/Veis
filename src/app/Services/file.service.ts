@@ -67,11 +67,13 @@ export class FileService {
   refreshPage = new Subject();
   currentPathRefreshed = new Subject();
   pasteMode: Boolean = false;
+  searchMode: Boolean = false;
   whereClickIs = new Subject<string>();
   selectedFiles = [];
   allFiles = [];
   breadcrumbs = [];
   copiedFiles = [];
+  searchedFiles = [];
 
   getFiles() {
     // console.log(this.currentPath);
@@ -104,6 +106,10 @@ export class FileService {
   }
   moveFile(moveRequest: MoveRequest) {
     return this.restangular.one('file/movefile').customPOST(moveRequest);
+  }
+
+  searchFile(text: String) {
+    return this.restangular.one('file/search').get({ text });
   }
   navigateTo(folder: PathClass) {
     // console.log(`${folder.toRoute()}`);

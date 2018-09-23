@@ -108,6 +108,12 @@ export class FilesListComponent implements OnInit {
     } else return false;
   }
 
+  isInSearchMode() {
+    if (this.fileService.searchMode) {
+      return true;
+    } else return false;
+  }
+
   addToList(value: string) {
     let index: number;
     for (let i = 0; i < this.files.length; i++) {
