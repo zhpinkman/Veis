@@ -66,9 +66,11 @@ export class FileService {
   OnselectMode = new Subject();
   refreshPage = new Subject();
   currentPathRefreshed = new Subject();
+  updateSeachedFiles = new Subject();
   pasteMode: Boolean = false;
   searchMode: Boolean = false;
   whereClickIs = new Subject<string>();
+  inSearchMode = new Subject<Boolean>();
   selectedFiles = [];
   allFiles = [];
   breadcrumbs = [];

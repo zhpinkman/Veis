@@ -22,6 +22,7 @@ import { CompactFileComponent } from '@app/compact-file/compact-file.component';
   animations: [list, shake, compact]
 })
 export class FilesListComponent implements OnInit {
+  public showEmptyState: Boolean = true;
   public id: string;
   public pathParent: string;
   public viewMode: string = 'compact';
@@ -42,6 +43,15 @@ export class FilesListComponent implements OnInit {
     public consts: ConstService,
     private dragulaService: DragulaService
   ) {
+    this.fileService.inSearchMode.subscribe(mode => {
+      if (mode == true) {
+        this.clearFilesAndFolders();
+        this.showEmptyState = false;
+      } else {
+        this.getFilesList();
+        this.showEmptyState = true;
+      }
+    });
     this.viewMode = fileService.initViewMode();
     // this.dragulaService.createGroup('allFiles', {});
     this.fileService.whereClickIs.subscribe(element => {
@@ -94,6 +104,10 @@ export class FilesListComponent implements OnInit {
     fileService.currentPathRefreshed.subscribe(value => {
       this.getFilesList();
     });
+  }
+  clearFilesAndFolders() {
+    this.files = [];
+    this.folders = [];
   }
 
   clearSelectedFiles() {
@@ -160,6 +174,9 @@ export class FilesListComponent implements OnInit {
       this.files.forEach(file => {
         if (file.name.includes('.'))
           file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
+        else {
+          file.fileExtension = 'none';
+        }
       });
     });
   }

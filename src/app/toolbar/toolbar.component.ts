@@ -56,7 +56,15 @@ export class ToolbarComponent implements OnInit {
     this.searchControl.valueChanges
       .pipe(debounceTime(500))
       .subscribe(change => {
-        console.log('change: ', change);
+        this.fileService.searchMode = true;
+        // console.log(this.fileService.searchMode);
+        console.log(change);
+
+        if (change != undefined) {
+          if (change != '') this.fileService.inSearchMode.next(true);
+          else this.fileService.inSearchMode.next(false);
+        }
+        // console.log('change: ', change);
         if (change == '') this.fileService.searchMode = false;
         else {
           this.fileService.searchMode = true;
@@ -64,6 +72,8 @@ export class ToolbarComponent implements OnInit {
             this.fileService.searchedFiles = files;
             if (files.size == 0) this.fileService.searchMode = false;
             console.log('searched files: ', this.fileService.searchedFiles);
+            if (this.fileService.searchedFiles.length)
+              this.fileService.updateSeachedFiles.next();
           });
         }
       });
@@ -113,6 +123,7 @@ export class ToolbarComponent implements OnInit {
     if (this.showSearchInput) this.searchedText = '';
     this.showSearchInput = false;
     this.fileService.searchMode = false;
+    this.fileService.inSearchMode.next(false);
   }
 
   createCopiedFiles() {
