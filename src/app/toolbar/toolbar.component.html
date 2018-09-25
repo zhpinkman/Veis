@@ -17,16 +17,28 @@
     <div class="upload-icon toolbar-icons clickable" (click)="navigateToUpload()">
       <i matTooltip="upload" class="fi flaticon-upload-to-cloud"></i>
     </div>
+
+    <div class="position-relative">
+      <div class="toolbar-icons clickable search-icon" *ngIf="!showSearchInput">
+        <i matTooltip="search" (click)="submitSearch()" class="fi flaticon-magnifier" aria-hidden="true"></i>
+      </div>
+      <button *ngIf="showSearchInput" class="search-button" (click)="submitCancelSearch()">
+        <i matTooltip="cancel" class="fi flaticon-cancel" aria-hidden="true"></i>
+      </button>
+      <input dir="ltr" *ngIf="showSearchInput" class="search-input" placeholder="Search..." [formControl]="searchControl"
+        #searchInputElm (keyup)="onSearchInputKeyUp($event)">
+    </div>
+
     <div class="Xlarge row copy-cut-icons" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
-      <div class="toolbar-icons">
+      <div class="toolbar-icons clickable">
         <i matTooltip="copy" class="fi flaticon-file" aria-hidden="true" (click)="submitCopy()"></i>
       </div>
-      <div class="toolbar-icons">
+      <div class="toolbar-icons clickable">
         <i matTooltip="cut" class="fi flaticon-scissors-1" aria-hidden="true" (click)="submitCut()"></i>
       </div>
     </div>
   </div>
-  <div class="col-auto row no-gutters align-items-center whole-bread-crumb">
+  <div class="col row no-gutters align-items-center whole-bread-crumb">
     <div class="bread-crumb" dir="rtl">
       <li class="path-and-arrow" *ngFor="let path of fileService.breadcrumbs; let i = index">
         <div class="clickable path-name" (click)="navigateTo(path)" dir="ltr">

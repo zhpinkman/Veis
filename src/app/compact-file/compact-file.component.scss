@@ -46,21 +46,21 @@ p {
   }
 
   &:hover {
-    box-shadow: inset 0 0 0 2px #c1c9c9
+    box-shadow: inset 0 0 0 2px #c1c9c9;
   }
 }
 
 @keyframes shaking {
   0% {
-    transform: rotate(2deg)
+    transform: rotate(2deg);
   }
 
   50% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 
   100% {
-    transform: rotate(-2deg)
+    transform: rotate(-2deg);
   }
 }
 
@@ -90,7 +90,7 @@ p {
   border-radius: 4px 0 0 0;
   padding: 0px 4px 3px 2px;
 
-  >i {
+  > i {
     color: white;
   }
 }
@@ -118,6 +118,7 @@ p {
   .file-name {
     padding: 10px 0 0 0;
     text-align: left;
+    width: 25%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -138,7 +139,7 @@ p {
 }
 
 .selected {
-  background-color: rgba(229, 234, 236, 0.667)
+  background-color: rgba(229, 234, 236, 0.667);
 }
 
 .check-icon {

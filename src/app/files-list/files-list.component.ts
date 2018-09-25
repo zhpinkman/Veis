@@ -22,6 +22,7 @@ import { CompactFileComponent } from '@app/compact-file/compact-file.component';
   animations: [list, shake, compact]
 })
 export class FilesListComponent implements OnInit {
+  public showEmptyState: Boolean = true;
   public id: string;
   public pathParent: string;
   public viewMode: string = 'compact';
@@ -34,6 +35,7 @@ export class FilesListComponent implements OnInit {
 
   @ViewChildren(CompactFileComponent)
   entities: QueryList<CompactFileComponent>;
+  isInSearchMode: Boolean;
 
   constructor(
     private fileService: FileService,
@@ -42,6 +44,17 @@ export class FilesListComponent implements OnInit {
     public consts: ConstService,
     private dragulaService: DragulaService
   ) {
+    this.fileService.inSearchMode.subscribe(mode => {
+      this.isInSearchMode = mode;
+
+      if (mode == true) {
+        this.clearFilesAndFolders();
+        this.showEmptyState = false;
+      } else {
+        this.getFilesList();
+        this.showEmptyState = true;
+      }
+    });
     this.viewMode = fileService.initViewMode();
     // this.dragulaService.createGroup('allFiles', {});
     this.fileService.whereClickIs.subscribe(element => {
@@ -95,6 +108,10 @@ export class FilesListComponent implements OnInit {
       this.getFilesList();
     });
   }
+  clearFilesAndFolders() {
+    this.files = [];
+    this.folders = [];
+  }
 
   clearSelectedFiles() {
     this.selectedFilesIndex = [];
@@ -130,8 +147,8 @@ export class FilesListComponent implements OnInit {
   }
 
   selectedFilesIndex = new Array<number>();
-  files = new Array<FileEntity>();
-  folders = new Array<PathClass>();
+  files: FileEntity[] = [];
+  folders: { pathClass: PathClass; origFolder: FileEntity }[] = [];
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
@@ -139,21 +156,24 @@ export class FilesListComponent implements OnInit {
       this.folders.splice(0, this.folders.length);
 
       const folders = this.files.filter(val => val.type === 'dir').map(dir => ({
-        ...dir,
-        path: dir.path.substring(
-          dir.path.indexOf('/', 1) + 1,
-          dir.path.length - 1
-        )
+        ...dir
+        // path: dir.path.substring(
+        //   dir.path.indexOf('/', 1) + 1,
+        //   dir.path.length - 1
+        // )
       }));
       this.files = this.files.filter(val => val.type !== 'dir');
       folders.forEach(dir => {
         let folder = new PathClass(dir.name, this.fileService.currentPath);
-        this.folders.push(folder);
+        this.folders.push({ pathClass: folder, origFolder: dir });
       });
 
       this.files.forEach(file => {
         if (file.name.includes('.'))
           file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
+        else {
+          file.fileExtension = 'none';
+        }
       });
     });
   }
