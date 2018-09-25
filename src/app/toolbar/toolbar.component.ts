@@ -1,5 +1,5 @@
 import { MatDialog, MatDialogConfig, DialogPosition } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '@app/Services/auth.service';
 import { Router, Params } from '@angular/router';
 import { NewFolderComponent } from '@app/new-folder/new-folder.component';
@@ -53,31 +53,35 @@ export class ToolbarComponent implements OnInit {
     this.searchControl = new FormControl();
   }
   ngOnInit() {
+    this.fileService.inSearchMode.subscribe(mode => {
+      if (mode === false) this.doCancelSearch();
+    });
+
     this.searchControl.valueChanges
       .pipe(debounceTime(500))
       .subscribe(change => {
-        this.fileService.searchMode = true;
-        // console.log(this.fileService.searchMode);
-        console.log(change);
+        // let searchMode = true;
+        // this.fileService.inSearchMode.next(true);
+        // console.log(change);
 
-        if (change != undefined) {
-          if (change != '') this.fileService.inSearchMode.next(true);
-          else this.fileService.inSearchMode.next(false);
-        }
-        // console.log('change: ', change);
-        if (change == '') this.fileService.searchMode = false;
-        else {
-          this.fileService.searchMode = true;
+        if (change == undefined || change == '') {
+          this.fileService.searchedFiles = [];
+          this.fileService.updateSeachedFiles.next();
+        } else {
+          // searchMode = true;
           this.fileService.searchFile(change).subscribe(files => {
+            // if (files.size == 0) searchMode = false;
+            // console.log('searched files: ', this.fileService.searchedFiles);
+            // if (this.fileService.searchedFiles.length)
             this.fileService.searchedFiles = files;
-            if (files.size == 0) this.fileService.searchMode = false;
-            console.log('searched files: ', this.fileService.searchedFiles);
-            if (this.fileService.searchedFiles.length)
-              this.fileService.updateSeachedFiles.next();
+            this.fileService.updateSeachedFiles.next();
           });
         }
+
+        // this.fileService.inSearchMode.next(searchMode);
       });
   }
+
   openDialog(event): void {
     const newFolderDialogopts = new MatDialogConfig();
     const dialogPosition: DialogPosition = {
@@ -96,11 +100,10 @@ export class ToolbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe(resutl => {});
   }
   viewMode: string = 'compact';
-  selectModeToolbar: Boolean = false;
-  isGridView: Boolean = false;
-  oldPath: String = '';
-  showSearchInput: Boolean = false;
-  searchedText: String;
+  selectModeToolbar: boolean = false;
+  isGridView: boolean = false;
+  oldPath: string = '';
+  showSearchInput: boolean = false;
 
   submitCopy() {
     this.fileService.copyOrCut = 'copy';
@@ -115,15 +118,32 @@ export class ToolbarComponent implements OnInit {
   }
 
   searchControl: FormControl;
+
+  private _searchInputElm: ElementRef<HTMLInputElement>;
+  @ViewChild('searchInputElm')
+  set searchInputElm(curr) {
+    if (!curr) return;
+    this._searchInputElm = curr;
+    this._searchInputElm.nativeElement.focus();
+  }
+
+  onSearchInputKeyUp(event: KeyboardEvent) {
+    if (event.keyCode === 27) this.submitCancelSearch();
+  }
+
   submitSearch() {
     this.showSearchInput = true;
+    this.fileService.inSearchMode.next(true);
   }
 
   submitCancelSearch() {
-    if (this.showSearchInput) this.searchedText = '';
-    this.showSearchInput = false;
-    this.fileService.searchMode = false;
+    this.doCancelSearch();
     this.fileService.inSearchMode.next(false);
+  }
+
+  private doCancelSearch() {
+    if (this.showSearchInput) this.searchControl.reset();
+    this.showSearchInput = false;
   }
 
   createCopiedFiles() {

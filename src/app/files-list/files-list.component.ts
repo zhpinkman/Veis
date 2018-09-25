@@ -35,6 +35,7 @@ export class FilesListComponent implements OnInit {
 
   @ViewChildren(CompactFileComponent)
   entities: QueryList<CompactFileComponent>;
+  isInSearchMode: Boolean;
 
   constructor(
     private fileService: FileService,
@@ -44,6 +45,8 @@ export class FilesListComponent implements OnInit {
     private dragulaService: DragulaService
   ) {
     this.fileService.inSearchMode.subscribe(mode => {
+      this.isInSearchMode = mode;
+
       if (mode == true) {
         this.clearFilesAndFolders();
         this.showEmptyState = false;
@@ -122,12 +125,6 @@ export class FilesListComponent implements OnInit {
     } else return false;
   }
 
-  isInSearchMode() {
-    if (this.fileService.searchMode) {
-      return true;
-    } else return false;
-  }
-
   addToList(value: string) {
     let index: number;
     for (let i = 0; i < this.files.length; i++) {
@@ -150,8 +147,8 @@ export class FilesListComponent implements OnInit {
   }
 
   selectedFilesIndex = new Array<number>();
-  files = new Array<FileEntity>();
-  folders = new Array<PathClass>();
+  files: FileEntity[] = [];
+  folders: { pathClass: PathClass; origFolder: FileEntity }[] = [];
 
   getFilesList() {
     this.fileService.getFiles().subscribe(data => {
@@ -159,16 +156,16 @@ export class FilesListComponent implements OnInit {
       this.folders.splice(0, this.folders.length);
 
       const folders = this.files.filter(val => val.type === 'dir').map(dir => ({
-        ...dir,
-        path: dir.path.substring(
-          dir.path.indexOf('/', 1) + 1,
-          dir.path.length - 1
-        )
+        ...dir
+        // path: dir.path.substring(
+        //   dir.path.indexOf('/', 1) + 1,
+        //   dir.path.length - 1
+        // )
       }));
       this.files = this.files.filter(val => val.type !== 'dir');
       folders.forEach(dir => {
         let folder = new PathClass(dir.name, this.fileService.currentPath);
-        this.folders.push(folder);
+        this.folders.push({ pathClass: folder, origFolder: dir });
       });
 
       this.files.forEach(file => {

@@ -9,16 +9,16 @@ import { PathClass } from '@app/PathClass';
   styleUrls: ['./search-files.component.scss']
 })
 export class SearchFilesComponent implements OnInit {
-  viewMode: String = 'compact';
+  viewMode: string = 'compact';
   files = new Array<FileEntity>();
-  folders = new Array<PathClass>();
+  folders: { pathClass: PathClass; origFolder: FileEntity }[] = [];
   constructor(public fileService: FileService) {
     this.fileService.inSearchMode.subscribe(mode => {
       if (mode == true) this.getFilesAndFolders();
       console.log('searching');
     });
     this.viewMode = fileService.initViewMode();
-    this.fileService.updateSeachedFiles.subscribe(data => {
+    this.fileService.updateSeachedFiles.subscribe(_ => {
       this.getFilesAndFolders();
     });
   }
@@ -34,26 +34,17 @@ export class SearchFilesComponent implements OnInit {
     this.folders.splice(0, this.folders.length);
 
     const folders = this.files.filter(val => val.type === 'dir').map(dir => ({
-      ...dir,
-      path: dir.path.substring(
-        dir.path.indexOf('/', 1) + 1,
-        dir.path.length - 1
-      )
+      ...dir
     }));
     this.files = this.files.filter(val => val.type !== 'dir');
     folders.forEach(dir => {
       let folder = new PathClass(dir.name, this.fileService.currentPath);
-      this.folders.push(folder);
+      this.folders.push({ pathClass: folder, origFolder: dir });
     });
 
     this.files.forEach(file => {
       if (file.name.includes('.'))
         file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
     });
-    console.log('zzzz');
-
-    console.log(this.files);
-    console.log(this.folders);
-    console.log('tttt');
   }
 }

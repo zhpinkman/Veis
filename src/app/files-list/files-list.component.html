@@ -1,5 +1,5 @@
 <app-toolbar></app-toolbar>
-<div *ngIf="isInSearchMode()">
+<div *ngIf="isInSearchMode">
   <app-search-files></app-search-files>
 </div>
 <div dir="ltr" class="container" [class.padded]="isInPasteMode()">
@@ -24,11 +24,12 @@
     </div>
   </div>
   <div [@compact]="files.length" class="row no-gutters all-items-box" *ngIf="viewMode == 'compact'" dragula="allFiles">
-    <app-folder-view class=" col-auto h-100" *ngFor="let folder of folders" [data]="folder"></app-folder-view>
+    <app-folder-view class=" col-auto h-100" *ngFor="let folder of folders" [data]="folder.pathClass" [origFolder]="folder.origFolder"></app-folder-view>
     <app-compact-file class="col-auto h-100" (deleted)="deleteFromList($event)" *ngFor="let file of files" [value]="file"></app-compact-file>
   </div>
   <div [@list]="files.length" *ngIf="viewMode == 'list'" dragula="allFiles">
-    <app-folder-view class="col-auto my-2" *ngFor="let folder of folders | orderBy: 'name': nameOrder: 'case-sensitive'" [data]="folder "></app-folder-view>
+    <app-folder-view class="col-auto my-2" *ngFor="let folder of folders | orderBy: 'name': nameOrder: 'case-sensitive'"
+      [data]="folder.pathClass" [origFolder]="folder.origFolder"></app-folder-view>
     <app-compact-file class="col-auto my-2" (deleted)="deleteFromList($event) " *ngFor="let file of files | orderBy: sortedBy: order"
       [value]="file "></app-compact-file>
   </div>

@@ -38,13 +38,7 @@ export class FileService {
       if (url instanceof NavigationEnd) {
         let path = url.url.toString().split('/');
         if (path.length >= 2 && path[1] === 'myfiles') {
-          path.splice(1, 1);
-          this.currentPath = new PathClass(path[0]);
-          for (let i = 1; i < path.length; i++) {
-            path[i] = decodeURIComponent(path[i]);
-            console.log(path[i]);
-            this.currentPath = new PathClass(path[i], this.currentPath);
-          }
+          this.updateCurrentPath(path);
           this.currentPathRefreshed.next();
         } else {
           return;
@@ -54,6 +48,16 @@ export class FileService {
   }
 
   public currentPath: PathClass;
+  private updateCurrentPath(path: string[]) {
+    path.splice(1, 1);
+    this.currentPath = new PathClass(path[0]);
+    for (let i = 1; i < path.length; i++) {
+      path[i] = decodeURIComponent(path[i]);
+      console.log(path[i]);
+      this.currentPath = new PathClass(path[i], this.currentPath);
+    }
+  }
+
   makeRequest(formData) {
     this.restangular
       .one('file/upload')
@@ -66,11 +70,10 @@ export class FileService {
   OnselectMode = new Subject();
   refreshPage = new Subject();
   currentPathRefreshed = new Subject();
-  updateSeachedFiles = new Subject();
-  pasteMode: Boolean = false;
-  searchMode: Boolean = false;
+  updateSeachedFiles = new ReplaySubject<any>(1);
+  pasteMode: boolean = false;
   whereClickIs = new Subject<string>();
-  inSearchMode = new Subject<Boolean>();
+  inSearchMode = new ReplaySubject<boolean>(1);
   selectedFiles = [];
   allFiles = [];
   breadcrumbs = [];
@@ -115,6 +118,7 @@ export class FileService {
   }
   navigateTo(folder: PathClass) {
     // console.log(`${folder.toRoute()}`);
+    this.inSearchMode.next(false);
     this.router.navigate([`${folder.toRoute()}`]);
   }
   upload(files: FileList, fun: (progress: any, i: number) => any) {
