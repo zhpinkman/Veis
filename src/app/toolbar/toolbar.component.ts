@@ -182,6 +182,7 @@ export class ToolbarComponent implements OnInit {
     this.makeBreadCrumbs();
   }
   navigateToHome() {
+    this.fileService.inSearchMode.next(false);
     this.router.navigate(['/myfiles']);
   }
   navigateToUpload() {

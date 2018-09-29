@@ -73,6 +73,8 @@ export class FullFileComponent implements OnInit {
       this.fileService.currentPath.pathToString() + '/' + this.file.name;
     this.fileService.deleteFile(Request).subscribe(
       file => {
+        this.fileService.inSearchMode.next(false);
+        this.fileService.refreshPage.next();
         this.hideDeleteIcon = false;
         this.dialogRef.close({ type: 'delete' });
       },

@@ -12,6 +12,9 @@ export class SearchFilesComponent implements OnInit {
   viewMode: string = 'compact';
   files = new Array<FileEntity>();
   folders: { pathClass: PathClass; origFolder: FileEntity }[] = [];
+  selectedFilesIndex = new Array<number>();
+  public filesAroundClick: Array<string> = [];
+
   constructor(public fileService: FileService) {
     this.fileService.inSearchMode.subscribe(mode => {
       if (mode == true) this.getFilesAndFolders();
@@ -21,9 +24,78 @@ export class SearchFilesComponent implements OnInit {
     this.fileService.updateSeachedFiles.subscribe(_ => {
       this.getFilesAndFolders();
     });
+    this.fileService.whereClickIs.subscribe(element => {
+      // console.log('one Click recieved!!');
+      this.filesAroundClick.push(element);
+      if (this.filesAroundClick.length === this.files.length) {
+        // console.log('click compeleted');
+        let outSideClicks: number = 0;
+        this.filesAroundClick.forEach(file => {
+          if (file === 'outSide') outSideClicks++;
+        });
+        // console.log(outSideClicks);
+        if (outSideClicks === this.files.length) this.clearSelectedFiles();
+
+        this.filesAroundClick = [];
+      }
+    });
+    fileService.selectedFile.subscribe(value => {
+      console.log(value);
+      this.addToList(value.name);
+      // console.log('value', value);
+      if (this.fileService.pasteMode) {
+        // console.log('bool', this.fileService.copiedFiles.includes(value));
+        if (
+          this.fileService.copiedFiles.findIndex(k => k.name == value.name) ==
+          -1
+        ) {
+          // console.log('copyfiles', this.fileService.copiedFiles);
+          this.fileService.copiedFiles.push(value);
+        }
+        // this.fileService.refreshPage.next();
+        console.log('fileList: ', this.fileService.copiedFiles);
+      }
+      this.fileService.selectedFiles = this.selectedFilesIndex;
+      this.fileService.allFiles = this.files;
+      this.fileService.OnselectMode.next(this.selectedFilesIndex.length);
+    });
+    fileService.viewMode.subscribe(value => {
+      this.viewMode = value;
+    });
+  }
+  clearFilesAndFolders() {
+    this.files = [];
+    this.folders = [];
+  }
+
+  clearSelectedFiles() {
+    this.selectedFilesIndex = [];
+    this.files.forEach(file => (file.selected = false));
+    this.fileService.OnselectMode.next(null);
   }
 
   ngOnInit() {}
+
+  addToList(value: string) {
+    let index: number;
+    for (let i = 0; i < this.files.length; i++) {
+      if (this.files[i].name === value) {
+        index = i;
+      }
+    }
+    // console.log(index);
+    for (let i = 0; i < this.selectedFilesIndex.length; i++) {
+      if (this.selectedFilesIndex[i] === index) {
+        // console.log('removed');
+        this.selectedFilesIndex.splice(i, 1);
+        this.files[index].selected = false;
+        return;
+      }
+    }
+    // console.log('added');
+    this.selectedFilesIndex.push(index);
+    this.files[index].selected = true;
+  }
 
   isInPasteMode() {
     if (this.fileService.pasteMode) return true;
@@ -46,5 +118,10 @@ export class SearchFilesComponent implements OnInit {
       if (file.name.includes('.'))
         file.fileExtension = file.name.substr(file.name.lastIndexOf('.') + 1);
     });
+  }
+
+  deleteFromList(event) {
+    let index = this.files.findIndex(f => f.id == event.id);
+    this.files.splice(index, 1);
   }
 }
