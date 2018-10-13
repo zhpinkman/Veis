@@ -2,28 +2,28 @@
   <div class="row col-auto">
     <div>
       <div class="clickable toolbar-icons rec-icons list-view-icon" [hidden]="!isGridView" (click)="changeviewMode()">
-        <i matTooltip="List" class="fi flaticon-lists
+        <i matTooltip="لیست" class="fi flaticon-lists
         " aria-hidden="true"></i>
       </div>
       <div class="clickable toolbar-icons square-icons" [hidden]="isGridView" (click)="changeviewMode()">
-        <i matTooltip="Grid" class="fi flaticon-menu-1 
+        <i matTooltip="شطرنجی(grid)" class="fi flaticon-menu-1 
         " aria-hidden="true"></i>
       </div>
     </div>
 
     <div id="mkdir" class="toolbar-icons rec-icons clickable" (click)="openDialog($event)">
-      <i matTooltip="new folder" class="fi flaticon-add " alt="newFolder"></i>
+      <i matTooltip="پوشه جدید" class="fi flaticon-add " alt="newFolder"></i>
     </div>
     <div class="upload-icon toolbar-icons clickable" (click)="navigateToUpload()">
-      <i matTooltip="upload" class="fi flaticon-upload-to-cloud"></i>
+      <i matTooltip="آپلود" class="fi flaticon-upload-to-cloud"></i>
     </div>
 
     <div class="position-relative">
       <div class="toolbar-icons clickable search-icon" *ngIf="!showSearchInput">
-        <i matTooltip="search" (click)="submitSearch()" class="fi flaticon-magnifier" aria-hidden="true"></i>
+        <i matTooltip="جستجو" (click)="submitSearch()" class="fi flaticon-magnifier" aria-hidden="true"></i>
       </div>
       <button *ngIf="showSearchInput" class="search-button" (click)="submitCancelSearch()">
-        <i matTooltip="cancel" class="fi flaticon-cancel" aria-hidden="true"></i>
+        <i matTooltip="لغو" class="fi flaticon-cancel" aria-hidden="true"></i>
       </button>
       <input dir="ltr" *ngIf="showSearchInput" class="search-input" placeholder="Search..." [formControl]="searchControl"
         #searchInputElm (keyup)="onSearchInputKeyUp($event)">
@@ -31,10 +31,10 @@
 
     <div class="Xlarge row copy-cut-icons" *ngIf="selectModeToolbar && !fileService.copyOrCut" [@flyInOut]="'in'">
       <div class="toolbar-icons clickable">
-        <i matTooltip="copy" class="fi flaticon-file" aria-hidden="true" (click)="submitCopy()"></i>
+        <i matTooltip="کپی" class="fi flaticon-file" aria-hidden="true" (click)="submitCopy()"></i>
       </div>
       <div class="toolbar-icons clickable">
-        <i matTooltip="cut" class="fi flaticon-scissors-1" aria-hidden="true" (click)="submitCut()"></i>
+        <i matTooltip="انتقال" class="fi flaticon-scissors-1" aria-hidden="true" (click)="submitCut()"></i>
       </div>
     </div>
   </div>
