@@ -74,7 +74,6 @@ export class CompactFileComponent implements OnInit, OnChanges {
 
     const dialogRef = this.dialog.open(FullFileComponent, opts);
 
-    dialogRef.afterOpen().subscribe(data => console.log('opened successfully'));
     dialogRef.updatePosition(opts.position);
 
     dialogRef.afterClosed().subscribe(result => {

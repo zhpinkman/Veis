@@ -53,7 +53,7 @@ export class FileService {
     this.currentPath = new PathClass(path[0]);
     for (let i = 1; i < path.length; i++) {
       path[i] = decodeURIComponent(path[i]);
-      console.log(path[i]);
+      // console.log(path[i]);
       this.currentPath = new PathClass(path[i], this.currentPath);
     }
   }

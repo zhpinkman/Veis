@@ -37,7 +37,7 @@ export class FullFileComponent implements OnInit {
   public filePublicPreview: Boolean = false;
   public filePrivatePreview: Boolean = false;
   showEditName: boolean = false;
-  hideDeleteIcon: Boolean = false;
+  hideDeleteIcon: boolean = false;
 
   icons = this.consts.icons;
   submitEdit() {
@@ -104,5 +104,15 @@ export class FullFileComponent implements OnInit {
     // console.log(this.urlInput);
     this.urlInput.nativeElement.select();
     document.execCommand('copy');
+  }
+
+  private _optionsButton: ElementRef<HTMLButtonElement>;
+  @ViewChild('optionsButton')
+  set optionsButton(curr) {
+    if (!curr) return;
+    // console.log('testing');
+    this._optionsButton = curr;
+    // console.log(this._optionsButton);
+    // this._optionsButton.nativeElement.hideFocus = true;
   }
 }

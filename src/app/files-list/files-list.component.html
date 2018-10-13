@@ -2,7 +2,7 @@
 <div *ngIf="isInSearchMode">
   <app-search-files></app-search-files>
 </div>
-<div dir="ltr" class="container" [class.padded]="isInPasteMode()">
+<div dir="ltr" class="container align-items" [class.padded]="isInPasteMode()">
   <div *ngIf="folders.length == 0 && files.length == 0 && showEmptyState" class="row justify-content-center start-icons">
     <div class="col-4 my-auto mx-auto empty-state" *ngFor="let key of objectKeys(consts.iconsForEmptyState)">
       <i [class]="'fa fa-5x ' + consts.icons[key] " aria-hidden="true"></i>

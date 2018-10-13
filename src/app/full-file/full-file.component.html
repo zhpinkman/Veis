@@ -29,7 +29,7 @@
         <i class="fi flaticon-cancel"></i>
       </div>
       <div class="file-options">
-        <button mat-icon-button [matMenuTriggerFor]="menu" [hidden]="showEditName">
+        <button mat-icon-button [matMenuTriggerFor]="menu" [hidden]="showEditName" #optionsButton>
           <i class="fi flaticon-show-more-button-with-three-dots"></i>
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
