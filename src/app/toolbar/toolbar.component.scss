@@ -134,6 +134,12 @@ img {
   height: 27px;
   padding: 0 7px;
   display: inline-block;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-color: darkgray;
+  }
 }
 
 .path-and-arrow {

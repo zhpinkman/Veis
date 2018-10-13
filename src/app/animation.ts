@@ -12,7 +12,7 @@ import {
 export const compact = trigger('compact', [
   transition('* => *', [
     query(':enter', style({ opacity: 0 }), { optional: true }),
-    query(':leave', style({ opacity: 1 }), { optional: true }),
+    // query(':leave', style({ opacity: 1 }), { optional: true }),
 
     query(
       ':enter',
@@ -26,21 +26,21 @@ export const compact = trigger('compact', [
         )
       ]),
       { optional: true }
-    ),
-    query(
-      ':leave',
-      // stagger('0ms', [
-      animate(
-        '200ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-        keyframes([
-          style({ opacity: 1, transform: 'translateY(0)' }),
-          style({ opacity: 0, transform: 'translateY(-40px)' })
-        ])
-        // )
-        // ]
-      ),
-      { optional: true }
     )
+    // query(
+    //   ':leave',
+    //   // stagger('0ms', [
+    //   animate(
+    //     '200ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+    //     keyframes([
+    //       style({ opacity: 1, transform: 'translateY(0)' }),
+    //       style({ opacity: 0, transform: 'translateY(-40px)' })
+    //     ])
+    //     // )
+    //     // ]
+    //   ),
+    //   { optional: true }
+    // )
   ])
 ]);
 
@@ -66,22 +66,22 @@ export const list = trigger('list', [
         )
       ]),
       { optional: true }
-    ),
-    query(':leave', style({ opacity: 1 }), { optional: true }),
-    query(
-      ':leave',
-      // stagger('0ms', [
-      animate(
-        '100ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-        keyframes([
-          style({ opacity: 1, transform: 'translateX(0)' }),
-          style({ opacity: 0, transform: 'translateX(-40px)' })
-        ])
-        // )
-        // ]
-      ),
-      { optional: true }
     )
+    // query(':leave', style({ opacity: 1 }), { optional: true }),
+    // query(
+    //   ':leave',
+    //   // stagger('0ms', [
+    //   animate(
+    //     '100ms cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+    //     keyframes([
+    //       style({ opacity: 1, transform: 'translateX(0)' }),
+    //       style({ opacity: 0, transform: 'translateX(-40px)' })
+    //     ])
+    //     // )
+    //     // ]
+    //   ),
+    //   { optional: true }
+    // )
   ])
 ]);
 
